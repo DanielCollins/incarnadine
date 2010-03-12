@@ -1,6 +1,11 @@
 //========================================================================
-//
-// Copyright (c) 2010 Daniel Collins, Daniel Flahive
+// GLFW - An OpenGL framework
+// File:        macosx_joystick.c
+// Platform:    Mac OS X
+// API Version: 2.6
+// WWW:         http://glfw.sourceforge.net
+//------------------------------------------------------------------------
+// Copyright (c) 2002-2006 Camilla Berglund
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -23,43 +28,23 @@
 //
 //========================================================================
 
+#include "internal.h"
 
-#include <GL/glfw.h>
+// TO DO: use HID manager to implement joystick support.
 
-int main()
+int _glfwPlatformGetJoystickParam( int joy, int param )
 {
-	bool running = true;
-
-	glfwInit();
-
-	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
-	{
-		glfwTerminate();
-		return 0;
-	}
-
-	while(running)
-	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		glLoadIdentity();
-		glTranslatef(0.0f,0.0f,-6.0f);
-
-		glBegin(GL_TRIANGLES);
-		  glColor3f(1.0f,0.0f,0.0f);
-		  glVertex3f(0.0f, 1.0f, 0.0f);
-		  glColor3f(0.0f,1.0f,0.0f);
-		  glVertex3f(-1.0f,-1.0f, 0.0f);
-		  glColor3f(0.0f,0.0f,1.0f);
-		  glVertex3f(1.0f,-1.0f, 0.0f);
-		glEnd();
-
-		glfwSwapBuffers();
-
-		running = !glfwGetKey(GLFW_KEY_ESC)
-					&& glfwGetWindowParam(GLFW_OPENED);
-	}
-
-	glfwTerminate();
-	return 0;
+    // GL_FALSE == 0
+    return 0;
 }
+
+int _glfwPlatformGetJoystickPos( int joy, float *pos, int numaxes )
+{
+    return 0;
+}
+
+int _glfwPlatformGetJoystickButtons( int joy, unsigned char *buttons, int numbuttons )
+{
+    return 0;
+}
+

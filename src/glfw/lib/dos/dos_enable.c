@@ -1,6 +1,11 @@
 //========================================================================
-//
-// Copyright (c) 2010 Daniel Collins, Daniel Flahive
+// GLFW - An OpenGL framework
+// File:        dos_enable.c
+// Platform:    DOS
+// API version: 2.6
+// WWW:         http://glfw.sourceforge.net
+//------------------------------------------------------------------------
+// Copyright (c) 2002-2006 Camilla Berglund
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -23,43 +28,24 @@
 //
 //========================================================================
 
+#include "internal.h"
 
-#include <GL/glfw.h>
 
-int main()
+//************************************************************************
+//****               Platform implementation functions                ****
+//************************************************************************
+
+//========================================================================
+// _glfwPlatformEnableSystemKeys() - Enable system keys
+// _glfwPlatformDisableSystemKeys() - Disable system keys
+//========================================================================
+
+void _glfwPlatformEnableSystemKeys( void )
 {
-	bool running = true;
+    // Not supported under DOS (yet)
+}
 
-	glfwInit();
-
-	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
-	{
-		glfwTerminate();
-		return 0;
-	}
-
-	while(running)
-	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		glLoadIdentity();
-		glTranslatef(0.0f,0.0f,-6.0f);
-
-		glBegin(GL_TRIANGLES);
-		  glColor3f(1.0f,0.0f,0.0f);
-		  glVertex3f(0.0f, 1.0f, 0.0f);
-		  glColor3f(0.0f,1.0f,0.0f);
-		  glVertex3f(-1.0f,-1.0f, 0.0f);
-		  glColor3f(0.0f,0.0f,1.0f);
-		  glVertex3f(1.0f,-1.0f, 0.0f);
-		glEnd();
-
-		glfwSwapBuffers();
-
-		running = !glfwGetKey(GLFW_KEY_ESC)
-					&& glfwGetWindowParam(GLFW_OPENED);
-	}
-
-	glfwTerminate();
-	return 0;
+void _glfwPlatformDisableSystemKeys( void )
+{
+    // Not supported under DOS (yet)
 }

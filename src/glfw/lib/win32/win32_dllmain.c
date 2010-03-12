@@ -1,6 +1,11 @@
 //========================================================================
-//
-// Copyright (c) 2010 Daniel Collins, Daniel Flahive
+// GLFW - An OpenGL framework
+// File:        win32_dllmain.c
+// Platform:    Windows
+// API version: 2.6
+// WWW:         http://glfw.sourceforge.net
+//------------------------------------------------------------------------
+// Copyright (c) 2002-2006 Camilla Berglund
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -23,43 +28,33 @@
 //
 //========================================================================
 
+#include "internal.h"
 
-#include <GL/glfw.h>
 
-int main()
+#if defined(GLFW_BUILD_DLL)
+
+//========================================================================
+// DllMain()
+//========================================================================
+
+int WINAPI DllMain( HINSTANCE hinst, unsigned long reason, void *x )
 {
-	bool running = true;
+    // NOTE: Some compilers complains about hinst and x never being used -
+    // never mind that (we don't want to use them)!
 
-	glfwInit();
+    switch( reason )
+    {
+    case DLL_PROCESS_ATTACH:
+        // Initializations
+        //glfwInit();   // We don't want to do that now!
+        break;
+    case DLL_PROCESS_DETACH:
+        // Do some cleanup
+        glfwTerminate();
+        break;
+    };
 
-	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
-	{
-		glfwTerminate();
-		return 0;
-	}
-
-	while(running)
-	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		glLoadIdentity();
-		glTranslatef(0.0f,0.0f,-6.0f);
-
-		glBegin(GL_TRIANGLES);
-		  glColor3f(1.0f,0.0f,0.0f);
-		  glVertex3f(0.0f, 1.0f, 0.0f);
-		  glColor3f(0.0f,1.0f,0.0f);
-		  glVertex3f(-1.0f,-1.0f, 0.0f);
-		  glColor3f(0.0f,0.0f,1.0f);
-		  glVertex3f(1.0f,-1.0f, 0.0f);
-		glEnd();
-
-		glfwSwapBuffers();
-
-		running = !glfwGetKey(GLFW_KEY_ESC)
-					&& glfwGetWindowParam(GLFW_OPENED);
-	}
-
-	glfwTerminate();
-	return 0;
+    return 1;
 }
+
+#endif // GLFW_BUILD_DLL
