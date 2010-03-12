@@ -44,6 +44,10 @@ int main()
 		return 0;
 	}
 	
+	glViewport (0, 0, (GLsizei) 800, (GLsizei) 600);
+    glMatrixMode(GL_PROJECTION);
+   	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
+   	
 	//time starts now
 	glfwSetTime(0.0);
 	
@@ -82,9 +86,6 @@ void renderScene()
 {
 	glClearColor (0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
-	
-	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
-	
 	glTranslatef(0.0f,0.0f,-6.0f);
 		
 	glBegin(GL_TRIANGLES);
@@ -97,5 +98,6 @@ void renderScene()
     glEnd();
 
 	glFlush();
+	glfwSwapBuffers();
 }
 
