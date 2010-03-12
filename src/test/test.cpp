@@ -82,7 +82,8 @@ void renderScene()
 {
 	glClearColor (0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
-	glLoadIdentity();
+	
+	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 	
 	glTranslatef(0.0f,0.0f,-6.0f);
 		
