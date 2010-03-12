@@ -44,7 +44,6 @@ int main()
 		return 0;
 	}
 	
-	glViewport (0, 0, (GLsizei) 800, (GLsizei) 600);
     glMatrixMode(GL_PROJECTION);
    	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
    	
