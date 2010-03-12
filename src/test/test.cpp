@@ -25,6 +25,12 @@
 
 
 #include <GL/glfw.h>
+#include "test.h"
+
+#define MAXIMUM_FRAME_RATE 120
+#define MINIMUM_FRAME_RATE 10
+#define UPDATE_INTERVAL 1.0 / MAXIMUM_FRAME_RATE
+#define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
 
 int main()
 {
@@ -37,29 +43,56 @@ int main()
 		glfwTerminate();
 		return 0;
 	}
-
-	while(running)
-	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		glLoadIdentity();
-		glTranslatef(0.0f,0.0f,-6.0f);
-
-		glBegin(GL_TRIANGLES);
-		  glColor3f(1.0f,0.0f,0.0f);
-		  glVertex3f(0.0f, 1.0f, 0.0f);
-		  glColor3f(0.0f,1.0f,0.0f);
-		  glVertex3f(-1.0f,-1.0f, 0.0f);
-		  glColor3f(0.0f,0.0f,1.0f);
-		  glVertex3f(1.0f,-1.0f, 0.0f);
-		glEnd();
-
-		glfwSwapBuffers();
-
-		running = !glfwGetKey(GLFW_KEY_ESC)
-					&& glfwGetWindowParam(GLFW_OPENED);
-	}
+	
+	//time starts now
+	glfwSetTime(0.0);
+	
+	//loop until escape pressed or window lost
+	while(!glfwGetKey(GLFW_KEY_ESC) && glfwGetWindowParam(GLFW_OPENED))
+		runGame();
 
 	glfwTerminate();
 	return 0;
 }
+
+//Main Loop
+void runGame() 
+{
+	static double timeAtLastFrame = 0.0;
+	static double loopsRemaining = 0.0;
+	double currentTime = glfwGetTime();
+	double updateIterations = currentTime - timeAtLastFrame + loopsRemaining;
+  
+	if(updateIterations > MAX_CYCLES_PER_FRAME * UPDATE_INTERVAL)
+		updateIterations = MAX_CYCLES_PER_FRAME * UPDATE_INTERVAL;
+  
+	while (updateIterations > UPDATE_INTERVAL)
+	{
+		updateIterations -= UPDATE_INTERVAL;    
+		//TODO: update world state here
+	}
+  
+	loopsRemaining = updateIterations;
+	timeAtLastFrame = currentTime;
+	
+	renderScene();
+}
+
+void renderScene()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+	
+	glTranslatef(0.0f,0.0f,-6.0f);
+		
+	glBegin(GL_TRIANGLES);
+	  glColor3f(1.0f,0.0f,0.0f);
+	  glVertex3f(0.0f, 1.0f, 0.0f);
+	  glColor3f(0.0f,1.0f,0.0f);
+	  glVertex3f(-1.0f,-1.0f, 0.0f);
+	  glColor3f(0.0f,0.0f,1.0f);
+	  glVertex3f(1.0f,-1.0f, 0.0f);
+    glEnd();
+	glfwSwapBuffers();
+}
+
