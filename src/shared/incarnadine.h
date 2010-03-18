@@ -1,7 +1,7 @@
 #ifndef SHARED_INCARNADINE_H
 #define SHARED_INCARNADINE_H
 
-
+#include "cml_config.h"   
 #include <cml/cml.h>
 
 typedef cml::vector3f vector3;
