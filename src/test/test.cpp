@@ -26,23 +26,19 @@
 
 #include <GL/glfw.h>
 #include "test.h"
+#include "display.h"
 
 #define MAXIMUM_FRAME_RATE 120
 #define MINIMUM_FRAME_RATE 10
 #define UPDATE_INTERVAL 1.0 / MAXIMUM_FRAME_RATE
 #define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
 
+Display display;
+
 int main()
 {
-	bool running = true;
-
-	glfwInit();
-
-	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
-	{
-		glfwTerminate();
-		return 0;
-	}
+	display = new Display();
+	display->init();
 	
     glMatrixMode(GL_PROJECTION);
    	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
@@ -54,7 +50,9 @@ int main()
 	while(!glfwGetKey(GLFW_KEY_ESC) && glfwGetWindowParam(GLFW_OPENED))
 		runGame();
 
-	glfwTerminate();
+	delete display;
+	display = 0;
+	
 	return 0;
 }
 
@@ -96,7 +94,6 @@ void renderScene()
 	  glVertex3f(1.0f,-1.0f, 0.0f);
     glEnd();
 
-	glFlush();
-	glfwSwapBuffers();
+	display->update();
 }
 
