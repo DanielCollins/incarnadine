@@ -23,27 +23,19 @@
 //
 //========================================================================
 
-#ifndef ENGINE_OBJECT_H
-#define ENGINE_OBJECT_H
+#ifndef ENGINE_MOVABLEOBJECT_H
+#define ENGINE_MOVABLEOBJECT_H
 
-#include "incarnadine.h"
+#include "object.h"
 
-class Object
+class MoveableObject : public Object
 {
-	protected:
-		vector3 position;
-		vector3 forward;
-		vector3 up;
-		vector3 left;
+	private:
+		vector3 velocity;
+		float mass;
 
 	public:
-		Object(Vector3 position, Vector3 forward, Vector3 up);
-		void localRotateX(float angle);
-		void localRotateY(float angle);
-		void localRotateZ(float angle);
-		void goTo(vector3 location)
-		void localTranslate(vector3 displacement);
-		void globalTranslate(vector3 displacement);
+		MoveableObject(Vector3 position, Vector3 forward, Vector3 up);
 };
 
-#endif //ENGINE_OBJECT_H
+#endif //ENGINE_MOVABLEOBJECT_H
