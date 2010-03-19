@@ -23,31 +23,13 @@
 //
 //========================================================================
 
-#include "display.h"
+#ifndef ENGINE_SCENE_H
+#define ENGINE_SCENE_H
 
-Display::Display()
-{
-}
+#include <GL/glfw.h>
 
-Display::~Display()
+class SceneManager
 {
-	glfwTerminate();
-}
+};
 
-bool Display:init()
-{
-	glfwInit();
-	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
-	{
-		glfwTerminate();
-		return false;
-	}
-	return true;
-}
-
-//Show next frame
-void Display:update()
-{
-	glFlush();
-	glfwSwapBuffers();
-}
+#endif //ENGINE_SCENE_H

@@ -23,31 +23,34 @@
 //
 //========================================================================
 
-#include "display.h"
+#include "camera.h"
+#include <GL/glfw.h>
 
-Display::Display()
+Camera::Camera(Vector3 newPosition, Vector3 newForward, Vector3 newUp) : Object (newPosition, newForward, newUp)
 {
+	//setting up projection...
+	glMatrixMode(GL_PROJECTION);
+	
+	//initialise projection matrix to identity
+	glLoadIdentity();
+	
+	//apply a Frustum to projection matrix
+	glFrustum(-1, 1, -1, 1, 1, 1000);
+
 }
 
-Display::~Display()
+Camera::update()
 {
-	glfwTerminate();
+	//build a look-at matrix
+    matrix44 view;
+    matrix_look_at_RH(view, position, foward, up);
+    
+    //future matrix inputs modify model view...
+    glMatrixMode(GL_MODELVIEW);
+    
+    //apply Object to scene
+    glLoadMatrixf(view.data());
+	return;
 }
 
-bool Display:init()
-{
-	glfwInit();
-	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
-	{
-		glfwTerminate();
-		return false;
-	}
-	return true;
-}
 
-//Show next frame
-void Display:update()
-{
-	glFlush();
-	glfwSwapBuffers();
-}

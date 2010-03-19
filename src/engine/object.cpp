@@ -25,7 +25,7 @@
 
 #include "object.h"
 
-Object::Object(Vector3 position, Vector3 forward, Vector3 up)
+Object::Object(Vector3 newPosition, Vector3 newForward, Vector3 newUp)
 {
 	position = newPosition;
 	forward = newForward;
@@ -85,9 +85,9 @@ void Object::goTo(Vector3 location)
 
 void Object::localTranslate(Vector3 displacement)
 {
-	left = displacement.[0] * left[0] + displacement[1] * up[0] + displacement[2] * forward[0];
-	up = displacement[0] * left[1] + displacement[1] * up[1] + displacement[2] * forward[1]; 
-	forward = displacement[0] * left[2] + displacement[1] * up[2] + displacement[2] * forward[2];
+	position[0] = displacement.[0] * left[0] + displacement[1] * up[0] + displacement[2] * forward[0];
+	position[1] = displacement[0] * left[1] + displacement[1] * up[1] + displacement[2] * forward[1]; 
+	position[2] = displacement[0] * left[2] + displacement[1] * up[2] + displacement[2] * forward[2];
 }
 
 void Object::globalTranslate(Vector3 displacement)

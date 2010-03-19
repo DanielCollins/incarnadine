@@ -23,31 +23,16 @@
 //
 //========================================================================
 
-#include "display.h"
+#ifndef ENGINE_CAMERA_H
+#define ENGINE_CAMERA_H
 
-Display::Display()
-{
-}
+#include "object.h"
 
-Display::~Display()
+class Camera : public Object
 {
-	glfwTerminate();
-}
+	public:
+		Camera(Vector3 position, Vector3 forward, Vector3 up);
+		void update();
+};
 
-bool Display:init()
-{
-	glfwInit();
-	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
-	{
-		glfwTerminate();
-		return false;
-	}
-	return true;
-}
-
-//Show next frame
-void Display:update()
-{
-	glFlush();
-	glfwSwapBuffers();
-}
+#endif //ENGINE_CAMERA_H
