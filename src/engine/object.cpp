@@ -25,7 +25,7 @@
 
 #include "object.h"
 
-Object::Object(Vector3 newPosition, Vector3 newForward, Vector3 newUp)
+Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
 {
 	position = newPosition;
 	forward = newForward;
@@ -43,8 +43,8 @@ void Object::localRotateX(float angle)
 	//X' = X
 	
     //Z' = -sin(angle).Y+cos(angle).Z
-	Vector3 v1 = up * - sin(angle);
-	Vector3 v2 = forward * cos(angle));
+	vector3 v1 = up * - sin(angle);
+	vector3 v2 = forward * cos(angle));
 	forward = (v1 + v2).normalize();
 
 	//Y'= Z' ^ X'
@@ -56,8 +56,8 @@ void Object::localRotateY(float angle)
 	//Y' = Y
     
 	//Z' = sin(angle).X+cos(angle).Z
-	Vector3 v1 = left * sin(angle);
-	Vector3 v2 = forward * cos(angle);
+	vector3 v1 = left * sin(angle);
+	vector3 v2 = forward * cos(angle);
 	forward = normalize(add(v1, v2));
 
 	//X' = Y' ^ Z'
@@ -70,27 +70,27 @@ void Object::localRotateZ(float angle)
 	//Z' = Z
 	
 	//X' =
-	Vector3 v1 = left * cos(angle);
-	Vector3 v2 = forward * - sin(angle);
+	vector3 v1 = left * cos(angle);
+	vector3 v2 = forward * - sin(angle);
 	left = normalize(add(v1, v2));
 	
 	//Y' =
 	up = normalize(cross(forward, left));
 }
 
-void Object::goTo(Vector3 location)
+void Object::goTo(vector3 location)
 {
 	position = location;
 }
 
-void Object::localTranslate(Vector3 displacement)
+void Object::localTranslate(vector3 displacement)
 {
 	position[0] = displacement.[0] * left[0] + displacement[1] * up[0] + displacement[2] * forward[0];
 	position[1] = displacement[0] * left[1] + displacement[1] * up[1] + displacement[2] * forward[1]; 
 	position[2] = displacement[0] * left[2] + displacement[1] * up[2] + displacement[2] * forward[2];
 }
 
-void Object::globalTranslate(Vector3 displacement)
+void Object::globalTranslate(vector3 displacement)
 {
 	position = position + displacement;
 }

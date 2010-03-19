@@ -37,7 +37,7 @@ class Object
 		vector3 left;
 
 	public:
-		Object(Vector3 position, Vector3 forward, Vector3 up);
+		Object(vector3 position, vector3 forward, vector3 up);
 		void localRotateX(float angle);
 		void localRotateY(float angle);
 		void localRotateZ(float angle);
