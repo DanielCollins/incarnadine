@@ -39,7 +39,7 @@ Camera::Camera(vector3 newPosition, vector3 newForward, vector3 newUp) : Object 
 
 }
 
-Camera::update()
+void Camera::update()
 {
 	//build a look-at matrix
     matrix44 view;
