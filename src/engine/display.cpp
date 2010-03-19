@@ -34,7 +34,7 @@ Display::~Display()
 	glfwTerminate();
 }
 
-bool Display:init()
+bool Display::init()
 {
 	glfwInit();
 	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
@@ -46,7 +46,7 @@ bool Display:init()
 }
 
 //Show next frame
-void Display:update()
+void Display::update()
 {
 	glFlush();
 	glfwSwapBuffers();
