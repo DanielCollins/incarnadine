@@ -27,6 +27,7 @@
 #define ENGINE_OBJECT_H
 
 #include "incarnadine.h"
+using namespace cml;
 
 class Object
 {
