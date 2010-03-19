@@ -44,7 +44,7 @@ void Object::localRotateX(float angle)
 	
     //Z' = -sin(angle).Y+cos(angle).Z
 	vector3 v1 = up * - sin(angle);
-	vector3 v2 = forward * cos(angle));
+	vector3 v2 = forward * cos(angle);
 	forward = (v1 + v2).normalize();
 
 	//Y'= Z' ^ X'
