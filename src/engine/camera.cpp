@@ -26,17 +26,9 @@
 #include "camera.h"
 #include <GL/glfw.h>
 
-Camera::Camera(Vector3 newPosition, Vector3 newForward, Vector3 newUp) : Object (newPosition, newForward, newUp)
+Camera::Camera(Vector3 newPosition, Vector3 newForward, Vector3 newUp, float fov) : Object (newPosition, newForward, newUp)
 {
-	//setting up projection...
-	glMatrixMode(GL_PROJECTION);
-	
-	//initialise projection matrix to identity
-	glLoadIdentity();
-	
-	//apply a Frustum to projection matrix
-	glFrustum(-1, 1, -1, 1, 1, 1000);
-
+	setFov(fov);
 }
 
 Camera::update()
@@ -53,4 +45,22 @@ Camera::update()
 	return;
 }
 
+//This function is not safe to call during openGL rendering! (crash if done during, won't work if done after)
+Camera::setFov(float fov)
+{
+	//calculate aspect ratio
+	int width;
+	int height;
+	glfwGetWindowSize(&width, &height);
+    float ratio = (float) width / (float) height;
+    
+    //setting up projection...
+	glMatrixMode(GL_PROJECTION);
+	
+	//initialise projection matrix to identity
+	glLoadIdentity();
+	
+	//apply a Frustum to projection matrix
+    glFrustum (-ratio, ratio, -1.0, 1.0, fov, 1000);
+}
 

@@ -31,8 +31,9 @@
 class Camera : public Object
 {
 	public:
-		Camera(Vector3 position, Vector3 forward, Vector3 up);
+		Camera(Vector3 position, Vector3 forward, Vector3 up, float fov);
 		void update();
+		void setFov(float fov);
 };
 
 #endif //ENGINE_CAMERA_H
