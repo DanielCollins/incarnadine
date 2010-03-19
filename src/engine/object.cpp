@@ -25,7 +25,7 @@
 
 #include "object.h"
 
-Object::Object(Vector3 position, Vector3 forward, Vector3 up)
+Object::Object(Vector3 newPosition, Vector3 newForward, Vector3 newUp)
 {
 	position = newPosition;
 	forward = newForward;
