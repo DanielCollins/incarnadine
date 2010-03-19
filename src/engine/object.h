@@ -42,7 +42,7 @@ class Object
 		void localRotateX(float angle);
 		void localRotateY(float angle);
 		void localRotateZ(float angle);
-		void goTo(vector3 location)
+		void goTo(vector3 location);
 		void localTranslate(vector3 displacement);
 		void globalTranslate(vector3 displacement);
 };
