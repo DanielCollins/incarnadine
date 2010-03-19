@@ -33,7 +33,7 @@
 #define UPDATE_INTERVAL 1.0 / MAXIMUM_FRAME_RATE
 #define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
 
-Display display;
+Display* display;
 
 int main()
 {

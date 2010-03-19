@@ -26,7 +26,7 @@
 #include "camera.h"
 #include <GL/glfw.h>
 
-Camera::Camera(Vector3 newPosition, Vector3 newForward, Vector3 newUp) : Object (newPosition, newForward, newUp)
+Camera::Camera(vector3 newPosition, vector3 newForward, vector3 newUp) : Object (newPosition, newForward, newUp)
 {
 	//setting up projection...
 	glMatrixMode(GL_PROJECTION);
@@ -39,11 +39,11 @@ Camera::Camera(Vector3 newPosition, Vector3 newForward, Vector3 newUp) : Object 
 
 }
 
-Camera::update()
+void Camera::update()
 {
 	//build a look-at matrix
     matrix44 view;
-    matrix_look_at_RH(view, position, foward, up);
+    matrix_look_at_RH(view, position, forward, up);
     
     //future matrix inputs modify model view...
     glMatrixMode(GL_MODELVIEW);
