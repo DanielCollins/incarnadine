@@ -58,7 +58,7 @@ void Object::localRotateY(float angle)
 	//Z' = sin(angle).X+cos(angle).Z
 	vector3 v1 = left * sin(angle);
 	vector3 v2 = forward * cos(angle);
-	forward = normalize(add(v1, v2));
+	forward = normalize(v1 + v2);
 
 	//X' = Y' ^ Z'
 	left = normalize(cross(up, forward));
@@ -72,7 +72,7 @@ void Object::localRotateZ(float angle)
 	//X' =
 	vector3 v1 = left * cos(angle);
 	vector3 v2 = forward * - sin(angle);
-	left = normalize(add(v1, v2));
+	left = normalize(v1 + v2);
 	
 	//Y' =
 	up = normalize(cross(forward, left));
