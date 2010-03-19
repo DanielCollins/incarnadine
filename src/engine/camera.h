@@ -31,7 +31,7 @@
 class Camera : public Object
 {
 	public:
-		Camera(Vector3 position, Vector3 forward, Vector3 up);
+		Camera(vector3 position, vector3 forward, vector3 up);
 		void update();
 };
 
