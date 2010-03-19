@@ -58,14 +58,6 @@ cd .\lib\win32
 
 
 REM ----------------------------------------------------------------------
-REM Build example programs
-REM ----------------------------------------------------------------------
-
-cd ..\..\examples
-%1 -f Makefile.win32.%2
-
-
-REM ----------------------------------------------------------------------
 REM Return to root directory
 REM ----------------------------------------------------------------------
 
@@ -173,45 +165,5 @@ IF EXIST .\lib\win32\glfwdll.lib          del .\lib\win32\glfwdll.lib
 IF EXIST .\lib\win32\glfw.dll             del .\lib\win32\glfw.dll
 IF EXIST .\lib\win32\glfw.tds             del .\lib\win32\glfw.tds
 IF EXIST .\lib\win32\init.tds             del .\lib\win32\init.tds
-
-REM Executables and related files
-IF EXIST .\examples\boing.exe             del .\examples\boing.exe
-IF EXIST .\examples\gears.exe             del .\examples\gears.exe
-IF EXIST .\examples\keytest.exe           del .\examples\keytest.exe
-IF EXIST .\examples\listmodes.exe         del .\examples\listmodes.exe
-IF EXIST .\examples\mipmaps.exe           del .\examples\mipmaps.exe
-IF EXIST .\examples\mtbench.exe           del .\examples\mtbench.exe
-IF EXIST .\examples\mthello.exe           del .\examples\mthello.exe
-IF EXIST .\examples\particles.exe         del .\examples\particles.exe
-IF EXIST .\examples\pong3d.exe            del .\examples\pong3d.exe
-IF EXIST .\examples\splitview.exe         del .\examples\splitview.exe
-IF EXIST .\examples\triangle.exe          del .\examples\triangle.exe
-IF EXIST .\examples\wave.exe              del .\examples\wave.exe
-
-IF EXIST .\examples\boing.obj             del .\examples\boing.obj
-IF EXIST .\examples\gears.obj             del .\examples\gears.obj
-IF EXIST .\examples\keytest.obj           del .\examples\keytest.obj
-IF EXIST .\examples\listmodes.obj         del .\examples\listmodes.obj
-IF EXIST .\examples\mipmaps.obj           del .\examples\mipmaps.obj
-IF EXIST .\examples\mtbench.obj           del .\examples\mtbench.obj
-IF EXIST .\examples\mthello.obj           del .\examples\mthello.obj
-IF EXIST .\examples\particles.obj         del .\examples\particles.obj
-IF EXIST .\examples\pong3d.obj            del .\examples\pong3d.obj
-IF EXIST .\examples\splitview.obj         del .\examples\splitview.obj
-IF EXIST .\examples\triangle.obj          del .\examples\triangle.obj
-IF EXIST .\examples\wave.obj              del .\examples\wave.obj
-
-IF EXIST .\examples\boing.tds             del .\examples\boing.tds
-IF EXIST .\examples\gears.tds             del .\examples\gears.tds
-IF EXIST .\examples\keytest.tds           del .\examples\keytest.tds
-IF EXIST .\examples\listmodes.tds         del .\examples\listmodes.tds
-IF EXIST .\examples\mipmaps.tds           del .\examples\mipmaps.tds
-IF EXIST .\examples\mtbench.tds           del .\examples\mtbench.tds
-IF EXIST .\examples\mthello.tds           del .\examples\mthello.tds
-IF EXIST .\examples\particles.tds         del .\examples\particles.tds
-IF EXIST .\examples\pong3d.tds            del .\examples\pong3d.tds
-IF EXIST .\examples\splitview.tds         del .\examples\splitview.tds
-IF EXIST .\examples\triangle.tds          del .\examples\triangle.tds
-IF EXIST .\examples\wave.tds              del .\examples\wave.tds
 
 :End

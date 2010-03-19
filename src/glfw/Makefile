@@ -55,23 +55,6 @@ default:
 
 
 ###########################################################################
-# List of example programs (used for cleanup)
-###########################################################################
-EXAMPLES = boing \
-           gears \
-           keytest \
-           listmodes \
-           mipmaps \
-           mtbench \
-           mthello \
-           particles \
-           pong3d \
-           splitview \
-           triangle \
-           wave
-
-
-###########################################################################
 # Windows
 ###########################################################################
 
@@ -82,7 +65,6 @@ win32-clean:
 # Cleanup for Cygwin (Cygwin Make does not support local BAT-files)
 cygwin-clean:
 	cd lib/win32 && $(MAKE) -f Makefile.win32.cygwin clean
-	cd examples  && $(MAKE) -f Makefile.win32.cygwin clean
 
 cygwin-install: win32-cygwin
 	cd lib/win32 && $(MAKE) -f Makefile.win32.cygwin install
@@ -93,7 +75,6 @@ cross-mgw-install: cross-mgw
 
 cross-mgw-clean:
 	cd lib/win32 && $(MAKE) -f Makefile.win32.cross-mgw clean 
-	cd examples  && $(MAKE) -f Makefile.win32.cross-mgw clean
 
 
 # Windows, MinGW32
@@ -103,12 +84,10 @@ win32-mgw:
 # Cross compilation from unix to win32 
 cross-mgw:
 	cd lib/win32 && $(MAKE) -f Makefile.win32.cross-mgw
-	cd examples  && $(MAKE) -f Makefile.win32.cross-mgw 
 
 # Windows, Cygwin (Cygwin Make does not support local BAT-files)
 win32-cygwin:
 	cd lib/win32 && $(MAKE) -f Makefile.win32.cygwin
-	cd examples  && $(MAKE) -f Makefile.win32.cygwin
 
 # Windows, LCC-Win32
 win32-lcc:
@@ -135,8 +114,8 @@ win32-pellesc:
 # X11 (Unix and Unix-like systems)
 ###########################################################################
 
-MAKEFILES_X11_IN  = lib/x11/Makefile.x11.in  examples/Makefile.x11.in
-MAKEFILES_X11     = lib/x11/Makefile.x11     examples/Makefile.x11
+MAKEFILES_X11_IN  = lib/x11/Makefile.x11.in
+MAKEFILES_X11     = lib/x11/Makefile.x11
 
 # Cleanup for X11 (must be here due to generated makefile)
 x11-clean:
@@ -147,7 +126,6 @@ x11-clean:
 	rm -f lib/x11/libglfw.so
 	rm -f lib/x11/libglfw.pc
 	rm -f lib/x11/libglfw.pc.in
-	cd examples; rm -f $(EXAMPLES)
 
 # Auto configuration for X11
 $(MAKEFILES_X11) : compile.sh $(MAKEFILES_X11_IN)
@@ -156,7 +134,6 @@ $(MAKEFILES_X11) : compile.sh $(MAKEFILES_X11_IN)
 # X11
 x11: $(MAKEFILES_X11)
 	cd lib/x11;  $(MAKE) -f Makefile.x11
-	cd examples; $(MAKE) -f Makefile.x11
 
 # X11 install
 x11-install: x11
@@ -170,16 +147,12 @@ x11-install: x11
 # Cleanup for Mac OS X
 macosx-clean:
 	cd lib/macosx; $(MAKE) -f Makefile.macosx.gcc clean
-	cd examples;   $(MAKE) -f Makefile.macosx.gcc clean
 
 # Mac OS X, GCC
 macosx-gcc: macosx-gcc-library macosx-gcc-examples
 
 macosx-gcc-library:
 	cd lib/macosx; $(MAKE) -f Makefile.macosx.gcc
-
-macosx-gcc-examples:
-	cd examples;   $(MAKE) -f Makefile.macosx.gcc
 
 # Mac OS X, GCC install
 macosx-install: macosx-gcc-library
@@ -211,10 +184,8 @@ amigaos-gcc:
 dos-clean:
 	@rm -f lib/dos/*.o
 	@rm -f lib/dos/libglfw.a
-	@rm -f examples/*.exe
 
 # DOS, DJGPP (GCC)
 dos-djgpp:
 	@cd lib\dos;  $(MAKE) -f Makefile.dos.djgpp
-	@cd examples; $(MAKE) -f Makefile.dos.djgpp
 
