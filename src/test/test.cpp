@@ -40,9 +40,6 @@ int main()
 	display = new Display();
 	display->init();
 	
-    glMatrixMode(GL_PROJECTION);
-   	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
-   	
 	//time starts now
 	glfwSetTime(0.0);
 	
