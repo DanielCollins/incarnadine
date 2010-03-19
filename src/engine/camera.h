@@ -31,11 +31,7 @@
 class Camera : public Object
 {
 	public:
-<<<<<<< HEAD:src/engine/camera.h
-		Camera(vector3 position, vector3 forward, vector3 up);
-=======
 		Camera(Vector3 position, Vector3 forward, Vector3 up, float fov);
->>>>>>> 51225596146af893e3f496ec1dbc90d62aef5942:src/engine/camera.h
 		void update();
 		void setFov(float fov);
 };
