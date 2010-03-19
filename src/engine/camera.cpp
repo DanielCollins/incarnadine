@@ -31,7 +31,7 @@ Camera::Camera(Vector3 newPosition, Vector3 newForward, Vector3 newUp, float fov
 	setFov(fov);
 }
 
-Camera::update()
+void Camera::update()
 {
 	//build a look-at matrix
     matrix44 view;
@@ -46,7 +46,7 @@ Camera::update()
 }
 
 //This function is not safe to call during openGL rendering! (crash if done during, won't work if done after)
-Camera::setFov(float fov)
+void Camera::setFov(float fov)
 {
 	//calculate aspect ratio
 	int width;
