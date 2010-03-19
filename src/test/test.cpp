@@ -25,6 +25,7 @@
 
 
 #include <GL/glfw.h>
+#include <stdlib.h>
 #include "test.h"
 #include "display.h"
 
@@ -38,7 +39,7 @@ Display display;
 int main()
 {
 	display = new Display();
-	display->init();
+	if(!display->init()) return EXIT_FAILURE;
 	
 	//time starts now
 	glfwSetTime(0.0);
@@ -50,7 +51,7 @@ int main()
 	delete display;
 	display = 0;
 	
-	return 0;
+	return EXIT_SUCCESS;
 }
 
 //Main Loop
