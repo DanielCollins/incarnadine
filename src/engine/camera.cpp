@@ -43,7 +43,7 @@ void Camera::update()
 {
 	//build a look-at matrix
     matrix44 view;
-    matrix_look_at_RH(view, position, foward, up);
+    matrix_look_at_RH(view, position, forward, up);
     
     //future matrix inputs modify model view...
     glMatrixMode(GL_MODELVIEW);
