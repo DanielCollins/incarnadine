@@ -45,6 +45,7 @@ bool Display:init()
 	return true;
 }
 
+//Show next frame
 void Display:update()
 {
 	glFlush();
