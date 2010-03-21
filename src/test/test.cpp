@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include "test.h"
 #include "display.h"
+#include "input.h"
 
 #define MAXIMUM_FRAME_RATE 120
 #define MINIMUM_FRAME_RATE 10
@@ -35,11 +36,14 @@
 #define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
 
 Display* display;
+InputManager* input;
 
 int main()
 {
 	display = new Display();
 	if(!display->init()) return EXIT_FAILURE;
+	
+	input = new InputManager();
 	
 	//time starts now
 	glfwSetTime(0.0);
@@ -50,6 +54,8 @@ int main()
 
 	delete display;
 	display = 0;
+	delete input;
+	input = 0;
 	
 	return EXIT_SUCCESS;
 }
@@ -68,13 +74,14 @@ void runGame()
 	while (updateIterations > UPDATE_INTERVAL)
 	{
 		updateIterations -= UPDATE_INTERVAL;    
-		//TODO: update world state here
+		input->update()
 	}
   
 	loopsRemaining = updateIterations;
 	timeAtLastFrame = currentTime;
 	
 	renderScene();
+	display->update();
 }
 
 void renderScene()
@@ -91,7 +98,5 @@ void renderScene()
 	  glColor3f(0.0f,0.0f,1.0f);
 	  glVertex3f(1.0f,-1.0f, 0.0f);
     glEnd();
-
-	display->update();
 }
 
