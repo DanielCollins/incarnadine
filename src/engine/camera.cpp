@@ -40,6 +40,9 @@ void Camera::update()
     //future matrix inputs modify model view...
     glMatrixMode(GL_MODELVIEW);
     
+    //initialise model view matrix to identity
+    glLoadIdentity();
+    
     //apply Object to scene
     glLoadMatrixf(view.data());
 	return;
