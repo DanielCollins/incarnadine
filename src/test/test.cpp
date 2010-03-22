@@ -26,9 +26,12 @@
 
 #include <GL/glfw.h>
 #include <stdlib.h>
+
 #include "test.h"
 #include "display.h"
 #include "input.h"
+#include "scene.h"
+#include "render.h"
 #include "incarnadine.h"
 
 #define MAXIMUM_FRAME_RATE 120
@@ -39,6 +42,8 @@
 Display* display;
 InputManager* input;
 Camera* camera;
+SceneManager* scene;
+RenderManager* renderer;
 
 int main()
 {
@@ -47,11 +52,13 @@ int main()
 	
 	input = new InputManager();
 	
-	vector3 position(0.0, 0.0, 3.0);
-	vector3 forward(0.0, 0.0, -1.0);
-	vector3 up(0.0, 1.0, 0.0);
+	vector3 cameraPosition(0.0, 0.0, 3.0);
+	vector3 cameraForward(0.0, 0.0, -1.0);
+	vector3 cameraUp(0.0, 1.0, 0.0);
 	
-	camera = new Camera(position, forward, up, 1.0);
+	camera = new Camera(cameraPosition, cameraForward, cameraUp, 1.0);	
+	scene = new SceneManager();
+	renderer = new RenderManager(camera, scene, display);	
 	
 	//time starts now
 	glfwSetTime(0.0);
@@ -66,6 +73,10 @@ int main()
 	input = 0;
 	delete camera;
 	camera = 0;
+	delete scene;
+	scene = 0;
+	delete renderer;
+	renderer = 0;
 	
 	return EXIT_SUCCESS;
 }
@@ -89,24 +100,6 @@ void runGame()
   
 	loopsRemaining = updateIterations;
 	timeAtLastFrame = currentTime;
-	
-	camera->update();
-	renderScene();
-	display->update();
-}
 
-void renderScene()
-{
-	glClearColor (0.0, 0.0, 0.0, 0.0);
-	glClear(GL_COLOR_BUFFER_BIT);
-		
-	glBegin(GL_TRIANGLES);
-	  glColor3f(1.0,0.0,0.0);
-	  glVertex3f(0.0, 1.0, 0.0);
-	  glColor3f(0.0,1.0,0.0);
-	  glVertex3f(-1.0,-1.0, 0.0);
-	  glColor3f(0.0,0.0,1.0);
-	  glVertex3f(1.0,-1.0, 0.0);
-    glEnd();
+	renderer->draw();
 }
-

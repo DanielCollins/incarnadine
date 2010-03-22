@@ -23,15 +23,21 @@
 //
 //========================================================================
 
-#ifndef ENGINE_SCENE_H
-#define ENGINE_SCENE_H
+#include "scene.h"
 
-#include <GL/glfw.h>
-
-class SceneManager
+void SceneManager::rasterize()
 {
-	public:
-		void rasterize();
-};
-
-#endif //ENGINE_SCENE_H
+	//TODO: rasterize the scene
+	//for now just draw a triangle
+	glClearColor (0.0, 0.0, 0.0, 0.0);
+	glClear(GL_COLOR_BUFFER_BIT);
+		
+	glBegin(GL_TRIANGLES);
+	  glColor3f(1.0,0.0,0.0);
+	  glVertex3f(0.0, 1.0, 0.0);
+	  glColor3f(0.0,1.0,0.0);
+	  glVertex3f(-1.0,-1.0, 0.0);
+	  glColor3f(0.0,0.0,1.0);
+	  glVertex3f(1.0,-1.0, 0.0);
+    glEnd();
+}

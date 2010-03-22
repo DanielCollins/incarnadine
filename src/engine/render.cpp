@@ -35,7 +35,7 @@ RenderManager::RenderManager(Camera newCamera, SceneManager newScene, Display ne
 void RenderManager::draw()
 {
 	camera->update();
-	//rendering goes here
+	scene->rasterize();
 	display->update();
 }
 
