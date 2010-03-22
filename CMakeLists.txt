@@ -3,3 +3,9 @@ project(INCARNADINE)
 
 add_subdirectory(src)
 
+Find_Package(SDL REQUIRED)
+
+link_libraries(
+   ${SDL_LIBRARY}
+   SDLmain
+)
