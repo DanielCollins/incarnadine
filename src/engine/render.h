@@ -38,9 +38,9 @@ class RenderManager
 		SceneManager* scene;
 		
 	public:
-		RenderManager(Camera newCamera, SceneManager newScene, Display newDisplay);
+		RenderManager(Camera* newCamera, SceneManager* newScene, Display* newDisplay);
 		void draw();
-		void setCamera(Camera newCamera);		
+		void setCamera(Camera* newCamera);		
 };
 
 #endif //ENGINE_RENDER_H
