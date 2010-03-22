@@ -29,6 +29,7 @@
 #include "test.h"
 #include "display.h"
 #include "input.h"
+#include "incarnadine.h"
 
 #define MAXIMUM_FRAME_RATE 120
 #define MINIMUM_FRAME_RATE 10
@@ -37,6 +38,7 @@
 
 Display* display;
 InputManager* input;
+Camera* camera;
 
 int main()
 {
@@ -44,6 +46,12 @@ int main()
 	if(!display->init()) return EXIT_FAILURE;
 	
 	input = new InputManager();
+	
+	vector3 position(0.0, 0.0, 3.0);
+	vector3 forward(0.0, 0.0, -1.0);
+	vector3 up(0.0, 1.0, 0.0);
+	
+	camera = new Camera(position, forward, up, 1.0);
 	
 	//time starts now
 	glfwSetTime(0.0);
@@ -80,6 +88,7 @@ void runGame()
 	loopsRemaining = updateIterations;
 	timeAtLastFrame = currentTime;
 	
+	camera->update();
 	renderScene();
 	display->update();
 }
