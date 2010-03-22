@@ -82,7 +82,7 @@ void runGame()
 	while (updateIterations > UPDATE_INTERVAL)
 	{
 		updateIterations -= UPDATE_INTERVAL;    
-		input->update()
+		input->update();
 	}
   
 	loopsRemaining = updateIterations;
