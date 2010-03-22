@@ -25,7 +25,7 @@
 
 #include "render.h"
 
-RenderManager::RenderManager(Camera newCamera, SceneManager newScene, Display newDisplay)
+RenderManager::RenderManager(Camera* newCamera, SceneManager* newScene, Display* newDisplay)
 {
 	camera = newCamera;
 	scene = newScene;
@@ -39,7 +39,7 @@ void RenderManager::draw()
 	display->update();
 }
 
-void RenderManager::setCamera(Camera newCamera)
+void RenderManager::setCamera(Camera* newCamera)
 {
 	camera = newCamera;
 }
