@@ -24,7 +24,6 @@
 //========================================================================
 
 #include "camera.h"
-#include <GL/glfw.h>
 
 Camera::Camera(vector3 newPosition, vector3 newForward, vector3 newUp, float fov) : Object (newPosition, newForward, newUp)
 {
@@ -52,10 +51,8 @@ void Camera::update()
 void Camera::setFov(float fov)
 {
 	//calculate aspect ratio
-	int width;
-	int height;
-	glfwGetWindowSize(&width, &height);
-    float ratio = (float) width / (float) height;
+	const SDL_VideoInfo* videoInfo = SDL_GetVideoInfo();
+    float aspectRatio = (float) videoInfo->current_w / (float) videoInfo->current_h;
     
     //setting up projection...
 	glMatrixMode(GL_PROJECTION);
@@ -64,6 +61,6 @@ void Camera::setFov(float fov)
 	glLoadIdentity();
 	
 	//apply a Frustum to projection matrix
-    glFrustum (-ratio, ratio, -1.0, 1.0, fov, 1000);
+    glFrustum (-aspectRatio, aspectRatio, -1.0, 1.0, fov, 1000);
 }
 

@@ -23,8 +23,8 @@
 //
 //========================================================================
 
+#include "SDL.h"
 
-#include <GL/glfw.h>
 #include <stdlib.h>
 
 #include "test.h"
@@ -60,12 +60,7 @@ int main()
 	scene = new SceneManager();
 	renderer = new RenderManager(camera, scene, display);	
 	
-	//time starts now
-	glfwSetTime(0.0);
-	
-	//loop until escape pressed or window lost
-	while(!glfwGetKey(GLFW_KEY_ESC) && glfwGetWindowParam(GLFW_OPENED))
-		runGame();
+	while(true) runGame();
 
 	delete display;
 	display = 0;
@@ -86,7 +81,7 @@ void runGame()
 {
 	static double timeAtLastFrame = 0.0;
 	static double loopsRemaining = 0.0;
-	double currentTime = glfwGetTime();
+	double currentTime = SDL_GetTicks();
 	double updateIterations = currentTime - timeAtLastFrame + loopsRemaining;
   
 	if(updateIterations > MAX_CYCLES_PER_FRAME * UPDATE_INTERVAL)

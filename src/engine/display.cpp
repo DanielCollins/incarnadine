@@ -31,17 +31,15 @@ Display::Display()
 
 Display::~Display()
 {
-	glfwTerminate();
+	SDL_FreeSurface(surface);
+    SDL_Quit();
 }
 
 bool Display::init()
 {
-	glfwInit();
-	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
-	{
-		glfwTerminate();
-		return false;
-	}
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)	return false;	 
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_DOUBLEBUF | SDL_HWSURFACE);
 	return true;
 }
 
@@ -49,5 +47,5 @@ bool Display::init()
 void Display::update()
 {
 	glFlush();
-	glfwSwapBuffers();
+	SDL_GL_SwapBuffers();
 }

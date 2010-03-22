@@ -26,7 +26,7 @@
 #ifndef ENGINE_SCENE_H
 #define ENGINE_SCENE_H
 
-#include <GL/glfw.h>
+#include "SDL_opengl.h" 
 
 class SceneManager
 {
