@@ -64,6 +64,8 @@ int main()
 	display = 0;
 	delete input;
 	input = 0;
+	delete camera;
+	camera = 0;
 	
 	return EXIT_SUCCESS;
 }
