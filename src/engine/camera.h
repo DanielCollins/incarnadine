@@ -26,6 +26,7 @@
 #ifndef ENGINE_CAMERA_H
 #define ENGINE_CAMERA_H
 
+#include "SDL.h"
 #include "SDL_opengl.h" 
 #include "object.h"
 
