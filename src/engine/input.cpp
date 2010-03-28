@@ -44,7 +44,7 @@ void InputManager::update()
 			case SDL_KEYUP:
 				continue;
 			case SDL_QUIT:
-				SDL_Quit();
+				continue;
 			default:
 				continue;
 		}

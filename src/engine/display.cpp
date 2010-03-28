@@ -32,7 +32,6 @@ Display::Display()
 Display::~Display()
 {
 	SDL_FreeSurface(surface);
-    SDL_Quit();
 }
 
 bool Display::init()
