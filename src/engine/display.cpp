@@ -47,6 +47,8 @@ bool Display::init()
 	//require double buffering
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	
+	glShadeModel(GL_SMOOTH);
+	
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)	return false;	 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
