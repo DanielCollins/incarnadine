@@ -48,6 +48,7 @@ bool Display::init()
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	
 	glShadeModel(GL_SMOOTH);
+	glClearColor (0.0, 0.0, 0.0, 0.0);
 	
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)	return false;	 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);

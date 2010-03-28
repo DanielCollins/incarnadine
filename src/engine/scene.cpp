@@ -29,7 +29,6 @@ void SceneManager::rasterize()
 {
 	//TODO: rasterize the scene
 	//for now just draw a triangle
-	glClearColor (0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 		
 	glBegin(GL_TRIANGLES);
