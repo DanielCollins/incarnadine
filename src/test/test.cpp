@@ -64,6 +64,8 @@ int main(int argc, char* argv[])
 	delete renderer;
 	renderer = 0;
 	
+	SDL_Quit();
+	
 	return EXIT_SUCCESS;
 }
 
