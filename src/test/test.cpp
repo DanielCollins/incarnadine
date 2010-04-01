@@ -23,16 +23,7 @@
 //
 //========================================================================
 
-#include "SDL.h"
-
-#include <stdlib.h>
-
 #include "test.h"
-#include "display.h"
-#include "input.h"
-#include "scene.h"
-#include "render.h"
-#include "incarnadine.h"
 
 #define MAXIMUM_FRAME_RATE 120
 #define MINIMUM_FRAME_RATE 10
@@ -72,6 +63,8 @@ int main(int argc, char* argv[])
 	scene = 0;
 	delete renderer;
 	renderer = 0;
+	
+	SDL_Quit();
 	
 	return EXIT_SUCCESS;
 }
