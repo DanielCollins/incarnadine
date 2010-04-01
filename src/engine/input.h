@@ -26,19 +26,15 @@
 #ifndef ENGINE_INPUT_H
 #define ENGINE_INPUT_H
 
-#include <GL/glfw.h>
+#include "SDL.h"
 
 class InputManager
 {
 	public:
 		InputManager();
 		void update();
-		void setKeyCallback(GLFWkeyfun callback);
-		void setMousePositionCallback(GLFWmouseposfun callback);
-		void setMouseButtonCallback(GLFWmousebuttonfun callback);
-		void setMouseWheelCallback(GLFWmousewheelfun callback);
+		void setKeyCallback(void (*callback)(int));
 		void resetMousePosition();
-
 };
 
 #endif //ENGINE_INPUT_H

@@ -27,21 +27,47 @@
 
 Display::Display()
 {
+	surface = 0;
 }
 
 Display::~Display()
 {
-	glfwTerminate();
+	if (surface)
+	{
+		SDL_FreeSurface(surface);
+		surface = 0;
+	}
 }
 
 bool Display::init()
 {
-	glfwInit();
-	if(!glfwOpenWindow(800, 600, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN))
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+		return false;
+
+	surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
+
+	if (!surface)
 	{
-		glfwTerminate();
+		SDL_Quit();
 		return false;
 	}
+
+	//require at least 5 bits per colour
+	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
+	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 5);
+	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
+
+	//require at least 2 byte depth buffer
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
+
+	//require double buffering
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+	glShadeModel(GL_SMOOTH);
+	glClearColor (0.0, 0.0, 0.0, 0.0);
+
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	
 	return true;
 }
 
@@ -49,5 +75,5 @@ bool Display::init()
 void Display::update()
 {
 	glFlush();
-	glfwSwapBuffers();
+	SDL_GL_SwapBuffers();
 }

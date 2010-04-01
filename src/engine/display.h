@@ -26,10 +26,14 @@
 #ifndef ENGINE_DISPLAY_H
 #define ENGINE_DISPLAY_H
 
-#include <GL/glfw.h>
+#include "SDL.h"
+#include "SDL_opengl.h" 
 
 class Display
 {
+	private:
+		SDL_Surface* surface;
+		
 	public:
 		Display();
 		~Display();

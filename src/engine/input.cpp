@@ -27,45 +27,33 @@
 
 InputManager::InputManager()
 {
-	//We can poll more intelligently then the default, disable it
-	glfwDisable(GLFW_AUTO_POLL_EVENTS);
-	
-	//hide the curser, confine the curser to the window, don't confine the curser coordinates to the window size
-	glfwDisable(GLFW_MOUSE_CURSOR);
-	
+	SDL_ShowCursor(SDL_DISABLE);
 	resetMousePosition();
 }
 
 void InputManager::update()
 {
-	//poll over mouse and keyboard (joystick is async)
-	glfwPollEvents();
-}
-
-//Key event callback shall take int key, int press/release
-void InputManager::setKeyCallback(GLFWkeyfun callback)
-{
-	glfwSetKeyCallback(callback);
-}
-
-void InputManager::setMousePositionCallback(GLFWmouseposfun callback)
-{
-	glfwSetMousePosCallback(callback);
-}
-
-void InputManager::setMouseButtonCallback(GLFWmousebuttonfun callback)
-{
-	glfwSetMouseButtonCallback(callback);
-}
-
-void InputManager::setMouseWheelCallback(GLFWmousewheelfun callback)
-{
-	glfwSetMouseWheelCallback(callback);
+	SDL_Event Event;
+	
+	while(SDL_PollEvent(&Event))
+	{
+		switch(Event.type)
+		{
+			case SDL_KEYDOWN:
+				continue;
+			case SDL_KEYUP:
+				continue;
+			case SDL_QUIT:
+				continue;
+			default:
+				continue;
+		}
+	}
 }
 
 void InputManager::resetMousePosition()
 {
 	//for simplicity of calculations define upper left corner as mouse starting point
-	glfwSetMousePos(0, 0);
+	SDL_WarpMouse(0, 0);
 }
 

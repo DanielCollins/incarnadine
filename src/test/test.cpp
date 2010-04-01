@@ -24,15 +24,8 @@
 //========================================================================
 
 
-#include <GL/glfw.h>
-#include <stdlib.h>
-
 #include "test.h"
-#include "display.h"
-#include "input.h"
-#include "scene.h"
-#include "render.h"
-#include "incarnadine.h"
+
 
 #define MAXIMUM_FRAME_RATE 120
 #define MINIMUM_FRAME_RATE 10
@@ -45,7 +38,8 @@ Camera* camera;
 SceneManager* scene;
 RenderManager* renderer;
 
-int main()
+
+int main(int argc, char* argv[])
 {
 	display = new Display();
 	if(!display->init()) return EXIT_FAILURE;
@@ -60,12 +54,7 @@ int main()
 	scene = new SceneManager();
 	renderer = new RenderManager(camera, scene, display);	
 	
-	//time starts now
-	glfwSetTime(0.0);
-	
-	//loop until escape pressed or window lost
-	while(!glfwGetKey(GLFW_KEY_ESC) && glfwGetWindowParam(GLFW_OPENED))
-		runGame();
+	while(true) runGame();
 
 	delete display;
 	display = 0;
@@ -78,6 +67,8 @@ int main()
 	delete renderer;
 	renderer = 0;
 	
+	SDL_Quit();
+
 	return EXIT_SUCCESS;
 }
 
@@ -86,7 +77,7 @@ void runGame()
 {
 	static double timeAtLastFrame = 0.0;
 	static double loopsRemaining = 0.0;
-	double currentTime = glfwGetTime();
+	double currentTime = SDL_GetTicks();
 	double updateIterations = currentTime - timeAtLastFrame + loopsRemaining;
   
 	if(updateIterations > MAX_CYCLES_PER_FRAME * UPDATE_INTERVAL)
