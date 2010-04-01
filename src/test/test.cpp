@@ -45,7 +45,7 @@ Camera* camera;
 SceneManager* scene;
 RenderManager* renderer;
 
-int main()
+int main(int argc, char* argv[])
 {
 	display = new Display();
 	if(!display->init()) return EXIT_FAILURE;
