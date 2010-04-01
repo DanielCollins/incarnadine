@@ -27,17 +27,30 @@
 
 Display::Display()
 {
+	surface = 0;
 }
 
 Display::~Display()
 {
-	SDL_FreeSurface(surface);
+	if (surface)
+	{
+		SDL_FreeSurface(surface);
+		surface = 0;
+	}
 }
 
 bool Display::init()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		return false;
+
+	surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
+
+	if (!surface)
+	{
+		SDL_Quit();
+		return false;
+	}
 
 	//require at least 5 bits per colour
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
@@ -54,7 +67,7 @@ bool Display::init()
 	glClearColor (0.0, 0.0, 0.0, 0.0);
 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
+
 	return true;
 }
 
