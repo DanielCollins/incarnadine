@@ -34,7 +34,7 @@ void Camera::update()
 {
 	//build a look-at matrix
     matrix44 view;
-    matrix_look_at_RH(view, position, forward, up);
+    matrix_look_at_RH(view, zeroVector, forward, up);
     
     //future matrix inputs modify model view...
     glMatrixMode(GL_MODELVIEW);
@@ -42,10 +42,15 @@ void Camera::update()
     //initialise model view matrix to identity
     glLoadIdentity();
     
-    //apply Object to scene
+    //apply rotate world openGL primitives around camera
     glLoadMatrixf(view.data());
+    
+    //translate opnGL primitives so that camera sits at (0, 0, 0)
+    glTranslatef(-position[0], -position[1], -position[2]);
+    
 	return;
 }
+
 
 //This function is not safe to call during openGL rendering! (crash if done during, won't work if done after)
 void Camera::setFov(float fov)
