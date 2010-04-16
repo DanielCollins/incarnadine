@@ -49,7 +49,6 @@ class InputManager
 	public:
 		InputManager();
 		void update();
-		void setKeyCallback(void (*callback)(int));
 		void resetMousePosition();
 };
 
