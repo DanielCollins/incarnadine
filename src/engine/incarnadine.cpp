@@ -28,9 +28,15 @@
 Incarnadine::Incarnadine()
 {
 	SDL_Init(SDL_INIT_VIDEO);
+	
+	display = new Display();
+	displayer->init();
 }
 
 Incarnadine::~Incarnadine()
 {
+	delete display;
+	display = 0;
+	
 	SDL_Quit();
 }

@@ -23,9 +23,7 @@
 //
 //========================================================================
 
-
 #include "test.h"
-
 
 #define MAXIMUM_FRAME_RATE 120
 #define MINIMUM_FRAME_RATE 10
@@ -33,7 +31,6 @@
 #define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
 
 Incarnadine* engine;
-Display* display;
 InputManager* input;
 Camera* camera;
 SceneManager* scene;
@@ -43,10 +40,6 @@ RenderManager* renderer;
 int main(int argc, char* argv[])
 {
 	engine = new Incarnadine();
-	
-	display = new Display();
-	if(!display->init()) return EXIT_FAILURE;
-	
 	input = new InputManager();
 	
 	vector3 cameraPosition(0.0, 0.0, 3.0);
@@ -55,12 +48,10 @@ int main(int argc, char* argv[])
 	
 	camera = new Camera(cameraPosition, cameraForward, cameraUp, 1.0);	
 	scene = new SceneManager();
-	renderer = new RenderManager(camera, scene, display);	
+	renderer = new RenderManager(camera, scene, engine->display);	
 	
 	while(true) runGame();
 
-	delete display;
-	display = 0;
 	delete input;
 	input = 0;
 	delete camera;

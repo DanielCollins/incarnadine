@@ -27,10 +27,13 @@
 #define ENGINE_INCARNADINE_H
 
 #include "SDL.h"
+#include "display.h"
 
 class Incarnadine
 {
 	public:
+		Display* display;		
+
 		Incarnadine();
 		~Incarnadine();
 };

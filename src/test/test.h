@@ -6,7 +6,6 @@
 #include <stdlib.h>
 
 #include "incarnadine.h"
-#include "display.h"
 #include "input.h"
 #include "scene.h"
 #include "render.h"
