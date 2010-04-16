@@ -26,11 +26,11 @@
 #ifndef ENGINE_INCARNADINE_H
 #define ENGINE_INCARNADINE_H
 
-class IncarnadineEngine
+class Incarnadine
 {
 	public:
-		IncarnadineEngine();
-		~IncarnadineEngine();
+		Incarnadine();
+		~Incarnadine();
 };
 
 #endif //ENGINE_INCARNADINE_H
