@@ -51,6 +51,14 @@ void Object::localRotateX(float angle)
 	up = normalize(cross(forward, left));
 }
 
+void Object::localRotate(Vector3 direction, float angle)
+{
+	direction = normalize(direction);
+	forward = rotate_vector(forward, direction, angle);
+	left = rotate_vector(left, direction, angle);
+	up = rotate_vector(up, direction, angle);
+}
+
 void Object::localRotateY(float angle)
 {
 	//Y' = Y
