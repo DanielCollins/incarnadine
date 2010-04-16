@@ -23,19 +23,9 @@
 //
 //========================================================================
 
-#ifndef ENGINE_AABB_H
-#define ENGINE_AABB_H
+#include "aabb.h"
 
-struct AxisAlignedBoundingBox 
+float AxisAlignedBoundingBox::getVolume()
 {
-	float minX;
-	float maxX;
-	float minY;
-	float maxY;
-	float minZ;
-	float maxZ;
-
-	float getVolume();
-};
-
-#endif //ENGINE_AABB_H
+	return maxX - minX * maxY - minY * maxZ - minZ;
+}
