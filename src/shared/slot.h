@@ -55,7 +55,7 @@ class Slot
 			for(i = signals.begin(); i != signals.end(); i++)
 				if(signal == *i)
 					return;
-			signals.push_back(signal)
+			signals.push_back(signal);
 			signal->_acceptConnection(this);
 		};
 
