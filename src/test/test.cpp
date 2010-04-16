@@ -32,6 +32,7 @@
 #define UPDATE_INTERVAL 1.0 / MAXIMUM_FRAME_RATE
 #define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
 
+Incarnadine* engine;
 Display* display;
 InputManager* input;
 Camera* camera;
@@ -41,6 +42,8 @@ RenderManager* renderer;
 
 int main(int argc, char* argv[])
 {
+	engine = new Incarnadine();
+	
 	display = new Display();
 	if(!display->init()) return EXIT_FAILURE;
 	
@@ -66,8 +69,8 @@ int main(int argc, char* argv[])
 	scene = 0;
 	delete renderer;
 	renderer = 0;
-	
-	SDL_Quit();
+	delete engine;
+	engine = 0;
 
 	return EXIT_SUCCESS;
 }

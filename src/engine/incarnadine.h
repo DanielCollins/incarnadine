@@ -26,6 +26,8 @@
 #ifndef ENGINE_INCARNADINE_H
 #define ENGINE_INCARNADINE_H
 
+#include "SDL.h"
+
 class Incarnadine
 {
 	public:

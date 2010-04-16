@@ -23,54 +23,14 @@
 //
 //========================================================================
 
-#include "display.h"
+#include "incarnadine.h"
 
-Display::Display()
+Incarnadine::Incarnadine()
 {
-	surface = 0;
+	SDL_Init(SDL_INIT_VIDEO);
 }
 
-Display::~Display()
+Incarnadine::~Incarnadine()
 {
-	if (surface)
-	{
-		SDL_FreeSurface(surface);
-		surface = 0;
-	}
-}
-
-bool Display::init()
-{
-	surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
-
-	if (!surface)
-	{
-		SDL_Quit();
-		return false;
-	}
-
-	//require at least 5 bits per colour
-	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
-	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 5);
-	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
-
-	//require at least 2 byte depth buffer
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
-
-	//require double buffering
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-	glShadeModel(GL_SMOOTH);
-	glClearColor (1.0, 1.0, 1.0, 0.0);
-
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	
-	return true;
-}
-
-//Show next frame
-void Display::update()
-{
-	glFlush();
-	SDL_GL_SwapBuffers();
+	SDL_Quit();
 }
