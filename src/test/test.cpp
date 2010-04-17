@@ -68,7 +68,7 @@ void runGame()
 {
 	static double timeAtLastFrame = 0.0;
 	static double loopsRemaining = 0.0;
-	double currentTime = SDL_GetTicks();
+	double currentTime = engine->getTicks();
 	double updateIterations = currentTime - timeAtLastFrame + loopsRemaining;
   
 	if(updateIterations > MAX_CYCLES_PER_FRAME * UPDATE_INTERVAL)
