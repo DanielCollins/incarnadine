@@ -43,7 +43,7 @@ class Signal
 
 		~Signal(){};
 
-		void Fire(*event e)
+		void fire(*event e)
 		{
 			std::vector<Slot<event>*>::const_iterator i;
 			for(i = slots.begin(); i != slots.end(); i++)
