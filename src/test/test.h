@@ -8,6 +8,6 @@
 #include "render.h"
 #include "tools.h"
 
-void runGame();
+void runTest();
 
 #endif //TEST_H

@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 	scene = new SceneManager();
 	renderer = new RenderManager(camera, scene, engine->display);	
 	
-	while(true) runGame();
+	while(true) runTest();
 
 
 	delete camera;
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
 }
 
 //Main Loop
-void runGame() 
+void runTest() 
 {
 	static double timeAtLastFrame = 0.0;
 	static double loopsRemaining = 0.0;
