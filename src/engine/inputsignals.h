@@ -33,6 +33,8 @@ Class MouseMove : public Event
 	public:
 		int x;
 		int y;
+		int xrel;
+		int yrel;
 };
 
 Class MouseClick : public Event {}; 
