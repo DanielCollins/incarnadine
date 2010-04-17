@@ -39,9 +39,21 @@ void InputManager::update()
 	{
 		switch(Event.type)
 		{
+			case SDL_MOUSEMOTION:
+			{
+				MouseMove e;
+				e.x = Event.x;
+				e.y = Event.y;
+				e.xrel = Event.xrel;
+				e.yrel = Event.xrel;
+				sMouseMove.fire(&e);
+				break;
+			}	
 			case SDL_QUIT:
+			{
 				Exiting e;
 				sExiting.fire(&e);
+			}
 		}
 	}
 }
