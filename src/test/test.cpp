@@ -31,7 +31,6 @@
 #define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
 
 Incarnadine* engine;
-InputManager* input;
 Camera* camera;
 SceneManager* scene;
 RenderManager* renderer;
@@ -40,7 +39,6 @@ RenderManager* renderer;
 int main(int argc, char* argv[])
 {
 	engine = new Incarnadine();
-	input = new InputManager();
 	
 	vector3 cameraPosition(0.0, 0.0, 3.0);
 	vector3 cameraForward(0.0, 0.0, -1.0);
@@ -52,8 +50,7 @@ int main(int argc, char* argv[])
 	
 	while(true) runGame();
 
-	delete input;
-	input = 0;
+
 	delete camera;
 	camera = 0;
 	delete scene;
@@ -80,7 +77,7 @@ void runGame()
 	while (updateIterations > UPDATE_INTERVAL)
 	{
 		updateIterations -= UPDATE_INTERVAL;    
-		input->update();
+		engine->input->update();
 	}
   
 	loopsRemaining = updateIterations;

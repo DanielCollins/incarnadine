@@ -31,10 +31,15 @@ Incarnadine::Incarnadine()
 	
 	display = new Display();
 	displayer->init();
+	
+	input = new InputManager();
 }
 
 Incarnadine::~Incarnadine()
 {
+	delete input;
+	input = 0;
+
 	delete display;
 	display = 0;
 	

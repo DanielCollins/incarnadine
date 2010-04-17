@@ -28,11 +28,13 @@
 
 #include "SDL.h"
 #include "display.h"
+#include "input.h"
 
 class Incarnadine
 {
 	public:
-		Display* display;		
+		Display* display;
+		InputManager* input;		
 
 		Incarnadine();
 		~Incarnadine();
