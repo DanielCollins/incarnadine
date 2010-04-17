@@ -38,6 +38,7 @@ class Incarnadine
 
 		Incarnadine();
 		~Incarnadine();
+		unsigned int getTicks();
 };
 
 #endif //ENGINE_INCARNADINE_H

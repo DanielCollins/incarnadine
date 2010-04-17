@@ -45,3 +45,8 @@ Incarnadine::~Incarnadine()
 	
 	SDL_Quit();
 }
+
+unsigned int Incarnadine::getTicks()
+{
+	return SDL_GetTicks();
+}
