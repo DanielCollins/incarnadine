@@ -23,19 +23,24 @@
 //
 //========================================================================
 
-#ifndef ENGINE_INPUT_H
-#define ENGINE_INPUT_H
+#ifndef ENGINE_INPUTSIGNALS_H
+#define ENGINE_INPUTSIGNALS_H
 
-#include "SDL.h"
 #include "events.h"
-#include "inputsignals.h"
 
-class InputManager
+Class MouseMove : public Event
 {
 	public:
-		InputManager();
-		void update();
-		void resetMousePosition();
+		int x;
+		int y;
 };
 
-#endif //ENGINE_INPUT_H
+Class MouseClick : public Event {}; 
+
+Class KeyPress : public Event {};
+
+class KeyRelease : public Event {};
+
+Class Exiting : public Event {};
+
+#endif //ENGINE_INPUTSIGNALS_H
