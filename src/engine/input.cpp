@@ -44,7 +44,8 @@ void InputManager::update()
 			case SDL_KEYUP:
 				continue;
 			case SDL_QUIT:
-				SDL_Quit();
+				Exiting e;
+				sExiting.fire(&e);
 		}
 	}
 }
