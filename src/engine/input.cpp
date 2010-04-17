@@ -39,10 +39,6 @@ void InputManager::update()
 	{
 		switch(Event.type)
 		{
-			case SDL_KEYDOWN:
-				continue;
-			case SDL_KEYUP:
-				continue;
 			case SDL_QUIT:
 				Exiting e;
 				sExiting.fire(&e);
