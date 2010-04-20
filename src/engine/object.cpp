@@ -40,14 +40,7 @@ Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
 
 void Object::localRotateX(float angle)
 {
-	//X' = X
-	
-    //Z' = -sin(angle).Y+cos(angle).Z
-	vector3 v1 = up * - sin(angle);
-	vector3 v2 = forward * cos(angle);
-	forward = (v1 + v2).normalize();
-
-	//Y'= Z' ^ X'
+	forward = rotate_vector(forward, left, angle);
 	up = normalize(cross(forward, left));
 }
 
@@ -61,28 +54,14 @@ void Object::localRotate(Vector3 direction, float angle)
 
 void Object::localRotateY(float angle)
 {
-	//Y' = Y
-    
-	//Z' = sin(angle).X+cos(angle).Z
-	vector3 v1 = left * sin(angle);
-	vector3 v2 = forward * cos(angle);
-	forward = normalize(v1 + v2);
-
-	//X' = Y' ^ Z'
+    forward = rotate_vector(forward, up, angle);
 	left = normalize(cross(up, forward));
 }
 
 
 void Object::localRotateZ(float angle)
 {
-	//Z' = Z
-	
-	//X' =
-	vector3 v1 = left * cos(angle);
-	vector3 v2 = forward * - sin(angle);
-	left = normalize(v1 + v2);
-	
-	//Y' =
+	left = rotate_vector(left, forward, angle);
 	up = normalize(cross(forward, left));
 }
 
