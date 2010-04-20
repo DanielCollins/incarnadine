@@ -35,6 +35,7 @@ Camera* camera;
 SceneManager* scene;
 RenderManager* renderer;
 
+Slot<Exiting> ExitingSlot;
 
 int main(int argc, char* argv[])
 {
@@ -46,7 +47,10 @@ int main(int argc, char* argv[])
 	
 	camera = new Camera(cameraPosition, cameraForward, cameraUp, 1.0);	
 	scene = new SceneManager();
-	renderer = new RenderManager(camera, scene, engine->display);	
+	renderer = new RenderManager(camera, scene, engine->display);
+	
+	ExitingSlot = new Slot<Exiting>(&handleExit);
+	ExitingSlot.connect(&(engine->input->sExiting));
 	
 	while(true) runTest();
 	
@@ -76,6 +80,11 @@ void runTest()
 	timeAtLastFrame = currentTime;
 
 	renderer->draw();
+}
+
+void handleExit(Exiting e)
+{
+	exitTestApp();
 }
 
 void exitTestApp()
