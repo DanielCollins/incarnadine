@@ -88,5 +88,5 @@ void exitTestApp()
 	renderer = 0;
 	delete engine;
 	engine = 0;
-	exit(EXIT_SUCESS);
+	exit(EXIT_SUCCESS);
 }
