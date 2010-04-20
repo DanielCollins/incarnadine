@@ -30,18 +30,10 @@ Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
 	position = newPosition;
 	forward = newForward;
 	up = newUp;
-	
 
 	left = normalize(cross(forward, up));
 	up = normalize(cross(left, forward));
 	forward = normalize(forward);
-}
-
-
-void Object::localRotateX(float angle)
-{
-	forward = rotate_vector(forward, left, angle);
-	up = normalize(cross(forward, left));
 }
 
 void Object::localRotate(Vector3 direction, float angle)
@@ -50,6 +42,12 @@ void Object::localRotate(Vector3 direction, float angle)
 	forward = rotate_vector(forward, direction, angle);
 	left = rotate_vector(left, direction, angle);
 	up = rotate_vector(up, direction, angle);
+}
+
+void Object::localRotateX(float angle)
+{
+	forward = rotate_vector(forward, left, angle);
+	up = normalize(cross(forward, left));
 }
 
 void Object::localRotateY(float angle)
