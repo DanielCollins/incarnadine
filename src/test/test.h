@@ -9,5 +9,6 @@
 #include "tools.h"
 
 void runTest();
+void exitTestApp();
 
 #endif //TEST_H

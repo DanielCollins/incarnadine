@@ -49,17 +49,9 @@ int main(int argc, char* argv[])
 	renderer = new RenderManager(camera, scene, engine->display);	
 	
 	while(true) runTest();
-
-
-	delete camera;
-	camera = 0;
-	delete scene;
-	scene = 0;
-	delete renderer;
-	renderer = 0;
-	delete engine;
-	engine = 0;
-
+	
+	exitTestApp();
+	//code execution never gets here, unless its the matrix
 	return EXIT_SUCCESS;
 }
 
@@ -84,4 +76,17 @@ void runTest()
 	timeAtLastFrame = currentTime;
 
 	renderer->draw();
+}
+
+void exitTestApp()
+{
+	delete camera;
+	camera = 0;
+	delete scene;
+	scene = 0;
+	delete renderer;
+	renderer = 0;
+	delete engine;
+	engine = 0;
+	exit(EXIT_SUCESS);
 }
