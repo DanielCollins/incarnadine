@@ -88,11 +88,11 @@ void handleExit(Exiting e)
 
 void exitTestApp()
 {
+	delete engine;
+	engine = 0;
 	delete camera;
 	camera = 0;
 	delete scene;
 	scene = 0;
-	delete engine;
-	engine = 0;
 	exit(EXIT_SUCCESS);
 }
