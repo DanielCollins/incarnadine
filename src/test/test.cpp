@@ -86,7 +86,7 @@ void handleExit(Exiting e)
 	exitTestApp();
 }
 
-void exitTestApp()
+void cleanup()
 {
 	delete engine;
 	engine = 0;
@@ -94,5 +94,10 @@ void exitTestApp()
 	camera = 0;
 	delete scene;
 	scene = 0;
+}
+
+void exitTestApp()
+{
+	cleanup();
 	exit(EXIT_SUCCESS);
 }

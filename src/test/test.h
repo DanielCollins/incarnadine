@@ -11,6 +11,8 @@
 
 void runTest();
 void exitTestApp();
+void cleanup();
+
 void handleExit(Exiting);
 
 #endif //TEST_H
