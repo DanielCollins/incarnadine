@@ -30,7 +30,7 @@ Incarnadine::Incarnadine(Camera* newCamera, SceneManager* newSceneManager)
 	SDL_Init(SDL_INIT_VIDEO);
 	
 	display = new Display();
-	displayer->init();
+	display->init();
 	
 	input = new InputManager();
 	
