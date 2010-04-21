@@ -33,21 +33,19 @@
 Incarnadine* engine;
 Camera* camera;
 SceneManager* scene;
-RenderManager* renderer;
 
 Slot<Exiting> ExitingSlot;
 
 int main(int argc, char* argv[])
-{
-	engine = new Incarnadine();
-	
+{	
 	vector3 cameraPosition(0.0, 0.0, 3.0);
 	vector3 cameraForward(0.0, 0.0, -1.0);
 	vector3 cameraUp(0.0, 1.0, 0.0);
 	
 	camera = new Camera(cameraPosition, cameraForward, cameraUp, 1.0);	
 	scene = new SceneManager();
-	renderer = new RenderManager(camera, scene, engine->display);
+	
+	engine = new Incarnadine(camera, scene);
 	
 	ExitingSlot = new Slot<Exiting>(&handleExit);
 	ExitingSlot.connect(&(engine->input->sExiting));
@@ -79,7 +77,7 @@ void runTest()
 	loopsRemaining = updateIterations;
 	timeAtLastFrame = currentTime;
 
-	renderer->draw();
+	engine->renderer->draw();
 }
 
 void handleExit(Exiting e)
@@ -93,8 +91,6 @@ void exitTestApp()
 	camera = 0;
 	delete scene;
 	scene = 0;
-	delete renderer;
-	renderer = 0;
 	delete engine;
 	engine = 0;
 	exit(EXIT_SUCCESS);

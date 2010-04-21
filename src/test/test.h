@@ -5,9 +5,9 @@
 
 #include "incarnadine.h"
 #include "scene.h"
-#include "render.h"
 #include "tools.h"
 #include "input.h"
+#include "camera.h"
 
 void runTest();
 void exitTestApp();

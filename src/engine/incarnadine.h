@@ -29,14 +29,18 @@
 #include "SDL.h"
 #include "display.h"
 #include "input.h"
+#include "render.h"
+#include "camera.h"
+#include "scene.h"
 
 class Incarnadine
 {
 	public:
 		Display* display;
-		InputManager* input;		
+		InputManager* input;	
+		RenderManager* renderer;	
 
-		Incarnadine();
+		Incarnadine(Camera* newCamera, SceneManager* newSceneManager);
 		~Incarnadine();
 		unsigned int getTicks();
 };
