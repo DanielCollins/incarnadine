@@ -53,8 +53,9 @@ int main(int argc, char* argv[])
 	while(true) runTest();
 	
 	exitTestApp();
-	//code execution never gets here, unless its the matrix
-	return EXIT_SUCCESS;
+	
+	//If this statement ever executes we must be in the matrix
+	return EXIT_FAILURE;
 }
 
 //Main Loop
