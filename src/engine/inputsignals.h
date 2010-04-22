@@ -28,7 +28,7 @@
 
 #include "events.h"
 
-Class MouseMove : public Event
+class MouseMove : public Event
 {
 	public:
 		int x;
@@ -37,12 +37,12 @@ Class MouseMove : public Event
 		int yrel;
 };
 
-Class MouseClick : public Event {}; 
+class MouseClick : public Event {}; 
 
-Class KeyPress : public Event {};
+class KeyPress : public Event {};
 
-Class KeyRelease : public Event {};
+class KeyRelease : public Event {};
 
-Class Exiting : public Event {};
+class Exiting : public Event {};
 
 #endif //ENGINE_INPUTSIGNALS_H
