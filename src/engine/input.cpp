@@ -45,7 +45,7 @@ void InputManager::update()
 				e.x = Event.x;
 				e.y = Event.y;
 				e.xrel = Event.xrel;
-				e.yrel = Event.xrel;
+				e.yrel = Event.yrel;
 				sMouseMove.fire(&e);
 				break;
 			}	
