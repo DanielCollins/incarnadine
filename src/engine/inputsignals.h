@@ -41,7 +41,7 @@ Class MouseClick : public Event {};
 
 Class KeyPress : public Event {};
 
-class KeyRelease : public Event {};
+Class KeyRelease : public Event {};
 
 Class Exiting : public Event {};
 
