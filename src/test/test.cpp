@@ -30,30 +30,34 @@
 #define UPDATE_INTERVAL 1.0 / MAXIMUM_FRAME_RATE
 #define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
 
+#define MOUSESENS 0.01
+//#define MOUSEINVERT 1
+
 Incarnadine* engine;
 Camera* camera;
 SceneManager* scene;
 
 Slot<Exiting> ExitingSlot;
+Slot<MouseMove> MouseMoveSlot;
 
 int main(int argc, char* argv[])
 {	
 	vector3 cameraPosition(0.0, 0.0, 3.0);
 	vector3 cameraForward(0.0, 0.0, -1.0);
 	vector3 cameraUp(0.0, 1.0, 0.0);
-	
+		
 	camera = new Camera(cameraPosition, cameraForward, cameraUp, 1.0);	
-	scene = new SceneManager();
-	
+	scene = new SceneManager();	
 	engine = new Incarnadine(camera, scene);
-	
+		
 	ExitingSlot = new Slot<Exiting>(&handleExit);
 	ExitingSlot.connect(&(engine->input->sExiting));
-	
-	while(true) runTest();
-	
+	MouseMoveSlot = new Slot<MOuseMove>(&handleMouseMove);
+	MouseMoveSlot.connect(&(engine->input->sMouseMove));
+		
+	while(true) runTest();	
 	exitTestApp();
-	
+		
 	//If this statement ever executes we must be in the matrix
 	return EXIT_FAILURE;
 }
@@ -84,6 +88,17 @@ void runTest()
 void handleExit(Exiting e)
 {
 	exitTestApp();
+}
+
+void handleMouseMove(MouseMove e)
+{
+#ifndef MOUSEINVERT
+	camera->localRotateY(e.xrel * MOUSESENS);
+	camera->localRotateX(e.yrel * MOUSESENS);
+#else //MOUSEINVERT
+	camera->localRotateY(-e.xrel * MOUSESENS);
+	camera->localRotateX(-e.yrel * MOUSESENS);
+#endif //MOUSEINVERT
 }
 
 void cleanup()
