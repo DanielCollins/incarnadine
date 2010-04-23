@@ -6,10 +6,10 @@ Copyright © 2010
 
 * Design and Coding
 
-	+ Daniel Collins
-	+ Daniel Flahive
-	+ David Forrest
+	+ Daniel "PurplePanda" Collins
+	+ Daniel "evihalf" Flahive
+	+ David "srbs" Forrest
 
 * Images and Graphics
 
-	+ Oskar Kruschitz (http://www.snowrbt.com)
+	+ Oskar "snowrbt" Kruschitz (http://www.snowrbt.com)
