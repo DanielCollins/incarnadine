@@ -1,9 +1,3 @@
-AUTOHORS.txt for incarnadine engine
-
-Incarnadine Engine - Experimental 3D Engine
-
-Copyright © 2010
-
 * Design and Coding
 
 	+ Daniel "PurplePanda" Collins
