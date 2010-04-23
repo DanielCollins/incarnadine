@@ -8,7 +8,7 @@ Copyright © 2010
 
 	+ Daniel "PurplePanda" Collins
 	+ Daniel "evihalf" Flahive
-	+ David "srbs" Forrest
+	+ David "srbs" Forrest <somerandombystander@gmail.com>
 
 * Images and Graphics
 
