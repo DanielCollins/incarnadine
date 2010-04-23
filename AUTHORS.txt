@@ -7,8 +7,9 @@ Copyright © 2010
 * Design and Coding
 
 	+ Daniel Collins
+	+ Daniel Flahive
 	+ David Forrest
 
-* Graphics
+* Images and Graphics
 
 	+ Oskar Kruschitz (http://www.snowrbt.com)
