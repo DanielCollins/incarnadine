@@ -27,6 +27,8 @@
 #define ENGINE_OBJECT_H
 
 #include "tools.h"
+#include "renderable.h"
+
 using namespace cml;
 
 class Object
@@ -36,6 +38,7 @@ class Object
 		vector3 forward;
 		vector3 up;
 		vector3 left;
+		Renderable form;
 
 	public:
 		Object(vector3 position, vector3 forward, vector3 up);
