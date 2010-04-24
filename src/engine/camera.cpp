@@ -33,22 +33,22 @@ Camera::Camera(vector3 newPosition, vector3 newForward, vector3 newUp, float fov
 void Camera::update()
 {
 	//build a look-at matrix
-    matrix44 view;
-    matrix_look_at_RH(view, zeroVector, forward, up);
+	matrix44 view;
+	matrix_look_at_RH(view, zeroVector, forward, up);
     
-    //future matrix inputs modify model view...
-    glMatrixMode(GL_MODELVIEW);
+	//future matrix inputs modify model view...
+	glMatrixMode(GL_MODELVIEW);
     
-    //initialise model view matrix to identity
-    glLoadIdentity();
+	//initialise model view matrix to identity
+	glLoadIdentity();
+	
+	//apply rotate world openGL primitives around camera
+	glLoadMatrixf(view.data());
+
+	//translate opnGL primitives so that camera sits at (0, 0, 0)
+	glTranslatef(-position[0], -position[1], -position[2]);
     
-    //apply rotate world openGL primitives around camera
-    glLoadMatrixf(view.data());
-    
-    //translate opnGL primitives so that camera sits at (0, 0, 0)
-    glTranslatef(-position[0], -position[1], -position[2]);
-    
-	return;
+    return;
 }
 
 
@@ -57,15 +57,15 @@ void Camera::setFov(float fov)
 {
 	//calculate aspect ratio
 	const SDL_VideoInfo* videoInfo = SDL_GetVideoInfo();
-    float aspectRatio = (float) videoInfo->current_w / (float) videoInfo->current_h;
-    
-    //setting up projection...
+	float aspectRatio = (float) videoInfo->current_w / (float) videoInfo->current_h;
+	
+	//setting up projection...
 	glMatrixMode(GL_PROJECTION);
 	
 	//initialise projection matrix to identity
 	glLoadIdentity();
-	
+
 	//apply a Frustum to projection matrix
-    glFrustum (-aspectRatio, aspectRatio, -1.0, 1.0, fov, 1000);
+	glFrustum (-aspectRatio, aspectRatio, -1.0, 1.0, fov, 1000);
 }
 
