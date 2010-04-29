@@ -42,10 +42,10 @@ void InputManager::update()
 			case SDL_MOUSEMOTION:
 			{
 				MouseMove e;
-				e.x = Event.x;
-				e.y = Event.y;
-				e.xrel = Event.xrel;
-				e.yrel = Event.yrel;
+				e.x = Event.motion.x;
+				e.y = Event.motion.y;
+				e.xrel = Event.motion.xrel;
+				e.yrel = Event.motion.yrel;
 				sMouseMove.fire(&e);
 				break;
 			}	
