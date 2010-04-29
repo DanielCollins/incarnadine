@@ -39,29 +39,33 @@ class Signal
 
 	public:
 
-		Signal(){}
+		Signal()
+		{
+		}
 
-		~Signal(){}
+		~Signal()
+		{
+		}
 
 		void fire(EventType* e)
 		{
-			std::vector<Slot<EventType>*>::const_iterator i;
+			typename std::vector<Slot<EventType>*>::const_iterator i;
 			for(i = slots.begin(); i != slots.end(); i++)
 				(*i)->_fire(e);
 		}
 
 		void _acceptConnection(Slot<EventType>* newSlot)
 		{
-			std::vector<Slot<EventType>*>::const_iterator i;
+			typename std::vector<Slot<EventType>*>::const_iterator i;
 			for(i = slots.begin(); i != slots.end(); i++)
 				if(newSlot == *i)
 					return;
-			slots.push_back(newSlot);	
+			slots.push_back(newSlot);
 		}
 
 		void _disconnect(Slot<EventType>* oldSlot)
 		{
-			std::vector<Slot<EventType>*>::const_iterator i;
+			typename std::vector<Slot<EventType>*>::const_iterator i;
 			for (i = slots.begin(); i != slots.end(); i++)
 			{
 				if(oldSlot == *i)

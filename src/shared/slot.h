@@ -27,7 +27,7 @@
 #define SHARED_SLOT_H
 
 #include "event.h"
-//#include "signal.h"
+#include "signal.h"
 
 // Forward declaration of Signal class.
 template <class EventType>
@@ -35,14 +35,14 @@ class Signal;
 
 #include <vector>
 
-template <class EventType>
+template <typename EventType>
 class Slot
 {
 	private:
 
 		std::vector<Signal<EventType>*> signals;
 		void (*handler)(EventType);
-		
+
 
 	public:
 
@@ -51,11 +51,13 @@ class Slot
 			handler = newhandler;
 		}
 
-		~Slot(){}
+		~Slot()
+		{
+		}
 
 		void connect(Signal<EventType>* signal)
 		{
-			std::vector<Signal<EventType>*>::const_iterator i;
+			typename std::vector<Signal<EventType>*>::const_iterator i;
 			for(i = signals.begin(); i != signals.end(); i++)
 				if(signal == *i)
 					return;
@@ -65,7 +67,7 @@ class Slot
 
 		void disconnect(Signal<EventType>* signal)
 		{
-			std::vector<Signal<EventType>*>::const_iterator i;
+			typename std::vector<Signal<EventType>*>::const_iterator i;
 			for(i = signals.begin(); i != signals.end(); i++)
 			{
 				if(signal == *i)
