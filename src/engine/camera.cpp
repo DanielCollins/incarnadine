@@ -25,6 +25,8 @@
 
 #include "camera.h"
 
+vector3 zeroVector(0.0, 0.0, 0.0);
+
 Camera::Camera(vector3 newPosition, vector3 newForward, vector3 newUp, float fov) : Object (newPosition, newForward, newUp)
 {
 	setFov(fov);

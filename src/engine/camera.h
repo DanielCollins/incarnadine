@@ -30,7 +30,7 @@
 #include "SDL_opengl.h" 
 #include "object.h"
 
-vector3 zeroVector(0.0, 0.0, 0.0);
+extern vector3 zeroVector;
 
 class Camera : public Object
 {
