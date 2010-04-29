@@ -31,37 +31,37 @@
 
 #include <vector>
 
-template <Event event>
+template <class EventType>
 class Signal
 {
 	private:
-		std::vector<Slot<event>*> slots;
+		std::vector<Slot<EventType>*> slots;
 
 	public:
 
-		Signal(){};
+		Signal(){}
 
-		~Signal(){};
+		~Signal(){}
 
-		void fire(*event e)
+		void fire(EventType* e)
 		{
-			std::vector<Slot<event>*>::const_iterator i;
+			std::vector<Slot<EventType>*>::const_iterator i;
 			for(i = slots.begin(); i != slots.end(); i++)
-				*i->_fire(e);
-		};
+				(*i)->_fire(e);
+		}
 
-		void _acceptConnection(Slot<event>* newSlot)
+		void _acceptConnection(Slot<EventType>* newSlot)
 		{
-			std::vector<Slot<event>*>::const_iterator i;
+			std::vector<Slot<EventType>*>::const_iterator i;
 			for(i = slots.begin(); i != slots.end(); i++)
 				if(newSlot == *i)
 					return;
 			slots.push_back(newSlot);	
-		};
+		}
 
-		void _disconnect(Slot<event>* oldSlot)
+		void _disconnect(Slot<EventType>* oldSlot)
 		{
-			std::vector<Slot<event>*>::const_iterator i;
+			std::vector<Slot<EventType>*>::const_iterator i;
 			for (i = slots.begin(); i != slots.end(); i++)
 			{
 				if(oldSlot == *i)
@@ -70,7 +70,7 @@ class Signal
 					return;
 				}
 			}
-		};
+		}
 };
 
 #endif //SHARED_SIGNAL_H

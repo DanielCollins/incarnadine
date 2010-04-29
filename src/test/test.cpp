@@ -37,8 +37,8 @@ Incarnadine* engine;
 Camera* camera;
 SceneManager* scene;
 
-Slot<Exiting> ExitingSlot;
-Slot<MouseMove> MouseMoveSlot;
+Slot<Exiting>* ExitingSlot;
+Slot<MouseMove>* MouseMoveSlot;
 
 int main(int argc, char* argv[])
 {	
@@ -50,10 +50,10 @@ int main(int argc, char* argv[])
 	scene = new SceneManager();	
 	engine = new Incarnadine(camera, scene);
 		
-	ExitingSlot = new Slot<Exiting>(&handleExit);
-	ExitingSlot.connect(&(engine->input->sExiting));
-	MouseMoveSlot = new Slot<MOuseMove>(&handleMouseMove);
-	MouseMoveSlot.connect(&(engine->input->sMouseMove));
+	ExitingSlot = new Slot<Exiting>(handleExit);
+	ExitingSlot->connect(&(engine->input->sExiting));
+	MouseMoveSlot = new Slot<MouseMove>(handleMouseMove);
+	MouseMoveSlot->connect(&(engine->input->sMouseMove));
 		
 	while(true) runTest();	
 	exitTestApp();
@@ -103,6 +103,11 @@ void handleMouseMove(MouseMove e)
 
 void cleanup()
 {
+	delete ExitingSlot;
+	ExitingSlot = 0;
+	delete MouseMoveSlot;
+	MouseMoveSlot = 0;
+
 	delete engine;
 	engine = 0;
 	delete camera;
