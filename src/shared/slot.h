@@ -35,7 +35,7 @@ class Signal;
 
 #include <vector>
 
-template <typename EventType>
+template <class EventType>
 class Slot
 {
 	private:
