@@ -35,7 +35,7 @@ extern vector3 zeroVector;
 class Camera : public Object
 {
 	public:
-		Camera(vector3 position, vector3 forward, vector3 up, float fov);
+		Camera(vector3 position, vector3 forward, vector3 up);
 		void update();
 		void setFov(float fov);
 };

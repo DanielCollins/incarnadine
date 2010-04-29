@@ -46,9 +46,11 @@ int main(int argc, char* argv[])
 	vector3 cameraForward(0.0, 0.0, -1.0);
 	vector3 cameraUp(0.0, 1.0, 0.0);
 		
-	camera = new Camera(cameraPosition, cameraForward, cameraUp, 1.0);	
+	camera = new Camera(cameraPosition, cameraForward, cameraUp);
 	scene = new SceneManager();	
 	engine = new Incarnadine(camera, scene);
+
+	camera->setFov(1.0f);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
 	ExitingSlot->connect(&(engine->input->sExiting));
