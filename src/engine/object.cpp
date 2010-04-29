@@ -36,7 +36,7 @@ Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
 	forward = normalize(forward);
 }
 
-void Object::localRotate(Vector3 direction, float angle)
+void Object::localRotate(vector3 direction, float angle)
 {
 	direction = normalize(direction);
 	forward = rotate_vector(forward, direction, angle);
@@ -71,7 +71,7 @@ void Object::goTo(vector3 location)
 void Object::localTranslate(vector3 displacement)
 {
 	position[0] = displacement[0] * left[0] + displacement[1] * up[0] + displacement[2] * forward[0];
-	position[1] = displacement[0] * left[1] + displacement[1] * up[1] + displacement[2] * forward[1]; 
+	position[1] = displacement[0] * left[1] + displacement[1] * up[1] + displacement[2] * forward[1];
 	position[2] = displacement[0] * left[2] + displacement[1] * up[2] + displacement[2] * forward[2];
 }
 
