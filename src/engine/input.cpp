@@ -25,8 +25,9 @@
 
 #include "input.h"
 
-InputManager::InputManager()
+InputManager::InputManager(Display *d)
 {
+	display = d;
 	SDL_ShowCursor(SDL_DISABLE);
 	resetMousePosition();
 }
@@ -60,7 +61,6 @@ void InputManager::update()
 
 void InputManager::resetMousePosition()
 {
-	//for simplicity of calculations define upper left corner as mouse starting point
-	SDL_WarpMouse(0, 0);
+	SDL_WarpMouse(display->width() / 2, display->height() / 2);
 }
 

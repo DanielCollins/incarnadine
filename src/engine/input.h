@@ -37,8 +37,9 @@ class InputManager
 		Signal<KeyPress> sKeyPress;
 		Signal<KeyRelease> sKeyRelease;
 		Signal<Exiting> sExiting;
+		Display *display;
 
-		InputManager();
+		InputManager(Display *d);
 		void update();
 		void resetMousePosition();
 };

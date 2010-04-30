@@ -74,3 +74,13 @@ void Display::update()
 	glFlush();
 	SDL_GL_SwapBuffers();
 }
+
+int Display::width()
+{
+	return surface->w;
+}
+
+int Display::height()
+{
+	return surface->h;
+}

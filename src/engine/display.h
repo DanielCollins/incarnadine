@@ -39,6 +39,8 @@ class Display
 		~Display();
 		bool init();
 		void update();
+		int width();
+		int height();
 };
 
 #endif //ENGINE_DISPLAY_H
