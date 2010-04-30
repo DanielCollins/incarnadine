@@ -95,11 +95,11 @@ void handleExit(Exiting e)
 void handleMouseMove(MouseMove e)
 {
 #ifndef MOUSEINVERT
-	camera->localRotateY(e.xrel * MOUSESENS);
-	camera->localRotateX(e.yrel * MOUSESENS);
-#else //MOUSEINVERT
 	camera->localRotateY(-e.xrel * MOUSESENS);
 	camera->localRotateX(-e.yrel * MOUSESENS);
+#else //MOUSEINVERT
+	camera->localRotateY(e.xrel * MOUSESENS);
+	camera->localRotateX(e.yrel * MOUSESENS);
 #endif //MOUSEINVERT
 }
 
