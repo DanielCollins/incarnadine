@@ -32,7 +32,7 @@ Incarnadine::Incarnadine(Camera* newCamera, SceneManager* newSceneManager)
 	display = new Display();
 	display->init();
 	
-	input = new InputManager();
+	input = new InputManager(display);
 	
 	renderer = new RenderManager(newCamera, newSceneManager, display);
 }
