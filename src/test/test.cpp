@@ -101,6 +101,7 @@ void handleMouseMove(MouseMove e)
 	camera->localRotateY(e.xrel * MOUSESENS);
 	camera->localRotateX(e.yrel * MOUSESENS);
 #endif //MOUSEINVERT
+	engine->input->resetMousePosition();
 }
 
 void cleanup()
