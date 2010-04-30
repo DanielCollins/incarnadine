@@ -29,6 +29,7 @@
 #include "SDL.h"
 #include "events.h"
 #include "inputsignals.h"
+#include "display.h"
 
 class InputManager
 {
