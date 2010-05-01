@@ -31,7 +31,6 @@
 #define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
 
 #define MOUSESENS 0.01
-//#define MOUSEINVERT 1
 
 Incarnadine* engine;
 Camera* camera;
@@ -94,14 +93,9 @@ void handleExit(Exiting e)
 
 void handleMouseMove(MouseMove e)
 {
-#ifndef MOUSEINVERT
 	camera->localRotateY(-e.xrel * MOUSESENS);
-	camera->localRotateX(-e.yrel * MOUSESENS);
-#else //MOUSEINVERT
-	camera->localRotateY(e.xrel * MOUSESENS);
 	camera->localRotateX(e.yrel * MOUSESENS);
-#endif //MOUSEINVERT
-	engine->input->resetMousePosition();
+	//engine->input->resetMousePosition();
 }
 
 void cleanup()
