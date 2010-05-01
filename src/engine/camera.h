@@ -26,18 +26,19 @@
 #ifndef ENGINE_CAMERA_H
 #define ENGINE_CAMERA_H
 
-#include "SDL.h"
-#include "SDL_opengl.h" 
 #include "object.h"
 
 extern vector3 zeroVector;
 
 class Camera : public Object
 {
+	private:
+		float fov;
 	public:
 		Camera(vector3 position, vector3 forward, vector3 up);
-		void update();
-		void setFov(float fov);
+		matrix44 lookAtMatrix()
+		void setFov(float newFov);
+		float getFov();
 };
 
 #endif //ENGINE_CAMERA_H

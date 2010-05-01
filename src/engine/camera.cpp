@@ -31,42 +31,20 @@ Camera::Camera(vector3 newPosition, vector3 newForward, vector3 newUp) : Object 
 {
 }
 
-void Camera::update()
+matrix44 Camera::lookAtMatrix()
 {
-	//build a look-at matrix
 	matrix44 view;
 	matrix_look_at_RH(view, zeroVector, forward, up);
-    
-	//future matrix inputs modify model view...
-	glMatrixMode(GL_MODELVIEW);
-    
-	//initialise model view matrix to identity
-	glLoadIdentity();
-	
-	//apply rotate world openGL primitives around camera
-	glLoadMatrixf(view.data());
-
-	//translate opnGL primitives so that camera sits at (0, 0, 0)
-	glTranslatef(-position[0], -position[1], -position[2]);
-    
-    return;
+	return view;
 }
 
-
-//This function is not safe to call during openGL rendering! (crash if done during, won't work if done after)
-void Camera::setFov(float fov)
+void Camera::setFov(float newFov)
 {
-	//calculate aspect ratio
-	const SDL_VideoInfo* videoInfo = SDL_GetVideoInfo();
-	float aspectRatio = (float) videoInfo->current_w / (float) videoInfo->current_h;
-	
-	//setting up projection...
-	glMatrixMode(GL_PROJECTION);
-	
-	//initialise projection matrix to identity
-	glLoadIdentity();
+	fov = newFov;
+}
 
-	//apply a Frustum to projection matrix
-	glFrustum (-aspectRatio, aspectRatio, -1.0, 1.0, fov, 1000);
+float Camera::getFov()
+{
+	return fov;
 }
 

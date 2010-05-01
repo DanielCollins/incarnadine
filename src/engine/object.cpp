@@ -36,6 +36,11 @@ Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
 	forward = normalize(forward);
 }
 
+vector3 Object::getPosition()
+{
+	return position;
+}
+
 void Object::localRotate(vector3 direction, float angle)
 {
 	direction = normalize(direction);

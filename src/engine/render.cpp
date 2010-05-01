@@ -34,7 +34,32 @@ RenderManager::RenderManager(Camera* newCamera, SceneManager* newScene, Display*
 
 void RenderManager::draw()
 {
-	camera->update();
+	//calculate aspect ratio
+	const SDL_VideoInfo* videoInfo = SDL_GetVideoInfo();
+	float aspectRatio = (float) videoInfo->current_w / (float) videoInfo->current_h;
+	
+	//setting up projection...
+	glMatrixMode(GL_PROJECTION);
+	
+	//initialise projection matrix to identity
+	glLoadIdentity();
+
+	//apply a Frustum to projection matrix
+	glFrustum (-aspectRatio, aspectRatio, -1.0, 1.0, camera->getFov(), 1000);
+
+	//future matrix inputs modify model view...
+	glMatrixMode(GL_MODELVIEW);
+    
+	//initialise model view matrix to identity
+	glLoadIdentity();
+	
+	//rotate world openGL primitives around camera
+	glLoadMatrixf(camera->lookAtMatrix().data());
+
+	//translate openGL primitives so that camera sits at (0, 0, 0)
+	vector3 cPosition = camera->getPosition();
+	glTranslatef(-cPosition[0], -cPosition[1], -cPosition[2]);
+    
 	scene->rasterize();
 	display->update();
 }

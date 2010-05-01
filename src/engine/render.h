@@ -26,9 +26,13 @@
 #ifndef ENGINE_RENDER_H
 #define ENGINE_RENDER_H
 
+#include "SDL.h"
+#include "SDL_opengl.h"
+#include "tools.h"
 #include "camera.h"
 #include "display.h"
 #include "scene.h"
+
 
 class RenderManager
 {

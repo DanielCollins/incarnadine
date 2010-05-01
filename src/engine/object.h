@@ -42,6 +42,7 @@ class Object
 
 	public:
 		Object(vector3 position, vector3 forward, vector3 up);
+		vector3 getPosition();
 		void localRotate(vector3 direction, float angle);
 		void localRotateX(float angle);
 		void localRotateY(float angle);
