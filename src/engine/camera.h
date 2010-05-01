@@ -35,7 +35,7 @@ class Camera : public Object
 	private:
 		float fov;
 	public:
-		Camera(vector3 position, vector3 forward, vector3 up);
+		Camera(vector3 position, vector3 forward, vector3 up, float newFov);
 		matrix44 lookAtMatrix()
 		void setFov(float newFov);
 		float getFov();
