@@ -59,6 +59,9 @@ void RenderManager::draw()
 	//translate openGL primitives so that camera sits at (0, 0, 0)
 	vector3 cPosition = camera->getPosition();
 	glTranslatef(-cPosition[0], -cPosition[1], -cPosition[2]);
+
+	//blank screen buffers
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
 	scene->rasterize();
 	display->update();
