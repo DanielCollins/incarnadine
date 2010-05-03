@@ -33,8 +33,7 @@
 class SceneManager
 {
 	private:
-		const int bufferCount = 1;
-		unsigned int bufferIdentifiers[bufferCount];
+		unsigned int bufferIdentifiers[1];
 
 	public:
 		SceneManager();
