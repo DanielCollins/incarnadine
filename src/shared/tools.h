@@ -9,4 +9,6 @@ typedef cml::matrix44f_c matrix44;
 
 #include <cmath>
 
+#define BUFFER_OFFSET(i) ((char*)0 + (i))
+
 #endif //SHARED_TOOLS_H

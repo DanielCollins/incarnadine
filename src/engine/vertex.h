@@ -23,23 +23,28 @@
 //
 //========================================================================
 
-#ifndef ENGINE_SCENE_H
-#define ENGINE_SCENE_H
+#ifndef ENGINE_VERTEX_H
+#define ENGINE_VERTEX_H
 
-#include "SDL_opengl.h"
-#include "vertex.h" 
-#include "tools.h"
-
-class SceneManager
+struct Colour
 {
-	private:
-		const int bufferCount = 1;
-		unsigned int bufferIdentifiers[bufferCount];
-
-	public:
-		SceneManager();
-		~SceneManager();
-		void rasterize();
+	float r;
+	float g;
+	float b;
+	float a;
 };
 
-#endif //ENGINE_SCENE_H
+struct Coordinate
+{
+	float x;
+	float y;
+	float z;
+};
+
+struct Vertex
+{
+	Coordinate position;
+	Colour colour;	
+};
+
+#endif //ENGINE_VERTEX_H
