@@ -58,7 +58,7 @@ SceneManager::SceneManager()
 
 SceneManager::~SceneManager()
 {
-	glDeleteBuffers(1, bufferIdentifiers);
+	glDeleteBuffers(MAX_BUFFER_OBJECTS, bufferIdentifiers);
 }
 
 void SceneManager::rasterize()
