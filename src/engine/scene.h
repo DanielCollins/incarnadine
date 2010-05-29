@@ -30,10 +30,12 @@
 #include "vertex.h" 
 #include "tools.h"
 
+#define MAX_BUFFER_OBJECTS 200
+
 class SceneManager
 {
 	private:
-		unsigned int bufferIdentifiers[1];
+		unsigned int bufferIdentifiers[MAX_BUFFER_OBJECTS];
 
 	public:
 		SceneManager();

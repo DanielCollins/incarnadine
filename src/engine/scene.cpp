@@ -51,7 +51,7 @@ SceneManager::SceneManager()
 	vertexData[2].position.y = -1.0;
 	vertexData[2].position.z = 0.0;
 
-	glGenBuffers(1, (GLuint*) bufferIdentifiers);
+	glGenBuffers(1, (GLuint*) bufferIdentifiers[0]);
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifiers[0]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount, vertexData, GL_DYNAMIC_DRAW);
 }
