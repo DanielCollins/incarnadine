@@ -38,10 +38,10 @@ class Object
 		vector3 forward;
 		vector3 up;
 		vector3 left;
-		Renderable form;
+		Renderable *form;
 
 	public:
-		Object(vector3 position, vector3 forward, vector3 up);
+		Object(vector3 position, vector3 forward, vector3 up, Renderable *shape);
 		vector3 getPosition();
 		void localRotate(vector3 direction, float angle);
 		void localRotateX(float angle);
@@ -50,6 +50,7 @@ class Object
 		void goTo(vector3 location);
 		void localTranslate(vector3 displacement);
 		void globalTranslate(vector3 displacement);
+		void draw();
 };
 
 #endif //ENGINE_OBJECT_H

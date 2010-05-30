@@ -23,23 +23,25 @@
 //
 //========================================================================
 
-#ifndef ENGINE_SCENE_H
-#define ENGINE_SCENE_H
+#ifndef ENGINE_VBO_H
+#define ENGINE_VBO_H
 
-#include <vector>
-#include "object.h"
+#include "SDL_opengl.h"
+#include "vertex.h"
+#include "tools.h"
 
-class SceneManager
+class VertexBufferObject
 {
 	private:
-		std::vector<Object*> objects;
+		unsigned int bufferIdentifier;
+		int vertexCount;
+		Vertex vertices[];
 
 	public:
-		SceneManager();
-		~SceneManager();
-		void rasterize();
-		void addObject(Object *newObject);
-		void removeObject(Object *oldObject);
+		VertexBufferObject();
+		~VertexBufferObject();
+		void setVertices(int length, Vertex newVertices[]);
+		void draw();
 };
 
-#endif //ENGINE_SCENE_H
+#endif //ENGINE_VBO_H

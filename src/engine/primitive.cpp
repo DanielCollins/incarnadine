@@ -23,23 +23,25 @@
 //
 //========================================================================
 
-#ifndef ENGINE_SCENE_H
-#define ENGINE_SCENE_H
+#include "primitive.h"
 
-#include <vector>
-#include "object.h"
-
-class SceneManager
+Primitive::Primitive()
 {
-	private:
-		std::vector<Object*> objects;
+	vbo = new VertexBufferObject();
+	load();
+}
 
-	public:
-		SceneManager();
-		~SceneManager();
-		void rasterize();
-		void addObject(Object *newObject);
-		void removeObject(Object *oldObject);
-};
+Primitive::~Primitive()
+{
+	delete vbo;
+}
 
-#endif //ENGINE_SCENE_H
+void Primitive::draw()
+{
+	vbo->draw();
+}
+
+virtual void load()
+{
+	return;
+}

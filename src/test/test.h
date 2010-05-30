@@ -8,6 +8,8 @@
 #include "tools.h"
 #include "input.h"
 #include "camera.h"
+#include "object.h"
+#include "triangle.h"
 
 void runTest();
 void exitTestApp();

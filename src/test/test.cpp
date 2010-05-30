@@ -35,6 +35,7 @@
 Incarnadine* engine;
 Camera* camera;
 SceneManager* scene;
+Object* triangularThing;
 
 Slot<Exiting>* ExitingSlot;
 Slot<MouseMove>* MouseMoveSlot;
@@ -48,6 +49,8 @@ int main(int argc, char* argv[])
 	camera = new Camera(cameraPosition, cameraForward, cameraUp, 1.0f);
 	scene = new SceneManager();	
 	engine = new Incarnadine(camera, scene);
+	Triangle triangle();
+	triangularThing = new Object(cameraPosition, cameraForward, cameraUp, &triangle);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
 	ExitingSlot->connect(&(engine->input->sExiting));
@@ -80,7 +83,6 @@ void runTest()
   
 	loopsRemaining = updateIterations;
 	timeAtLastFrame = currentTime;
-
 	engine->renderer->draw();
 }
 
@@ -102,13 +104,14 @@ void cleanup()
 	ExitingSlot = 0;
 	delete MouseMoveSlot;
 	MouseMoveSlot = 0;
-
 	delete engine;
 	engine = 0;
 	delete camera;
 	camera = 0;
 	delete scene;
 	scene = 0;
+	delete triangularThing;
+	triangularThing = 0;
 }
 
 void exitTestApp()

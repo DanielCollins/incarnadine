@@ -23,23 +23,15 @@
 //
 //========================================================================
 
-#ifndef ENGINE_SCENE_H
-#define ENGINE_SCENE_H
+#ifndef ENGINE_TRIANGLE_H
+#define ENGINE_TRIANGLE_H
 
-#include <vector>
-#include "object.h"
+#include "primitive.h"
 
-class SceneManager
+class Triangle : public Primitive
 {
 	private:
-		std::vector<Object*> objects;
-
-	public:
-		SceneManager();
-		~SceneManager();
-		void rasterize();
-		void addObject(Object *newObject);
-		void removeObject(Object *oldObject);
+    void load();
 };
 
-#endif //ENGINE_SCENE_H
+#endif //ENGINE_TRIANGLE_H

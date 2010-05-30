@@ -23,23 +23,31 @@
 //
 //========================================================================
 
-#ifndef ENGINE_SCENE_H
-#define ENGINE_SCENE_H
+#include "triangle.h"
 
-#include <vector>
-#include "object.h"
-
-class SceneManager
+void Triangle::load()
 {
-	private:
-		std::vector<Object*> objects;
-
-	public:
-		SceneManager();
-		~SceneManager();
-		void rasterize();
-		void addObject(Object *newObject);
-		void removeObject(Object *oldObject);
-};
-
-#endif //ENGINE_SCENE_H
+	Vertex vertexData[3];
+	vertexData[0].colour.r = 1.0;
+	vertexData[0].colour.g = 0.0;
+	vertexData[0].colour.b = 0.0;
+	vertexData[0].colour.a = 1.0;
+	vertexData[0].position.x = 0.0;
+	vertexData[0].position.y = 1.0;
+	vertexData[0].position.z = 0.0;
+	vertexData[1].colour.r = 0.0;
+	vertexData[1].colour.g = 1.0;
+	vertexData[1].colour.b = 0.0;
+	vertexData[1].colour.a = 1.0;
+	vertexData[1].position.x = 1.0;
+	vertexData[1].position.y = -1.0;
+	vertexData[1].position.z = 0.0;
+	vertexData[2].colour.r = 0.0;
+	vertexData[2].colour.g = 0.0;
+	vertexData[2].colour.b = 1.0;
+	vertexData[2].colour.a = 1.0;
+	vertexData[2].position.x = -1.0;
+	vertexData[2].position.y = -1.0;
+	vertexData[2].position.z = 0.0;
+	vbo->setVertices(3, vertexData);
+}

@@ -23,23 +23,42 @@
 //
 //========================================================================
 
-#ifndef ENGINE_SCENE_H
-#define ENGINE_SCENE_H
+#include "vbo.h"
 
-#include <vector>
-#include "object.h"
-
-class SceneManager
+VertexBufferObject::VertexBufferObject()
 {
-	private:
-		std::vector<Object*> objects;
+	bufferIdentifier = 0;
+	vertexCount = 0;
+	glGenBuffers(1, (GLuint*) &bufferIdentifier);
+}
 
-	public:
-		SceneManager();
-		~SceneManager();
-		void rasterize();
-		void addObject(Object *newObject);
-		void removeObject(Object *oldObject);
-};
+~VertexBufferObject::VertexBufferObject()
+{
+	glDeleteBuffers(1, bufferIdentifier);
+}
 
-#endif //ENGINE_SCENE_H
+void VertexBufferObject::setVertices(int length, Vertex newVertices[])
+{
+	vertices = newVertices;
+	vertexCount = length;
+	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount, vertices, GL_DYNAMIC_DRAW);
+}
+
+void VertexBufferObject::draw()
+{
+	if(bufferIdentifier == 0 || vertexCount == 0) return;
+	
+	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
+	
+	glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate)));
+	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0));
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+
+	glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_VERTEX_ARRAY);	
+}

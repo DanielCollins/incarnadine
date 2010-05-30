@@ -25,52 +25,31 @@
 
 #include "scene.h"
 
-SceneManager::SceneManager()
-{
-	int vertexCount = 3;
-	Vertex vertexData[vertexCount];
-	vertexData[0].colour.r = 1.0;
-	vertexData[0].colour.g = 0.0;
-	vertexData[0].colour.b = 0.0;
-	vertexData[0].colour.a = 1.0;
-	vertexData[0].position.x = 0.0;
-	vertexData[0].position.y = 1.0;
-	vertexData[0].position.z = 0.0;
-	vertexData[1].colour.r = 0.0;
-	vertexData[1].colour.g = 1.0;
-	vertexData[1].colour.b = 0.0;
-	vertexData[1].colour.a = 1.0;
-	vertexData[1].position.x = 1.0;
-	vertexData[1].position.y = -1.0;
-	vertexData[1].position.z = 0.0;
-	vertexData[2].colour.r = 0.0;
-	vertexData[2].colour.g = 0.0;
-	vertexData[2].colour.b = 1.0;
-	vertexData[2].colour.a = 1.0;
-	vertexData[2].position.x = -1.0;
-	vertexData[2].position.y = -1.0;
-	vertexData[2].position.z = 0.0;
-
-	glGenBuffers(1, (GLuint*) bufferIdentifiers[0]);
-	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifiers[0]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount, vertexData, GL_DYNAMIC_DRAW);
-}
-
-SceneManager::~SceneManager()
-{
-	glDeleteBuffers(MAX_BUFFER_OBJECTS, bufferIdentifiers);
-}
-
 void SceneManager::rasterize()
 {
-	glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate))); //r,g,b,a = 4
-	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0)); //x,y,z = 3
+  std::vector<Object>::const_iterator i = objects.begin();
+  std::vector<Object>::const_iterator end = objects.end();
+  for(;i != end; i++) (*i)->draw();
+}
 
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
+void SceneManager::addObject(Object *newObject)
+{
+  std::vector<Object>::const_iterator i = objects.begin();
+  std::vector<Object>::const_iterator end = objects.end();
+  for(;i != end; i++) if(newObject == *i) return;
+  objects.push_back(newObject);
+}
 
-	glDrawArrays(GL_TRIANGLES, 0, 3); //vertexCount = 3
-
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);	
+void SceneManager::removeObject(object *oldObject)
+{
+  std::vector<Object>::const_iterator i = objects.begin();
+  std::vector<Object>::const_iterator end = objects.end();
+  for(;i != end; i++)
+  {
+    if(oldObject == *i)
+    {
+      objects.erase(i);
+      return;
+    }
+  }
 }

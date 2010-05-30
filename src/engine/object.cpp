@@ -25,8 +25,10 @@
 
 #include "object.h"
 
-Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
+Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp, Renderable *shape)
 {
+	form = shape;
+	
 	position = newPosition;
 	forward = newForward;
 	up = newUp;
@@ -57,7 +59,7 @@ void Object::localRotateX(float angle)
 
 void Object::localRotateY(float angle)
 {
-    forward = rotate_vector(forward, up, angle);
+	forward = rotate_vector(forward, up, angle);
 	left = normalize(cross(up, forward));
 }
 
@@ -83,6 +85,11 @@ void Object::localTranslate(vector3 displacement)
 void Object::globalTranslate(vector3 displacement)
 {
 	position = position + displacement;
+}
+
+void Object::draw()
+{
+	if(form != 0) form->draw();
 }
 
 
