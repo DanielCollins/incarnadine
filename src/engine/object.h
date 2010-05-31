@@ -38,7 +38,7 @@ class Object
 		vector3 forward;
 		vector3 up;
 		vector3 left;
-		Renderable *form;
+		Renderable* form;
 
 	public:
 		Object(vector3 position, vector3 forward, vector3 up, Renderable *shape);
