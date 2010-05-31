@@ -27,13 +27,14 @@
 #define SHARED_LOG_H
 
 #include <stdio.h>
+#include <time.h>
 
 class Logger
 {
 	private:
 		time_t rawtime;
 		struct tm * timeinfo;
-		char timebuffer [20];
+		char timebuffer [21];
 	
 	protected:
 		FILE* logfile;
@@ -45,3 +46,4 @@ class Logger
 };
 
 #endif //SHARED_LOG_H
+
