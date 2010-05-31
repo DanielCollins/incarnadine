@@ -48,9 +48,14 @@ int main(int argc, char* argv[])
 		
 	camera = new Camera(cameraPosition, cameraForward, cameraUp, 1.0f);
 	scene = new SceneManager();	
-	engine = new Incarnadine(camera, scene);
+	engine = new Incarnadine(camera, scene);	
+	
+	vector3 trianglePosition(0.0, 0.0, 0.0);
+	vector3 triangleForward(0.0, 0.0, 1.0);
+	vector3 triangleUp(0.0, 1.0, 0.0);
+	
 	Triangle triangle();
-	triangularThing = new Object(cameraPosition, cameraForward, cameraUp, &triangle);
+	triangularThing = new Object(trianglePosition, triangleForward, triangleUp, &triangle);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
 	ExitingSlot->connect(&(engine->input->sExiting));
