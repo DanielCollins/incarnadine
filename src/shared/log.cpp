@@ -38,5 +38,11 @@ Logger::~Logger()
 
 void Logger::log(char* message)
 {
+	time (&rawtime);
+	timeinfo = localtime(&rawtime);
+	strftime (timebuffer,20,"%y/%m/%d %H:%M:%S",timeinfo);
+	
+	fputs(timebuffer, logfile);
 	fputs(message, logfile);
+	fputs("\n", logfile);
 }

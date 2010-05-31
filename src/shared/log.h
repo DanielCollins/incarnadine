@@ -30,6 +30,11 @@
 
 class Logger
 {
+	private:
+		time_t rawtime;
+		struct tm * timeinfo;
+		char timebuffer [20];
+	
 	protected:
 		FILE* logfile;
 
