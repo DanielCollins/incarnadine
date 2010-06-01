@@ -42,13 +42,15 @@ void Logger::log(LogLevel level, char* message)
 {
 	if(level >= logginglevel || level >= stdoutlevel)
 	{
+		const int timestamplength = 21;
+		
 		time_t rawtime;
 		struct tm * timeinfo;
-		char timebuffer [21], typestr [9];
+		char timebuffer [timestamplength], typestr [9];
 
 		time(&rawtime);
 		timeinfo = localtime(&rawtime);
-		strftime(timebuffer, 21, "(%y/%m/%d %H:%M:%S) ", timeinfo);
+		strftime(timebuffer, timestamplength, "(%y/%m/%d %H:%M:%S) ", timeinfo);
 
 		switch(level)
 		{
