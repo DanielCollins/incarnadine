@@ -54,9 +54,6 @@ void Logger::log(LogLevel level, char* message)
 
 		switch(level)
 		{
-			case LOG_TRACE:
-				strcpy(typestr, "TRACE   ");
-				break;
 			case LOG_DEBUG:
 				strcpy(typestr, "DEBUG   ");
 				break;
@@ -68,9 +65,6 @@ void Logger::log(LogLevel level, char* message)
 				break;
 			case LOG_ERROR:
 				strcpy(typestr, "ERROR   ");
-				break;
-			case LOG_FATAL:
-				strcpy(typestr, "FATAL   ");
 				break;
 		}
 
