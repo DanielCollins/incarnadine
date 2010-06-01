@@ -27,6 +27,7 @@
 #define SHARED_LOG_H
 
 #include <stdio.h>
+#include <string.h>
 #include <time.h>
 
 enum LogLevel {	LOG_ALL     = 0, LOG_TRACE = 1,
@@ -39,10 +40,11 @@ class Logger
 {
 	protected:
 		FILE* logfile;
-		LogLevel currlevel;
+		LogLevel logginglevel;
+		LogLevel stdoutlevel;
 
 	public:
-		Logger(char* filename);
+		Logger(char* filename, LogLevel loggingl, LogLevel stdoutl);
 		~Logger();
 		void log(LogLevel level, char* message);
 		

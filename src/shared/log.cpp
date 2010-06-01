@@ -25,10 +25,11 @@
 
 #include "log.h"
 
-Logger::Logger(char* filename)
+Logger::Logger(char* filename, LogLevel loggingl = LOG_WARNING, LogLevel stdoutl = LOG_ALL)// : logginglevel(loggingl), stdoutlevel(stdoutl)
 {
 	logfile = fopen(filename, "a");
-	currlevel = LOG_ALL;
+	logginglevel = loggingl;
+	stdoutlevel = stdoutl;
 }
 
 Logger::~Logger()
@@ -39,7 +40,7 @@ Logger::~Logger()
 
 void Logger::log(LogLevel level, char* message)
 {
-	if(level >= currlevel)
+	if(level >= logginglevel || level >= stdoutlevel)
 	{
 		time_t rawtime;
 		struct tm * timeinfo;
@@ -49,19 +50,62 @@ void Logger::log(LogLevel level, char* message)
 		timeinfo = localtime(&rawtime);
 		strftime(timebuffer,21,"(%y/%m/%d %H:%M:%S) ",timeinfo);
 		
-		fputs(timebuffer, logfile);
-		fputs(message, logfile);
-		fputs("\n", logfile);
+		char typestr [8];
+	
+		switch(level)
+		{
+			case LOG_ALL:
+				strcpy(typestr, "ALL     ");
+				break;
+			case LOG_TRACE:
+				strcpy(typestr, "TRACE   ");
+				break;
+			case LOG_DEBUG:
+				strcpy(typestr, "DEBUG   ");
+				break;
+			case LOG_INFO:
+				strcpy(typestr, "INFO    ");
+				break;
+			case LOG_WARNING:
+				strcpy(typestr, "WARNING ");
+				break;
+			case LOG_ERROR:
+				strcpy(typestr, "ERROR   ");
+				break;
+			case LOG_FATAL:
+				strcpy(typestr, "FATAL   ");
+				break;
+			case LOG_NONE:
+				strcpy(typestr, "NONE    ");
+				break;
+		}
+		
+		
+		
+		if(level >= logginglevel)
+		{
+			fputs(timebuffer, logfile);
+			fputs(typestr,    logfile);
+			fputs(message,    logfile);
+			fputs("\n",       logfile);
+		}
+		if(level >= stdoutlevel)
+		{
+			fputs(timebuffer, stdout);
+			fputs(typestr,    stdout);
+			fputs(message,    stdout);
+			fputs("\n",       stdout);
+		}
 	}
 }
 
 LogLevel Logger::getLogLevel()
 {
-	return currlevel;
+	return logginglevel;
 }
 
 void Logger::setLogLevel(LogLevel level)
 {
-	currlevel = level;
+	logginglevel = level;
 }
 
