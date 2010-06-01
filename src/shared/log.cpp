@@ -28,6 +28,7 @@
 Logger::Logger(char* filename)
 {
 	logfile = fopen(filename, "a");
+	currlevel = LOG_ALL;
 }
 
 Logger::~Logger()
@@ -36,18 +37,31 @@ Logger::~Logger()
 	delete logfile;
 }
 
-void Logger::log(char* message)
+void Logger::log(LogLevel level, char* message)
 {
-	time_t rawtime;
-	struct tm * timeinfo;
-	char timebuffer [21];
-	
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	strftime(timebuffer,21,"%y/%m/%d %H:%M:%S",timeinfo);
-	
-	fputs(timebuffer, logfile);
-	fputs(message, logfile);
-	fputs("\n", logfile);
+	if(level >= currlevel)
+	{
+		time_t rawtime;
+		struct tm * timeinfo;
+		char timebuffer [21];
+		
+		time(&rawtime);
+		timeinfo = localtime(&rawtime);
+		strftime(timebuffer,21,"(%y/%m/%d %H:%M:%S) ",timeinfo);
+		
+		fputs(timebuffer, logfile);
+		fputs(message, logfile);
+		fputs("\n", logfile);
+	}
+}
+
+LogLevel Logger::getLogLevel()
+{
+	return currlevel;
+}
+
+void Logger::setLogLevel(LogLevel level)
+{
+	currlevel = level;
 }
 

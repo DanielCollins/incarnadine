@@ -29,15 +29,25 @@
 #include <stdio.h>
 #include <time.h>
 
+enum LogLevel {	LOG_ALL     = 0, LOG_TRACE = 1,
+				LOG_DEBUG   = 2, LOG_INFO  = 3,
+				LOG_WARNING = 4, LOG_ERROR = 5,
+				LOG_FATAL   = 6, LOG_NONE  = 7};
+
+
 class Logger
 {
 	protected:
 		FILE* logfile;
+		LogLevel currlevel;
 
 	public:
 		Logger(char* filename);
 		~Logger();
-		void log(char* message);
+		void log(LogLevel level, char* message);
+		
+		LogLevel getLogLevel();
+		void setLogLevel(LogLevel level);
 };
 
 #endif //SHARED_LOG_H
