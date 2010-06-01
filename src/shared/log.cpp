@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 David Forrest
+// Copyright (c) 2010 David Forrest, Daniel Collins
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -25,32 +25,32 @@
 
 #include "log.h"
 
-Logger::Logger(char* filename, LogLevel loggingl = LOG_WARNING, LogLevel stdoutl = LOG_ALL)// : logginglevel(loggingl), stdoutlevel(stdoutl)
+Logger::Logger(char* filename, LogLevel loggingl = LOG_WARNING, LogLevel stdoutl = LOG_ALL)
 {
-	logfile = fopen(filename, "a");
-	logginglevel = loggingl;
-	stdoutlevel = stdoutl;
+	logFile = fopen(filename, "a");
+	loggingLevel = loggingl;
+	stdoutLevel = stdoutl;
 }
 
 Logger::~Logger()
 {
-	fclose(logfile);
-	delete logfile;
+	fclose(logFile);
+	delete logFile;
+	logFile = 0;
 }
 
 void Logger::log(LogLevel level, char* message)
 {
-	if(level >= logginglevel || level >= stdoutlevel)
+	if(level >= loggingLevel || level >= stdoutLevel)
 	{
-		const int timestamplength = 21;
-		
-		time_t rawtime;
-		struct tm * timeinfo;
-		char timebuffer [timestamplength], typestr [9];
+		const int timestampLength = 21;		
+		time_t rawTime;
+		struct tm* timeInfo;
+		char timeBuffer [timestampLength], typestr [9];
 
-		time(&rawtime);
-		timeinfo = localtime(&rawtime);
-		strftime(timebuffer, timestamplength, "(%y/%m/%d %H:%M:%S) ", timeinfo);
+		time(&rawTime);
+		timeInfo = localtime(&rawTime);
+		strftime(timeBuffer, timestampLength, "(%y/%m/%d %H:%M:%S) ", timeInfo);
 
 		switch(level)
 		{
@@ -81,16 +81,16 @@ void Logger::log(LogLevel level, char* message)
 		}
 
 
-		if(level >= logginglevel)
+		if(level >= loggingLevel)
 		{
-			fputs(timebuffer, logfile);
-			fputs(typestr,    logfile);
-			fputs(message,    logfile);
-			fputs("\n",       logfile);
+			fputs(timeBuffer, logFile);
+			fputs(typestr,    logFile);
+			fputs(message,    logFile);
+			fputs("\n",       logFile);
 		}
-		if(level >= stdoutlevel)
+		if(level >= stdoutLevel)
 		{
-			fputs(timebuffer, stdout);
+			fputs(timeBuffer, stdout);
 			fputs(typestr,    stdout);
 			fputs(message,    stdout);
 			fputs("\n",       stdout);
@@ -100,11 +100,11 @@ void Logger::log(LogLevel level, char* message)
 
 LogLevel Logger::getLogLevel()
 {
-	return logginglevel;
+	return loggingLevel;
 }
 
 void Logger::setLogLevel(LogLevel level)
 {
-	logginglevel = level;
+	loggingLevel = level;
 }
 

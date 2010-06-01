@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 David Forrest
+// Copyright (c) 2010 David Forrest, Daniel Collins
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -30,18 +30,21 @@
 #include <string.h>
 #include <time.h>
 
-enum LogLevel {	LOG_ALL     = 0, LOG_TRACE = 1,
-				LOG_DEBUG   = 2, LOG_INFO  = 3,
-				LOG_WARNING = 4, LOG_ERROR = 5,
-				LOG_FATAL   = 6, LOG_NONE  = 7};
-
+enum LogLevel {	LOG_ALL = 0,
+                LOG_TRACE = 1,
+                LOG_DEBUG = 2,
+                LOG_INFO  = 3,
+                LOG_WARNING = 4,
+                LOG_ERROR = 5,
+                LOG_FATAL = 6,
+                LOG_NONE  = 7};
 
 class Logger
 {
 	protected:
-		FILE* logfile;
-		LogLevel logginglevel;
-		LogLevel stdoutlevel;
+		FILE* logFile;
+		LogLevel loggingLevel;
+		LogLevel stdoutLevel;
 
 	public:
 		Logger(char* filename, LogLevel loggingl, LogLevel stdoutl);
