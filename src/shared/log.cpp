@@ -44,11 +44,11 @@ void Logger::log(LogLevel level, char* message)
 	{
 		time_t rawtime;
 		struct tm * timeinfo;
-		char timebuffer [25], typestr [8];
+		char timebuffer [21], typestr [9];
 
 		time(&rawtime);
 		timeinfo = localtime(&rawtime);
-		strftime(timebuffer, 25, "(%y/%m/%d %H:%M:%S) ", timeinfo);
+		strftime(timebuffer, 21, "(%y/%m/%d %H:%M:%S) ", timeinfo);
 
 		switch(level)
 		{
@@ -62,14 +62,10 @@ void Logger::log(LogLevel level, char* message)
 				strcpy(typestr, "DEBUG   ");
 				break;
 			case LOG_INFO:
-        printf("time(before): %s\n", timebuffer);
 				strcpy(typestr, "INFO    ");
-        printf("time(after): %s\n", timebuffer);
 				break;
 			case LOG_WARNING:
-        printf("time(before): %s\n", timebuffer);
 				strcpy(typestr, "WARNING ");
-        printf("time(after): %s\n", timebuffer);
 				break;
 			case LOG_ERROR:
 				strcpy(typestr, "ERROR   ");
