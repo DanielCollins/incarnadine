@@ -66,6 +66,8 @@ void Logger::log(LogLevel level, char* message)
 			case LOG_ERROR:
 				strcpy(typestr, "ERROR   ");
 				break;
+			default:
+				return;
 		}
 
 
