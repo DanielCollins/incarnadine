@@ -27,7 +27,6 @@
 #define ENGINE_OBJECT_H
 
 #include "tools.h"
-#include "renderable.h"
 
 using namespace cml;
 
@@ -38,10 +37,9 @@ class Object
 		vector3 forward;
 		vector3 up;
 		vector3 left;
-		Renderable* form;
 
 	public:
-		Object(vector3 position, vector3 forward, vector3 up, Renderable *shape);
+		Object(vector3 position, vector3 forward, vector3 up);
 		vector3 getPosition();
 		void localRotate(vector3 direction, float angle);
 		void localRotateX(float angle);
@@ -50,7 +48,6 @@ class Object
 		void goTo(vector3 location);
 		void localTranslate(vector3 displacement);
 		void globalTranslate(vector3 displacement);
-		void draw();
 };
 
 #endif //ENGINE_OBJECT_H

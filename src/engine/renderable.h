@@ -26,9 +26,13 @@
 #ifndef ENGINE_RENDERABLE_H
 #define ENGINE_RENDERABLE_H
 
-class Renderable
+#include "object.h"
+#include "tools.h"
+
+class Renderable : public Object
 {
 	public:
+    Renderable(vector3 position, vector3 forward, vector3 up);
 		virtual void draw() = 0;
 };
 

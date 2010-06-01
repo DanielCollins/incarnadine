@@ -25,6 +25,8 @@
 
 #include "triangle.h"
 
+Triangle::Triangle(vector3 position, vector3 forward, vector3 up) : Primitive (position, forward, up) {}
+
 void Triangle::load()
 {
 	Vertex vertexData[3];

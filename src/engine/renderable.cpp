@@ -23,23 +23,6 @@
 //
 //========================================================================
 
-#ifndef ENGINE_SCENE_H
-#define ENGINE_SCENE_H
-
-#include <vector>
 #include "renderable.h"
 
-class SceneManager
-{
-	private:
-		std::vector<Renderable*> objects;
-
-	public:
-		SceneManager();
-		~SceneManager();
-		void rasterize();
-		void addObject(Renderable *newObject);
-		void removeObject(Renderable *oldObject);
-};
-
-#endif //ENGINE_SCENE_H
+Renderable::Renderable(vector3 position, vector3 forward, vector3 up) : object (position, forward, up){}

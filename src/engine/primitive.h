@@ -28,6 +28,7 @@
 
 #include "renderable.h"
 #include "vbo.h"
+#include "tools.h"
 
 class Primitive : public Renderable
 {
@@ -36,7 +37,7 @@ class Primitive : public Renderable
 		virtual void load();
 		
 	public:
-		Primitive();
+		Primitive(vector3 position, vector3 forward, vector3 up);
 		~Primitive();
 		void draw();
 };

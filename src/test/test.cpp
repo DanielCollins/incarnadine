@@ -35,7 +35,6 @@
 Incarnadine* engine;
 Camera* camera;
 SceneManager* scene;
-Object* triangularThing;
 
 Slot<Exiting>* ExitingSlot;
 Slot<MouseMove>* MouseMoveSlot;
@@ -54,8 +53,8 @@ int main(int argc, char* argv[])
 	vector3 triangleForward(0.0, 0.0, 1.0);
 	vector3 triangleUp(0.0, 1.0, 0.0);
 	
-	Triangle triangle();
-	triangularThing = new Object(trianglePosition, triangleForward, triangleUp, &triangle);
+	Triangle triangle(trianglePosition, triangleForward, triangleUp);
+	scene->addObject(&triangle);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
 	ExitingSlot->connect(&(engine->input->sExiting));
@@ -64,12 +63,10 @@ int main(int argc, char* argv[])
 		
 	while(true) runTest();	
 	exitTestApp();
-		
-	//If this statement ever executes we must be in the matrix
+	
 	return EXIT_FAILURE;
 }
 
-//Main Loop
 void runTest() 
 {
 	static double timeAtLastFrame = 0.0;
@@ -115,8 +112,6 @@ void cleanup()
 	camera = 0;
 	delete scene;
 	scene = 0;
-	delete triangularThing;
-	triangularThing = 0;
 }
 
 void exitTestApp()

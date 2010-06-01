@@ -25,7 +25,7 @@
 
 #include "primitive.h"
 
-Primitive::Primitive()
+Primitive::Primitive(vector3 position, vector3 forward, vector3 up) : Renderable (position, forward, up)
 {
 	vbo = new VertexBufferObject();
 	load();

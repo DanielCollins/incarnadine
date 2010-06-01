@@ -27,7 +27,7 @@
 
 vector3 zeroVector(0.0, 0.0, 0.0);
 
-Camera::Camera(vector3 newPosition, vector3 newForward, vector3 newUp, float newFov) : Object (newPosition, newForward, newUp, 0)
+Camera::Camera(vector3 newPosition, vector3 newForward, vector3 newUp, float newFov) : Object (newPosition, newForward, newUp)
 {
 	setFov(newFov);
 }

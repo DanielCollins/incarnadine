@@ -27,10 +27,12 @@
 #define ENGINE_TRIANGLE_H
 
 #include "primitive.h"
+#include "tools.h"
 
 class Triangle : public Primitive
 {
 	private:
+		Triangle(vector3 position, vector3 forward, vector3 up);
     void load();
 };
 

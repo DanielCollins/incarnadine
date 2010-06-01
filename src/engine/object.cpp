@@ -25,7 +25,7 @@
 
 #include "object.h"
 
-Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp, Renderable *shape)
+Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
 {
 	form = shape;
 	
@@ -86,10 +86,4 @@ void Object::globalTranslate(vector3 displacement)
 {
 	position = position + displacement;
 }
-
-void Object::draw()
-{
-	if(form != 0) form->draw();
-}
-
 

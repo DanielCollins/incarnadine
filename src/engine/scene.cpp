@@ -32,7 +32,7 @@ void SceneManager::rasterize()
   for(;i != end; i++) (*i)->draw();
 }
 
-void SceneManager::addObject(Object *newObject)
+void SceneManager::addObject(Renderable *newObject)
 {
   std::vector<Object>::const_iterator i = objects.begin();
   std::vector<Object>::const_iterator end = objects.end();
@@ -40,7 +40,7 @@ void SceneManager::addObject(Object *newObject)
   objects.push_back(newObject);
 }
 
-void SceneManager::removeObject(object *oldObject)
+void SceneManager::removeObject(Renderable *oldObject)
 {
   std::vector<Object>::const_iterator i = objects.begin();
   std::vector<Object>::const_iterator end = objects.end();
