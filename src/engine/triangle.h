@@ -33,8 +33,10 @@
 
 class Triangle : public Primitive
 {
-	private:
+	public:
 		Triangle(vector3 position, vector3 forward, vector3 up);
+		
+	private:
     void load();
 };
 
