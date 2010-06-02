@@ -27,6 +27,7 @@
 #define ENGINE_VBO_H
 
 #include "SDL_opengl.h"
+#include "mesh.h"
 #include "vertex.h"
 #include "tools.h"
 
@@ -34,13 +35,12 @@ class VertexBufferObject
 {
 	private:
 		unsigned int bufferIdentifier;
-		int vertexCount;
-		Vertex vertices[];
+		Mesh mesh
 
 	public:
 		VertexBufferObject();
 		~VertexBufferObject();
-		void setVertices(int length, Vertex newVertices[]);
+		void setMesh(Mesh newMesh);
 		void draw();
 };
 

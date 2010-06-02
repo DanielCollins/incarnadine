@@ -29,27 +29,35 @@ Triangle::Triangle(vector3 position, vector3 forward, vector3 up) : Primitive (p
 
 void Triangle::load()
 {
-	Vertex vertexData[3];
-	vertexData[0].colour.r = 1.0;
-	vertexData[0].colour.g = 0.0;
-	vertexData[0].colour.b = 0.0;
-	vertexData[0].colour.a = 1.0;
-	vertexData[0].position.x = 0.0;
-	vertexData[0].position.y = 1.0;
-	vertexData[0].position.z = 0.0;
-	vertexData[1].colour.r = 0.0;
-	vertexData[1].colour.g = 1.0;
-	vertexData[1].colour.b = 0.0;
-	vertexData[1].colour.a = 1.0;
-	vertexData[1].position.x = 1.0;
-	vertexData[1].position.y = -1.0;
-	vertexData[1].position.z = 0.0;
-	vertexData[2].colour.r = 0.0;
-	vertexData[2].colour.g = 0.0;
-	vertexData[2].colour.b = 1.0;
-	vertexData[2].colour.a = 1.0;
-	vertexData[2].position.x = -1.0;
-	vertexData[2].position.y = -1.0;
-	vertexData[2].position.z = 0.0;
-	vbo->setVertices(3, vertexData);
+	Vertex vertex;
+	Mesh triangularMesh; 
+	
+	vertex.colour.r = 1.0;
+	vertex.colour.g = 0.0;
+	vertex.colour.b = 0.0;
+	vertex.colour.a = 1.0;
+	vertex.position.x = 0.0;
+	vertex.position.y = 1.0;
+	vertex.position.z = 0.0;
+	trianglarMesh.pushVertex(vertex);
+	
+	vertex.colour.r = 0.0;
+	vertex.colour.g = 1.0;
+	vertex.colour.b = 0.0;
+	vertex.colour.a = 1.0;
+	vertex.position.x = 1.0;
+	vertex.position.y = -1.0;
+	vertex.position.z = 0.0;
+	trianglarMesh.pushVertex(vertex);
+	
+	vertex.colour.r = 0.0;
+	vertex.colour.g = 0.0;
+	vertex.colour.b = 1.0;
+	vertex.colour.a = 1.0;
+	vertex.position.x = -1.0;
+	vertex.position.y = -1.0;
+	vertex.position.z = 0.0;
+	trianglarMesh.pushVertex(vertex);
+	
+	vbo->setMesh(triangularMesh);
 }

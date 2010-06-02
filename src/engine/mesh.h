@@ -23,40 +23,22 @@
 //
 //========================================================================
 
-#include "vbo.h"
+#ifndef ENGINE_MESH_H
+#define ENGINE_MESH_H
 
-VertexBufferObject::VertexBufferObject()
+#include <vector>
+#include "vertex.h"
+
+class Mesh
 {
-	bufferIdentifier = 0;
-	glGenBuffers(1, (GLuint*) &bufferIdentifier);
-}
+	private:
+		std::vector<Vertex> vertexData;
 
-~VertexBufferObject::VertexBufferObject()
-{
-	glDeleteBuffers(1, bufferIdentifier);
-}
+	public:
+		void pushVertex(Vertex newVertex);
+		void clearVertexData();
+		int vertexCount();
+		Vertex* vertexArray();
+};
 
-void VertexBufferObject::setMesh(Mesh newMesh)
-{
-	mesh = newMesh;
-	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * mesh.vertexCount(), mesh.vertexArray(), GL_DYNAMIC_DRAW);
-}
-
-void VertexBufferObject::draw()
-{
-	if(bufferIdentifier == 0 || mesh.vertexCount() == 0) return;
-	
-	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	
-	glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate)));
-	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0));
-
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-
-	glDrawArrays(GL_TRIANGLES, 0, mesh.vertexCount());
-
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);	
-}
+#endif //ENGINE_MESH_H

@@ -23,40 +23,24 @@
 //
 //========================================================================
 
-#include "vbo.h"
+#include "mesh.h"
 
-VertexBufferObject::VertexBufferObject()
+void Mesh::pushVertex(Vertex newVertex)
 {
-	bufferIdentifier = 0;
-	glGenBuffers(1, (GLuint*) &bufferIdentifier);
+	vertexData.push_back(newVertex);
 }
 
-~VertexBufferObject::VertexBufferObject()
+void Mesh::clearVertexData()
 {
-	glDeleteBuffers(1, bufferIdentifier);
+	vertexData.clear()
 }
 
-void VertexBufferObject::setMesh(Mesh newMesh)
+int Mesh::vertexCount()
 {
-	mesh = newMesh;
-	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * mesh.vertexCount(), mesh.vertexArray(), GL_DYNAMIC_DRAW);
+	return vertexData.size();
 }
 
-void VertexBufferObject::draw()
+Vertex* Mesh::vertexArray()
 {
-	if(bufferIdentifier == 0 || mesh.vertexCount() == 0) return;
-	
-	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	
-	glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate)));
-	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0));
-
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-
-	glDrawArrays(GL_TRIANGLES, 0, mesh.vertexCount());
-
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);	
+	return &vertexData[0];    //assumption that std::Vector is storing elements in contigious linear memory
 }
