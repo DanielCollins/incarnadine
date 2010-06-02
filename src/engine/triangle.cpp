@@ -35,7 +35,7 @@ void Triangle::load()
 	vertex.colour.r = 1.0;
 	vertex.colour.g = 0.0;
 	vertex.colour.b = 0.0;
-	vertex.colour.a = 1.0;
+	vertex.colour.a = 0.5;
 	vertex.position.x = 0.0;
 	vertex.position.y = 1.0;
 	vertex.position.z = 0.0;
@@ -44,7 +44,7 @@ void Triangle::load()
 	vertex.colour.r = 0.0;
 	vertex.colour.g = 1.0;
 	vertex.colour.b = 0.0;
-	vertex.colour.a = 1.0;
+	vertex.colour.a = 0.5;
 	vertex.position.x = 1.0;
 	vertex.position.y = -1.0;
 	vertex.position.z = 0.0;
@@ -53,7 +53,7 @@ void Triangle::load()
 	vertex.colour.r = 0.0;
 	vertex.colour.g = 0.0;
 	vertex.colour.b = 1.0;
-	vertex.colour.a = 1.0;
+	vertex.colour.a = 0.5;
 	vertex.position.x = -1.0;
 	vertex.position.y = -1.0;
 	vertex.position.z = 0.0;
