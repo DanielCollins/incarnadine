@@ -60,9 +60,6 @@ bool Display::init()
 	//require double buffering
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
-	glShadeModel(GL_SMOOTH);
-	glClearColor (1.0, 1.0, 1.0, 0.0);
-
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	
 	return true;

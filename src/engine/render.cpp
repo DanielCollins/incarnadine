@@ -30,6 +30,9 @@ RenderManager::RenderManager(Camera* newCamera, SceneManager* newScene, Display*
 	camera = newCamera;
 	scene = newScene;
 	display = newDisplay;
+	
+	glShadeModel(GL_SMOOTH);
+	glClearColor (1.0, 1.0, 1.0, 0.0);
 }
 
 void RenderManager::draw()
