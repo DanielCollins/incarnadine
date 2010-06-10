@@ -25,21 +25,26 @@
 
 #include "log.h"
 
-Logger::Logger(char* filename, LogLevel loggingl = LOG_WARNING, LogLevel stdoutl = LOG_ALL)
+Logger::Logger(string* filename, LogLevel levelLog = LOG_WARNING, LogLevel levelOut = LOG_ALL)
 {
-	logFile = fopen(filename, "a");
-	loggingLevel = loggingl;
-	stdoutLevel = stdoutl;
+	logStream = new fstream(filename->c_str(), ios::in | ios::out | ios::app);
+	loggingLevel = levelLog;
+	stdoutLevel = levelOut;
 }
-
+Logger::Logger(char* filename, int fnLength, LogLevel levelLog = LOG_WARNING, LogLevel levelOut = LOG_ALL)
+{
+	logStream = new fstream(filename, ios::in | ios::out | ios::app);
+	loggingLevel = levelLog;
+	stdoutLevel = levelOut;
+}
 Logger::~Logger()
 {
-	fclose(logFile);
-	delete logFile;
-	logFile = 0;
+	logStream->close();
+	delete logStream;
+	logStream = NULL;
 }
 
-void Logger::log(LogLevel level, char* message)
+void Logger::log(LogLevel level, const char* message, int msgLength)
 {
 	if(level >= loggingLevel || level >= stdoutLevel)
 	{
@@ -73,10 +78,10 @@ void Logger::log(LogLevel level, char* message)
 
 		if(level >= loggingLevel)
 		{
-			fputs(timeBuffer, logFile);
-			fputs(typestr,    logFile);
-			fputs(message,    logFile);
-			fputs("\n",       logFile);
+			*logStream << timeBuffer;
+			*logStream << typestr;
+			*logStream << message;
+			*logStream << "\n";
 		}
 		if(level >= stdoutLevel)
 		{
@@ -87,14 +92,25 @@ void Logger::log(LogLevel level, char* message)
 		}
 	}
 }
+void Logger::log(LogLevel level, string* message)
+{
+	log(level, message->c_str(), message->length()+1);
+}
 
-LogLevel Logger::getLogLevel()
+LogLevel Logger::getLoggingLevel()
 {
 	return loggingLevel;
 }
-
-void Logger::setLogLevel(LogLevel level)
+void Logger::setLoggingLevel(LogLevel level)
 {
 	loggingLevel = level;
+}
+LogLevel Logger::getStdoutLevel()
+{
+	return stdoutLevel;
+}
+void Logger::setStdoutLevel(LogLevel level)
+{
+	stdoutLevel = level;
 }
 

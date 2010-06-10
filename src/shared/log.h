@@ -26,11 +26,14 @@
 #ifndef SHARED_LOG_H
 #define SHARED_LOG_H
 
-#include <stdio.h>
-#include <string.h>
+#include <iostream>
+#include <fstream>
+#include <string>
 #include <time.h>
 
-enum LogLevel {	LOG_ALL = 0,
+using namespace std;
+
+enum LogLevel {	LOG_ALL   = 0,
                 LOG_DEBUG = 1,
                 LOG_INFO  = 2,
                 LOG_WARNING = 3,
@@ -40,17 +43,22 @@ enum LogLevel {	LOG_ALL = 0,
 class Logger
 {
 	protected:
-		FILE* logFile;
+		fstream* logStream;
 		LogLevel loggingLevel;
 		LogLevel stdoutLevel;
-
+	
 	public:
-		Logger(char* filename, LogLevel loggingl, LogLevel stdoutl);
+		Logger(string* filename, LogLevel levelLog, LogLevel levelOut);
+		Logger(char* filename, int fnLength, LogLevel levelLog, LogLevel levelOut);
 		~Logger();
-		void log(LogLevel level, char* message);
 		
-		LogLevel getLogLevel();
-		void setLogLevel(LogLevel level);
+		void log(LogLevel level, const char* message, int msgLength);
+		void log(LogLevel level, string* message);
+		
+		LogLevel getLoggingLevel();
+		void setLoggingLevel(LogLevel level);
+		LogLevel getStdoutLevel();
+		void setStdoutLevel(LogLevel level);
 };
 
 #endif //SHARED_LOG_H
