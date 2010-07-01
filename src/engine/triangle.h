@@ -35,7 +35,7 @@ class Triangle : public Primitive
 		Triangle(vector3 position, vector3 forward, vector3 up);
 		
 	private:
-    void load();
+		void load();
 };
 
 #endif //ENGINE_TRIANGLE_H
