@@ -28,6 +28,7 @@
 VertexBufferObject::VertexBufferObject()
 {
 	bufferIdentifier = 0;
+	vertexCount = 0;
 	glGenBuffers(1, (GLuint*) &bufferIdentifier);
 }
 
@@ -36,16 +37,17 @@ VertexBufferObject::VertexBufferObject()
 	glDeleteBuffers(1, bufferIdentifier);
 }
 
-void VertexBufferObject::setMesh(Mesh newMesh)
+void VertexBufferObject::setVertices(int length, Vertex newVertices[])
 {
-	mesh = newMesh;
+	vertices = newVertices;
+	vertexCount = length;
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * mesh.vertexCount(), mesh.vertexArray(), GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount, vertices, GL_DYNAMIC_DRAW);
 }
 
 void VertexBufferObject::draw()
 {
-	if(bufferIdentifier == 0 || mesh.vertexCount() == 0) return;
+	if(bufferIdentifier == 0 || vertexCount == 0) return;
 	
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
 	
@@ -55,7 +57,7 @@ void VertexBufferObject::draw()
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 
-	glDrawArrays(GL_TRIANGLES, 0, mesh.vertexCount());
+	glDrawArrays(GL_TRIANGLES, 0, vertexCount);
 
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);	

@@ -28,8 +28,6 @@
 
 #include "primitive.h"
 #include "tools.h"
-#include "vertex.h"
-#include "mesh.h"
 
 class Triangle : public Primitive
 {
