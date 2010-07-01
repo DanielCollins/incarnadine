@@ -27,8 +27,6 @@
 
 Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
 {
-	form = shape;
-	
 	position = newPosition;
 	forward = newForward;
 	up = newUp;

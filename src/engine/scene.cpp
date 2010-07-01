@@ -27,23 +27,23 @@
 
 void SceneManager::rasterize()
 {
-  std::vector<Renderable>::const_iterator i = objects.begin();
-  std::vector<Renderable>::const_iterator end = objects.end();
+  std::vector<Renderable*>::const_iterator i = objects.begin();
+  std::vector<Renderable*>::const_iterator end = objects.end();
   for(;i != end; i++) (*i)->draw();
 }
 
 void SceneManager::addObject(Renderable *newObject)
 {
-  std::vector<Renderable>::const_iterator i = objects.begin();
-  std::vector<Renderable>::const_iterator end = objects.end();
+  std::vector<Renderable*>::const_iterator i = objects.begin();
+  std::vector<Renderable*>::const_iterator end = objects.end();
   for(;i != end; i++) if(newObject == *i) return;
   objects.push_back(newObject);
 }
 
 void SceneManager::removeObject(Renderable *oldObject)
 {
-  std::vector<Renderable>::const_iterator i = objects.begin();
-  std::vector<Renderable>::const_iterator end = objects.end();
+  std::vector<Renderable*>::const_iterator i = objects.begin();
+  std::vector<Renderable*>::const_iterator end = objects.end();
   for(;i != end; i++)
   {
     if(oldObject == *i)
