@@ -31,9 +31,9 @@ VertexBufferObject::VertexBufferObject()
 	glGenBuffers(1, (GLuint*) &bufferIdentifier);
 }
 
-~VertexBufferObject::VertexBufferObject()
+VertexBufferObject::~VertexBufferObject()
 {
-	glDeleteBuffers(1, bufferIdentifier);
+	glDeleteBuffers(1, (GLuint*) &bufferIdentifier);
 }
 
 void VertexBufferObject::setVertices(std::vector<Vertex> newVertices)
