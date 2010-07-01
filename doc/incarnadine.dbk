@@ -1,4 +1,41 @@
-== Windows ==
+<?xml version="1.0" encoding="UTF-8"?>
+ <book xmlns="http://docbook.org/ns/docbook" version="5.0">
+   <title>Incarnadine</title>
+   <chapter>
+     <title>About Incarnadine</title>
+     <section>
+	<title>Introduction</title>
+	<para>
+		Incarnadine is an experimental 3D rendering engine.
+		You can obtain a copy of the source from the git repository at git://gitorious.org/incarnadine-engine/incarnadine-engine.git.
+		Incarnadine is distributed under the zlib/libpng license, a copy of which is provided in the src directory.
+		To Build and run Incarnadine you will also need to obtain a copy of the SDL library, available from http://www.libsdl.org/download-1.2.php.
+	</para>
+     </section>
+     <section>
+	<title>Contributors</title>
+	<itemizedlist>
+	<listitem>
+		Daniel "PurplePanda" Collins (design, lead developer)
+	</listitem>
+	<listitem>
+		Daniel "evihalf" Flahive (programming and esp. build system)
+	</listitem>
+	<listitem>
+		David "srbs" Forrest <somerandombystander@gmail.com> (general programming)
+	</listitem>
+	<listitem>
+		Oskar "snowrbt" Kruschitz [http://www.snowrbt.com] (logo design)
+	</listitem>
+	</itemizedlist>
+     </section>
+   </chapter>
+   <chapter>
+	<title>Installation</title>
+	<section>
+		<title>Installation</title>
+		<para><![CDATA[
+			== Windows ==
 
 Prerequisites
 -------------
@@ -47,3 +84,7 @@ The CMake GUI is an easy way to generate files that your compiler can work with.
 FIXME: When you want to run the test program, you'll need to
        copy '</path/to/sdl-devel-libs>/lib/SDL.dll' to the directory from which the
        executable is run.
+		]]></para>
+	</section>
+   </chapter>
+ </book>
