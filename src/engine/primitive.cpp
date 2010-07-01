@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, darkf
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -41,7 +41,7 @@ void Primitive::draw()
 	vbo->draw();
 }
 
-virtual void load()
+void Primitive::load()
 {
 	return;
 }

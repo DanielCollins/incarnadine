@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, darkf
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -59,5 +59,5 @@ void Triangle::load()
 	vertexData.position.z = 0.0;
 	vertices.push_back(vertexData);
 
-	vbo->setVertices(vetices);
+	vbo->setVertices(vertices);
 }

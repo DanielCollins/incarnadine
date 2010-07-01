@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, darkf
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -36,7 +36,7 @@ VertexBufferObject::VertexBufferObject()
 	glDeleteBuffers(1, bufferIdentifier);
 }
 
-void VertexBufferObject::setVertices(std::vector<Vertex> newVertices);
+void VertexBufferObject::setVertices(std::vector<Vertex> newVertices)
 {
 	vertices = newVertices;
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
@@ -55,7 +55,7 @@ void VertexBufferObject::draw()
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 
-	glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+	glDrawArrays(GL_TRIANGLES, 0, vertices.size());
 
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);	

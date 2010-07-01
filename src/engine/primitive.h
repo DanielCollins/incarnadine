@@ -32,7 +32,7 @@
 
 class Primitive : public Renderable
 {
-	private:
+	protected:
 		VertexBufferObject* vbo;
 		virtual void load();
 		
