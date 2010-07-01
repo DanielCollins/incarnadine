@@ -29,18 +29,18 @@
 #include "SDL_opengl.h"
 #include "vertex.h"
 #include "tools.h"
+#include <vector>
 
 class VertexBufferObject
 {
 	private:
 		unsigned int bufferIdentifier;
-		int vertexCount;
-		Vertex vertices[];
+		std::vector<Vertex> vertices;
 
 	public:
 		VertexBufferObject();
 		~VertexBufferObject();
-		void setVertices(int length, Vertex newVertices[]);
+		void setVertices(std::vector<Vertex> newVertices);
 		void draw();
 };
 

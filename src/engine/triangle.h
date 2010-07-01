@@ -28,6 +28,7 @@
 
 #include "primitive.h"
 #include "tools.h"
+#include <vector>
 
 class Triangle : public Primitive
 {

@@ -28,7 +28,6 @@
 VertexBufferObject::VertexBufferObject()
 {
 	bufferIdentifier = 0;
-	vertexCount = 0;
 	glGenBuffers(1, (GLuint*) &bufferIdentifier);
 }
 
@@ -37,17 +36,16 @@ VertexBufferObject::VertexBufferObject()
 	glDeleteBuffers(1, bufferIdentifier);
 }
 
-void VertexBufferObject::setVertices(int length, Vertex newVertices[])
+void VertexBufferObject::setVertices(std::vector<Vertex> newVertices);
 {
 	vertices = newVertices;
-	vertexCount = length;
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount, vertices, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size() , &vertices[0], GL_DYNAMIC_DRAW);
 }
 
 void VertexBufferObject::draw()
 {
-	if(bufferIdentifier == 0 || vertexCount == 0) return;
+	if(bufferIdentifier == 0 || vertices.size() == 0) return;
 	
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
 	
