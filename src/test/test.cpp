@@ -85,7 +85,7 @@ void runTest()
   
 	loopsRemaining = updateIterations;
 	timeAtLastFrame = currentTime;
-	engine->renderer->draw();
+	engine->renderScene();
 }
 
 void handleExit(Exiting e)

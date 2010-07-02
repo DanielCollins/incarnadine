@@ -48,6 +48,11 @@ Incarnadine::~Incarnadine()
 	SDL_Quit();
 }
 
+void Incarnadine::renderScene()
+{
+	renderer->draw();
+}
+
 unsigned int Incarnadine::getTicks()
 {
 	return SDL_GetTicks();

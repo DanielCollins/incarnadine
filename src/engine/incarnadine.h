@@ -35,13 +35,15 @@
 
 class Incarnadine
 {
+	private:
+		RenderManager* renderer;
 	public:
 		Display* display;
 		InputManager* input;	
-		RenderManager* renderer;	
 
 		Incarnadine(Camera* newCamera, SceneManager* newSceneManager);
 		~Incarnadine();
+		void renderScene();
 		unsigned int getTicks();
 };
 
