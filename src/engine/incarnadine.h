@@ -28,6 +28,7 @@
 
 #include <cstring>
 #include "SDL.h"
+#include "SDL_opengl.h"
 #include "display.h"
 #include "input.h"
 #include "render.h"

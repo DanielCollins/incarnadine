@@ -85,7 +85,14 @@ void runTest()
   
 	loopsRemaining = updateIterations;
 	timeAtLastFrame = currentTime;
-	engine->renderScene();
+	try
+	{
+		engine->renderScene();
+	}
+	catch (int e)
+	{
+		exitTestApp();
+	}
 }
 
 void handleExit(Exiting e)
@@ -116,6 +123,7 @@ void cleanup()
 
 void exitTestApp()
 {
+	engine->iout(LOG_DEBUG, "test app closing");
 	cleanup();
 	exit(EXIT_SUCCESS);
 }
