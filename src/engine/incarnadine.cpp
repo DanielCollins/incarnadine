@@ -35,15 +35,23 @@ Incarnadine::Incarnadine(Camera* newCamera, SceneManager* newSceneManager)
 	input = new InputManager(display);
 	
 	renderer = new RenderManager(newCamera, newSceneManager, display);
+
+	log = new Logger("incarnadine.log", LOG_INFO, LOG_ALL);
+	iiout(LOG_DEBUG, "init");
 }
 
 Incarnadine::~Incarnadine()
 {
+	iiout(LOG_DEBUG, "exiting");	
+
 	delete input;
 	input = 0;
 
 	delete display;
 	display = 0;
+
+	delete log;
+	log = 0;
 	
 	SDL_Quit();
 }
@@ -51,6 +59,19 @@ Incarnadine::~Incarnadine()
 void Incarnadine::renderScene()
 {
 	renderer->draw();
+}
+
+void Incarnadine::iout(LogLevel level, char* message)
+{
+	if(log) log->log(level, message);
+}
+
+void Incarnadine::iiout(LogLevel level, char* message)
+{
+	Char[100] buff;
+	strcpy(buff, "Incarnadine Engine: ");
+	strncat(buff, message, 79);
+	iout(level, buff);
 }
 
 unsigned int Incarnadine::getTicks()
