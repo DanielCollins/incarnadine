@@ -59,7 +59,8 @@ Incarnadine::~Incarnadine()
 void Incarnadine::renderScene()
 {
 	renderer->draw();
-	if((GLenum errorCode = glGetError()) != GL_NO_ERROR)
+	GLenum errorCode = glGetError();
+	if(errorCode != GL_NO_ERROR)
 	{
 		iiout(LOG_ERROR, gluErrorString(errorCode));
 		throw 0;
@@ -73,7 +74,7 @@ void Incarnadine::iout(LogLevel level, char* message)
 
 void Incarnadine::iiout(LogLevel level, char* message)
 {
-	Char[100] buff;
+	char[100] buff;
 	strcpy(buff, "Incarnadine Engine: ");
 	strncat(buff, message, 79);
 	iout(level, buff);
