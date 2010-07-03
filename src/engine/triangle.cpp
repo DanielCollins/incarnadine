@@ -45,7 +45,7 @@ void Triangle::load()
 	coordinates.push_back(coordinateData);
 
 	colourData.r = 0.0;
-	vcolourData.g = 1.0;
+	colourData.g = 1.0;
 	colourData.b = 0.0;
 	colourData.a = 1.0;
 	colours.push_back(colourData);
