@@ -29,35 +29,40 @@ Triangle::Triangle(vector3 position, vector3 forward, vector3 up) : Primitive (p
 
 void Triangle::load()
 {
-	Vertex vertexData;
-	std::vector<Vertex> vertices;
+	Coordinate coordinateData;
+	Colour colourData;
+	std::vector<Coordinate> coordinates;
+	std::vector<Colour> colours;
 
-	vertexData.colour.r = 1.0;
-	vertexData.colour.g = 0.0;
-	vertexData.colour.b = 0.0;
-	vertexData.colour.a = 1.0;
-	vertexData.position.x = 0.0;
-	vertexData.position.y = 1.0;
-	vertexData.position.z = 0.0;
-	vertices.push_back(vertexData);
+	colourData.r = 1.0;
+	colourData.g = 0.0;
+	colourData.b = 0.0;
+	colourData.a = 1.0;
+	colours.push_back(colourData);
+	coordinateData.x = 0.0;
+	coordinateData.y = 1.0;
+	coordinateData.z = 0.0;
+	coordinates.push_back(coordinateData);
 
-	vertexData.colour.r = 0.0;
-	vertexData.colour.g = 1.0;
-	vertexData.colour.b = 0.0;
-	vertexData.colour.a = 1.0;
-	vertexData.position.x = 1.0;
-	vertexData.position.y = -1.0;
-	vertexData.position.z = 0.0;
-	vertices.push_back(vertexData);
+	colourData.r = 0.0;
+	vcolourData.g = 1.0;
+	colourData.b = 0.0;
+	colourData.a = 1.0;
+	colours.push_back(colourData);
+	coordinateData.x = 1.0;
+	coordinateData.y = -1.0;
+	coordinateData.z = 0.0;
+	coordinates.push_back(coordinateData);
 
-	vertexData.colour.r = 0.0;
-	vertexData.colour.g = 0.0;
-	vertexData.colour.b = 1.0;
-	vertexData.colour.a = 1.0;
-	vertexData.position.x = -1.0;
-	vertexData.position.y = -1.0;
-	vertexData.position.z = 0.0;
-	vertices.push_back(vertexData);
+	colourData.r = 0.0;
+	colourData.g = 0.0;
+	colourData.b = 1.0;
+	colourData.a = 1.0;
+	colours.push_back(colourData);
+	coordinateData.x = -1.0;
+	coordinateData.y = -1.0;
+	coordinateData.z = 0.0;
+	coordinates.push_back(coordinateData);
 
-	vbo->setVertices(vertices);
+	vbo->setVertices(coordinates, colours);
 }

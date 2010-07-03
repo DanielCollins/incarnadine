@@ -41,10 +41,4 @@ struct Coordinate
 	float z;
 };
 
-struct Vertex
-{
-	Coordinate position;
-	Colour colour;	
-};
-
 #endif //ENGINE_VERTEX_H

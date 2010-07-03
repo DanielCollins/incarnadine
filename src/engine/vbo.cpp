@@ -36,27 +36,26 @@ VertexBufferObject::~VertexBufferObject()
 	glDeleteBuffers(1, (GLuint*) &bufferIdentifier);
 }
 
-void VertexBufferObject::setVertices(std::vector<Vertex> newVertices)
+void VertexBufferObject::setVertices(std::vector<Coordinate> newCoordinates, std::vector<Colour> newColours)
 {
-	vertices = newVertices;
+	if(newCoordinates.size() != newColours.size() || newCoordinates.size() == 0) return; 
+	coordinates = newCoordinates;
+	colours = newColours;
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size() , &vertices[0], GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(Coordinate) + sizeof(Colour)) * coordinates.size() , 0, GL_DYNAMIC_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, BUFFER_OFFSET(0), sizeof(Coordinate) * coordinates.size(), &coordinates[0]);
+	glBufferSubData(GL_ARRAY_BUFFER, BUFFER_OFFSET(sizeof(Coordinate) * coordinates.size()), sizeof(Colour) * colours.size(), &colours[0]);
 }
 
 void VertexBufferObject::draw()
 {
-	if(bufferIdentifier == 0 || vertices.size() == 0) return;
-	
+	if(bufferIdentifier == 0 || coordinates.size() == 0 || coordinates.size() != colours.size()) return;	
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	
-	glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate)));
-	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0));
-
+	glVertexPointer(3, GL_FLOAT, 0, BUFFER_OFFSET(0));
+	glColorPointer(4, GL_FLOAT, 0, BUFFER_OFFSET(sizeof(Coordinate) * coordinates.size()));
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
-
-	glDrawArrays(GL_TRIANGLES, 0, vertices.size());
-
+	glDrawArrays(GL_TRIANGLES, 0, coordinates.size());
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);	
 }
