@@ -43,8 +43,8 @@ void VertexBufferObject::setVertices(std::vector<Coordinate> newCoordinates, std
 	colours = newColours;
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(Coordinate) + sizeof(Colour)) * coordinates.size() , 0, GL_DYNAMIC_DRAW);
-	glBufferSubData(GL_ARRAY_BUFFER, BUFFER_OFFSET(0), sizeof(Coordinate) * coordinates.size(), &coordinates[0]);
-	glBufferSubData(GL_ARRAY_BUFFER, BUFFER_OFFSET(sizeof(Coordinate) * coordinates.size()), sizeof(Colour) * colours.size(), &colours[0]);
+	glBufferSubData(GL_ARRAY_BUFFER, (GLintptr) BUFFER_OFFSET(0), sizeof(Coordinate) * coordinates.size(), &coordinates[0]);
+	glBufferSubData(GL_ARRAY_BUFFER, (GLintptr) BUFFER_OFFSET(sizeof(Coordinate) * coordinates.size()), sizeof(Colour) * colours.size(), &colours[0]);
 }
 
 void VertexBufferObject::draw()
