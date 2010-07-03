@@ -35,7 +35,6 @@ Logger::Logger(char* filename, LogLevel loggingl = LOG_WARNING, LogLevel stdoutl
 Logger::~Logger()
 {
 	fclose(logFile);
-	delete logFile;
 	logFile = 0;
 }
 
