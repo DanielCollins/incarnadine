@@ -29,46 +29,19 @@
 #include "aabb.h"
 #include "renderable.h"
 
-class BoundingVolumeHierarchyNode
+class BoundingVolumeHierarchy
 {
 	public:
 		AxisAlignedBoundingBox boundingVolume;
-		
-		BoundingVolumeHierarchyNode();
-		~BoundingVolumeHierarchyNode();
-};
-
-class BoundingVolumeHierarchyVolumeNode : public BoundingVolumeHierarchyNode
-{
-	public:
-		BoundingVolumeHierarchyNode left;
-		BoundingVolumeHierarchyNode right;
-		BoundingVolumeHierarchyNode parent;
-		
-		BoundingVolumeHierarchyVolumeNode();
-		~BoundingVolumeHierarchyVolumeNode();
-		addNode(BoundingVolumeHierarchyLeafNode newLeaf);
-};
-
-class BoundingVolumeHierarchyLeafNode : public BoundingVolumeHierarchyNode
-{
-	public:
-		BoundingVolumeHierarchyNode parent;
-		Renderable content;
-		
-		BoundingVolumeHierarchyLeafNode();
-		~BoundingVolumeHierarchyLeafNode();
-};
-
-class BoundingVolumeHierarchy: public BoundingVolumeHierarchyNode
-{
-	public:
-		BoundingVolumeHierarchyNode left;
-		BoundingVolumeHierarchyNode right;
+		BoundingVolumeHierarchy left;
+		BoundingVolumeHierarchy right;
+		BoundingVolumeHierarchy parent;		
 		
 		BoundingVolumeHierarchy();
 		~BoundingVolumeHierarchy();
-		addNode(BoundingVolumeHierarchyLeafNode newLeaf);
+		addNode(BoundingVolumeHierarchy* newChild);
 };
+
+
 
 #endif //ENGINE_BVH_H
