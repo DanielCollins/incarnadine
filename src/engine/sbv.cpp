@@ -23,14 +23,9 @@
 //
 //========================================================================
 
-#ifndef ENGINE_SBV_H
-#define ENGINE_SBV_H
+#include "sbv.h"
 
-struct SphericalBoundingVolume
+float SphericalBoundingVolume::getVolume()
 {
-	float radius;
-
-	float getVolume();
-};
-
-#endif //ENGINE_SBV_H
+	return 4.1887902 * radius ^ 3;
+}
