@@ -26,13 +26,12 @@
 #ifndef ENGINE_BVH_H
 #define ENGINE_BVH_H
 
-#include "aabb.h"
 #include "renderable.h"
 
 class BoundingVolumeHierarchy
 {
 	private:
-		AxisAlignedBoundingBox boundingVolume;
+		Renderable* object;
 		BoundingVolumeHierarchy left;
 		BoundingVolumeHierarchy right;
 		BoundingVolumeHierarchy parent;		
@@ -40,8 +39,8 @@ class BoundingVolumeHierarchy
 	public:
 		BoundingVolumeHierarchy();
 		~BoundingVolumeHierarchy();
-		void setBoundingVolume(AxisAlignedBoundingBox newBoundingVolume);
-		AxisAlignedBoundingBox getBoundingVolume();
+		void setObject(Renderable* newObject);
+		Renderable* getObject();
 		void addNode(BoundingVolumeHierarchy* newChild);
 		BoundingVolumeHierarchy* getLeftChild();
 		BoundingVolumeHierarchy* getRightChild();
