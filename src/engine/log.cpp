@@ -49,7 +49,7 @@ void Logger::log(LogLevel level, char* message)
 
 		time(&rawTime);
 		timeInfo = localtime(&rawTime);
-		strftime(timeBuffer, timestampLength, "(%y/%m/%d %H:%M:%S) ", timeInfo);
+		strftime(timeBuffer, timestampLength, "%y/%m/%d %H:%M:%S ", timeInfo);
 
 		switch(level)
 		{
