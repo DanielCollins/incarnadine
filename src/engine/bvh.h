@@ -31,15 +31,21 @@
 
 class BoundingVolumeHierarchy
 {
-	public:
+	private:
 		AxisAlignedBoundingBox boundingVolume;
 		BoundingVolumeHierarchy left;
 		BoundingVolumeHierarchy right;
 		BoundingVolumeHierarchy parent;		
 		
+	public:
 		BoundingVolumeHierarchy();
 		~BoundingVolumeHierarchy();
-		addNode(BoundingVolumeHierarchy* newChild);
+		void setBoundingVolume(AxisAlignedBoundingBox newBoundingVolume);
+		AxisAlignedBoundingBox getBoundingVolume();
+		void addNode(BoundingVolumeHierarchy* newChild);
+		BoundingVolumeHierarchy* getLeftChild();
+		BoundingVolumeHierarchy* getRightChild();
+		BoundingVolumeHierarchy* getParent();
 };
 
 
