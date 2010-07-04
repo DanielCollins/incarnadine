@@ -32,9 +32,9 @@ class BoundingVolumeHierarchy
 {
 	private:
 		Renderable* object;
-		BoundingVolumeHierarchy left;
-		BoundingVolumeHierarchy right;
-		BoundingVolumeHierarchy parent;		
+		BoundingVolumeHierarchy* left;
+		BoundingVolumeHierarchy* right;
+		BoundingVolumeHierarchy* parent;		
 		
 	public:
 		BoundingVolumeHierarchy();
