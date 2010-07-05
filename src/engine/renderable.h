@@ -26,6 +26,7 @@
 #ifndef ENGINE_RENDERABLE_H
 #define ENGINE_RENDERABLE_H
 
+#include <vector>
 #include "object.h"
 #include "tools.h"
 
@@ -34,6 +35,7 @@ class Renderable : public Object
 	public:
 		AxisAlignedBoundingBox bound;
 		float scale;
+		std::vector<Renderable*> children;
 
 		Renderable(vector3 position, vector3 forward, vector3 up, float scaleFactor);
 		void rescale(float scaleFactor);
