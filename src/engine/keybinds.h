@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins, David Forrest
+// Copyright (c) 2010 Daniel Collins
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -23,32 +23,6 @@
 //
 //========================================================================
 
-#ifndef ENGINE_INPUTSIGNALS_H
-#define ENGINE_INPUTSIGNALS_H
-
-#include "events.h"
-#include "keybinds.h"
-
-class MouseMove : public Event
-{
-	public:
-		int x;
-		int y;
-		int xrel;
-		int yrel;
-};
-
-class MouseClick : public Event {};
-
-enum KeyEventType {KEY_DOWN, KEY_UP};
-
-class KeyEvent : public Event
-{
-	public:
-		KeyEventType type;
-		int unicode;
-};
-
-class Exiting : public Event {};
-
-#endif //ENGINE_INPUTSIGNALS_H
+#ifndef ENGINE_KEYBINDS_H
+#define ENGINE_KEYBINDS_H
+#endif //ENGINE_KEYBINDS_H
