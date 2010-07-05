@@ -31,6 +31,7 @@ Logger::Logger(string* filename, LogLevel levelLog = LOG_WARNING, LogLevel level
 	loggingLevel = levelLog;
 	stdoutLevel = levelOut;
 }
+
 Logger::~Logger()
 {
 	logStream.close();
@@ -70,10 +71,7 @@ void Logger::log(LogLevel level, const char* message, int msgLength)
 
 		if(level >= loggingLevel)
 		{
-			logStream << timeBuffer;
-			logStream << typestr;
-			logStream << message;
-			logStream << "\n";
+			logStream<<timeBuffer<<typestr<<message<< "\n";
 		}
 		if(level >= stdoutLevel)
 		{
