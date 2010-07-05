@@ -66,10 +66,10 @@ void Logger::log(LogLevel level, string message)
 			default:
 				return;
 		}
-		if(level >= loggingLevel)
-			logStream<<timeString<<typestr<<message<<endl;
 		if(level >= stdoutLevel)
 			cout<<timeString<<typestr<<message<<endl;
+		if(level >= loggingLevel)
+			logStream<<timeString<<typestr<<message<<endl;
 	}
 }
 
