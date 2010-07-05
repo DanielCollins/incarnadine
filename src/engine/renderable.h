@@ -33,8 +33,11 @@ class Renderable : public Object
 {
 	public:
 		AxisAlignedBoundingBox bound;
+		float scale;
 
-		Renderable(vector3 position, vector3 forward, vector3 up);
+		Renderable(vector3 position, vector3 forward, vector3 up, float scaleFactor);
+		void rescale(float scaleFactor);
+		float getScale();
 		virtual void draw() = 0;
 };
 

@@ -25,7 +25,7 @@
 
 #include "triangle.h"
 
-Triangle::Triangle(vector3 position, vector3 forward, vector3 up) : Primitive (position, forward, up)
+Triangle::Triangle(vector3 position, vector3 forward, vector3 up, float scaleFactor) : Primitive (position, forward, up, scaleFactor)
 {
 	load();
 }
@@ -43,7 +43,7 @@ void Triangle::load()
 	colourData.a = 1.0;
 	colours.push_back(colourData);
 	coordinateData.x = 0.0 + position[0];
-	coordinateData.y = 1.0 + position[1];
+	coordinateData.y = 1.0 * scale + position[1];
 	coordinateData.z = 0.0 + position[2];
 	coordinates.push_back(coordinateData);
 
@@ -52,8 +52,8 @@ void Triangle::load()
 	colourData.b = 0.0;
 	colourData.a = 1.0;
 	colours.push_back(colourData);
-	coordinateData.x = 1.0 + position[0];
-	coordinateData.y = -1.0 + position[1];
+	coordinateData.x = 1.0 * scale + position[0];
+	coordinateData.y = -1.0 * scale + position[1];
 	coordinateData.z = 0.0 + position[2];
 	coordinates.push_back(coordinateData);
 
@@ -62,8 +62,8 @@ void Triangle::load()
 	colourData.b = 1.0;
 	colourData.a = 1.0;
 	colours.push_back(colourData);
-	coordinateData.x = -1.0 + position[0];
-	coordinateData.y = -1.0 + position[1];
+	coordinateData.x = -1.0 * scale + position[0];
+	coordinateData.y = -1.0 * scale + position[1];
 	coordinateData.z = 0.0 + position[2];
 	coordinates.push_back(coordinateData);
 

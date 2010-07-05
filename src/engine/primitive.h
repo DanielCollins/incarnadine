@@ -37,7 +37,7 @@ class Primitive : public Renderable
 		virtual void load();
 		
 	public:
-		Primitive(vector3 position, vector3 forward, vector3 up);
+		Primitive(vector3 position, vector3 forward, vector3 up, float scaleFactor);
 		~Primitive();
 		void draw();
 };

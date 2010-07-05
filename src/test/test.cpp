@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 	vector3 triangleForward(0.0, 0.0, 1.0);
 	vector3 triangleUp(0.0, 1.0, 0.0);
 	
-	Triangle triangle(trianglePosition, triangleForward, triangleUp);
+	Triangle triangle(trianglePosition, triangleForward, triangleUp, 1.0);
 	scene->addObject(&triangle);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);

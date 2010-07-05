@@ -25,6 +25,17 @@
 
 #include "renderable.h"
 
-Renderable::Renderable(vector3 position, vector3 forward, vector3 up) : Object (position, forward, up)
+Renderable::Renderable(vector3 position, vector3 forward, vector3 up, float scaleFactor) : Object (position, forward, up)
 {
+	rescale(scaleFactor);
+}
+
+void Renderable::rescale(float scaleFactor)
+{
+	scale = scaleFactor;
+}
+
+float getScale()
+{
+	return scale;
 }
