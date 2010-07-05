@@ -41,6 +41,7 @@ class Incarnadine
 	private:
 		RenderManager* renderer;
 		Logger* log;
+		Clock clock;
 
 		void iiout(LogLevel level, char* message);
 
