@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, darkf
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -27,8 +27,6 @@
 
 Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
 {
-	form = shape;
-	
 	position = newPosition;
 	forward = newForward;
 	up = newUp;

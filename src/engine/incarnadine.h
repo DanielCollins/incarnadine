@@ -26,22 +26,32 @@
 #ifndef ENGINE_INCARNADINE_H
 #define ENGINE_INCARNADINE_H
 
+#include <cstring>
 #include "SDL.h"
+#include "SDL_opengl.h"
 #include "display.h"
 #include "input.h"
 #include "render.h"
 #include "camera.h"
 #include "scene.h"
+#include "log.h"
 
 class Incarnadine
 {
+	private:
+		RenderManager* renderer;
+		Logger* log;
+
+		void iiout(LogLevel level, char* message);
+
 	public:
 		Display* display;
 		InputManager* input;	
-		RenderManager* renderer;	
 
 		Incarnadine(Camera* newCamera, SceneManager* newSceneManager);
 		~Incarnadine();
+		void renderScene();
+		void iout(LogLevel level, char* message);
 		unsigned int getTicks();
 };
 

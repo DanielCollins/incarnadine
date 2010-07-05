@@ -28,8 +28,7 @@
 
 #include "primitive.h"
 #include "tools.h"
-#include "vertex.h"
-#include "mesh.h"
+#include <vector>
 
 class Triangle : public Primitive
 {
@@ -37,7 +36,7 @@ class Triangle : public Primitive
 		Triangle(vector3 position, vector3 forward, vector3 up);
 		
 	private:
-    void load();
+		void load();
 };
 
 #endif //ENGINE_TRIANGLE_H

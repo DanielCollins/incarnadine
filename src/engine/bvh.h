@@ -26,49 +26,27 @@
 #ifndef ENGINE_BVH_H
 #define ENGINE_BVH_H
 
-#include "aabb.h"
 #include "renderable.h"
 
-class BoundingVolumeHierarchyNode
+class BoundingVolumeHierarchy
 {
-	public:
-		AxisAlignedBoundingBox boundingVolume;
+	private:
+		Renderable* object;
+		BoundingVolumeHierarchy* left;
+		BoundingVolumeHierarchy* right;
+		BoundingVolumeHierarchy* parent;		
 		
-		BoundingVolumeHierarchyNode();
-		~BoundingVolumeHierarchyNode();
-};
-
-class BoundingVolumeHierarchyVolumeNode : public BoundingVolumeHierarchyNode
-{
 	public:
-		BoundingVolumeHierarchyNode left;
-		BoundingVolumeHierarchyNode right;
-		BoundingVolumeHierarchyNode parent;
-		
-		BoundingVolumeHierarchyVolumeNode();
-		~BoundingVolumeHierarchyVolumeNode();
-		addNode(BoundingVolumeHierarchyLeafNode newLeaf);
-};
-
-class BoundingVolumeHierarchyLeafNode : public BoundingVolumeHierarchyNode
-{
-	public:
-		BoundingVolumeHierarchyNode parent;
-		Renderable content;
-		
-		BoundingVolumeHierarchyLeafNode();
-		~BoundingVolumeHierarchyLeafNode();
-};
-
-class BoundingVolumeHierarchy: public BoundingVolumeHierarchyNode
-{
-	public:
-		BoundingVolumeHierarchyNode left;
-		BoundingVolumeHierarchyNode right;
-		
 		BoundingVolumeHierarchy();
 		~BoundingVolumeHierarchy();
-		addNode(BoundingVolumeHierarchyLeafNode newLeaf);
+		void setObject(Renderable* newObject);
+		Renderable* getObject();
+		void addNode(BoundingVolumeHierarchy* newChild);
+		BoundingVolumeHierarchy* getLeftChild();
+		BoundingVolumeHierarchy* getRightChild();
+		BoundingVolumeHierarchy* getParent();
 };
+
+
 
 #endif //ENGINE_BVH_H

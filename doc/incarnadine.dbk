@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <book xmlns="http://docbook.org/ns/docbook" version="5.0">
+   <title>Incarnadine</title>
+   <chapter>
+     <title>About Incarnadine</title>
+     <section>
+	<title>Introduction</title>
+	<para>
+		Incarnadine is an experimental 3D rendering engine.
+		You can obtain a copy of the source from the git repository at git://gitorious.org/incarnadine-engine/incarnadine-engine.git.
+		Incarnadine is distributed under the zlib/libpng license, a copy of which is provided in the src directory.
+		To Build and run Incarnadine you will also need to obtain a copy of the SDL library, available from http://www.libsdl.org/download-1.2.php.
+	</para>
+     </section>
+     <section>
+	<title>Copying</title>
+	<para>Incarnadine is distributed in source and binary form under the terms of the zlib/libpng license, reproduced below</para>
+	<para>
+		Copyright (c) 2010 Daniel Collins, Daniel Flahive, David Forest
+
+ This software is provided 'as-is', without any express or implied
+ warranty. In no event will the authors be held liable for any damages
+ arising from the use of this software.
+
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+
+    1. The origin of this software must not be misrepresented; you must not
+    claim that you wrote the original software. If you use this software
+    in a product, an acknowledgment in the product documentation would be
+    appreciated but is not required.
+
+    2. Altered source versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.
+
+    3. This notice may not be removed or altered from any source
+    distribution.
+</para>
+     </section>
+     <section>
+	<title>Contributors</title>
+	<itemizedlist>
+	<listitem>
+		Daniel "PurplePanda" Collins (design, lead developer)
+	</listitem>
+	<listitem>
+		Daniel "evihalf" Flahive (programming and esp. build system)
+	</listitem>
+	<listitem>
+		David "srbs" Forrest <somerandombystander@gmail.com> (general programming)
+	</listitem>
+	<listitem>
+		Oskar "snowrbt" Kruschitz [http://www.snowrbt.com] (logo design)
+	</listitem>
+	<listitem>
+    		"darkf" (general programming esp. testing, bug fixes and code clean-up)
+	</listitem>
+	</itemizedlist>
+     </section>
+   </chapter>
+   <chapter>
+	<title>Installation</title>
+	<section>
+		<title>Installation</title>
+		<para><![CDATA[
+			== Windows ==
+
+Prerequisites
+-------------
+
+	* CMake for Windows (http://www.cmake.org/cmake/resources/software.html)
+	* A working compiler that CMake supports (e.g. Visual Studio, MinGW, etc)
+	* OpenGL libraries for your system (should be bundled with compiler?)
+	* SDL development libraries (http://www.libsdl.org)
+
+
+Generating project files (Command-line with MSYS)
+-------------------------------------------------
+
+The following commands will create the appropriate files for your compiler/IDE (assuming you're
+in the top-level incarnadine-engine directory):
+
+cmake -D "SDLMAIN_LIBRARY:FILEPATH=</path/to/sdl-devel-libs>/lib/SDLmain.lib"
+      -D "SDL_LIBRARY_TEMP:FILEPATH=</path/to/sdl-devel-libs>/lib/SDL.lib"
+      -D "SDL_INCLUDE_DIR:PATH=</path/to/sdl-devel-libs>/include"
+      -G "<generator-name>" .
+
+</path/to/sdl-devel-libs> is the path where you extracted the SDL development libraries to.
+It should have the 'lib' and 'include' subdirectories contained within it.
+
+<generator-name> is the name of your compiler/IDE. Type 'cmake --help' for a list of supported
+generators for your platform.
+
+
+Generating project files (GUI with cmake-gui)
+---------------------------------------------
+
+The CMake GUI is an easy way to generate files that your compiler can work with.
+
+1. Open CMake GUI.
+2. Set the source code directory to the 'incarnadine-engine' top level directory (i.e. the first
+   folder you find that contains a 'CMakeLists.txt' file).
+3. Set the build directory to the same as above.
+4. Add Entry: SDLMAIN_LIBRARY:FILEPATH:</path/to/sdl-devel-libs>/lib/SDLmain.lib
+5. Add Entry: SDL_LIBRARY_TEMP:FILEPATH:</path/to/sdl-devel-libs>/lib/SDL.lib
+6. Add Entry: SDL_INCLUDE_DIR:PATH:</path/to/sdl-devel-libs>/include
+7. Press Configure.
+8. Choose your generator and press Finish.
+9. If there are still values in red, but no error occurred, press Configure again.
+10. Press Generate to create the project files for the selected compiler/IDE.
+
+FIXME: When you want to run the test program, you'll need to
+       copy '</path/to/sdl-devel-libs>/lib/SDL.dll' to the directory from which the
+       executable is run.
+		]]></para>
+	</section>
+   </chapter>
+ </book>

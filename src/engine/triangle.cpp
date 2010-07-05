@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, darkf
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -25,39 +25,47 @@
 
 #include "triangle.h"
 
-Triangle::Triangle(vector3 position, vector3 forward, vector3 up) : Primitive (position, forward, up) {}
+Triangle::Triangle(vector3 position, vector3 forward, vector3 up) : Primitive (position, forward, up)
+{
+	load();
+}
 
 void Triangle::load()
 {
-	Vertex vertex;
-	Mesh triangularMesh; 
-	
-	vertex.colour.r = 1.0;
-	vertex.colour.g = 0.0;
-	vertex.colour.b = 0.0;
-	vertex.colour.a = 0.5;
-	vertex.position.x = 0.0;
-	vertex.position.y = 1.0;
-	vertex.position.z = 0.0;
-	trianglarMesh.pushVertex(vertex);
-	
-	vertex.colour.r = 0.0;
-	vertex.colour.g = 1.0;
-	vertex.colour.b = 0.0;
-	vertex.colour.a = 0.5;
-	vertex.position.x = 1.0;
-	vertex.position.y = -1.0;
-	vertex.position.z = 0.0;
-	trianglarMesh.pushVertex(vertex);
-	
-	vertex.colour.r = 0.0;
-	vertex.colour.g = 0.0;
-	vertex.colour.b = 1.0;
-	vertex.colour.a = 0.5;
-	vertex.position.x = -1.0;
-	vertex.position.y = -1.0;
-	vertex.position.z = 0.0;
-	trianglarMesh.pushVertex(vertex);
-	
-	vbo->setMesh(triangularMesh);
+	Coordinate coordinateData;
+	Colour colourData;
+	std::vector<Coordinate> coordinates;
+	std::vector<Colour> colours;
+
+	colourData.r = 1.0;
+	colourData.g = 0.0;
+	colourData.b = 0.0;
+	colourData.a = 1.0;
+	colours.push_back(colourData);
+	coordinateData.x = 0.0;
+	coordinateData.y = 1.0;
+	coordinateData.z = 0.0;
+	coordinates.push_back(coordinateData);
+
+	colourData.r = 0.0;
+	colourData.g = 1.0;
+	colourData.b = 0.0;
+	colourData.a = 1.0;
+	colours.push_back(colourData);
+	coordinateData.x = 1.0;
+	coordinateData.y = -1.0;
+	coordinateData.z = 0.0;
+	coordinates.push_back(coordinateData);
+
+	colourData.r = 0.0;
+	colourData.g = 0.0;
+	colourData.b = 1.0;
+	colourData.a = 1.0;
+	colours.push_back(colourData);
+	coordinateData.x = -1.0;
+	coordinateData.y = -1.0;
+	coordinateData.z = 0.0;
+	coordinates.push_back(coordinateData);
+
+	vbo->setVertices(coordinates, colours);
 }

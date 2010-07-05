@@ -23,22 +23,9 @@
 //
 //========================================================================
 
-#ifndef ENGINE_MESH_H
-#define ENGINE_MESH_H
+#include "sbv.h"
 
-#include <vector>
-#include "vertex.h"
-
-class Mesh
+float SphericalBoundingVolume::getVolume()
 {
-	private:
-		std::vector<Vertex> vertexData;
-
-	public:
-		void pushVertex(Vertex newVertex);
-		void clearVertexData();
-		int vertexCount();
-		Vertex* vertexArray();
-};
-
-#endif //ENGINE_MESH_H
+	return 4.1887902 * radius ^ 3;
+}

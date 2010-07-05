@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, darkf
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -25,25 +25,33 @@
 
 #include "scene.h"
 
+SceneManager::SceneManager()
+{
+}
+
+SceneManager::~SceneManager()
+{
+}
+
 void SceneManager::rasterize()
 {
-  std::vector<Object>::const_iterator i = objects.begin();
-  std::vector<Object>::const_iterator end = objects.end();
+  std::vector<Renderable*>::const_iterator i = objects.begin();
+  std::vector<Renderable*>::const_iterator end = objects.end();
   for(;i != end; i++) (*i)->draw();
 }
 
 void SceneManager::addObject(Renderable *newObject)
 {
-  std::vector<Object>::const_iterator i = objects.begin();
-  std::vector<Object>::const_iterator end = objects.end();
+  std::vector<Renderable*>::const_iterator i = objects.begin();
+  std::vector<Renderable*>::const_iterator end = objects.end();
   for(;i != end; i++) if(newObject == *i) return;
   objects.push_back(newObject);
 }
 
 void SceneManager::removeObject(Renderable *oldObject)
 {
-  std::vector<Object>::const_iterator i = objects.begin();
-  std::vector<Object>::const_iterator end = objects.end();
+  std::vector<Renderable*>::iterator i = objects.begin();
+  std::vector<Renderable*>::iterator end = objects.end();
   for(;i != end; i++)
   {
     if(oldObject == *i)

@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, darkf
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -26,21 +26,26 @@
 #ifndef ENGINE_VBO_H
 #define ENGINE_VBO_H
 
+#define GL_GLEXT_PROTOTYPES
+#include <GL/gl.h>
+#include <GL/glext.h>
 #include "SDL_opengl.h"
-#include "mesh.h"
+
 #include "vertex.h"
 #include "tools.h"
+#include <vector>
 
 class VertexBufferObject
 {
 	private:
 		unsigned int bufferIdentifier;
-		Mesh mesh
+		std::vector<Coordinate> coordinates;
+		std::vector<Colour> colours;
 
 	public:
 		VertexBufferObject();
 		~VertexBufferObject();
-		void setMesh(Mesh newMesh);
+		void setVertices(std::vector<Coordinate> newCoordinates, std::vector<Colour> newColours);
 		void draw();
 };
 

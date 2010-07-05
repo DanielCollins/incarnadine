@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, darkf
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -25,4 +25,8 @@
 
 #include "renderable.h"
 
-Renderable::Renderable(vector3 position, vector3 forward, vector3 up) : object (position, forward, up){}
+Renderable::Renderable(vector3 position, vector3 forward, vector3 up) : Object (position, forward, up)
+{
+	public:
+		AxisAlignedBoundingBox bound;
+}
