@@ -71,11 +71,11 @@ void Logger::log(LogLevel level, const char* message, int msgLength)
 
 		if(level >= loggingLevel)
 		{
-			logStream<<timeBuffer<<typestr<<message<< "\n";
+			logStream<<timeBuffer<<typestr<<message<<endl;
 		}
 		if(level >= stdoutLevel)
 		{
-			cout<<timeBuffer<<typestr<<message<<"\n";
+			cout<<timeBuffer<<typestr<<message<<endl;
 		}
 	}
 }
