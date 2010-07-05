@@ -54,6 +54,7 @@ class Incarnadine
 		void renderScene();
 		void iout(LogLevel level, char* message);
 		unsigned int getTicks();
+		Clock* getClock();
 };
 
 #endif //ENGINE_INCARNADINE_H
