@@ -29,3 +29,17 @@ unsigned int Clock::getTicks()
 {
 	return SDL_GetTicks();
 }
+
+tm* getUCTtime()
+{
+	time_t ttime;
+	time(&ttime);
+	return gmtime(&ttime);
+}
+
+tm* getLocalTime()
+{
+	time_t ttime;
+	time(&ttime);
+	return localtime(&ttime);
+}

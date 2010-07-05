@@ -26,12 +26,15 @@
 #ifndef ENGINE_CLOCK_H
 #define ENGINE_CLOCK_H
 
+#include "time.h"
 #include "SDL.h"
 
 class Clock
 {
 	public:
 		unsigned int getTicks();
+		tm* getUTCTime();
+		tm* getLocalTime();
 };
 
 #endif //ENGINE_CLOCK_H
