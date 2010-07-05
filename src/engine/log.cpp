@@ -75,10 +75,7 @@ void Logger::log(LogLevel level, const char* message, int msgLength)
 		}
 		if(level >= stdoutLevel)
 		{
-			fputs(timeBuffer, stdout);
-			fputs(typestr,    stdout);
-			fputs(message,    stdout);
-			fputs("\n",       stdout);
+			cout<<timeBuffer<<typestr<<message<<"\n";
 		}
 	}
 }
