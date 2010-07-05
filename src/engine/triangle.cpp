@@ -42,9 +42,9 @@ void Triangle::load()
 	colourData.b = 0.0;
 	colourData.a = 1.0;
 	colours.push_back(colourData);
-	coordinateData.x = 0.0;
-	coordinateData.y = 1.0;
-	coordinateData.z = 0.0;
+	coordinateData.x = 0.0 + position[0];
+	coordinateData.y = 1.0 + position[1];
+	coordinateData.z = 0.0 + position[2];
 	coordinates.push_back(coordinateData);
 
 	colourData.r = 0.0;
@@ -52,9 +52,9 @@ void Triangle::load()
 	colourData.b = 0.0;
 	colourData.a = 1.0;
 	colours.push_back(colourData);
-	coordinateData.x = 1.0;
-	coordinateData.y = -1.0;
-	coordinateData.z = 0.0;
+	coordinateData.x = 1.0 + position[0];
+	coordinateData.y = -1.0 + position[1];
+	coordinateData.z = 0.0 + position[2];
 	coordinates.push_back(coordinateData);
 
 	colourData.r = 0.0;
@@ -62,9 +62,9 @@ void Triangle::load()
 	colourData.b = 1.0;
 	colourData.a = 1.0;
 	colours.push_back(colourData);
-	coordinateData.x = -1.0;
-	coordinateData.y = -1.0;
-	coordinateData.z = 0.0;
+	coordinateData.x = -1.0 + position[0];
+	coordinateData.y = -1.0 + position[1];
+	coordinateData.z = 0.0 + position[2];
 	coordinates.push_back(coordinateData);
 
 	vbo->setVertices(coordinates, colours);
