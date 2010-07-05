@@ -68,7 +68,7 @@ void Logger::log(LogLevel level, string message)
 		}
 		if(level >= stdoutLevel)
 			cout<<timeString<<typestr<<message<<endl;
-		if(level >= loggingLevel)
+		if(level >= loggingLevel && logStream.is_open())
 			logStream<<timeString<<typestr<<message<<endl;
 	}
 }
