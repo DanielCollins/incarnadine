@@ -27,21 +27,19 @@
 
 Logger::Logger(string* filename, LogLevel levelLog = LOG_WARNING, LogLevel levelOut = LOG_ALL)
 {
-	logStream = new fstream(filename->c_str(), ios::in | ios::out | ios::app);
+	logStream.open(filename->c_str(), ios::in | ios::out | ios::app);
 	loggingLevel = levelLog;
 	stdoutLevel = levelOut;
 }
 Logger::Logger(char* filename, int fnLength, LogLevel levelLog = LOG_WARNING, LogLevel levelOut = LOG_ALL)
 {
-	logStream = new fstream(filename, ios::in | ios::out | ios::app);
+	logStream.open(filename->c_str(), ios::in | ios::out | ios::app);
 	loggingLevel = levelLog;
 	stdoutLevel = levelOut;
 }
 Logger::~Logger()
 {
-	logStream->close();
-	delete logStream;
-	logStream = 0;
+	logStream.close();
 }
 
 void Logger::log(LogLevel level, const char* message, int msgLength)
@@ -78,10 +76,10 @@ void Logger::log(LogLevel level, const char* message, int msgLength)
 
 		if(level >= loggingLevel)
 		{
-			*logStream << timeBuffer;
-			*logStream << typestr;
-			*logStream << message;
-			*logStream << "\n";
+			logStream << timeBuffer;
+			logStream << typestr;
+			logStream << message;
+			logStream << "\n";
 		}
 		if(level >= stdoutLevel)
 		{
