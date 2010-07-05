@@ -41,7 +41,7 @@ Logger::~Logger()
 {
 	logStream->close();
 	delete logStream;
-	logStream = NULL;
+	logStream = 0;
 }
 
 void Logger::log(LogLevel level, const char* message, int msgLength)
