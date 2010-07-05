@@ -40,7 +40,7 @@ void VertexBufferObject::setVertices(std::vector<Vertex> newVertices)
 {
 	vertices = newVertices;
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size() , &vertices[0], GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size() , &vertices[0], GL_STATIC_DRAW);
 }
 
 void VertexBufferObject::draw()
