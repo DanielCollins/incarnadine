@@ -25,7 +25,7 @@
 
 #include "log.h"
 
-Logger::Logger(string* filename, LogLevel levelLog = LOG_WARNING, LogLevel levelOut = LOG_ALL)
+Logger::Logger(string filename, LogLevel levelLog = LOG_WARNING, LogLevel levelOut = LOG_ALL)
 {
 	logStream.open(filename->c_str(), ios::in | ios::out | ios::app);
 	loggingLevel = levelLog;
@@ -37,40 +37,39 @@ Logger::~Logger()
 	logStream.close();
 }
 
-void Logger::log(LogLevel level, string omessage)
+void Logger::log(LogLevel level, string message)
 {
-	const char* message = omessage.c_str();
-	int msgLength = omessage.length() + 1;
 	if(level >= loggingLevel || level >= stdoutLevel)
 	{
 		const int timestampLength = 21;		
 		time_t rawTime;
 		struct tm* timeInfo;
-		char timeBuffer [timestampLength], typestr [9];
+		char timeString[timestampLength];
+		string typestr;	
 		time(&rawTime);
 		timeInfo = localtime(&rawTime);
-		strftime(timeBuffer, timestampLength, "%y/%m/%d %H:%M:%S ", timeInfo);
+		strftime(timeString, timestampLength, "%y/%m/%d %H:%M:%S ", timeInfo);
 		switch(level)
 		{
 			case LOG_DEBUG:
-				strcpy(typestr, "DEBUG   ");
+				typestr = "DEBUG   ";
 				break;
 			case LOG_INFO:
-				strcpy(typestr, "INFO    ");
+				typestr = "INFO    ";
 				break;
 			case LOG_WARNING:
-				strcpy(typestr, "WARNING ");
+				typestr = "WARNING ";
 				break;
 			case LOG_ERROR:
-				strcpy(typestr, "ERROR   ");
+				typestr = "ERROR   ";
 				break;
 			default:
 				return;
 		}
 		if(level >= loggingLevel)
-			logStream<<timeBuffer<<typestr<<message<<endl;
+			logStream<<timeString<<typestr<<message<<endl;
 		if(level >= stdoutLevel)
-			cout<<timeBuffer<<typestr<<message<<endl;
+			cout<<timeString<<typestr<<message<<endl;
 	}
 }
 

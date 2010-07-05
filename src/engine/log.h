@@ -48,12 +48,9 @@ class Logger
 		LogLevel stdoutLevel;
 	
 	public:
-		Logger(string* filename, LogLevel levelLog, LogLevel levelOut);
-		Logger(char* filename, int fnLength, LogLevel levelLog, LogLevel levelOut);
+		Logger(string filename, LogLevel levelLog, LogLevel levelOut);
 		~Logger();
-		
-		void log(LogLevel level, const char* message, int msgLength);
-		void log(LogLevel level, string* message);		
+		void log(LogLevel level, string message);		
 		LogLevel getLoggingLevel();
 		void setLoggingLevel(LogLevel level);
 		LogLevel getStdoutLevel();
