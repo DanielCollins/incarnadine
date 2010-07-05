@@ -32,7 +32,7 @@
 class Renderable : public Object
 {
 	public:
-    Renderable(vector3 position, vector3 forward, vector3 up);
+		Renderable(vector3 position, vector3 forward, vector3 up);
 		virtual void draw() = 0;
 };
 
