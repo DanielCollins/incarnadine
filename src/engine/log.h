@@ -23,8 +23,8 @@
 //
 //========================================================================
 
-#ifndef SHARED_LOG_H
-#define SHARED_LOG_H
+#ifndef ENGINE_LOG_H
+#define ENGINE_LOG_H
 
 #include <iostream>
 #include <fstream>
@@ -60,5 +60,5 @@ class Logger
 		void setStdoutLevel(LogLevel level);
 };
 
-#endif //SHARED_LOG_H
+#endif //ENGINE_LOG_H
 
