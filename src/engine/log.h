@@ -26,8 +26,8 @@
 #ifndef SHARED_LOG_H
 #define SHARED_LOG_H
 
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 #include <time.h>
 
 enum LogLevel {	LOG_ALL = 0,
