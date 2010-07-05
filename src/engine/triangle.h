@@ -34,9 +34,6 @@ class Triangle : public StaticMesh
 {
 	public:
 		Triangle(vector3 position, vector3 forward, vector3 up, float scaleFactor);
-		
-	private:
-		void load();
 };
 
 #endif //ENGINE_TRIANGLE_H

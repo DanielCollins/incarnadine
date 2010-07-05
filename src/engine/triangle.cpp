@@ -27,13 +27,7 @@
 
 Triangle::Triangle(vector3 position, vector3 forward, vector3 up, float scaleFactor) : Primitive (position, forward, up, scaleFactor)
 {
-	load();
-}
-
-void Triangle::load()
-{
 	Vertex vertexData;
-	std::vector<Vertex> vertices;
 
 	vertexData.colour.r = 1.0;
 	vertexData.colour.g = 0.0;

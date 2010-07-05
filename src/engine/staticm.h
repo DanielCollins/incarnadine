@@ -29,12 +29,14 @@
 #include "renderable.h"
 #include "vbo.h"
 #include "tools.h"
+#include "vertex.h"
+#include <vector>
 
 class StaticMesh : public Renderable
 {
 	protected:
 		VertexBufferObject* vbo;
-		virtual void load();
+		std::vector<Vertex> vertices;
 		
 	public:
 		StaticMesh(vector3 position, vector3 forward, vector3 up, float scaleFactor);
