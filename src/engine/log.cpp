@@ -31,12 +31,6 @@ Logger::Logger(string* filename, LogLevel levelLog = LOG_WARNING, LogLevel level
 	loggingLevel = levelLog;
 	stdoutLevel = levelOut;
 }
-Logger::Logger(char* filename, int fnLength, LogLevel levelLog = LOG_WARNING, LogLevel levelOut = LOG_ALL)
-{
-	logStream.open(filename->c_str(), ios::in | ios::out | ios::app);
-	loggingLevel = levelLog;
-	stdoutLevel = levelOut;
-}
 Logger::~Logger()
 {
 	logStream.close();
