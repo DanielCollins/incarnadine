@@ -43,7 +43,7 @@ enum LogLevel {	LOG_ALL   = 0,
 class Logger
 {
 	protected:
-		fstream* logStream;
+		fstream logStream;
 		LogLevel loggingLevel;
 		LogLevel stdoutLevel;
 	
@@ -53,8 +53,7 @@ class Logger
 		~Logger();
 		
 		void log(LogLevel level, const char* message, int msgLength);
-		void log(LogLevel level, string* message);
-		
+		void log(LogLevel level, string* message);		
 		LogLevel getLoggingLevel();
 		void setLoggingLevel(LogLevel level);
 		LogLevel getStdoutLevel();

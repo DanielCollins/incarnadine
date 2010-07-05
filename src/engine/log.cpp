@@ -45,11 +45,9 @@ void Logger::log(LogLevel level, const char* message, int msgLength)
 		time_t rawTime;
 		struct tm* timeInfo;
 		char timeBuffer [timestampLength], typestr [9];
-
 		time(&rawTime);
 		timeInfo = localtime(&rawTime);
 		strftime(timeBuffer, timestampLength, "%y/%m/%d %H:%M:%S ", timeInfo);
-
 		switch(level)
 		{
 			case LOG_DEBUG:
@@ -67,18 +65,13 @@ void Logger::log(LogLevel level, const char* message, int msgLength)
 			default:
 				return;
 		}
-
-
 		if(level >= loggingLevel)
-		{
 			logStream<<timeBuffer<<typestr<<message<<endl;
-		}
 		if(level >= stdoutLevel)
-		{
 			cout<<timeBuffer<<typestr<<message<<endl;
-		}
 	}
 }
+
 void Logger::log(LogLevel level, string* message)
 {
 	log(level, message->c_str(), message->length()+1);
@@ -88,16 +81,18 @@ LogLevel Logger::getLoggingLevel()
 {
 	return loggingLevel;
 }
+
 void Logger::setLoggingLevel(LogLevel level)
 {
 	loggingLevel = level;
 }
+
 LogLevel Logger::getStdoutLevel()
 {
 	return stdoutLevel;
 }
+
 void Logger::setStdoutLevel(LogLevel level)
 {
 	stdoutLevel = level;
 }
-
