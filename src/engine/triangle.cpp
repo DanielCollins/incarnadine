@@ -56,5 +56,5 @@ Triangle::Triangle(vector3 position, vector3 forward, vector3 up, float scaleFac
 	vertexData.position.z = 0.0;
 	vertices.push_back(vertexData);
 
-	vbo->setVertices(vertices);
+	vbo = new VertexBufferObject(vertices);
 }

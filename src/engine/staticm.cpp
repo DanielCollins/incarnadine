@@ -27,20 +27,15 @@
 
 StaticMesh::StaticMesh(vector3 position, vector3 forward, vector3 up, float scaleFactor) : Renderable (position, forward, up, scaleFactor)
 {
-	vbo = new VertexBufferObject();
+	vbo = 0;
 }
 
 StaticMesh::~StaticMesh()
 {
-	delete vbo;
+	if(vbo)delete vbo;
 }
 
 void StaticMesh::draw()
 {
-	vbo->draw();
-}
-
-void StaticMesh::load()
-{
-	return;
+	if(vbo)vbo->draw();
 }

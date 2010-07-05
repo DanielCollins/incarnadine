@@ -25,10 +25,13 @@
 
 #include "vbo.h"
 
-VertexBufferObject::VertexBufferObject()
+VertexBufferObject::VertexBufferObject(std::vector<Vertex> newVertices)
 {
 	bufferIdentifier = 0;
+	vertexCount = newVertices.size();
 	glGenBuffers(1, (GLuint*) &bufferIdentifier);
+	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount , &newVertices[0], GL_STATIC_DRAW);
 }
 
 VertexBufferObject::~VertexBufferObject()
@@ -36,27 +39,15 @@ VertexBufferObject::~VertexBufferObject()
 	glDeleteBuffers(1, (GLuint*) &bufferIdentifier);
 }
 
-void VertexBufferObject::setVertices(std::vector<Vertex> newVertices)
-{
-	vertices = newVertices;
-	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size() , &vertices[0], GL_STATIC_DRAW);
-}
-
 void VertexBufferObject::draw()
 {
-	if(bufferIdentifier == 0 || vertices.size() == 0) return;
-	
-	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	
+	if(bufferIdentifier == 0 || vertices.size() == 0) return;	
+	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);	
 	glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate)));
 	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0));
-
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
-
-	glDrawArrays(GL_TRIANGLES, 0, vertices.size());
-
+	glDrawArrays(GL_TRIANGLES, 0, vertexCount);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);	
 }
