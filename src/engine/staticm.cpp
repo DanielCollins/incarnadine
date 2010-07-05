@@ -23,25 +23,25 @@
 //
 //========================================================================
 
-#include "primitive.h"
+#include "staticm.h"
 
-Primitive::Primitive(vector3 position, vector3 forward, vector3 up, float scaleFactor) : Renderable (position, forward, up, scaleFactor)
+StaticMesh::StaticMesh(vector3 position, vector3 forward, vector3 up, float scaleFactor) : Renderable (position, forward, up, scaleFactor)
 {
 	vbo = new VertexBufferObject();
 	load();
 }
 
-Primitive::~Primitive()
+StaticMesh::~StaticMesh()
 {
 	delete vbo;
 }
 
-void Primitive::draw()
+void StaticMesh::draw()
 {
 	vbo->draw();
 }
 
-void Primitive::load()
+void StaticMesh::load()
 {
 	return;
 }

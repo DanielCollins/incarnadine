@@ -23,23 +23,23 @@
 //
 //========================================================================
 
-#ifndef ENGINE_PRIMITIVE_H
-#define ENGINE_PRIMITIVE_H
+#ifndef ENGINE_STATICM_H
+#define ENGINE_STATICM_H
 
 #include "renderable.h"
 #include "vbo.h"
 #include "tools.h"
 
-class Primitive : public Renderable
+class StaticMesh : public Renderable
 {
 	protected:
 		VertexBufferObject* vbo;
 		virtual void load();
 		
 	public:
-		Primitive(vector3 position, vector3 forward, vector3 up, float scaleFactor);
-		~Primitive();
+		StaticMesh(vector3 position, vector3 forward, vector3 up, float scaleFactor);
+		~StaticMesh();
 		void draw();
 };
 
-#endif //ENGINE_PRIMITIVE_H
+#endif //ENGINE_STATICM_H

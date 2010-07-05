@@ -26,11 +26,11 @@
 #ifndef ENGINE_TRIANGLE_H
 #define ENGINE_TRIANGLE_H
 
-#include "primitive.h"
+#include "staticm.h"
 #include "tools.h"
 #include <vector>
 
-class Triangle : public Primitive
+class Triangle : public StaticMesh
 {
 	public:
 		Triangle(vector3 position, vector3 forward, vector3 up, float scaleFactor);
