@@ -37,8 +37,10 @@ Logger::~Logger()
 	logStream.close();
 }
 
-void Logger::log(LogLevel level, const char* message, int msgLength)
+void Logger::log(LogLevel level, string omessage)
 {
+	const char* message = omessage.c_str();
+	int msgLength = omessage.length() + 1;
 	if(level >= loggingLevel || level >= stdoutLevel)
 	{
 		const int timestampLength = 21;		
@@ -70,11 +72,6 @@ void Logger::log(LogLevel level, const char* message, int msgLength)
 		if(level >= stdoutLevel)
 			cout<<timeBuffer<<typestr<<message<<endl;
 	}
-}
-
-void Logger::log(LogLevel level, string* message)
-{
-	log(level, message->c_str(), message->length()+1);
 }
 
 LogLevel Logger::getLoggingLevel()
