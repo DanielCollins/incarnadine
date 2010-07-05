@@ -37,5 +37,9 @@ StaticMesh::~StaticMesh()
 
 void StaticMesh::draw()
 {
+	glPushMatrix();
+	glScalef(scale, scale, scale);
+	glTranslatef(position[0], position[1], position[2]);
 	if(vbo)vbo->draw();
+	glPopMatrix();
 }

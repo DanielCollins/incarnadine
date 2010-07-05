@@ -31,6 +31,7 @@
 #include "tools.h"
 #include "vertex.h"
 #include <vector>
+#include "SDL_opengl.h"
 
 class StaticMesh : public Renderable
 {
