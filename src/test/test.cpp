@@ -25,12 +25,12 @@
 
 #include "test.h"
 
-#define MAXIMUM_FRAME_RATE 120
-#define MINIMUM_FRAME_RATE 10
-#define UPDATE_INTERVAL 1.0 / MAXIMUM_FRAME_RATE
-#define MAX_CYCLES_PER_FRAME MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE
+const int maximumFrameRate = 120;
+const int minimumFrameRate = 10;
+const float updateInteval = 1.0 / maximumFrameRate;
+const float maximumCyclesPerFrame = maximumFrameRate / minimumFrameRate;
 
-#define MOUSESENS 0.01
+const float mouseSensitivity = 0.001;
 
 Incarnadine* engine;
 Camera* camera;
@@ -75,12 +75,12 @@ void runTest()
 	double currentTime = engine->getTicks();
 	double updateIterations = currentTime - timeAtLastFrame + loopsRemaining;
   
-	if(updateIterations > MAX_CYCLES_PER_FRAME * UPDATE_INTERVAL)
-		updateIterations = MAX_CYCLES_PER_FRAME * UPDATE_INTERVAL;
+	if(updateIterations > maximumCyclesPerFrame * updateInteval)
+		updateIterations = maximumCyclesPerFrame * updateInteval;
   
-	while (updateIterations > UPDATE_INTERVAL)
+	while (updateIterations > updateInteval)
 	{
-		updateIterations -= UPDATE_INTERVAL;    
+		updateIterations -= updateInteval;    
 		engine->input->update();
 	}
   
@@ -103,8 +103,8 @@ void handleExit(Exiting e)
 
 void handleMouseMove(MouseMove e)
 {
-	camera->localRotateY(-e.xrel * MOUSESENS);
-	camera->localRotateX(e.yrel * MOUSESENS);
+	camera->localRotateY(-e.xrel * mouseSensitivity);
+	camera->localRotateX(e.yrel * mouseSensitivity);
 	//engine->input->resetMousePosition();
 }
 
