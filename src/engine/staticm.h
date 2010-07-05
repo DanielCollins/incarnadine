@@ -40,7 +40,7 @@ class StaticMesh : public Renderable
 		std::vector<Vertex> vertices;
 		
 	public:
-		StaticMesh(vector3 position, vector3 forward, vector3 up, float scaleFactor);
+		StaticMesh(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor);
 		~StaticMesh();
 		void draw();
 };

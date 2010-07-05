@@ -33,7 +33,7 @@
 class Triangle : public StaticMesh
 {
 	public:
-		Triangle(vector3 position, vector3 forward, vector3 up, float scaleFactor);
+		Triangle(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor);
 };
 
 #endif //ENGINE_TRIANGLE_H

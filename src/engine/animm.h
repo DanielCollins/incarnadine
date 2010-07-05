@@ -40,7 +40,7 @@ class AnimatedMesh : public Renderable
 		unsigned int frameRate;
 		
 	public:
-		AnimatedMesh(vector3 position, vector3 forward, vector3 up, float scaleFactor);
+		AnimatedMesh(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor);
 		~AnimatedMesh();
 		void draw();
 };

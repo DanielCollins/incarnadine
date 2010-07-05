@@ -25,7 +25,7 @@
 
 #include "staticm.h"
 
-StaticMesh::StaticMesh(vector3 position, vector3 forward, vector3 up, float scaleFactor) : Renderable (position, forward, up, scaleFactor)
+StaticMesh::StaticMesh(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor) : Renderable (position, forward, up, scaleFactor)
 {
 	vbo = 0;
 }
@@ -38,7 +38,7 @@ StaticMesh::~StaticMesh()
 void StaticMesh::draw()
 {
 	glPushMatrix();
-	glScalef(scale, scale, scale);
+	glScalef(scale[0], scale[0], scale[0]);
 	glTranslatef(position[0], position[1], position[2]);
 	if(vbo)vbo->draw();
 	glPopMatrix();

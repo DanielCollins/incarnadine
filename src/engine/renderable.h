@@ -34,12 +34,12 @@ class Renderable : public Object
 {
 	public:
 		AxisAlignedBoundingBox bound;
-		float scale;
+		vector3 scale;
 		std::vector<Renderable*> children;
 
-		Renderable(vector3 position, vector3 forward, vector3 up, float scaleFactor);
-		void rescale(float scaleFactor);
-		float getScale();
+		Renderable(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor);
+		void rescale(vector3 scaleFactor);
+		vector3 getScale();
 		virtual void draw() = 0;
 };
 

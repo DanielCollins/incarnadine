@@ -25,7 +25,7 @@
 
 #include "triangle.h"
 
-Triangle::Triangle(vector3 position, vector3 forward, vector3 up, float scaleFactor) : Primitive (position, forward, up, scaleFactor)
+Triangle::Triangle(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor) : Primitive (position, forward, up, scaleFactor)
 {
 	Vertex vertexData;
 
