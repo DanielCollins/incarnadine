@@ -39,13 +39,12 @@ class VertexBufferObject
 {
 	private:
 		unsigned int bufferIdentifier;
-		std::vector<Coordinate> coordinates;
-		std::vector<Colour> colours;
+		std::vector<Vertex> vertices;
 
 	public:
 		VertexBufferObject();
 		~VertexBufferObject();
-		void setVertices(std::vector<Coordinate> newCoordinates, std::vector<Colour> newColours);
+		void setVertices(std::vector<Vertex> newVertices);
 		void draw();
 };
 
