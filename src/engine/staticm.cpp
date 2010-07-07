@@ -38,7 +38,7 @@ StaticMesh::~StaticMesh()
 void StaticMesh::draw()
 {
 	glPushMatrix();
-	glScalef(scale[0], scale[0], scale[0]);
+	glScalef(scale[0], scale[1], scale[2]);
 	glTranslatef(position[0], position[1], position[2]);
 	std::vector<Renderable*>::iterator i;
 	if(vbo)vbo->draw();
