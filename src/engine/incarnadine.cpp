@@ -80,5 +80,10 @@ void Incarnadine::iiout(LogLevel level, std::string message)
 
 unsigned int Incarnadine::getTicks()
 {
-	return SDL_GetTicks();
+	return clock.getTicks();
+}
+
+Clock* getClock()
+{
+	return &clock;
 }

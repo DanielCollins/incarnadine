@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins, darkf
+// Copyright (c) 2010 Daniel Collins
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -23,28 +23,18 @@
 //
 //========================================================================
 
-#ifndef ENGINE_VBO_H
-#define ENGINE_VBO_H
+#ifndef ENGINE_CLOCK_H
+#define ENGINE_CLOCK_H
 
-#define GL_GLEXT_PROTOTYPES
-#include <GL/gl.h>
-#include <GL/glext.h>
-#include "SDL_opengl.h"
+#include "time.h"
+#include "SDL.h"
 
-#include "vertex.h"
-#include "tools.h"
-#include <vector>
-
-class VertexBufferObject
+class Clock
 {
-	private:
-		unsigned int bufferIdentifier;
-		unsigned int vertexCount;
-
 	public:
-		VertexBufferObject(std::vector<Vertex> newVertices);
-		~VertexBufferObject();
-		void draw();
+		unsigned int getTicks();
+		tm* getUTCTime();
+		tm* getLocalTime();
 };
 
-#endif //ENGINE_VBO_H
+#endif //ENGINE_CLOCK_H

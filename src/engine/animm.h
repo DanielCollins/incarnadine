@@ -23,23 +23,26 @@
 //
 //========================================================================
 
-#ifndef ENGINE_PRIMITIVE_H
-#define ENGINE_PRIMITIVE_H
+#ifndef ENGINE_ANIMM_H
+#define ENGINE_ANIMM_H
 
 #include "renderable.h"
 #include "vbo.h"
 #include "tools.h"
+#include "vertex.h"
+#include <vector>
+#include "SDL_opengl.h"
 
-class Primitive : public Renderable
+class AnimatedMesh : public Renderable
 {
-	protected:
-		VertexBufferObject* vbo;
-		virtual void load();
+
+	private:
+		unsigned int frameRate;
 		
 	public:
-		Primitive(vector3 position, vector3 forward, vector3 up);
-		~Primitive();
+		AnimatedMesh(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor);
+		~AnimatedMesh();
 		void draw();
 };
 
-#endif //ENGINE_PRIMITIVE_H
+#endif //ENGINE_ANIMM_H

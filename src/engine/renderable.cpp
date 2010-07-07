@@ -25,8 +25,17 @@
 
 #include "renderable.h"
 
-Renderable::Renderable(vector3 position, vector3 forward, vector3 up) : Object (position, forward, up)
+Renderable::Renderable(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor) : Object (position, forward, up)
 {
-	public:
-		AxisAlignedBoundingBox bound;
+	rescale(scaleFactor);
+}
+
+void Renderable::rescale(vector3 scaleFactor)
+{
+	scale = scaleFactor;
+}
+
+vector3 getScale()
+{
+	return scale;
 }

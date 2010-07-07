@@ -26,6 +26,10 @@
 #ifndef ENGINE_VERTEX_H
 #define ENGINE_VERTEX_H
 
+/* not using vectors 3 and 4 here becuase uploading to graphics memory requires 
+	vertices live in contiguious main memory to acheive a reasonable level of
+	efficiency and cml::vector std::vector combo cannnot garentee this */	
+
 struct Colour
 {
 	float r;
@@ -39,6 +43,12 @@ struct Coordinate
 	float x;
 	float y;
 	float z;
+};
+
+struct Vertex
+{
+	Coordinate position;
+	Colour colour;	
 };
 
 #endif //ENGINE_VERTEX_H

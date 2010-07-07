@@ -41,6 +41,7 @@ class Incarnadine
 	private:
 		RenderManager* renderer;
 		Logger* log;
+		Clock clock;
 
 		void iiout(LogLevel level, std::string message);
 
@@ -53,6 +54,7 @@ class Incarnadine
 		void renderScene();
 		void iout(LogLevel level, std::string message);
 		unsigned int getTicks();
+		Clock* getClock();
 };
 
 #endif //ENGINE_INCARNADINE_H

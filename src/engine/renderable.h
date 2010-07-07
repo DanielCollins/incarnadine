@@ -26,13 +26,20 @@
 #ifndef ENGINE_RENDERABLE_H
 #define ENGINE_RENDERABLE_H
 
+#include <vector>
 #include "object.h"
 #include "tools.h"
 
 class Renderable : public Object
 {
 	public:
-    Renderable(vector3 position, vector3 forward, vector3 up);
+		AxisAlignedBoundingBox bound;
+		vector3 scale;
+		std::vector<Renderable*> children;
+
+		Renderable(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor);
+		void rescale(vector3 scaleFactor);
+		vector3 getScale();
 		virtual void draw() = 0;
 };
 

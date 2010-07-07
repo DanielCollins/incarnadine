@@ -27,6 +27,7 @@
 #define ENGINE_INPUTSIGNALS_H
 
 #include "events.h"
+#include "keybinds.h"
 
 class MouseMove : public Event
 {
@@ -37,11 +38,16 @@ class MouseMove : public Event
 		int yrel;
 };
 
-class MouseClick : public Event {}; 
+class MouseClick : public Event {};
 
-class KeyPress : public Event {};
+enum KeyEventType {KEY_DOWN, KEY_UP};
 
-class KeyRelease : public Event {};
+class KeyEvent : public Event
+{
+	public:
+		KeyEventType type;
+		int unicode;
+};
 
 class Exiting : public Event {};
 

@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins, darkf
+// Copyright (c) 2010 Daniel Collins
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -23,25 +23,26 @@
 //
 //========================================================================
 
-#include "primitive.h"
+#ifndef ENGINE_STATICM_H
+#define ENGINE_STATICM_H
 
-Primitive::Primitive(vector3 position, vector3 forward, vector3 up) : Renderable (position, forward, up)
-{
-	vbo = new VertexBufferObject();
-	load();
-}
+#include "renderable.h"
+#include "vbo.h"
+#include "tools.h"
+#include "vertex.h"
+#include <vector>
+#include "SDL_opengl.h"
 
-Primitive::~Primitive()
+class StaticMesh : public Renderable
 {
-	delete vbo;
-}
+	protected:
+		VertexBufferObject* vbo;
+		std::vector<Vertex> vertices;
+		
+	public:
+		StaticMesh(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor);
+		~StaticMesh();
+		void draw();
+};
 
-void Primitive::draw()
-{
-	vbo->draw();
-}
-
-void Primitive::load()
-{
-	return;
-}
+#endif //ENGINE_STATICM_H

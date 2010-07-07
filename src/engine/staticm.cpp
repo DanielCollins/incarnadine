@@ -23,28 +23,25 @@
 //
 //========================================================================
 
-#ifndef ENGINE_VBO_H
-#define ENGINE_VBO_H
+#include "staticm.h"
 
-#define GL_GLEXT_PROTOTYPES
-#include <GL/gl.h>
-#include <GL/glext.h>
-#include "SDL_opengl.h"
-
-#include "vertex.h"
-#include "tools.h"
-#include <vector>
-
-class VertexBufferObject
+StaticMesh::StaticMesh(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor) : Renderable (position, forward, up, scaleFactor)
 {
-	private:
-		unsigned int bufferIdentifier;
-		unsigned int vertexCount;
+	vbo = 0;
+}
 
-	public:
-		VertexBufferObject(std::vector<Vertex> newVertices);
-		~VertexBufferObject();
-		void draw();
-};
+StaticMesh::~StaticMesh()
+{
+	if(vbo)delete vbo;
+}
 
-#endif //ENGINE_VBO_H
+void StaticMesh::draw()
+{
+	glPushMatrix();
+	glScalef(scale[0], scale[0], scale[0]);
+	glTranslatef(position[0], position[1], position[2]);
+	std::vector<Renderable*>::iterator i;
+	if(vbo)vbo->draw();
+	for(i = children.begin(); i != children.end(); i++) (*i)->draw(); 
+	glPopMatrix();
+}
