@@ -35,6 +35,7 @@
 #include "camera.h"
 #include "scene.h"
 #include "log.h"
+#include "clock.h"
 
 class Incarnadine
 {

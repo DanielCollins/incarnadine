@@ -35,8 +35,6 @@ class InputManager
 {
 	public:
 		Signal<MouseMove> sMouseMove;
-		Signal<KeyPress> sKeyPress;
-		Signal<KeyRelease> sKeyRelease;
 		Signal<Exiting> sExiting;
 		Display *display;
 

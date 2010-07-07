@@ -29,6 +29,7 @@
 #include <vector>
 #include "object.h"
 #include "tools.h"
+#include "aabb.h"
 
 class Renderable : public Object
 {

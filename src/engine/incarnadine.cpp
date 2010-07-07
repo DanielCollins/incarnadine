@@ -74,7 +74,7 @@ void Incarnadine::iout(LogLevel level, std::string message)
 
 void Incarnadine::iiout(LogLevel level, std::string message)
 {
-	std::string buff = "Incarnadine Engine: " + message
+	std::string buff = "Incarnadine Engine: " + message;
 	iout(level, buff);
 }
 
@@ -85,5 +85,5 @@ unsigned int Incarnadine::getTicks()
 
 Clock* getClock()
 {
-	return &clock;
+	return (Clock*)&clock;
 }

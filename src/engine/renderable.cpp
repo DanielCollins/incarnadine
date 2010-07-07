@@ -35,7 +35,7 @@ void Renderable::rescale(vector3 scaleFactor)
 	scale = scaleFactor;
 }
 
-vector3 getScale()
+vector3 Renderable::getScale()
 {
 	return scale;
 }

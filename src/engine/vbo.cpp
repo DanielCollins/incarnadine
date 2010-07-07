@@ -41,7 +41,7 @@ VertexBufferObject::~VertexBufferObject()
 
 void VertexBufferObject::draw()
 {
-	if(bufferIdentifier == 0 || vertices.size() == 0) return;	
+	if(bufferIdentifier == 0 || vertexCount == 0) return;	
 	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);	
 	glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate)));
 	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0));
