@@ -26,7 +26,7 @@
 #ifndef ENGINE_INCARNADINE_H
 #define ENGINE_INCARNADINE_H
 
-#include <cstring>
+#include <string>
 #include "SDL.h"
 #include "SDL_opengl.h"
 #include "display.h"
@@ -42,7 +42,7 @@ class Incarnadine
 		RenderManager* renderer;
 		Logger* log;
 
-		void iiout(LogLevel level, char* message);
+		void iiout(LogLevel level, std::string message);
 
 	public:
 		Display* display;
@@ -51,7 +51,7 @@ class Incarnadine
 		Incarnadine(Camera* newCamera, SceneManager* newSceneManager);
 		~Incarnadine();
 		void renderScene();
-		void iout(LogLevel level, char* message);
+		void iout(LogLevel level, std::string message);
 		unsigned int getTicks();
 };
 

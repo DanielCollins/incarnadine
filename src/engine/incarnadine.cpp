@@ -67,16 +67,14 @@ void Incarnadine::renderScene()
 	}
 }
 
-void Incarnadine::iout(LogLevel level, char* message)
+void Incarnadine::iout(LogLevel level, std::string message)
 {
 	if(log) log->log(level, message);
 }
 
-void Incarnadine::iiout(LogLevel level, char* message)
+void Incarnadine::iiout(LogLevel level, std::string message)
 {
-	char buff[100];
-	strcpy(buff, "Incarnadine Engine: ");
-	strncat(buff, message, 79);
+	std::string buff = "Incarnadine Engine: " + message
 	iout(level, buff);
 }
 
