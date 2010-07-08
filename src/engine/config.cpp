@@ -163,6 +163,16 @@ void ConfigManager::setString(const std::string& name, const std::string& value)
 	}
 }
 
+ConfigManager::const_iterator ConfigManager::getIteratorBegin() const
+{
+	return configItems.begin();
+}
+
+ConfigManager::const_iterator ConfigManager::getIteratorEnd() const
+{
+	return configItems.end();
+}
+
 void ConfigManager::remove(const std::string& name)
 {
 	std::map<std::string, ConfigItem>::iterator item = configItems.find(name);
@@ -182,7 +192,7 @@ CONFIG_TYPE ConfigManager::getItemType(const std::string& name)
 	}
 	else
 	{
-		return CONFIG_NOTFOUND;
+		return CONFIG_INVALID;
 	}
 }
 
@@ -193,5 +203,64 @@ void ConfigManager::freeItem(std::map<std::string, ConfigItem>::iterator iter)
 	{
 		delete iter->second.value.stringValue;
 		iter->second.value.stringValue = NULL;
+	}
+}
+
+bool ConfigManager::isValidKey(const std::string& name, std::string::size_type offset)
+{
+	if (name.length() < 1 || offset > name.length() - 1)
+		return false;
+
+	// First character should be alphabetic or '_'.
+	if (isalpha(name.at(offset)) || name.at(offset) == '_')
+	{
+		// Subsequent characters can be alphanumeric and include a '_'.
+		// Also, a '.' character can appear as a section separator, and follows
+		// the same rules.
+		for (std::string::size_type i = offset + 1; i < name.length(); i++)
+		{
+			if (name[i] == '.')
+			{
+				// Recursively validate the subsection key.
+				return isValidKey(name, i + 1);
+			}
+			else if (!isalnum(name[i]) && name[i] != '_')
+			{
+				// Invalid key.
+				return false;
+			}
+		}
+
+		// Key is valid if we reach here.
+		return true;
+	}
+
+	return false;
+}
+
+void ConfigManager::debugDump()
+{
+	std::map<std::string, ConfigItem>::iterator iter;
+	for (iter = configItems.begin(); iter != configItems.end(); iter++)
+	{
+		std::cout << "Key = " << iter->first << ", Value = ";
+		switch (iter->second.type)
+		{
+		case CONFIG_TYPE_INTEGER:
+			std::cout << iter->second.value.intValue;
+			break;
+		case CONFIG_TYPE_DOUBLE:
+			std::cout << iter->second.value.doubleValue;
+			break;
+		case CONFIG_TYPE_BOOLEAN:
+			if (iter->second.value.booleanValue)
+				std::cout << "true";
+			else
+				std::cout << "false";
+			break;
+		case CONFIG_TYPE_STRING:
+			std::cout << "\"" << *iter->second.value.stringValue << "\"";
+		}
+		std::cout << std::endl;
 	}
 }

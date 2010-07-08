@@ -28,8 +28,9 @@
 
 #include <map>
 #include <string>
+#include <iostream>//
 
-enum CONFIG_TYPE { CONFIG_NOTFOUND, CONFIG_TYPE_INTEGER, CONFIG_TYPE_DOUBLE, CONFIG_TYPE_BOOLEAN, CONFIG_TYPE_STRING };
+enum CONFIG_TYPE { CONFIG_INVALID, CONFIG_TYPE_INTEGER, CONFIG_TYPE_DOUBLE, CONFIG_TYPE_BOOLEAN, CONFIG_TYPE_STRING };
 
 typedef union
 {
@@ -62,8 +63,14 @@ public:
 	void setBoolean(const std::string& name, bool value);
 	void setString(const std::string& name, const std::string& value);
 
+	typedef std::map<std::string, ConfigItem>::const_iterator const_iterator;
+	const_iterator getIteratorBegin() const;
+	const_iterator getIteratorEnd() const;
+
 	void remove(const std::string& name);
 	CONFIG_TYPE getItemType(const std::string& name);
+	bool isValidKey(const std::string& name, std::string::size_type offset = 0);
+	void debugDump();
 	
 
 private:
