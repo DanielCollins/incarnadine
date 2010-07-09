@@ -10,6 +10,9 @@ if (NOT SDL_FOUND)
 	message (FATAL_ERROR "SDL not found!" )
 endif()
 
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+
 include_directories(${OPENGL_INCLUDE_DIR})
 include_directories(${SDL_INCLUDE_DIR})
 
