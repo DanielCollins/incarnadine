@@ -103,8 +103,12 @@ void handleExit(Exiting e)
 
 void handleMouseMove(MouseMove e)
 {
-	camera->localRotateY(-e.xrel * mouseSensitivity);
-	camera->localRotateX(e.yrel * mouseSensitivity);
+	float yAngle = -e.xrel * mouseSensitivity;
+	float xAngle = e.yrel * mouseSensitivity;
+	if(yAngle != 0)
+		camera->localRotateY(yAngle);
+	if(xAngle != 0)
+		camera->localRotateX(xAngle);
 	//engine->input->resetMousePosition();
 }
 
