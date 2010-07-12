@@ -27,6 +27,8 @@
 #define ENGINE_CAMERA_H
 
 #include "object.h"
+#include "SDL_opengl.h"
+#include "SDL.h"
 
 extern vector3 zeroVector;
 
@@ -35,8 +37,8 @@ class Camera : public Object
 	private:
 		float fov;
 	public:
-		Camera(vector3 position, vector3 forward, vector3 up, float newFov);
-		matrix44 lookAtMatrix();
+		Camera(vector3 position, vector3 orientation, float newFov);
+		void updateGL();
 		void setFov(float newFov);
 		float getFov();
 };

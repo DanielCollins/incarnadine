@@ -25,7 +25,7 @@
 
 #include "staticm.h"
 
-StaticMesh::StaticMesh(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor) : Renderable (position, forward, up, scaleFactor)
+StaticMesh::StaticMesh(vector3 position, vector3 orientation, vector3 scaleFactor) : Renderable (position, orientation, scaleFactor)
 {
 	vbo = 0;
 }

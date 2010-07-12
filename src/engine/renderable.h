@@ -38,7 +38,7 @@ class Renderable : public Object
 		vector3 scale;
 		std::vector<Renderable*> children;
 
-		Renderable(vector3 position, vector3 forward, vector3 up, vector3 scaleFactor);
+		Renderable(vector3 position, vector3 orientation, vector3 scaleFactor);
 		void rescale(vector3 scaleFactor);
 		vector3 getScale();
 		virtual void draw() = 0;

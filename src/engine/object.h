@@ -34,14 +34,12 @@ class Object
 {
 	protected:
 		vector3 position;
-		vector3 forward;
-		vector3 up;
-		vector3 left;
+		vector3 orientation;
 
 	public:
-		Object(vector3 position, vector3 forward, vector3 up);
+		Object(vector3 position, vector3 orientation);
 		vector3 getPosition();
-		void localRotate(vector3 direction, float angle);
+		void localRotate(vector3 eulerRotation);
 		void localRotateX(float angle);
 		void localRotateY(float angle);
 		void localRotateZ(float angle);

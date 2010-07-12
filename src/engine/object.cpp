@@ -25,15 +25,10 @@
 
 #include "object.h"
 
-Object::Object(vector3 newPosition, vector3 newForward, vector3 newUp)
+Object::Object(vector3 newPosition, vector3 newOrientation)
 {
 	position = newPosition;
-	forward = newForward;
-	up = newUp;
-
-	left = normalize(cross(forward, up));
-	up = normalize(cross(left, forward));
-	forward = normalize(forward);
+	orientation = newOrientation;
 }
 
 vector3 Object::getPosition()
@@ -41,31 +36,33 @@ vector3 Object::getPosition()
 	return position;
 }
 
-void Object::localRotate(vector3 direction, float angle)
+void Object::localRotate(vector3 eulerRotation)
 {
-	direction = normalize(direction);
-	forward = rotate_vector(forward, direction, angle);
-	left = rotate_vector(left, direction, angle);
-	up = rotate_vector(up, direction, angle);
+	localRotateX(eulerRotation[0]);
+	localRotateY(eulerRotation[1]);
+	localRotateZ(eulerRotation[2]);
 }
 
 void Object::localRotateX(float angle)
 {
-	forward = rotate_vector(forward, left, angle);
-	up = normalize(cross(forward, left));
+	orientation[0] += angle;
+	while(orientation[0] >= 360.0) orientation[0] -= 360.0;
+	while(orientation[0] < 0.0) orientation[0] += 360.0;
 }
 
 void Object::localRotateY(float angle)
 {
-	forward = rotate_vector(forward, up, angle);
-	left = normalize(cross(up, forward));
+	orientation[1] += angle;
+	while(orientation[1] >= 360.0) orientation[1] -= 360.0;
+	while(orientation[1] < 0.0) orientation[1] += 360.0;
 }
 
 
 void Object::localRotateZ(float angle)
 {
-	left = rotate_vector(left, forward, angle);
-	up = normalize(cross(forward, left));
+	orientation[2] += angle;
+	while(orientation[2] >= 360.0) orientation[2] -= 360.0;
+	while(orientation[2] < 0.0) orientation[2] += 360.0;
 }
 
 void Object::goTo(vector3 location)
@@ -75,9 +72,7 @@ void Object::goTo(vector3 location)
 
 void Object::localTranslate(vector3 displacement)
 {
-	position[0] = displacement[0] * left[0] + displacement[1] * up[0] + displacement[2] * forward[0];
-	position[1] = displacement[0] * left[1] + displacement[1] * up[1] + displacement[2] * forward[1];
-	position[2] = displacement[0] * left[2] + displacement[1] * up[2] + displacement[2] * forward[2];
+	//stub
 }
 
 void Object::globalTranslate(vector3 displacement)

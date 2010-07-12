@@ -25,18 +25,9 @@
 
 #include "camera.h"
 
-vector3 zeroVector(0.0, 0.0, 0.0);
-
-Camera::Camera(vector3 newPosition, vector3 newForward, vector3 newUp, float newFov) : Object (newPosition, newForward, newUp)
+Camera::Camera(vector3 newPosition, vector3 newOrientation, float newFov) : Object (newPosition, newOrientation)
 {
 	setFov(newFov);
-}
-
-matrix44 Camera::lookAtMatrix()
-{
-	matrix44 view;
-	matrix_look_at_RH(view, zeroVector, forward, up);
-	return view;
 }
 
 void Camera::setFov(float newFov)
@@ -47,5 +38,20 @@ void Camera::setFov(float newFov)
 float Camera::getFov()
 {
 	return fov;
+}
+
+void Camera::updateGL()
+{
+	const SDL_VideoInfo* videoInfo = SDL_GetVideoInfo();
+	float aspectRatio = (float) videoInfo->current_w / (float) videoInfo->current_h;
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glFrustum(-aspectRatio, aspectRatio, -1.0, 1.0, fov, 1000);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glRotatef(orientation[0], -1, 0, 0);
+	glRotatef(orientation[1], 0, -1, 0);
+	glRotatef(orientation[2], 0, 0, -1);
+	glTranslatef(-position[0], -position[1], -position[2]);
 }
 

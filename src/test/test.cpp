@@ -30,7 +30,7 @@ const int minimumFrameRate = 10;
 const float updateInteval = 1.0 / maximumFrameRate;
 const float maximumCyclesPerFrame = maximumFrameRate / minimumFrameRate;
 
-const float mouseSensitivity = 0.001;
+const float mouseSensitivity = 0.1;
 
 Incarnadine* engine;
 Camera* camera;
@@ -42,19 +42,17 @@ Slot<MouseMove>* MouseMoveSlot;
 int main(int argc, char* argv[])
 {	
 	vector3 cameraPosition(0.0, 0.0, 3.0);
-	vector3 cameraForward(0.0, 0.0, -1.0);
-	vector3 cameraUp(0.0, 1.0, 0.0);
+	vector3 cameraOrientation(0.0, 0.0, -180);
 		
-	camera = new Camera(cameraPosition, cameraForward, cameraUp, 1.0f);
+	camera = new Camera(cameraPosition, cameraOrientation, 1.0f);
 	scene = new SceneManager();	
 	engine = new Incarnadine(camera, scene);	
 	
 	vector3 trianglePosition(0.0, 0.0, 0.0);
-	vector3 triangleForward(0.0, 0.0, 1.0);
-	vector3 triangleUp(0.0, 1.0, 0.0);
+	vector3 triangleOrientation(0.0, 0.0, 0.0);
 	vector3 triangleScale(1.0, 1.0, 1.0);
 	
-	Triangle triangle(trianglePosition, triangleForward, triangleUp, triangleScale);
+	Triangle triangle(trianglePosition, triangleOrientation, triangleScale);
 	scene->addObject(&triangle);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
@@ -104,7 +102,7 @@ void handleExit(Exiting e)
 void handleMouseMove(MouseMove e)
 {
 	float yAngle = -e.xrel * mouseSensitivity;
-	float xAngle = e.yrel * mouseSensitivity;
+	float xAngle = -e.yrel * mouseSensitivity;
 	if(yAngle != 0)
 		camera->localRotateY(yAngle);
 	if(xAngle != 0)
