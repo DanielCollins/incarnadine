@@ -11,7 +11,7 @@ bool ConfigConfParser::loadConf(const std::string& filename, ConfigManager& conf
 	ConfigValue actualvalue;
 	std::string::size_type equalsPos;
 
-	configFile.open(filename, std::ios::in);
+	configFile.open(filename.c_str(), std::ios::in);
 	if (configFile.is_open())
 	{
 		linenum = 0;
@@ -99,7 +99,7 @@ bool ConfigConfParser::saveConf(const std::string& filename, ConfigManager& conf
 	std::ofstream configFile;
 	ConfigManager::const_iterator iter;
 
-	configFile.open(filename, std::ios::out);
+	configFile.open(filename.c_str(), std::ios::out);
 	if (configFile.is_open())
 	{
 		for (iter = config.getIteratorBegin(); iter != config.getIteratorEnd(); iter++)
@@ -134,7 +134,7 @@ bool ConfigConfParser::saveConf(const std::string& filename, ConfigManager& conf
 void ConfigConfParser::stripWhitespace(std::string& str)
 {
 	// Remove spaces and tabs from the beginning and end of the string.
-	std::string::const_iterator pos;
+	std::string::iterator pos;
 
 	if (str.length() < 1)
 		return;
@@ -169,7 +169,7 @@ void ConfigConfParser::stripComments(std::string& str)
 {
 	// Any '#' comment symbol that is encountered, that is not within a quoted segment, will
 	// cause the rest of the line to be ignored after that point.
-	std::string::const_iterator iter;
+	std::string::iterator iter;
 	bool inQuote = false;
 	bool inEscape = false;
 
