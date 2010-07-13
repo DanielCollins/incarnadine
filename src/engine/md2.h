@@ -26,6 +26,10 @@
 #ifndef ENGINE_MD2_H
 #define ENGINE_MD2_H
 
+#include <fstream>
+#include <string>
+#include "renderable.h"
+
 class Md2Header
 {
 	public:
@@ -47,6 +51,9 @@ class Md2Header
 		int offset_glcmds;
 		int offset_end;
 };
+
+const int md2Magic = 844121161; //IDP2
+const int md2Version = 8;
 
 typedef char Md2SkinName[64];
 
@@ -95,9 +102,16 @@ class Md2AnimationInfo
 		int end;
 };
 
-class Md2Model
+class Md2Model : public Renderable
 {
-//stub
+	private:
+		Md2Header header;
+
+	public:
+		Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName);
+		~Md2Model();
+		void draw();
 };
+
 
 #endif //ENGINE_MD2_H
