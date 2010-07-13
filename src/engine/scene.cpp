@@ -61,3 +61,11 @@ void SceneManager::removeObject(Renderable *oldObject)
     }
   }
 }
+
+void SceneManager::updateObjects(unsigned int deltaTicks)
+{
+  std::vector<Renderable*>::const_iterator i = objects.begin();
+  std::vector<Renderable*>::const_iterator end = objects.end();
+  for(;i != end; i++) (*i)->updatePosition(deltaTicks);
+}
+

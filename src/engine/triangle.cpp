@@ -25,7 +25,7 @@
 
 #include "triangle.h"
 
-Triangle::Triangle(vector3 position, vector3 orientation, vector3 scaleFactor) : StaticMesh (position, orientation, scaleFactor)
+Triangle::Triangle(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor) : StaticMesh (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
 {
 	Vertex vertexData;
 

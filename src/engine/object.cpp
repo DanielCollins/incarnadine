@@ -25,10 +25,12 @@
 
 #include "object.h"
 
-Object::Object(vector3 newPosition, vector3 newOrientation)
+Object::Object(vector3 newPosition, vector3 newOrientation, vector3 newVelocity, vector3 newAngularVelocity)
 {
 	position = newPosition;
 	orientation = newOrientation;
+	velocity = newVelocity;
+	angularVelocity = newAngularVelocity;
 }
 
 vector3 Object::getPosition()
@@ -78,5 +80,11 @@ void Object::localTranslate(vector3 displacement)
 void Object::globalTranslate(vector3 displacement)
 {
 	position = position + displacement;
+}
+
+void Object::updatePosition(unsigned int deltaTicks)
+{
+	localTranslate(velocity * deltaTicks);
+	localRotate(angularVelocity * deltaTicks);
 }
 

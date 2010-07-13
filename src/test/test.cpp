@@ -43,16 +43,20 @@ int main(int argc, char* argv[])
 {	
 	vector3 cameraPosition(0.0, 0.0, 3.0);
 	vector3 cameraOrientation(0.0, 0.0, -180);
+	vector3 cameraVelocity(0.0, 0.0, 0.0);
+	vector3 cameraAngularVelocity(0.0, 0.0, 0.0);
 		
-	camera = new Camera(cameraPosition, cameraOrientation, 1.0f);
+	camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, 1.0f);
 	scene = new SceneManager();	
 	engine = new Incarnadine(camera, scene);	
 	
 	vector3 trianglePosition(0.0, 0.0, 0.0);
 	vector3 triangleOrientation(0.0, 0.0, 0.0);
+	vector3 triangleVelocity(0.0, 0.0, 0.0);
+	vector3 triangleAngularVelocity(0.0, 0.01, 0.0);
 	vector3 triangleScale(1.0, 1.0, 1.0);
 	
-	Triangle triangle(trianglePosition, triangleOrientation, triangleScale);
+	Triangle triangle(trianglePosition, triangleOrientation, triangleVelocity, triangleAngularVelocity, triangleScale);
 	scene->addObject(&triangle);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
@@ -80,6 +84,7 @@ void runTest()
 	{
 		updateIterations -= updateInteval;    
 		engine->input->update();
+		scene->updateObjects(currentTime - timeAtLastFrame);
 	}
   
 	loopsRemaining = updateIterations;

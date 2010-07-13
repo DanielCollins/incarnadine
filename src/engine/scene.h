@@ -40,6 +40,7 @@ class SceneManager
 		void rasterize();
 		void addObject(Renderable *newObject);
 		void removeObject(Renderable *oldObject);
+		void updateObjects(unsigned int deltaTicks);
 };
 
 #endif //ENGINE_SCENE_H

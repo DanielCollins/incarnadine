@@ -25,7 +25,7 @@
 
 #include "renderable.h"
 
-Renderable::Renderable(vector3 position, vector3 orientation, vector3 scaleFactor) : Object (position, orientation)
+Renderable::Renderable(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor) : Object (position, orientation, newVelocity, newAngularVelocity)
 {
 	rescale(scaleFactor);
 }

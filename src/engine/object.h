@@ -35,9 +35,11 @@ class Object
 	protected:
 		vector3 position;
 		vector3 orientation;
+		vector3 velocity;
+		vector3 angularVelocity;
 
 	public:
-		Object(vector3 position, vector3 orientation);
+		Object(vector3 position, vector3 orientation, vector3 velocity, vector3 angularVelocity);
 		vector3 getPosition();
 		void localRotate(vector3 eulerRotation);
 		void localRotateX(float angle);
@@ -46,6 +48,7 @@ class Object
 		void goTo(vector3 location);
 		void localTranslate(vector3 displacement);
 		void globalTranslate(vector3 displacement);
+		void updatePosition(unsigned int deltaTicks);
 };
 
 #endif //ENGINE_OBJECT_H

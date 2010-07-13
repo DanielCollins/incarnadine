@@ -25,7 +25,7 @@
 
 #include "staticm.h"
 
-StaticMesh::StaticMesh(vector3 position, vector3 orientation, vector3 scaleFactor) : Renderable (position, orientation, scaleFactor)
+StaticMesh::StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor) : Renderable (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
 {
 	vbo = 0;
 }
@@ -38,6 +38,9 @@ StaticMesh::~StaticMesh()
 void StaticMesh::draw()
 {
 	glPushMatrix();
+	glRotatef(orientation[0], 1, 0, 0);
+	glRotatef(orientation[1], 0, 1, 0);
+	glRotatef(orientation[2], 0, 0, 1);
 	glScalef(scale[0], scale[1], scale[2]);
 	glTranslatef(position[0], position[1], position[2]);
 	std::vector<Renderable*>::iterator i;

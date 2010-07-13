@@ -37,7 +37,7 @@ class Camera : public Object
 	private:
 		float fov;
 	public:
-		Camera(vector3 position, vector3 orientation, float newFov);
+		Camera(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, float newFov);
 		void updateGL();
 		void setFov(float newFov);
 		float getFov();
