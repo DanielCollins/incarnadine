@@ -33,6 +33,12 @@ RenderManager::RenderManager(Camera* newCamera, SceneManager* newScene, Display*
 	
 	glShadeModel(GL_SMOOTH);
 	glClearColor (1.0, 1.0, 1.0, 0.0);
+ 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glCullFace(GL_BACK);
 }
 
 void RenderManager::draw()
