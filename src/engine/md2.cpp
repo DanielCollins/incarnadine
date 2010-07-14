@@ -42,11 +42,14 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 	file.seekg(header.offsetToTriangles, std::ios::beg);
 	file.read(reinterpret_cast<char*>(triangles), header.numberOfTriangles * sizeof(Md2Triangle));
 	frames = new Md2Frame[header.numberOfFrames];
+	frameBuffers = new VertexBufferObject[header.numberOfFrames];
 	file.seekg(header.offsetToFrames, std::ios::beg);
 	for(int i = 0; i < header.numberOfFrames; i++)
 	{
 		float translation[3];
 		float scale[3];
+		std::vector<Vertex> vertexData;
+		Vertex newVertex;
 		frames[i].vertices = new Md2Vertex[header.numberOfVertices];
 		file.read(reinterpret_cast<char*>(&scale), sizeof(float) * 3);
 		file.read(reinterpret_cast<char*>(&translation), sizeof(float) * 3);
@@ -57,7 +60,13 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 			frames[i].vertices[j].v[0] = frames[i].vertices[j].v[0] * scale[0] + translation[0];
 			frames[i].vertices[j].v[1] = frames[i].vertices[j].v[1] * scale[1] + translation[1];
 			frames[i].vertices[j].v[2] = frames[i].vertices[j].v[2] * scale[2] + translation[2];
+			newVertex.position.x = (float) frames[i].vertices[j].v[0];
+			newVertex.position.y = (float) frames[i].vertices[j].v[1];
+			newVertex.position.x = (float) frames[i].vertices[j].v[2];
+			newVertex.colour = {1.0f, 1.0f, 0.0f, 1.0f};
+			vertexData.push_back(newVertex);
 		}
+		frameBuffers[i] = new VertexBufferObject(vertexData);
 	}
 	openGLCommands = new int[header.numberOfOpenGLCommands];
 	file.seekg(header.offsetToOpenGLCommands, std::ios::beg);
