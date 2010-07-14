@@ -68,7 +68,8 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 			newVertex.colour.a = 1.0;
 			vertexData.push_back(newVertex);
 		}
-		frameBuffers.push_back(new VertexBufferObject(vertexData));
+		VertexBufferObject frameBuffer(vertexData);
+		frameBuffers.push_back(frameBuffer);
 	}
 	openGLCommands = new int[header.numberOfOpenGLCommands];
 	file.seekg(header.offsetToOpenGLCommands, std::ios::beg);
