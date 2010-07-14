@@ -90,6 +90,16 @@ Md2Model::~Md2Model()
 
 void Md2Model::draw()
 {
+	glPushMatrix();
+	glRotatef(orientation[0], 1, 0, 0);
+	glRotatef(orientation[1], 0, 1, 0);
+	glRotatef(orientation[2], 0, 0, 1);
+	glScalef(scale[0], scale[1], scale[2]);
+	glTranslatef(position[0], position[1], position[2]);
+	std::vector<Renderable*>::iterator i;
+	frameBuffers[0]->draw();
+	for(i = children.begin(); i != children.end(); i++) (*i)->draw(); 
+	glPopMatrix();
 }
 
 Md2Frame::~Md2Frame()

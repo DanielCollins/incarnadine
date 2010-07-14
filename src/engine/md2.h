@@ -32,6 +32,7 @@
 #include "renderable.h"
 #include "vbo.h"
 #include "vertex.h"
+#include "SDL_opengl.h"
 
 class Md2Header
 {
