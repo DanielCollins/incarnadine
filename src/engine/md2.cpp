@@ -89,7 +89,7 @@ Md2Model::~Md2Model()
 	frames = 0;
 	delete [] openGLCommands;
 	openGLCommands = 0;
-	frameBuffers.erase();
+	frameBuffers.clear();
 }
 
 void Md2Model::draw()
