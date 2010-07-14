@@ -35,24 +35,24 @@ class Md2Header
 	public:
 		int ident;
 		int version;
-		int skinwidth;
-		int skinheight;
-		int framesize;
-		int num_skins;
-		int num_vertices;
-		int num_st;
-		int num_tris;
-		int num_glcmds;
-		int num_frames;
-		int offset_skins;
-		int offset_st;
-		int offset_tris;
-		int offset_frames;
-		int offset_glcmds;
-		int offset_end;
+		int skinWidth;
+		int skinHeight;
+		int SizeOfFrame;
+		int numberOfSkins;
+		int numberOfVertices;
+		int numberOfTextureCoordinates;
+		int numberOfTriangles;
+		int numberOfOpenGLCommands;
+		int numberOfFrames;
+		int offsetToSkins;
+		int offsetToTextureCoordinates;
+		int offsetToTriangles;
+		int offsetToFrames;
+		int offsetToOpenGLCommands;
+		int offsetToEnd;
 };
 
-const int md2Magic = 844121161; //IDP2
+const int md2Magic = 844121161;
 const int md2Version = 8;
 
 typedef char Md2SkinName[64];
@@ -81,6 +81,7 @@ class Md2Triangle
 class Md2Frame
 {
 	public:
+		~Md2Frame();
 		float scale[3];
 		float translation[3];
 		char name[16];
@@ -106,6 +107,11 @@ class Md2Model : public Renderable
 {
 	private:
 		Md2Header header;
+		Md2SkinName* skins;
+		Md2TextureCoordinate *textureCoordinates;
+		Md2Triangle* triangles;
+		Md2Frame* frames;
+		int* openGLCommands;
 
 	public:
 		Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName);

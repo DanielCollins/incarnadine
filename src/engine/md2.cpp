@@ -28,19 +28,57 @@
 Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName) : Renderable (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
 {
 	vbo = 0;
-	std::ifstream file(fileName.c_str (), std::ios::binary);
+	std::ifstream file(fileName.c_str(), std::ios::binary);
 	if(file.fail())throw 1;
-	file.read(reinterpret_cast<char *>(&header), sizeof(Md2Header));
+	file.read(reinterpret_cast<char*>(&header), sizeof(Md2Header));
 	if(header.ident != Md2Magic) throw 1;
 	if(header.version != Md2Version) throw 1;
+	skins = new Md2SkinName[header.numberOfSkins];
+	file.seekg(header.offsetToSkins, std::ios::beg);
+	file.read(reinterpret_cast<char*>(skins), header.numberOfSkins * sizeof(Md2SkinName));
+	textureCoordinates = new Md2TextureCoordinate[header.numberOfTextureCoordinates];
+	file.seekg(header.offsetToTextureCoordinates, std::ios::beg);
+	file.read(reinterpret_cast<char*>(textureCoordinates), header.numberOfTextureCoordinates * sizeof(Md2TextureCoordinate));
+	triangles = new Md2Triangle[header.numberOfTriangles];
+	file.seekg(header.offsetToTriangles, std::ios::beg);
+	file.read(reinterpret_cast<char*>(triangles), header.numberOfTriangles * sizeof(Md2Triangle));
+	frames = new Md2Frame[header.numberOfFrames];
+	file.seekg(header.offsetToFrames, std::ios::beg);
+	for(int i = 0; i < header.numberOfFrames; i++)
+	{
+		frames[i].vertices = new Md2Vertex[header.numberOfVertices];
+		file.read(reinterpret_cast<char*>(&frames[i].scale), sizeof(float) * 3);
+		file.read(reinterpret_cast<char*>(&frames[i].translation), sizeof(float) * 3);
+		file.read(reinterpret_cast<char*>(&frames[i].name), sizeof(char) * 16);
+		file.read(reinterpret_cast<char*>(frames[i].vertices), header.numberOfVertices * sizeof(Md2Vertex));
+	}
+	openGLCommands = new int[header.numberOfOpenGLCommands];
+	file.seekg(header.offsetToOpenGLCommands, std::ios::beg);
+	file.read(reinterpret_cast<char*>(openGLCommands), header.numberOfOpenGLCommands * sizeof(int));
 	file.close();
 }
 
 Md2Model::~Md2Model()
 {
 	if(vbo)delete vbo;
+	delete skins;
+	skins = 0;
+	delete textureCoordinates;
+	texCoords = 0;
+	delete triangles;
+	triangles = 0;
+	delete frames;
+	frames = 0;
+	delete openGLCommands;
+	openGLCommands = 0;
 }
 
 void Md2Model::draw()
 {
+}
+
+Md2Frame::~Md2Frame()
+{
+	delete vertices;
+	vertices = 0;
 }
