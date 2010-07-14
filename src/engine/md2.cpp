@@ -46,11 +46,19 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 	file.seekg(header.offsetToFrames, std::ios::beg);
 	for(int i = 0; i < header.numberOfFrames; i++)
 	{
+		float translation[3];
+		float scale[3];
 		frames[i].vertices = new Md2Vertex[header.numberOfVertices];
-		file.read(reinterpret_cast<char*>(&frames[i].scale), sizeof(float) * 3);
-		file.read(reinterpret_cast<char*>(&frames[i].translation), sizeof(float) * 3);
+		file.read(reinterpret_cast<char*>(&scale), sizeof(float) * 3);
+		file.read(reinterpret_cast<char*>(&translation), sizeof(float) * 3);
 		file.read(reinterpret_cast<char*>(&frames[i].name), sizeof(char) * 16);
 		file.read(reinterpret_cast<char*>(frames[i].vertices), header.numberOfVertices * sizeof(Md2Vertex));
+		for(int j = 0; j < header.numberOfVertices; j++)
+		{
+			frames[i].vertices[j].v[0] = frames[i].vertices[j].v[0] * scale[0] + translation[0];
+			frames[i].vertices[j].v[1] = frames[i].vertices[j].v[1] * scale[1] + translation[1];
+			frames[i].vertices[j].v[2] = frames[i].vertices[j].v[2] * scale[2] + translation[2];
+		}
 	}
 	openGLCommands = new int[header.numberOfOpenGLCommands];
 	file.seekg(header.offsetToOpenGLCommands, std::ios::beg);

@@ -82,8 +82,6 @@ class Md2Frame
 {
 	public:
 		~Md2Frame();
-		float scale[3];
-		float translation[3];
 		char name[16];
 		Md2Vertex *vertices;
 };
