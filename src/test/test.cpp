@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 	vector3 cameraAngularVelocity(0.0, 0.0, 0.0);
 		
 	camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, 1.0f);
-	scene = new SceneManager();	
+	scene = new Scene();	
 	engine = new Incarnadine(camera, scene);	
 	
 	vector3 trianglePosition(0.0, 0.0, 0.0);
