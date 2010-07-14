@@ -61,15 +61,15 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 Md2Model::~Md2Model()
 {
 	if(vbo)delete vbo;
-	delete skins;
+	delete [] skins;
 	skins = 0;
-	delete textureCoordinates;
+	delete [] textureCoordinates;
 	texCoords = 0;
-	delete triangles;
+	delete [] triangles;
 	triangles = 0;
-	delete frames;
+	delete [] frames;
 	frames = 0;
-	delete openGLCommands;
+	delete [] openGLCommands;
 	openGLCommands = 0;
 }
 
@@ -79,6 +79,6 @@ void Md2Model::draw()
 
 Md2Frame::~Md2Frame()
 {
-	delete vertices;
+	delete [] vertices;
 	vertices = 0;
 }
