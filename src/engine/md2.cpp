@@ -27,7 +27,6 @@
 
 Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName) : Renderable (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
 {
-	vbo = 0;
 	std::ifstream file(fileName.c_str(), std::ios::binary);
 	if(file.fail())throw 1;
 	file.read(reinterpret_cast<char*>(&header), sizeof(Md2Header));
@@ -68,7 +67,6 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 
 Md2Model::~Md2Model()
 {
-	if(vbo)delete vbo;
 	delete [] skins;
 	skins = 0;
 	delete [] textureCoordinates;
