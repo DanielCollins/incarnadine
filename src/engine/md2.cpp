@@ -30,8 +30,8 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 	std::ifstream file(fileName.c_str(), std::ios::binary);
 	if(file.fail())throw 1;
 	file.read(reinterpret_cast<char*>(&header), sizeof(Md2Header));
-	if(header.ident != Md2Magic) throw 1;
-	if(header.version != Md2Version) throw 1;
+	if(header.ident != md2Magic) throw 1;
+	if(header.version != md2Version) throw 1;
 	skins = new Md2SkinName[header.numberOfSkins];
 	file.seekg(header.offsetToSkins, std::ios::beg);
 	file.read(reinterpret_cast<char*>(skins), header.numberOfSkins * sizeof(Md2SkinName));
@@ -42,7 +42,6 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 	file.seekg(header.offsetToTriangles, std::ios::beg);
 	file.read(reinterpret_cast<char*>(triangles), header.numberOfTriangles * sizeof(Md2Triangle));
 	frames = new Md2Frame[header.numberOfFrames];
-	frameBuffers = new VertexBufferObject[header.numberOfFrames];
 	file.seekg(header.offsetToFrames, std::ios::beg);
 	for(int i = 0; i < header.numberOfFrames; i++)
 	{
@@ -63,10 +62,13 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 			newVertex.position.x = (float) frames[i].vertices[j].v[0];
 			newVertex.position.y = (float) frames[i].vertices[j].v[1];
 			newVertex.position.x = (float) frames[i].vertices[j].v[2];
-			newVertex.colour = {1.0f, 1.0f, 0.0f, 1.0f};
+			newVertex.colour.r = 1.0;
+			newVertex.colour.b = 0.0;
+			newVertex.colour.g = 1.0;
+			newVertex.colour.a = 1.0;
 			vertexData.push_back(newVertex);
 		}
-		frameBuffers[i] = new VertexBufferObject(vertexData);
+		frameBuffers.push_back(new VertexBufferObject(vertexData));
 	}
 	openGLCommands = new int[header.numberOfOpenGLCommands];
 	file.seekg(header.offsetToOpenGLCommands, std::ios::beg);
@@ -79,13 +81,14 @@ Md2Model::~Md2Model()
 	delete [] skins;
 	skins = 0;
 	delete [] textureCoordinates;
-	texCoords = 0;
+	textureCoordinates = 0;
 	delete [] triangles;
 	triangles = 0;
 	delete [] frames;
 	frames = 0;
 	delete [] openGLCommands;
 	openGLCommands = 0;
+	frameBuffers.erase();
 }
 
 void Md2Model::draw()
@@ -97,7 +100,7 @@ void Md2Model::draw()
 	glScalef(scale[0], scale[1], scale[2]);
 	glTranslatef(position[0], position[1], position[2]);
 	std::vector<Renderable*>::iterator i;
-	frameBuffers[0]->draw();
+	frameBuffers[0].draw();
 	for(i = children.begin(); i != children.end(); i++) (*i)->draw(); 
 	glPopMatrix();
 }
