@@ -25,7 +25,7 @@
 
 #include "incarnadine.h"
 
-Incarnadine::Incarnadine(Camera* newCamera, SceneManager* newSceneManager)
+Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 {
 	SDL_Init(SDL_INIT_VIDEO);
 	
@@ -34,7 +34,7 @@ Incarnadine::Incarnadine(Camera* newCamera, SceneManager* newSceneManager)
 	
 	input = new InputManager(display);
 	
-	renderer = new RenderManager(newCamera, newSceneManager, display);
+	renderer = new RenderManager(newCamera, newScene, display);
 
 	log = new Logger("incarnadine.log", LOG_INFO, LOG_ALL);
 	iiout(LOG_DEBUG, "init");

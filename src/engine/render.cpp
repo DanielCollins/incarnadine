@@ -25,7 +25,7 @@
 
 #include "render.h"
 
-RenderManager::RenderManager(Camera* newCamera, SceneManager* newScene, Display* newDisplay)
+RenderManager::RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay)
 {
 	camera = newCamera;
 	scene = newScene;

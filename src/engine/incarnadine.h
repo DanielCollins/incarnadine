@@ -50,7 +50,7 @@ class Incarnadine
 		Display* display;
 		InputManager* input;	
 
-		Incarnadine(Camera* newCamera, SceneManager* newSceneManager);
+		Incarnadine(Camera* newCamera, Scene* newScene);
 		~Incarnadine();
 		void renderScene();
 		void iout(LogLevel level, std::string message);

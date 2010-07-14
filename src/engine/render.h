@@ -39,10 +39,10 @@ class RenderManager
 	private:
 		Camera* camera;
 		Display* display;
-		SceneManager* scene;
+		Scene* scene;
 		
 	public:
-		RenderManager(Camera* newCamera, SceneManager* newScene, Display* newDisplay);
+		RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay);
 		void draw();
 		void setCamera(Camera* newCamera);		
 };

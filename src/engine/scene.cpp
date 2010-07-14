@@ -25,22 +25,22 @@
 
 #include "scene.h"
 
-SceneManager::SceneManager()
+Scene::Scene()
 {
 }
 
-SceneManager::~SceneManager()
+Scene::~Scene()
 {
 }
 
-void SceneManager::rasterize()
+void Scene::rasterize()
 {
   std::vector<Renderable*>::const_iterator i = objects.begin();
   std::vector<Renderable*>::const_iterator end = objects.end();
   for(;i != end; i++) (*i)->draw();
 }
 
-void SceneManager::addObject(Renderable *newObject)
+void Scene::addObject(Renderable *newObject)
 {
   std::vector<Renderable*>::const_iterator i = objects.begin();
   std::vector<Renderable*>::const_iterator end = objects.end();
@@ -48,7 +48,7 @@ void SceneManager::addObject(Renderable *newObject)
   objects.push_back(newObject);
 }
 
-void SceneManager::removeObject(Renderable *oldObject)
+void Scene::removeObject(Renderable *oldObject)
 {
   std::vector<Renderable*>::iterator i = objects.begin();
   std::vector<Renderable*>::iterator end = objects.end();
@@ -62,7 +62,7 @@ void SceneManager::removeObject(Renderable *oldObject)
   }
 }
 
-void SceneManager::updateObjects(unsigned int deltaTicks)
+void Scene::updateObjects(unsigned int deltaTicks)
 {
   std::vector<Renderable*>::const_iterator i = objects.begin();
   std::vector<Renderable*>::const_iterator end = objects.end();

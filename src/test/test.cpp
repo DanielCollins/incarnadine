@@ -34,7 +34,7 @@ const float mouseSensitivity = 0.1;
 
 Incarnadine* engine;
 Camera* camera;
-SceneManager* scene;
+Scene* scene;
 
 Slot<Exiting>* ExitingSlot;
 Slot<MouseMove>* MouseMoveSlot;

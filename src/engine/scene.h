@@ -29,14 +29,14 @@
 #include <vector>
 #include "renderable.h"
 
-class SceneManager
+class Scene
 {
 	private:
 		std::vector<Renderable*> objects;
 
 	public:
-		SceneManager();
-		~SceneManager();
+		Scene();
+		~Scene();
 		void rasterize();
 		void addObject(Renderable *newObject);
 		void removeObject(Renderable *oldObject);
