@@ -30,7 +30,7 @@ const int minimumFrameRate = 10;
 const float updateInteval = 1.0 / maximumFrameRate;
 const float maximumCyclesPerFrame = maximumFrameRate / minimumFrameRate;
 
-const float mouseSensitivity = 0.1;
+const float mouseSensitivity = 0.001;
 
 Incarnadine* engine;
 Camera* camera;
@@ -41,23 +41,23 @@ Slot<MouseMove>* MouseMoveSlot;
 
 int main(int argc, char* argv[])
 {	
-	vector3 cameraPosition(0.0, 0.0, 3.0);
+	vector3 cameraPosition(0.0, 0.0, 0.0);
 	vector3 cameraOrientation(0.0, 0.0, -180);
 	vector3 cameraVelocity(0.0, 0.0, 0.0);
 	vector3 cameraAngularVelocity(0.0, 0.0, 0.0);
 		
-	camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, 1.0f);
+	camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, 90.0f);
 	scene = new Scene();	
 	engine = new Incarnadine(camera, scene);	
 	
-	vector3 trianglePosition(0.0, 0.0, 0.0);
-	vector3 triangleOrientation(0.0, 0.0, 0.0);
-	vector3 triangleVelocity(0.0, 0.0, 0.0);
-	vector3 triangleAngularVelocity(0.0, 0.01, 0.0);
-	vector3 triangleScale(1.0, 1.0, 1.0);
+	vector3 mPosition(0.0, 0.0, -8000.0);
+	vector3 mOrientation(0.0, 0.0, 0.0);
+	vector3 mVelocity(0.1, 0.01, 0.01);
+	vector3 mAngularVelocity(0.0, 0.0, 0.01);
+	vector3 mScale(1.0, 1.0, 1.0);
 	
-	Triangle triangle(trianglePosition, triangleOrientation, triangleVelocity, triangleAngularVelocity, triangleScale);
-	scene->addObject(&triangle);
+	Md2Model m(mPosition, mOrientation, mVelocity, mAngularVelocity, mScale, "data/models/worker/worker_body.md2");
+	scene->addObject(&m);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
 	ExitingSlot->connect(&(engine->input->sExiting));
