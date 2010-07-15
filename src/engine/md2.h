@@ -41,18 +41,18 @@ class Md2Header
 		int version;
 		int skinWidth;
 		int skinHeight;
-		int SizeOfFrame;
+		int sizeOfFrame;
 		int numberOfSkins;
 		int numberOfVertices;
 		int numberOfTextureCoordinates;
 		int numberOfTriangles;
-		int numberOfOpenGLCommands;
+		int numberOfOpenGlCommands;
 		int numberOfFrames;
 		int offsetToSkins;
 		int offsetToTextureCoordinates;
 		int offsetToTriangles;
 		int offsetToFrames;
-		int offsetToOpenGLCommands;
+		int offsetToOpenGlCommands;
 		int offsetToEnd;
 };
 
@@ -85,9 +85,11 @@ class Md2Triangle
 class Md2Frame
 {
 	public:
-		~Md2Frame();
+		float scale[3];
+		float translation[3];
 		char name[16];
-		Md2Vertex *vertices;
+		Md2Vertex* vertices;
+		~Md2Frame();
 };
 
 class Md2OpenGlCommand
@@ -110,11 +112,10 @@ class Md2Model : public Renderable
 	private:
 		Md2Header header;
 		Md2SkinName* skins;
-		Md2TextureCoordinate *textureCoordinates;
+		Md2TextureCoordinate* textureCoordinates;
 		Md2Triangle* triangles;
 		Md2Frame* frames;
-		int* openGLCommands;
-		std::vector<VertexBufferObject> frameBuffers;
+		int* openGlCommands;
 
 	public:
 		Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName);
