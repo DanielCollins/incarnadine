@@ -31,6 +31,7 @@ Object::Object(vector3 newPosition, vector3 newOrientation, vector3 newVelocity,
 	orientation = newOrientation;
 	velocity = newVelocity;
 	angularVelocity = newAngularVelocity;
+	localRotate(zero<3>());
 }
 
 vector3 Object::getPosition()
