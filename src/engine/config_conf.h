@@ -31,6 +31,7 @@
 #include <string>
 #include <sstream>
 #include <cctype>
+#include <cstdlib>
 #include "config.h"
 
 class ConfigConfParser
