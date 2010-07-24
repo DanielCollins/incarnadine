@@ -1,4 +1,11 @@
 
+# There is no default install location for SDL on Windows, so allow
+# the user to set a variable pointing to the SDL development files.
+set(SDL_ROOT "" CACHE PATH "Location of SDL development files.")
+if (SDL_ROOT)
+	set(CMAKE_PREFIX_PATH ${SDL_ROOT})
+endif()
+
 Find_Package(OpenGL REQUIRED)
 Find_Package(SDL REQUIRED)
 
