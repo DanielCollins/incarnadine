@@ -70,27 +70,29 @@ Prerequisites
 -------------
 
 	* CMake for Windows (http://www.cmake.org/cmake/resources/software.html)
-	* A working compiler that CMake supports (e.g. Visual Studio, MinGW, etc)
-	* OpenGL libraries for your system (should be bundled with compiler?)
-	* SDL development libraries (http://www.libsdl.org)
+	* A working compiler/IDE that CMake supports (e.g. Visual Studio, MinGW, etc)
+	* OpenGL headers for your system (should be bundled with compiler)
+	* SDL development files (http://www.libsdl.org)
 
 
-Generating project files (Command-line with MSYS)
+Generating project files (Command-line with CMake)
 -------------------------------------------------
 
-The following commands will create the appropriate files for your compiler/IDE (assuming you're
-in the top-level incarnadine-engine directory):
+The following commands will create the appropriate project files for your compiler/IDE.
 
-cmake -D "SDLMAIN_LIBRARY:FILEPATH=</path/to/sdl-devel-libs>/lib/SDLmain.lib"
-      -D "SDL_LIBRARY_TEMP:FILEPATH=</path/to/sdl-devel-libs>/lib/SDL.lib"
-      -D "SDL_INCLUDE_DIR:PATH=</path/to/sdl-devel-libs>/include"
-      -G "<generator-name>" .
+cmake -D "SDL_ROOT:PATH=</path/to/sdl-devel-files>" -G "<generator-name>" .
 
-</path/to/sdl-devel-libs> is the path where you extracted the SDL development libraries to.
+</path/to/sdl-devel-files> is the path where you extracted the SDL development libraries to.
 It should have the 'lib' and 'include' subdirectories contained within it.
 
 <generator-name> is the name of your compiler/IDE. Type 'cmake --help' for a list of supported
 generators for your platform.
+
+The '.' at the end of the line tells CMake where the top-level source directory is, that is, the
+first directory that has a 'CMakeLists.txt' file in it. You can generate the project files in a
+different directory to this one by changing your current working directory to wherever you want
+the project files generated, and then replacing the '.' with the path to the top-level source
+directory. This is recommended so that there won't be irrelevant project files when using Git.
 
 
 Generating project files (GUI with cmake-gui)
@@ -101,18 +103,18 @@ The CMake GUI is an easy way to generate files that your compiler can work with.
 1. Open CMake GUI.
 2. Set the source code directory to the 'incarnadine-engine' top level directory (i.e. the first
    folder you find that contains a 'CMakeLists.txt' file).
-3. Set the build directory to the same as above.
-4. Add Entry: SDLMAIN_LIBRARY:FILEPATH:</path/to/sdl-devel-libs>/lib/SDLmain.lib
-5. Add Entry: SDL_LIBRARY_TEMP:FILEPATH:</path/to/sdl-devel-libs>/lib/SDL.lib
-6. Add Entry: SDL_INCLUDE_DIR:PATH:</path/to/sdl-devel-libs>/include
-7. Press Configure.
-8. Choose your generator and press Finish.
-9. If there are still values in red, but no error occurred, press Configure again.
-10. Press Generate to create the project files for the selected compiler/IDE.
+3. Set the build directory to the same as above (or a different one for an out-of-tree build).
+4. Add Entry: SDL_ROOT:PATH:</path/to/sdl-devel-files>
+5. Press Configure.
+6. Choose your generator and press Finish.
+7. If there are still values in red, but no error occurred, press Configure again.
+8. Press Generate to create the project files for the selected compiler/IDE.
 
 FIXME: When you want to run the test program, you'll need to
-       copy '</path/to/sdl-devel-libs>/lib/SDL.dll' to the directory from which the
-       executable is run.
+       copy '</path/to/sdl-devel-files>/lib/SDL.dll' to the directory from which the
+       executable is run (on some platforms, the DLL could be in the 'bin' directory).
+	   
+	   You will also need to copy the 'data' directory to the same place.
 		]]></para>
 	</section>
    </chapter>
