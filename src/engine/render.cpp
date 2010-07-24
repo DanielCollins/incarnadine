@@ -30,14 +30,15 @@ RenderManager::RenderManager(Camera* newCamera, Scene* newScene, Display* newDis
 	camera = newCamera;
 	scene = newScene;
 	display = newDisplay;
-	
+
 	glShadeModel(GL_SMOOTH);
 	glClearColor (1.0, 1.0, 1.0, 0.0);
+}
 
 void RenderManager::draw()
 {
 	camera->updateGL();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);    
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	scene->rasterize();
 	display->update();
 }
