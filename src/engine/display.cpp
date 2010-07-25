@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -44,10 +44,7 @@ bool Display::init()
 	surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
 
 	if (!surface)
-	{
-		SDL_Quit();
 		return false;
-	}
 
 	//require at least 5 bits per colour
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);

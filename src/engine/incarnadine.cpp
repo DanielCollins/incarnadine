@@ -30,7 +30,12 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 	SDL_Init(SDL_INIT_VIDEO);
 	
 	display = new Display();
-	display->init();
+
+	if (!display->init())
+	{
+		iiout(LOG_ERROR, std::string("Failed to initialize the display: ").append(SDL_GetError()));
+		throw 0;
+	}
 	
 	input = new InputManager(display);
 	
@@ -43,7 +48,7 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 	if (errorNum != GLEW_OK)
 	{
 		iiout(LOG_ERROR, std::string("GLEW initialization failed: ").append((const char*)glewGetErrorString(errorNum)));
-		throw 1;
+		throw 0;
 	}
 }
 
@@ -51,14 +56,23 @@ Incarnadine::~Incarnadine()
 {
 	iiout(LOG_DEBUG, "exiting");	
 
-	delete input;
-	input = 0;
+	if (input)
+	{
+		delete input;
+		input = 0;
+	}
 
-	delete display;
-	display = 0;
+	if (display)
+	{
+		delete display;
+		display = 0;
+	}
 
-	delete log;
-	log = 0;
+	if (log)
+	{
+		delete log;
+		log = 0;
+	}
 	
 	SDL_Quit();
 }
