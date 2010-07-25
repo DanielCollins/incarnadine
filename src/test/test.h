@@ -17,6 +17,7 @@ void exitTestApp();
 void cleanup();
 
 void handleExit(Exiting);
+void handleKeyEvent(KeyEvent);
 void handleMouseMove(MouseMove);
 
 #endif //TEST_H

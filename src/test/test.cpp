@@ -37,6 +37,7 @@ Camera* camera;
 Scene* scene;
 
 Slot<Exiting>* ExitingSlot;
+Slot<KeyEvent>* KeyEventSlot;
 Slot<MouseMove>* MouseMoveSlot;
 
 int main(int argc, char* argv[])
@@ -61,6 +62,8 @@ int main(int argc, char* argv[])
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
 	ExitingSlot->connect(&(engine->input->sExiting));
+	KeyEventSlot = new Slot<KeyEvent>(handleKeyEvent);
+	KeyEventSlot->connect(&(engine->input->sKeyEvent));
 	MouseMoveSlot = new Slot<MouseMove>(handleMouseMove);
 	MouseMoveSlot->connect(&(engine->input->sMouseMove));
 		
@@ -102,6 +105,15 @@ void runTest()
 void handleExit(Exiting e)
 {
 	exitTestApp();
+}
+
+void handleKeyEvent(KeyEvent e)
+{
+	switch (e.key)
+	{
+		case INC_KEY_ESCAPE:
+			exitTestApp();
+	}
 }
 
 void handleMouseMove(MouseMove e)

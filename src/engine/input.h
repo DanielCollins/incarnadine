@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -34,6 +34,7 @@
 class InputManager
 {
 	public:
+		Signal<KeyEvent> sKeyEvent;
 		Signal<MouseMove> sMouseMove;
 		Signal<Exiting> sExiting;
 		Display *display;

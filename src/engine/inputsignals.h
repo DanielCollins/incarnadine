@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins, David Forrest
+// Copyright (c) 2010 Daniel Collins, David Forrest, Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -46,7 +46,7 @@ class KeyEvent : public Event
 {
 	public:
 		KeyEventType type;
-		int unicode;
+		int key;
 };
 
 class Exiting : public Event {};

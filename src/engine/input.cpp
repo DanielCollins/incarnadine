@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -40,6 +40,16 @@ void InputManager::update()
 	{
 		switch(Event.type)
 		{
+			case SDL_KEYDOWN: // Fall through
+			case SDL_KEYUP:
+			{
+				KeyEvent e;
+				e.type = (Event.type == SDL_KEYDOWN) ? KEY_DOWN : KEY_UP;
+				e.key = Event.key.keysym.sym;
+
+				sKeyEvent.fire(&e);
+				break;
+			}
 			case SDL_MOUSEMOTION:
 			{
 				MouseMove e;
