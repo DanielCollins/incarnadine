@@ -27,6 +27,9 @@
 
 Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 {
+	log = new Logger("incarnadine.log", LOG_INFO, LOG_ALL);
+	iiout(LOG_DEBUG, "init");
+
 	SDL_Init(SDL_INIT_VIDEO);
 	
 	display = new Display();
@@ -40,9 +43,6 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 	input = new InputManager(display);
 	
 	renderer = new RenderManager(newCamera, newScene, display);
-
-	log = new Logger("incarnadine.log", LOG_INFO, LOG_ALL);
-	iiout(LOG_DEBUG, "init");
 
 	GLenum errorNum = glewInit();
 	if (errorNum != GLEW_OK)
