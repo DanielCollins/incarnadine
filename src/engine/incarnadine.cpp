@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -38,6 +38,13 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 
 	log = new Logger("incarnadine.log", LOG_INFO, LOG_ALL);
 	iiout(LOG_DEBUG, "init");
+
+	GLenum errorNum = glewInit();
+	if (errorNum != GLEW_OK)
+	{
+		iiout(LOG_ERROR, std::string("GLEW initialization failed: ").append((const char*)glewGetErrorString(errorNum)));
+		throw 1;
+	}
 }
 
 Incarnadine::~Incarnadine()

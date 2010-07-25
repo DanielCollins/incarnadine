@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -27,7 +27,7 @@
 #define ENGINE_DISPLAY_H
 
 #include "SDL.h"
-#include "SDL_opengl.h" 
+#include "GL/glew.h" 
 
 class Display
 {

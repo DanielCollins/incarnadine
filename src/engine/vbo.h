@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins, darkf
+// Copyright (c) 2010 Daniel Collins, darkf, Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -26,10 +26,8 @@
 #ifndef ENGINE_VBO_H
 #define ENGINE_VBO_H
 
-#define GL_GLEXT_PROTOTYPES
-#include <GL/gl.h>
-#include <GL/glext.h>
-#include "SDL_opengl.h"
+#include "SDL.h"
+#include "GL/glew.h"
 
 #include "vertex.h"
 #include "tools.h"

@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins, darkf
+// Copyright (c) 2010 Daniel Collins, darkf, Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -29,20 +29,20 @@ VertexBufferObject::VertexBufferObject(std::vector<Vertex> newVertices)
 {
 	bufferIdentifier = 0;
 	vertexCount = newVertices.size();
-	glGenBuffers(1, (GLuint*) &bufferIdentifier);
-	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount , &newVertices[0], GL_STATIC_DRAW);
+	glGenBuffersARB(1, (GLuint*) &bufferIdentifier);
+	glBindBufferARB(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
+	glBufferDataARB(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount , &newVertices[0], GL_STATIC_DRAW);
 }
 
 VertexBufferObject::~VertexBufferObject()
 {
-	glDeleteBuffers(1, (GLuint*) &bufferIdentifier);
+	glDeleteBuffersARB(1, (GLuint*) &bufferIdentifier);
 }
 
 void VertexBufferObject::draw()
 {
 	if(bufferIdentifier == 0 || vertexCount == 0) return;	
-	glBindBuffer(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);	
+	glBindBufferARB(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);	
 	glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate)));
 	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0));
 	glEnableClientState(GL_VERTEX_ARRAY);

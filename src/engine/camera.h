@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -27,8 +27,8 @@
 #define ENGINE_CAMERA_H
 
 #include "object.h"
-#include "SDL_opengl.h"
 #include "SDL.h"
+#include "GL/glew.h"
 
 extern vector3 zeroVector;
 
