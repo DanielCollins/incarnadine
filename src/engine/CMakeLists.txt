@@ -19,7 +19,8 @@ add_library(engine
 	log.cpp
 	clock.cpp
 	md2.cpp
+	texture.cpp
 	${INCARNADINE_SOURCE_DIR}/src/shared/glew.c
 )
 
-target_link_libraries(engine ${OPENGL_LIBRARY} ${SDL_LIBRARY} ${SDLMAIN_LIBRARY} ${SDLTTF_LIBRARY})
+target_link_libraries(engine ${OPENGL_LIBRARY} ${SDL_LIBRARY} ${SDLMAIN_LIBRARY} ${SDLTTF_LIBRARY} ${SDLIMAGE_LIBRARY})
