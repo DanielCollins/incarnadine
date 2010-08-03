@@ -27,7 +27,7 @@
 
 Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName) : Renderable (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
 {
-  std::ifstream file(fileName.c_str (), std::ios::binary);
+  std::ifstream file(fileName.c_str(), std::ios::binary);
   if(file.fail()) throw 1;
   file.read(reinterpret_cast<char*>(&header), sizeof (Md2Header));
   if(header.ident != md2Magic || header.version != md2Version) throw 1;
@@ -55,10 +55,18 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
   file.seekg(header.offsetToOpenGlCommands, std::ios::beg);
   file.read(reinterpret_cast<char*>(openGlCommands), sizeof(int) * header.numberOfOpenGlCommands);
   file.close();
+
+  textures = new Texture[header.numberOfSkins];
+  for (int i = 0; i < header.numberOfSkins; i++)
+  {
+	  textures[i].load(skins[i]);
+	  textures[i].bind();
+  }
 }
 
 Md2Model::~Md2Model()
 {
+	delete [] textures;
 	delete [] skins;
 	delete [] textureCoordinates;
 	delete [] triangles;
@@ -68,12 +76,24 @@ Md2Model::~Md2Model()
 
 void Md2Model::draw()
 {
+	glPushAttrib(GL_POLYGON_BIT);
+	glFrontFace(GL_CW);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+
+	if (header.numberOfSkins > 0)
+		textures[0].bind();
+
 	glPushMatrix();
+	
+	glScalef(scale[0], scale[1], scale[2]);
+	glTranslatef(position[0], position[1], position[2]);
+
 	glRotatef(orientation[0], 1, 0, 0);
 	glRotatef(orientation[1], 0, 1, 0);
 	glRotatef(orientation[2], 0, 0, 1);
-	glScalef(scale[0], scale[1], scale[2]);
-	glTranslatef(position[0], position[1], position[2]);
+
+	
 	int frame = 0;
 	int maxFrame = header.numberOfFrames - 1;
 	if((frame < 0) || (frame > maxFrame)) return;
@@ -96,15 +116,25 @@ void Md2Model::draw()
 			Md2OpenGlCommand *pGLcmd = reinterpret_cast<Md2OpenGlCommand*>(pGlcmds);
 			Md2Frame *pFrame = &frames[frame];
 			Md2Vertex *pVert = &pFrame->vertices[pGLcmd->index];
+			
+			glTexCoord2f(pGLcmd->s, pGLcmd->t);
+
 			float v[3];
 			v[0] = pFrame->scale[0] * pVert->v[0] + pFrame->translation[0];
 			v[1] = pFrame->scale[1] * pVert->v[1] + pFrame->translation[1];
 			v[2] = pFrame->scale[2] * pVert->v[2] + pFrame->translation[2];
 			glVertex3fv(v);
+
+			
+			
 		}
 		glEnd();
 	}
-		glPopMatrix();
+
+	glPopMatrix();
+
+	glDisable(GL_CULL_FACE);
+	glPopAttrib();
 }
 
 Md2Frame::~Md2Frame()

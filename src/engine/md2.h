@@ -33,6 +33,7 @@
 #include "vbo.h"
 #include "vertex.h"
 #include "GL/glew.h"
+#include "texture.h"
 
 class Md2Header
 {
@@ -116,6 +117,7 @@ class Md2Model : public Renderable
 		Md2Triangle* triangles;
 		Md2Frame* frames;
 		int* openGlCommands;
+		Texture* textures;
 
 	public:
 		Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName);
