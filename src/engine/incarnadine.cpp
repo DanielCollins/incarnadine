@@ -32,8 +32,8 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 
 	SDL_Init(SDL_INIT_VIDEO);
 
-	int imgFlags = IMG_INIT_PNG;
-	int imgStatus = IMG_Init(IMG_INIT_PNG);
+	int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
+	int imgStatus = IMG_Init(imgFlags);
 	if ((imgStatus & imgFlags) != imgFlags)
 	{
 		iiout(LOG_ERROR, std::string("SDL_image initialization failed: ").append((const char*)IMG_GetError()));
