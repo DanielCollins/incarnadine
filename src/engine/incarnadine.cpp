@@ -31,6 +31,14 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 	iiout(LOG_DEBUG, "init");
 
 	SDL_Init(SDL_INIT_VIDEO);
+
+	int imgFlags = IMG_INIT_PNG;
+	int imgStatus = IMG_Init(IMG_INIT_PNG);
+	if ((imgStatus & imgFlags) != imgFlags)
+	{
+		iiout(LOG_ERROR, std::string("SDL_image initialization failed: ").append((const char*)IMG_GetError()));
+		throw 0;
+	}
 	
 	display = new Display();
 
@@ -50,6 +58,7 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 		iiout(LOG_ERROR, std::string("GLEW initialization failed: ").append((const char*)glewGetErrorString(errorNum)));
 		throw 0;
 	}
+
 }
 
 Incarnadine::~Incarnadine()
@@ -73,6 +82,8 @@ Incarnadine::~Incarnadine()
 		delete log;
 		log = 0;
 	}
+
+	IMG_Quit();
 	
 	SDL_Quit();
 }
