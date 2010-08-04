@@ -60,7 +60,6 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
   for (int i = 0; i < header.numberOfSkins; i++)
   {
 	  textures[i].load(skins[i]);
-	  textures[i].bind();
   }
 }
 
