@@ -40,8 +40,12 @@ class InputManager
 		Display *display;
 
 		InputManager(Display *d);
+		~InputManager();
 		void update();
 		void resetMousePosition();
+
+private:
+		bool ignoreNextMouseMove;
 };
 
 #endif //ENGINE_INPUT_H
