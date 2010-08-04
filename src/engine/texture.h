@@ -43,6 +43,7 @@ public:
 	~Texture();
 
 	void load(std::string filename);
+	void load(SDL_Surface* textureSurface, GLint format);
 	void cleanup();
 	void bind();
 
