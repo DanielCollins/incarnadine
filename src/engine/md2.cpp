@@ -45,11 +45,21 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
   file.seekg(header.offsetToFrames, std::ios::beg);
   for(int i = 0; i < header.numberOfFrames; i++)
   {
-      frames[i].vertices = new Md2Vertex[header.numberOfVertices];
       file.read(reinterpret_cast<char*>(&frames[i].scale), sizeof(float) * 3);
       file.read(reinterpret_cast<char*>(&frames[i].translation), sizeof(float) * 3);
       file.read(reinterpret_cast<char*>(&frames[i].name), sizeof(char) * 16);
-      file.read(reinterpret_cast<char*>(frames[i].vertices), sizeof(Md2Vertex) * header.numberOfVertices);
+	  Md2VertexCompressed* vertices = new Md2VertexCompressed[header.numberOfVertices];
+      file.read(reinterpret_cast<char*>(vertices), sizeof(Md2VertexCompressed) * header.numberOfVertices);
+
+	  frames[i].vertices = new Md2Vertex[header.numberOfVertices];
+	  for (int j = 0; j < header.numberOfVertices; j++)
+	  {
+		frames[i].vertices[j].v[0] = frames[i].scale[0] * vertices[j].v[0] + frames[i].translation[0];
+		frames[i].vertices[j].v[1] = frames[i].scale[1] * vertices[j].v[1] + frames[i].translation[1];
+		frames[i].vertices[j].v[2] = frames[i].scale[2] * vertices[j].v[2] + frames[i].translation[2];
+	  }
+	  
+	  delete [] vertices;
   }
 
   file.seekg(header.offsetToOpenGlCommands, std::ios::beg);
@@ -115,15 +125,8 @@ void Md2Model::draw()
 			Md2Vertex *pVert = &pFrame->vertices[pGLcmd->index];
 			
 			glTexCoord2f(pGLcmd->s, pGLcmd->t);
+			glVertex3fv(pVert->v);
 
-			float v[3];
-			v[0] = pFrame->scale[0] * pVert->v[0] + pFrame->translation[0];
-			v[1] = pFrame->scale[1] * pVert->v[1] + pFrame->translation[1];
-			v[2] = pFrame->scale[2] * pVert->v[2] + pFrame->translation[2];
-			glVertex3fv(v);
-
-			
-			
 		}
 		glEnd();
 	}

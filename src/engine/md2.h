@@ -62,12 +62,20 @@ const int md2Version = 8;
 
 typedef char Md2SkinName[64];
 
-class Md2Vertex
+class Md2VertexCompressed
 {
 	public:
 		unsigned char v[3];
 		unsigned char normalIndex;
 };
+
+class Md2Vertex
+{
+	public:
+		float v[3];
+		unsigned char normalIndex;
+};
+
 
 class Md2TextureCoordinate
 {
