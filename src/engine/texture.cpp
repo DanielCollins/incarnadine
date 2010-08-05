@@ -3,7 +3,7 @@
 Texture::Texture()
 {
 	initialized = false;
-	surface = NULL;
+	surface = 0;
 }
 
 Texture::~Texture()
@@ -15,11 +15,10 @@ void Texture::load(std::string filename)
 {
 	SDL_Surface* textureSurface;
 
-	if (initialized)
-		cleanup();
+	if(initialized) cleanup();
 
 	textureSurface = IMG_Load(filename.c_str());
-	if (textureSurface == NULL)
+	if(textureSurface == 0)
 		throw 0;
 
 	load(textureSurface, GL_RGB);
@@ -43,16 +42,12 @@ void Texture::load(SDL_Surface* textureSurface, GLint format)
 
 void Texture::cleanup()
 {
-	if (initialized)
+	if(initialized)
 	{
-		// Delete the texture.
 		glDeleteTextures(1, &id);
 		id = 0;
-
-		// Free the surface.
 		SDL_FreeSurface(surface);
-		surface = NULL;
-
+		surface = 0;
 		initialized = false;
 	}
 }
