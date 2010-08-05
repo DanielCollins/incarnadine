@@ -86,11 +86,9 @@ void Md2Model::draw()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 
-	if (header.numberOfSkins > 0)
-		textures[0].bind();
+	if(header.numberOfSkins > 0) textures[0].bind();
 
-	glPushMatrix();
-	
+	glPushMatrix();	
 	glRotatef(orientation[0], 1, 0, 0);
 	glRotatef(orientation[1], 0, 1, 0);
 	glRotatef(orientation[2], 0, 0, 1);
@@ -107,19 +105,18 @@ void Md2Model::draw()
 	{
 		if (i < 0)
 		{
-			glBegin (GL_TRIANGLE_FAN);
+			glBegin(GL_TRIANGLE_FAN);
 			i = -i;	
 		}
 		else
 		{
-			glBegin (GL_TRIANGLE_STRIP);
+			glBegin(GL_TRIANGLE_STRIP);
 		}
 		for(; i > 0; i--, pGlcmds += 3)
 		{
 			Md2OpenGlCommand *pGLcmd = reinterpret_cast<Md2OpenGlCommand*>(pGlcmds);
 			Md2Frame *pFrame = &frames[frame];
-			Md2Vertex *pVert = &pFrame->vertices[pGLcmd->index];
-			
+			Md2Vertex *pVert = &pFrame->vertices[pGLcmd->index];			
 			glTexCoord2f(pGLcmd->s, pGLcmd->t);
 			glVertex3fv(pVert->v);
 
@@ -128,7 +125,6 @@ void Md2Model::draw()
 	}
 
 	glPopMatrix();
-
 	glDisable(GL_CULL_FACE);
 	glPopAttrib();
 }
