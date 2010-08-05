@@ -32,7 +32,7 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 	file.read(reinterpret_cast<char*>(&header), sizeof (Md2Header));
 	if(header.ident != md2Magic || header.version != md2Version) throw 1;
 	skins = new Md2SkinName[header.numberOfSkins];
-	textureCoordinates = new Md2TextureCoordinate[header.numberOfTextureCoordinates];
+	textureCoordinates = new TextureCoordinate[header.numberOfTextureCoordinates];
 	triangles = new Md2Triangle[header.numberOfTriangles];
 	frames = new Md2Frame[header.numberOfFrames];
 	openGlCommands = new int[header.numberOfOpenGlCommands];

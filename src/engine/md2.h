@@ -77,13 +77,6 @@ class Md2Vertex
 };
 
 
-class Md2TextureCoordinate
-{
-	public:
-		short s;
-		short t;
-};
-
 class Md2Triangle
 {
 	public:
@@ -121,7 +114,7 @@ class Md2Model : public Renderable
 	private:
 		Md2Header header;
 		Md2SkinName* skins;
-		Md2TextureCoordinate* textureCoordinates;
+		TextureCoordinate* textureCoordinates;
 		Md2Triangle* triangles;
 		Md2Frame* frames;
 		int* openGlCommands;
