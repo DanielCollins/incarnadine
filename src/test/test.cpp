@@ -124,7 +124,6 @@ void handleMouseMove(MouseMove e)
 		camera->localRotateY(yAngle);
 	if(xAngle != 0)
 		camera->localRotateX(xAngle);
-	//engine->input->resetMousePosition();
 }
 
 void cleanup()
