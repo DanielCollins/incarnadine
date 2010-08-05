@@ -27,50 +27,46 @@
 
 Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName) : Renderable (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
 {
-  std::ifstream file(fileName.c_str(), std::ios::binary);
-  if(file.fail()) throw 1;
-  file.read(reinterpret_cast<char*>(&header), sizeof (Md2Header));
-  if(header.ident != md2Magic || header.version != md2Version) throw 1;
-  skins = new Md2SkinName[header.numberOfSkins];
-  textureCoordinates = new Md2TextureCoordinate[header.numberOfTextureCoordinates];
-  triangles = new Md2Triangle[header.numberOfTriangles];
-  frames = new Md2Frame[header.numberOfFrames];
-  openGlCommands = new int[header.numberOfOpenGlCommands];
-  file.seekg(header.offsetToSkins, std::ios::beg);
-  file.read(reinterpret_cast<char*>(skins), sizeof(Md2SkinName) * header.numberOfSkins);
-  file.seekg(header.offsetToTextureCoordinates, std::ios::beg);
-  file.read(reinterpret_cast<char*>(textureCoordinates), sizeof(Md2TextureCoordinate) * header.numberOfTextureCoordinates);
-  file.seekg(header.offsetToTriangles, std::ios::beg);
-  file.read(reinterpret_cast<char*>(triangles), sizeof(Md2Triangle) * header.numberOfTriangles);
-  file.seekg(header.offsetToFrames, std::ios::beg);
-  for(int i = 0; i < header.numberOfFrames; i++)
-  {
-      file.read(reinterpret_cast<char*>(&frames[i].scale), sizeof(float) * 3);
-      file.read(reinterpret_cast<char*>(&frames[i].translation), sizeof(float) * 3);
-      file.read(reinterpret_cast<char*>(&frames[i].name), sizeof(char) * 16);
-	  Md2VertexCompressed* vertices = new Md2VertexCompressed[header.numberOfVertices];
-      file.read(reinterpret_cast<char*>(vertices), sizeof(Md2VertexCompressed) * header.numberOfVertices);
-
-	  frames[i].vertices = new Md2Vertex[header.numberOfVertices];
-	  for (int j = 0; j < header.numberOfVertices; j++)
-	  {
-		frames[i].vertices[j].v[0] = frames[i].scale[0] * vertices[j].v[0] + frames[i].translation[0];
-		frames[i].vertices[j].v[1] = frames[i].scale[1] * vertices[j].v[1] + frames[i].translation[1];
-		frames[i].vertices[j].v[2] = frames[i].scale[2] * vertices[j].v[2] + frames[i].translation[2];
-	  }
-	  
-	  delete [] vertices;
-  }
-
-  file.seekg(header.offsetToOpenGlCommands, std::ios::beg);
-  file.read(reinterpret_cast<char*>(openGlCommands), sizeof(int) * header.numberOfOpenGlCommands);
-  file.close();
-
-  textures = new Texture[header.numberOfSkins];
-  for (int i = 0; i < header.numberOfSkins; i++)
-  {
-	  textures[i].load(skins[i]);
-  }
+	std::ifstream file(fileName.c_str(), std::ios::binary);
+	if(file.fail()) throw 1;
+	file.read(reinterpret_cast<char*>(&header), sizeof (Md2Header));
+	if(header.ident != md2Magic || header.version != md2Version) throw 1;
+	skins = new Md2SkinName[header.numberOfSkins];
+	textureCoordinates = new Md2TextureCoordinate[header.numberOfTextureCoordinates];
+	triangles = new Md2Triangle[header.numberOfTriangles];
+	frames = new Md2Frame[header.numberOfFrames];
+	openGlCommands = new int[header.numberOfOpenGlCommands];
+	file.seekg(header.offsetToSkins, std::ios::beg);
+	file.read(reinterpret_cast<char*>(skins), sizeof(Md2SkinName) * header.numberOfSkins);
+	file.seekg(header.offsetToTextureCoordinates, std::ios::beg);
+	file.read(reinterpret_cast<char*>(textureCoordinates), sizeof(Md2TextureCoordinate) * header.numberOfTextureCoordinates);
+	file.seekg(header.offsetToTriangles, std::ios::beg);
+	file.read(reinterpret_cast<char*>(triangles), sizeof(Md2Triangle) * header.numberOfTriangles);
+	file.seekg(header.offsetToFrames, std::ios::beg);
+	for(int i = 0; i < header.numberOfFrames; i++)
+	{
+		file.read(reinterpret_cast<char*>(&frames[i].scale), sizeof(float) * 3);
+		file.read(reinterpret_cast<char*>(&frames[i].translation), sizeof(float) * 3);
+		file.read(reinterpret_cast<char*>(&frames[i].name), sizeof(char) * 16);
+		Md2VertexCompressed* vertices = new Md2VertexCompressed[header.numberOfVertices];
+		file.read(reinterpret_cast<char*>(vertices), sizeof(Md2VertexCompressed) * header.numberOfVertices);
+		frames[i].vertices = new Md2Vertex[header.numberOfVertices];
+		for(int j = 0; j < header.numberOfVertices; j++)
+		{
+			frames[i].vertices[j].v[0] = frames[i].scale[0] * vertices[j].v[0] + frames[i].translation[0];
+			frames[i].vertices[j].v[1] = frames[i].scale[1] * vertices[j].v[1] + frames[i].translation[1];
+			frames[i].vertices[j].v[2] = frames[i].scale[2] * vertices[j].v[2] + frames[i].translation[2];
+		}
+		delete [] vertices;
+	}
+	file.seekg(header.offsetToOpenGlCommands, std::ios::beg);
+	file.read(reinterpret_cast<char*>(openGlCommands), sizeof(int) * header.numberOfOpenGlCommands);
+	file.close();
+	textures = new Texture[header.numberOfSkins];
+	for(int i = 0; i < header.numberOfSkins; i++)
+	{
+		textures[i].load(skins[i]);
+	}
 }
 
 Md2Model::~Md2Model()
