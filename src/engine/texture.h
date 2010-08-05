@@ -38,19 +38,19 @@
 
 class Texture
 {
-public:
-	Texture();
-	~Texture();
+	public:
+		Texture();
+		~Texture();
 
-	void load(std::string filename);
-	void load(SDL_Surface* textureSurface, GLint format);
-	void cleanup();
-	void bind();
+		void load(std::string filename);
+		void load(SDL_Surface* textureSurface, GLint format);
+		void cleanup();
+		void bind();
 
-private:
-	bool initialized;
-	GLuint id;
-	SDL_Surface* surface;
+	private:
+		bool initialized;
+		GLuint id;
+		SDL_Surface* surface;
 };
 
 #endif
