@@ -26,11 +26,7 @@
 #ifndef ENGINE_TEXTURE_H
 #define ENGINE_TEXTURE_H
 
-#include <fstream>
 #include <string>
-#include <map>
-#include "renderable.h"
-#include "vbo.h"
 #include "vertex.h"
 #include "GL/glew.h"
 #include "SDL.h"

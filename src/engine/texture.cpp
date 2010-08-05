@@ -18,8 +18,7 @@ void Texture::load(std::string filename)
 	if(initialized) cleanup();
 
 	textureSurface = IMG_Load(filename.c_str());
-	if(textureSurface == 0)
-		throw 0;
+	if(textureSurface == 0) throw 0;
 
 	load(textureSurface, GL_RGB);
 }
