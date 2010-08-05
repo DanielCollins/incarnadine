@@ -75,7 +75,9 @@ void Object::goTo(vector3 location)
 
 void Object::localTranslate(vector3 displacement)
 {
-	//stub
+	matrix44 transform;
+	matrix_rotation_euler(transform, orientation[0], orientation[1], orientation[2], euler_order_xyz);
+	position += transform_vector(transform, displacement);
 }
 
 void Object::globalTranslate(vector3 displacement)
