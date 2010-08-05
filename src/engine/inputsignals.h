@@ -27,7 +27,7 @@
 #define ENGINE_INPUTSIGNALS_H
 
 #include "events.h"
-#include "keybinds.h"
+#include "keydef.h"
 
 class MouseMove : public Event
 {
