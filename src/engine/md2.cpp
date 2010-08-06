@@ -39,7 +39,7 @@ Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, v
 	file.seekg(header.offsetToSkins, std::ios::beg);
 	file.read(reinterpret_cast<char*>(skins), sizeof(Md2SkinName) * header.numberOfSkins);
 	file.seekg(header.offsetToTextureCoordinates, std::ios::beg);
-	file.read(reinterpret_cast<char*>(textureCoordinates), sizeof(Md2TextureCoordinate) * header.numberOfTextureCoordinates);
+	file.read(reinterpret_cast<char*>(textureCoordinates), sizeof(TextureCoordinate) * header.numberOfTextureCoordinates);
 	file.seekg(header.offsetToTriangles, std::ios::beg);
 	file.read(reinterpret_cast<char*>(triangles), sizeof(Md2Triangle) * header.numberOfTriangles);
 	file.seekg(header.offsetToFrames, std::ios::beg);
