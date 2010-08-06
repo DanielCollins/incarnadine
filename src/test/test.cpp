@@ -53,8 +53,8 @@ int main(int argc, char* argv[])
 	
 	vector3 mPosition(0.0, 0.0, -8000.0);
 	vector3 mOrientation(0.0, 0.0, 0.0);
-	vector3 mVelocity(0.1, 0.01, 0.01);
-	vector3 mAngularVelocity(0.0, 0.0, 0.01);
+	vector3 mVelocity(0.0, 0.0, 0.0);
+	vector3 mAngularVelocity(0.0, 0.0, 0.001);
 	vector3 mScale(1.0, 1.0, 1.0);
 	
 	Md2Model m(mPosition, mOrientation, mVelocity, mAngularVelocity, mScale, "data/models/worker/worker_body.md2");
