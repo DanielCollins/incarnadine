@@ -9,7 +9,6 @@
 #include "input.h"
 #include "camera.h"
 #include "object.h"
-#include "triangle.h"
 #include "md2.h"
 
 void runTest();
