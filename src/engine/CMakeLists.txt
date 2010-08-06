@@ -10,7 +10,6 @@ add_library(engine
 	scene.cpp
 	render.cpp
 	input.cpp
-	triangle.cpp
 	staticm.cpp
 	vbo.cpp
 	renderable.cpp
