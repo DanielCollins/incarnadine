@@ -25,7 +25,7 @@
 
 #include "md2.h"
 
-Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName) : Visible (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
+Md2Model::Md2Model(std::string fileName)
 {
 	std::ifstream file(fileName.c_str(), std::ios::binary);
 	if(file.fail()) throw 1;
@@ -87,13 +87,6 @@ void Md2Model::draw()
 	glCullFace(GL_BACK);
 
 	if(header.numberOfSkins > 0) textures[0].bind();
-
-	glPushMatrix();	
-	glRotatef(orientation[0], 1, 0, 0);
-	glRotatef(orientation[1], 0, 1, 0);
-	glRotatef(orientation[2], 0, 0, 1);
-	glScalef(scale[0], scale[1], scale[2]);
-	glTranslatef(position[0], position[1], position[2]);
 	
 	int frame = 0;
 	int maxFrame = header.numberOfFrames - 1;
@@ -123,8 +116,6 @@ void Md2Model::draw()
 		}
 		glEnd();
 	}
-
-	glPopMatrix();
 	glDisable(GL_CULL_FACE);
 	glPopAttrib();
 }

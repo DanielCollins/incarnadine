@@ -26,6 +26,7 @@
 #ifndef ENGINE_STATICM_H
 #define ENGINE_STATICM_H
 
+#include "renderable.h"
 #include "visible.h"
 #include "vbo.h"
 #include "tools.h"
@@ -35,9 +36,11 @@
 
 class StaticMesh : public Visible
 {
+	protected:
+		Renderable* base;
 
 	public:
-		StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor);
+		StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, Renderable* newBase);
 		~StaticMesh();
 		void draw();
 };

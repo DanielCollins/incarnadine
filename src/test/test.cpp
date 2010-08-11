@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 	vector3 mAngularVelocity(0.0, 0.0, 0.001);
 	vector3 mScale(1.0, 1.0, 1.0);
 	
-	Md2Model m(mPosition, mOrientation, mVelocity, mAngularVelocity, mScale, "data/models/worker/worker_body.md2");
+	StaticMesh m(mPosition, mOrientation, mVelocity, mAngularVelocity, mScale, engine->loadModel("data/models/worker/worker_body.md2"));
 	scene->addObject(&m);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);

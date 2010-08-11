@@ -10,6 +10,7 @@
 #include "camera.h"
 #include "object.h"
 #include "md2.h"
+#include "staticm.h"
 
 void runTest();
 void exitTestApp();

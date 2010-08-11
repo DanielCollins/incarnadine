@@ -63,7 +63,9 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
 
 Incarnadine::~Incarnadine()
 {
-	iiout(LOG_DEBUG, "exiting");	
+	iiout(LOG_DEBUG, "exiting");
+
+	renderables.clear();
 
 	if (input)
 	{
@@ -102,6 +104,16 @@ void Incarnadine::renderScene()
 void Incarnadine::iout(LogLevel level, std::string message)
 {
 	if(log) log->log(level, message);
+}
+
+Renderable* Incarnadine::loadModel(std::string uri)
+{
+	Renderable* r;
+	std::map<std::string, Renderable*>::iterator i = renderables.find(uri);
+	if(i != renderables.end()) return i->second();
+	r = new Md2Model(uri);
+	renderables.insert(std::pair<std::string, Renderable*>(uri, r));
+	return r;
 }
 
 void Incarnadine::iiout(LogLevel level, std::string message)
