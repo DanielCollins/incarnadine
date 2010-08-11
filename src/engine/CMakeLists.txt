@@ -12,7 +12,7 @@ add_library(engine
 	input.cpp
 	staticm.cpp
 	vbo.cpp
-	renderable.cpp
+	visible.cpp
 	config.cpp
 	config_conf.cpp
 	log.cpp

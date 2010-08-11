@@ -26,14 +26,14 @@
 #ifndef ENGINE_STATICM_H
 #define ENGINE_STATICM_H
 
-#include "renderable.h"
+#include "visible.h"
 #include "vbo.h"
 #include "tools.h"
 #include "vertex.h"
 #include <vector>
 #include "GL/glew.h"
 
-class StaticMesh : public Renderable
+class StaticMesh : public Visible
 {
 	protected:
 		VertexBufferObject* vbo;

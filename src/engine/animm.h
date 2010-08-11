@@ -26,14 +26,14 @@
 #ifndef ENGINE_ANIMM_H
 #define ENGINE_ANIMM_H
 
-#include "renderable.h"
+#include "visible.h"
 #include "vbo.h"
 #include "tools.h"
 #include "vertex.h"
 #include <vector>
 #include "SDL_opengl.h"
 
-class AnimatedMesh : public Renderable
+class AnimatedMesh : public Visible
 {
 
 	private:

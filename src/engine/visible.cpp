@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins
+// Copyright (c) 2010 Daniel Collins, darkf
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -23,25 +23,19 @@
 //
 //========================================================================
 
-#ifndef ENGINE_RENDERABLE_H
-#define ENGINE_RENDERABLE_H
+#include "visible.h"
 
-#include <vector>
-#include "object.h"
-#include "tools.h"
-#include "aabb.h"
-
-class Renderable : public Object
+Visible::Visible(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor) : Object (position, orientation, newVelocity, newAngularVelocity)
 {
-	public:
-		AxisAlignedBoundingBox bound;
-		vector3 scale;
-		std::vector<Renderable*> children;
+	rescale(scaleFactor);
+}
 
-		Renderable(vector3 position, vector3 orientation, vector3 velocity, vector3 angularVelocity, vector3 scaleFactor);
-		void rescale(vector3 scaleFactor);
-		vector3 getScale();
-		virtual void draw() = 0;
-};
+void Visible::rescale(vector3 scaleFactor)
+{
+	scale = scaleFactor;
+}
 
-#endif //ENGINE_RENDERABLE_H
+vector3 Visible::getScale()
+{
+	return scale;
+}

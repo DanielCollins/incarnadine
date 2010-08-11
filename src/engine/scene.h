@@ -27,19 +27,19 @@
 #define ENGINE_SCENE_H
 
 #include <vector>
-#include "renderable.h"
+#include "visible.h"
 
 class Scene
 {
 	private:
-		std::vector<Renderable*> objects;
+		std::vector<Visible*> objects;
 
 	public:
 		Scene();
 		~Scene();
 		void rasterize();
-		void addObject(Renderable *newObject);
-		void removeObject(Renderable *oldObject);
+		void addObject(Visible *newObject);
+		void removeObject(Visible *oldObject);
 		void updateObjects(unsigned int deltaTicks);
 };
 

@@ -29,7 +29,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "renderable.h"
+#include "visible.h"
 #include "vbo.h"
 #include "vertex.h"
 #include "GL/glew.h"
@@ -109,7 +109,7 @@ class Md2AnimationInfo
 		int end;
 };
 
-class Md2Model : public Renderable
+class Md2Model : public Visible
 {
 	private:
 		Md2Header header;

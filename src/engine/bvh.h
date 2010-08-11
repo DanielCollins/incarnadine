@@ -26,12 +26,12 @@
 #ifndef ENGINE_BVH_H
 #define ENGINE_BVH_H
 
-#include "renderable.h"
+#include "visible.h"
 
 class BoundingVolumeHierarchy
 {
 	private:
-		Renderable* object;
+		Visible* object;
 		BoundingVolumeHierarchy* left;
 		BoundingVolumeHierarchy* right;
 		BoundingVolumeHierarchy* parent;		
@@ -39,8 +39,8 @@ class BoundingVolumeHierarchy
 	public:
 		BoundingVolumeHierarchy();
 		~BoundingVolumeHierarchy();
-		void setObject(Renderable* newObject);
-		Renderable* getObject();
+		void setObject(Visible* newObject);
+		Visible* getObject();
 		void addNode(BoundingVolumeHierarchy* newChild);
 		BoundingVolumeHierarchy* getLeftChild();
 		BoundingVolumeHierarchy* getRightChild();

@@ -25,7 +25,7 @@
 
 #include "md2.h"
 
-Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName) : Renderable (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
+Md2Model::Md2Model(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, std::string fileName) : Visible (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
 {
 	std::ifstream file(fileName.c_str(), std::ios::binary);
 	if(file.fail()) throw 1;

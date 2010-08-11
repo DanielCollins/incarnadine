@@ -35,23 +35,23 @@ Scene::~Scene()
 
 void Scene::rasterize()
 {
-  std::vector<Renderable*>::const_iterator i = objects.begin();
-  std::vector<Renderable*>::const_iterator end = objects.end();
+  std::vector<Visible*>::const_iterator i = objects.begin();
+  std::vector<Visible*>::const_iterator end = objects.end();
   for(;i != end; i++) (*i)->draw();
 }
 
-void Scene::addObject(Renderable *newObject)
+void Scene::addObject(Visible *newObject)
 {
-  std::vector<Renderable*>::const_iterator i = objects.begin();
-  std::vector<Renderable*>::const_iterator end = objects.end();
+  std::vector<Visible*>::const_iterator i = objects.begin();
+  std::vector<Visible*>::const_iterator end = objects.end();
   for(;i != end; i++) if(newObject == *i) return;
   objects.push_back(newObject);
 }
 
-void Scene::removeObject(Renderable *oldObject)
+void Scene::removeObject(Visible *oldObject)
 {
-  std::vector<Renderable*>::iterator i = objects.begin();
-  std::vector<Renderable*>::iterator end = objects.end();
+  std::vector<Visible*>::iterator i = objects.begin();
+  std::vector<Visible*>::iterator end = objects.end();
   for(;i != end; i++)
   {
     if(oldObject == *i)
@@ -64,8 +64,8 @@ void Scene::removeObject(Renderable *oldObject)
 
 void Scene::updateObjects(unsigned int deltaTicks)
 {
-  std::vector<Renderable*>::const_iterator i = objects.begin();
-  std::vector<Renderable*>::const_iterator end = objects.end();
+  std::vector<Visible*>::const_iterator i = objects.begin();
+  std::vector<Visible*>::const_iterator end = objects.end();
   for(;i != end; i++) (*i)->updatePosition(deltaTicks);
 }
 
