@@ -35,10 +35,7 @@
 
 class StaticMesh : public Visible
 {
-	protected:
-		VertexBufferObject* vbo;
-		std::vector<Vertex> vertices;
-		
+
 	public:
 		StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor);
 		~StaticMesh();

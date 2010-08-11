@@ -27,12 +27,10 @@
 
 StaticMesh::StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor) : Visible (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
 {
-	vbo = 0;
 }
 
 StaticMesh::~StaticMesh()
 {
-	if(vbo)delete vbo;
 }
 
 void StaticMesh::draw()
@@ -44,7 +42,6 @@ void StaticMesh::draw()
 	glScalef(scale[0], scale[1], scale[2]);
 	glTranslatef(position[0], position[1], position[2]);
 	std::vector<Visible*>::iterator i;
-	if(vbo)vbo->draw();
 	for(i = children.begin(); i != children.end(); i++) (*i)->draw(); 
 	glPopMatrix();
 }
