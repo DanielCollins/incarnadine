@@ -13,8 +13,6 @@ add_library(engine
 	staticm.cpp
 	vbo.cpp
 	visible.cpp
-	config.cpp
-	config_conf.cpp
 	log.cpp
 	clock.cpp
 	md2.cpp
