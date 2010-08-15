@@ -39,12 +39,12 @@
 #include "clock.h"
 #include "renderable.h"
 #include "visible.h"
+#include "md2.h"
 
 class Incarnadine
 {
 	private:
 		RenderManager* renderer;
-		Logger* log;
 		Clock clock;
 		std::map<std::string, Renderable*> renderables;
 

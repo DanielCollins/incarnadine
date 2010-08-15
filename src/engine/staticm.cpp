@@ -25,7 +25,7 @@
 
 #include "staticm.h"
 
-StaticMesh::StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, Renderabe* newBase) : Visible (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
+StaticMesh::StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, Renderable* newBase) : Visible (position, orientation, newVelocity, newAngularVelocity, scaleFactor)
 {
 	base = newBase;
 }

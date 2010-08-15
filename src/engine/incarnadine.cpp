@@ -70,18 +70,14 @@ void Incarnadine::renderScene()
 {
 	renderer->draw();
 	GLenum errorCode = glGetError();
-	if(errorCode != GL_NO_ERROR)
-	{
-		iiout(LOG_ERROR, (char*) gluErrorString(errorCode));
-		throw 0;
-	}
+	if(errorCode != GL_NO_ERROR) throw 0;
 }
 
 Renderable* Incarnadine::loadModel(std::string uri)
 {
 	Renderable* r;
 	std::map<std::string, Renderable*>::iterator i = renderables.find(uri);
-	if(i != renderables.end()) return i->second();
+	if(i != renderables.end()) return i->second;
 	r = new Md2Model(uri);
 	renderables.insert(std::pair<std::string, Renderable*>(uri, r));
 	return r;
