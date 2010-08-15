@@ -36,7 +36,6 @@
 #include "render.h"
 #include "camera.h"
 #include "scene.h"
-#include "log.h"
 #include "clock.h"
 #include "renderable.h"
 #include "visible.h"
@@ -49,16 +48,13 @@ class Incarnadine
 		Clock clock;
 		std::map<std::string, Renderable*> renderables;
 
-		void iiout(LogLevel level, std::string message);
-
 	public:
 		Display* display;
-		InputManager* input;	
+		InputManager* input;
 
 		Incarnadine(Camera* newCamera, Scene* newScene);
 		~Incarnadine();
 		void renderScene();
-		void iout(LogLevel level, std::string message);
 		Renderable* loadModel(std::string uri);
 		unsigned int getTicks();
 		Clock* getClock();

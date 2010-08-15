@@ -142,7 +142,6 @@ void cleanup()
 
 void exitTestApp()
 {
-	engine->iout(LOG_DEBUG, "test app closing");
 	cleanup();
 	exit(EXIT_SUCCESS);
 }
