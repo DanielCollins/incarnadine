@@ -48,13 +48,19 @@ void InputManager::update()
 	{
 		switch(Event.type)
 		{
-			case SDL_KEYDOWN: // Fall through
+			case SDL_KEYDOWN:
+			{
+				KeyEvent e;
+				e.type = KEY_DOWN;
+				e.key = Event.key.keysym.sym;
+				sKeyEvent.fire(&e);
+				break;
+			}
 			case SDL_KEYUP:
 			{
 				KeyEvent e;
-				e.type = (Event.type == SDL_KEYDOWN) ? KEY_DOWN : KEY_UP;
+				e.type = KEY_UP;
 				e.key = Event.key.keysym.sym;
-
 				sKeyEvent.fire(&e);
 				break;
 			}
