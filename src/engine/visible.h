@@ -42,6 +42,7 @@ class Visible : public Object
 		void rescale(vector3 scaleFactor);
 		vector3 getScale();
 		virtual void draw() = 0;
+		virtual void draw(float) = 0;
 };
 
 #endif //ENGINE_VISIBLE_H
