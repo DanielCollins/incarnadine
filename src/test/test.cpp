@@ -25,10 +25,6 @@
 
 #include "test.h"
 
-const int maximumFrameRate = 120;
-const int minimumFrameRate = 10;
-const float updateInteval = 1.0 / maximumFrameRate;
-const float maximumCyclesPerFrame = maximumFrameRate / minimumFrameRate;
 
 const float mouseSensitivity = 0.001;
 
@@ -76,30 +72,18 @@ int main(int argc, char* argv[])
 void runTest() 
 {
 	static double timeAtLastFrame = 0.0;
-	static double loopsRemaining = 0.0;
 	double currentTime = engine->getTicks();
-	double updateIterations = currentTime - timeAtLastFrame + loopsRemaining;
-  
-	if(updateIterations > maximumCyclesPerFrame * updateInteval)
-		updateIterations = maximumCyclesPerFrame * updateInteval;
-  
-	while (updateIterations > updateInteval)
-	{
-		updateIterations -= updateInteval;    
-		engine->input->update();
-		scene->updateObjects(currentTime - timeAtLastFrame);
-	}
-  
-	loopsRemaining = updateIterations;
-	timeAtLastFrame = currentTime;
 	try
 	{
+		engine->input->update();
+		scene->updateObjects(currentTime - timeAtLastFrame);
 		engine->renderScene();
 	}
 	catch (int e)
 	{
 		exitTestApp();
 	}
+	timeAtLastFrame = currentTime;
 }
 
 void handleExit(Exiting e)
