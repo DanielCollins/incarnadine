@@ -65,7 +65,6 @@ int main(int argc, char* argv[])
 	MouseMoveSlot->connect(&(engine->input->sMouseMove));
 		
 	while(true) runTest();	
-	exitTestApp();
 	
 	return EXIT_FAILURE;
 }
