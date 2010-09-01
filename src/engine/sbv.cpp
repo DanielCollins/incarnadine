@@ -24,9 +24,10 @@
 //========================================================================
 
 #include "sbv.h"
+#include <cmath>
 
 float SphericalBoundingVolume::getVolume()
 {
 	//(4.pi.r^3)/3
-	return 4.1887902 * radius ^ 3;
+	return 4.1887902 * pow(radius, 3);
 }
