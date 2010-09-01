@@ -34,8 +34,8 @@ void Clock::sleep(unsigned int delay)
 {
 	SDL_Delay(delay);
 }
-
-tm* Clock::getUCTtime()
+;
+tm* Clock::getUTCTime()
 {
 	time_t ttime;
 	time(&ttime);
