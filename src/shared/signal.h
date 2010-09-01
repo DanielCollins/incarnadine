@@ -36,11 +36,13 @@ class Signal
 {
 	private:
 		std::vector<Slot<EventType>*> slots;
+		bool enabled;
 
 	public:
 
 		Signal()
 		{
+			enabled = true;
 		}
 
 		~Signal()
@@ -49,9 +51,12 @@ class Signal
 
 		void fire(EventType* e)
 		{
-			typename std::vector<Slot<EventType>*>::const_iterator i;
-			for(i = slots.begin(); i != slots.end(); i++)
-				(*i)->_fire(e);
+			if(enabled)
+			{
+				typename std::vector<Slot<EventType>*>::const_iterator i;
+				for(i = slots.begin(); i != slots.end(); i++)
+					(*i)->_fire(e);
+			}
 		}
 
 		void _acceptConnection(Slot<EventType>* newSlot)
@@ -74,6 +79,16 @@ class Signal
 					return;
 				}
 			}
+		}
+
+		bool isEnabled()
+		{
+			return enabled;
+		}
+
+		void setEnabled(bool newState)
+		{
+			enabled = newState;
 		}
 };
 

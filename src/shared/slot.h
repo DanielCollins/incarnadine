@@ -42,6 +42,7 @@ class Slot
 
 		std::vector<Signal<EventType>*> signals;
 		void (*handler)(EventType);
+		bool enabled;
 
 
 	public:
@@ -49,6 +50,7 @@ class Slot
 		Slot(void (*newhandler)(EventType))
 		{
 			handler = newhandler;
+			enabled = true;
 		}
 
 		~Slot()
@@ -81,7 +83,17 @@ class Slot
 
 		void _fire(EventType* e)
 		{
-			handler(*e);
+			if(enabled) handler(*e);
+		}
+
+		bool isEnabled()
+		{
+			return enabled;
+		}
+
+		void setEnabled(bool newState)
+		{
+			enabled = newState;
 		}
 };
 
