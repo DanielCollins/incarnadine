@@ -52,7 +52,7 @@ class Incarnadine
 		Display* display;
 		InputManager* input;
 
-		Incarnadine(Camera* newCamera, Scene* newScene);
+		Incarnadine(Camera* newCamera, Scene* newScene, Display* newDisplay);
 		~Incarnadine();
 		void renderScene();
 		void renderScene(float);

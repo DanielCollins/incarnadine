@@ -26,8 +26,9 @@
 #ifndef ENGINE_DISPLAY_H
 #define ENGINE_DISPLAY_H
 
+#include <string>
 #include "SDL.h"
-#include "GL/glew.h" 
+#include "GL/glew.h"
 
 class Display
 {
@@ -37,7 +38,7 @@ class Display
 	public:
 		Display();
 		~Display();
-		bool init();
+		bool init(std::string);
 		void update();
 		int width();
 		int height();

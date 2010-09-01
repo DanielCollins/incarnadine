@@ -39,10 +39,10 @@ Display::~Display()
 	}
 }
 
-bool Display::init()
+bool Display::init(std::string title)
 {
 	surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
-
+	SDL_WM_SetCaption(title.c_str(), title.c_str());
 	if (!surface)
 		return false;
 

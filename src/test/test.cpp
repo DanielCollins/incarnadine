@@ -32,6 +32,7 @@ const float mouseSensitivity = 0.001;
 Incarnadine* engine;
 Camera* camera;
 Scene* scene;
+Display* display
 
 Slot<Exiting>* ExitingSlot;
 Slot<KeyEvent>* KeyEventSlot;
@@ -46,7 +47,8 @@ int main(int argc, char* argv[])
 		
 	camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, 90.0f);
 	scene = new Scene();	
-	engine = new Incarnadine(camera, scene);	
+	display = new Display("Incarnadine test");
+	engine = new Incarnadine(camera, scene, display);
 	
 	vector3 mPosition(0.0, 0.0, -8000.0);
 	vector3 mOrientation(0.0, 0.0, 0.0);
@@ -126,6 +128,8 @@ void cleanup()
 	camera = 0;
 	delete scene;
 	scene = 0;
+	delete display;
+	display = 0;
 }
 
 void exitTestApp()

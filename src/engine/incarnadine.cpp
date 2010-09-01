@@ -25,14 +25,14 @@
 
 #include "incarnadine.h"
 
-Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene)
+Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene, Display* newDisplay)
 {
 	SDL_Init(SDL_INIT_VIDEO);
 
 	int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
 	int imgStatus = IMG_Init(imgFlags);
 	if ((imgStatus & imgFlags) != imgFlags) throw 0;	
-	display = new Display();
+	display = newDisplay;
 
 	if (!display->init()) throw 0;
 	
