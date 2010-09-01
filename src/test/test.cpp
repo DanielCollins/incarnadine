@@ -26,7 +26,7 @@
 #include "test.h"
 
 
-const float targetFrameRate = 0.001;
+const float targetTimePerFrame = 0.001;
 const float mouseSensitivity = 0.001;
 
 Incarnadine* engine;
@@ -72,13 +72,18 @@ int main(int argc, char* argv[])
 
 void runTest() 
 {
-	static double timeAtLastFrame = 0.0;
+	static double timeAtLastCycle = 0.0;
+	static double timeAtLastPhysicsUpdate = 0.0;
 	try
 	{
-		engine->input->update();
-		double currentTime = engine->getTicks();
-		scene->updateObjects(currentTime - timeAtLastFrame);
-		timeAtLastFrame = currentTime;
+		double currentTime = engine->getTicks();		
+		unsigned int delay = (unsigned int) targetFrameRate - (currentTime - timeAtLastCycle);
+		timeAtLastCycle = currentTime;
+		if(delay > 0) engine->getClock()->sleep(delay);
+		engine->input->update();		
+		currentTime = engine->getTicks();		
+		scene->updateObjects(currentTime - timeAtLastPhysicsUpdate);
+		timeAtLastPhysicsUpdate = currentTime;		
 		engine->renderScene();
 	}
 	catch (int e)

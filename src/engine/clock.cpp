@@ -30,6 +30,11 @@ unsigned int Clock::getTicks()
 	return SDL_GetTicks();
 }
 
+void Clock::sleep(unsigned int delay)
+{
+	SDL_Delay(delay);
+}
+
 tm* getUCTtime()
 {
 	time_t ttime;
