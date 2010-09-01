@@ -95,7 +95,7 @@ unsigned int Incarnadine::getTicks()
 	return clock.getTicks();
 }
 
-Clock* getClock()
+Clock* Incarnadine::getClock()
 {
 	return (Clock*)&clock;
 }

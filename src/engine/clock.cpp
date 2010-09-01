@@ -35,14 +35,14 @@ void Clock::sleep(unsigned int delay)
 	SDL_Delay(delay);
 }
 
-tm* getUCTtime()
+tm* Clock::getUCTtime()
 {
 	time_t ttime;
 	time(&ttime);
 	return gmtime(&ttime);
 }
 
-tm* getLocalTime()
+tm* Clock::getLocalTime()
 {
 	time_t ttime;
 	time(&ttime);
