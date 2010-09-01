@@ -25,8 +25,8 @@
 
 #include "test.h"
 
-
-const float targetTimePerFrame = 0.001;
+const int targetUpdateTimeDelta = 1000 / 50;
+const int maximumFrameSkip = 10;
 const float mouseSensitivity = 0.001;
 
 Incarnadine* engine;
@@ -68,33 +68,30 @@ int main(int argc, char* argv[])
 	
 	return EXIT_FAILURE;
 }
+engine->input->update();		
+engine->getTicks();		
+scene->updateObjects(deltat);	
+engine->renderScene();
+engine->getClock()->sleep(delay);
 
 void runTest() 
 {
+	int skippedFrames = 0;
+	unsigned int nextCycle = 0;
+	static unsigned int lastCycle = engine->getTicks(); 
 	while(true)
 	{
-		static double timeAtLastCycle = 0.0;
-		static double timeAtLastPhysicsUpdate = 0.0;
-		double currentTime;	
-		try
+		skippedFrames = 0;
+		while(engine->getTicks() >= nextCycle && skippedFrames <= maximumFrameSkip)
 		{
-			if(targetFrameRate > 0)
-			{
-				currentTime = engine->getTicks();		
-				unsigned int delay = (unsigned int) targetFrameRate - (currentTime - timeAtLastCycle);
-				timeAtLastCycle = currentTime;
-				if(delay > 0) engine->getClock()->sleep(delay);
-			}
-			engine->input->update();		
-			currentTime = engine->getTicks();		
-			scene->updateObjects(currentTime - timeAtLastPhysicsUpdate);
-			timeAtLastPhysicsUpdate = currentTime;		
-			engine->renderScene();
+			engine->input->update();
+			scene->updateObjects(engine->getTicks() - lastCycle);
+			lastCycle = nextCycle;
+			nextCycle += targetUpdateTimeDelta;
+			++skipped;
 		}
-		catch (int e)
-		{
-			exitTestApp();
-		}
+		while(nextCycle > engine->getTicks()) engine->renderScene();
+		if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks())
 	}
 }
 
