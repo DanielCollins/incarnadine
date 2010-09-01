@@ -43,7 +43,7 @@ class StaticMesh : public Visible
 		StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, Renderable* newBase);
 		~StaticMesh();
 		void draw();
-		void draw(float)
+		void draw(float);
 };
 
 #endif //ENGINE_STATICM_H
