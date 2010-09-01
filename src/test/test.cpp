@@ -64,34 +64,37 @@ int main(int argc, char* argv[])
 	MouseMoveSlot = new Slot<MouseMove>(handleMouseMove);
 	MouseMoveSlot->connect(&(engine->input->sMouseMove));
 		
-	while(true) runTest();	
+	runTest();	
 	
 	return EXIT_FAILURE;
 }
 
 void runTest() 
 {
-	static double timeAtLastCycle = 0.0;
-	static double timeAtLastPhysicsUpdate = 0.0;
-	double currentTime;	
-	try
+	while(true)
 	{
-		if(targetFrameRate > 0)
+		static double timeAtLastCycle = 0.0;
+		static double timeAtLastPhysicsUpdate = 0.0;
+		double currentTime;	
+		try
 		{
+			if(targetFrameRate > 0)
+			{
+				currentTime = engine->getTicks();		
+				unsigned int delay = (unsigned int) targetFrameRate - (currentTime - timeAtLastCycle);
+				timeAtLastCycle = currentTime;
+				if(delay > 0) engine->getClock()->sleep(delay);
+			}
+			engine->input->update();		
 			currentTime = engine->getTicks();		
-			unsigned int delay = (unsigned int) targetFrameRate - (currentTime - timeAtLastCycle);
-			timeAtLastCycle = currentTime;
-			if(delay > 0) engine->getClock()->sleep(delay);
+			scene->updateObjects(currentTime - timeAtLastPhysicsUpdate);
+			timeAtLastPhysicsUpdate = currentTime;		
+			engine->renderScene();
 		}
-		engine->input->update();		
-		currentTime = engine->getTicks();		
-		scene->updateObjects(currentTime - timeAtLastPhysicsUpdate);
-		timeAtLastPhysicsUpdate = currentTime;		
-		engine->renderScene();
-	}
-	catch (int e)
-	{
-		exitTestApp();
+		catch (int e)
+		{
+			exitTestApp();
+		}
 	}
 }
 
