@@ -83,10 +83,10 @@ void runTest()
 			scene->updateObjects(engine->getTicks() - lastCycle);
 			lastCycle = nextCycle;
 			nextCycle += targetUpdateTimeDelta;
-			++skipped;
+			++skippedFrames;
 		}
 		while(nextCycle > engine->getTicks()) engine->renderScene((nextCycle - engine->getTicks()) / targetUpdateTimeDelta);
-		if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks())
+		if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks());
 	}
 }
 
