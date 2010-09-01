@@ -36,9 +36,8 @@ class Display
 		SDL_Surface* surface;
 		
 	public:
-		Display();
+		Display(std::string);
 		~Display();
-		bool init(std::string);
 		void update();
 		int width();
 		int height();

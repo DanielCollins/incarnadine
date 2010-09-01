@@ -33,8 +33,6 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene, Display* newDisplay
 	int imgStatus = IMG_Init(imgFlags);
 	if ((imgStatus & imgFlags) != imgFlags) throw 0;	
 	display = newDisplay;
-
-	if (!display->init()) throw 0;
 	
 	input = new InputManager(display);
 	

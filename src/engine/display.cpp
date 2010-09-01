@@ -25,26 +25,11 @@
 
 #include "display.h"
 
-Display::Display()
-{
-	surface = 0;
-}
-
-Display::~Display()
-{
-	if (surface)
-	{
-		SDL_FreeSurface(surface);
-		surface = 0;
-	}
-}
-
-bool Display::init(std::string title)
+Display::Display(std::string title)
 {
 	surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
 	SDL_WM_SetCaption(title.c_str(), title.c_str());
-	if (!surface)
-		return false;
+	if (!surface) throw 0;
 
 	//require at least 5 bits per colour
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
@@ -56,8 +41,15 @@ bool Display::init(std::string title)
 
 	//require double buffering
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	
-	return true;
+}
+
+Display::~Display()
+{
+	if (surface)
+	{
+		SDL_FreeSurface(surface);
+		surface = 0;
+	}
 }
 
 //Show next frame
