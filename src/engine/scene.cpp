@@ -40,6 +40,13 @@ void Scene::rasterize()
   for(;i != end; i++) (*i)->draw();
 }
 
+void Scene::rasterize(float deltaTime)
+{
+  std::vector<Visible*>::const_iterator i = objects.begin();
+  std::vector<Visible*>::const_iterator end = objects.end();
+  for(;i != end; i++) (*i)->draw(deltaTime);
+}
+
 void Scene::addObject(Visible *newObject)
 {
   std::vector<Visible*>::const_iterator i = objects.begin();

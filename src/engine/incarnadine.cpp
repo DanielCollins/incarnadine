@@ -73,6 +73,13 @@ void Incarnadine::renderScene()
 	if(errorCode != GL_NO_ERROR) throw 0;
 }
 
+void Incarnadine::renderScene(float timeDelta)
+{
+	renderer->draw(timeDelta);
+	GLenum errorCode = glGetError();
+	if(errorCode != GL_NO_ERROR) throw 0;
+}
+
 Renderable* Incarnadine::loadModel(std::string uri)
 {
 	Renderable* r;

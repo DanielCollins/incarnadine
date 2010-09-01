@@ -48,6 +48,15 @@ void RenderManager::draw()
 	display->update();
 }
 
+void RenderManager::draw(float deltaTime)
+{
+	camera->updateGL();
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	scene->rasterize(deltaTime);
+	display->update();
+}
+
+
 void RenderManager::setCamera(Camera* newCamera)
 {
 	camera = newCamera;

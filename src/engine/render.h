@@ -44,6 +44,7 @@ class RenderManager
 	public:
 		RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay);
 		void draw();
+		void draw(float);
 		void setCamera(Camera* newCamera);		
 };
 

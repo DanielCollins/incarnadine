@@ -38,6 +38,7 @@ class Scene
 		Scene();
 		~Scene();
 		void rasterize();
+		void rasterize(float);
 		void addObject(Visible *newObject);
 		void removeObject(Visible *oldObject);
 		void updateObjects(unsigned int deltaTicks);

@@ -68,11 +68,6 @@ int main(int argc, char* argv[])
 	
 	return EXIT_FAILURE;
 }
-engine->input->update();		
-engine->getTicks();		
-scene->updateObjects(deltat);	
-engine->renderScene();
-engine->getClock()->sleep(delay);
 
 void runTest() 
 {
@@ -90,7 +85,7 @@ void runTest()
 			nextCycle += targetUpdateTimeDelta;
 			++skipped;
 		}
-		while(nextCycle > engine->getTicks()) engine->renderScene();
+		while(nextCycle > engine->getTicks()) engine->renderScene((nextCycle - engine->getTicks()) / targetUpdateTimeDelta);
 		if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks())
 	}
 }

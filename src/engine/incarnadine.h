@@ -55,6 +55,7 @@ class Incarnadine
 		Incarnadine(Camera* newCamera, Scene* newScene);
 		~Incarnadine();
 		void renderScene();
+		void renderScene(float);
 		Renderable* loadModel(std::string uri);
 		unsigned int getTicks();
 		Clock* getClock();
