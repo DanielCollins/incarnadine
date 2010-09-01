@@ -16,6 +16,7 @@ add_library(engine
 	clock.cpp
 	md2.cpp
 	texture.cpp
+	panel.cpp
 	${INCARNADINE_SOURCE_DIR}/src/shared/glew.c
 )
 
