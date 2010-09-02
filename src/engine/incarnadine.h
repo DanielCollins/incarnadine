@@ -30,6 +30,7 @@
 #include <map>
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
 #include "GL/glew.h"
 #include "display.h"
 #include "input.h"
