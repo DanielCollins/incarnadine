@@ -17,6 +17,7 @@ add_library(engine
 	md2.cpp
 	texture.cpp
 	panel.cpp
+	font.cpp
 	${INCARNADINE_SOURCE_DIR}/src/shared/glew.c
 )
 
