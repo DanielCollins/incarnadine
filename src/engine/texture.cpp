@@ -27,11 +27,9 @@
 
 Texture::Texture(std::string filename)
 {
-	cleanup();
-	surface = 0;
-	SDL_Surface* textureSurface;
-	textureSurface = IMG_Load(filename.c_str());
-	if(textureSurface == 0) throw 0;
+	SDL_Surface* surface;
+	surface = IMG_Load(filename.c_str());
+	if(surface == 0) throw 0;
 	glGenTextures(1, &id);
 	glBindTexture(GL_TEXTURE_2D, id);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
