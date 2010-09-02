@@ -91,6 +91,16 @@ Renderable* Incarnadine::loadModel(std::string uri)
 	return r;
 }
 
+TrueTypeFont* loadFont(std::string uri);
+{
+	TrueTypeFont* f;
+	std::map<std::string, TrueTypeFont*>::iterator i = fonts.find(uri);
+	if(i != fonts.end()) return i->second;
+	f = new TrueTypeFont(uri);
+	fonts.insert(std::pair<std::string, TrueTypeFont*>(uri, f));
+	return f;
+}
+
 unsigned int Incarnadine::getTicks()
 {
 	return clock.getTicks();
