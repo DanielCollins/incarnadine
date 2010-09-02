@@ -118,7 +118,7 @@ class Md2Model : public Renderable
 		Md2Triangle* triangles;
 		Md2Frame* frames;
 		int* openGlCommands;
-		Texture* textures;
+		Texture** textures;
 
 	public:
 		Md2Model(std::string fileName);

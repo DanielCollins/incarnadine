@@ -62,7 +62,7 @@ Md2Model::Md2Model(std::string fileName)
 	file.seekg(header.offsetToOpenGlCommands, std::ios::beg);
 	file.read(reinterpret_cast<char*>(openGlCommands), sizeof(int) * header.numberOfOpenGlCommands);
 	file.close();
-	textures = new Texture[header.numberOfSkins];
+	textures = new Texture*[header.numberOfSkins];
 	for(int i = 0; i < header.numberOfSkins; i++)
 	{
 		textures[i] = new Texture(skins[i]);
@@ -71,6 +71,10 @@ Md2Model::Md2Model(std::string fileName)
 
 Md2Model::~Md2Model()
 {
+	for(int i = 0; i < header.numberOfSkins; i++)
+	{
+		delete textures[i];
+	}
 	delete [] textures;
 	delete [] skins;
 	delete [] textureCoordinates;
@@ -86,7 +90,7 @@ void Md2Model::draw()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 
-	if(header.numberOfSkins > 0) textures[0].bind();
+	if(header.numberOfSkins > 0) textures[0]->bind();
 	
 	int frame = 0;
 	int maxFrame = header.numberOfFrames - 1;

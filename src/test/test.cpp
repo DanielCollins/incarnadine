@@ -32,7 +32,7 @@ const float mouseSensitivity = 0.001;
 Incarnadine* engine;
 Camera* camera;
 Scene* scene;
-Display* display
+Display* display;
 
 Slot<Exiting>* ExitingSlot;
 Slot<KeyEvent>* KeyEventSlot;
