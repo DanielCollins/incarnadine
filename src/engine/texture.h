@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Flahive
+// Copyright (c) 2010 Daniel Flahive, Daniel Collins
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -35,16 +35,13 @@
 class Texture
 {
 	public:
-		Texture();
+		Texture(std::string filename);
+		Texture(SDL_Surface* textureSurface, GLint format);
 		~Texture();
-
-		void load(std::string filename);
-		void load(SDL_Surface* textureSurface, GLint format);
-		void cleanup();
 		void bind();
 
 	private:
-		bool initialized;
+		void cleanup();
 		GLuint id;
 		SDL_Surface* surface;
 };

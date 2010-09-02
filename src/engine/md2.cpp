@@ -65,7 +65,7 @@ Md2Model::Md2Model(std::string fileName)
 	textures = new Texture[header.numberOfSkins];
 	for(int i = 0; i < header.numberOfSkins; i++)
 	{
-		textures[i].load(skins[i]);
+		textures[i] = new Texture(skins[i]);
 	}
 }
 

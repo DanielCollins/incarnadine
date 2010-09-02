@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Flahive
+// Copyright (c) 2010 Daniel Flahive, Daniel Collins
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -25,10 +25,26 @@
 
 #include "texture.h"
 
-Texture::Texture()
+Texture::Texture(std::string filename)
 {
-	initialized = false;
+	cleanup();
 	surface = 0;
+	SDL_Surface* textureSurface;
+	textureSurface = IMG_Load(filename.c_str());
+	if(textureSurface == 0) throw 0;
+	load(textureSurface, GL_RGB);
+}
+
+Texture::Texture(SDL_Surface* textureSurface, GLint format)
+{
+	surface = textureSurface;
+	glGenTextures(1, &id);
+	glBindTexture(GL_TEXTURE_2D, id);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, format, surface->w, surface->h, 0, format, GL_UNSIGNED_BYTE, surface->pixels);
 }
 
 Texture::~Texture()
@@ -36,43 +52,14 @@ Texture::~Texture()
 	cleanup();
 }
 
-void Texture::load(std::string filename)
-{
-	SDL_Surface* textureSurface;
-
-	if(initialized) cleanup();
-
-	textureSurface = IMG_Load(filename.c_str());
-	if(textureSurface == 0) throw 0;
-
-	load(textureSurface, GL_RGB);
-}
-
-void Texture::load(SDL_Surface* textureSurface, GLint format)
-{
-	surface = textureSurface;
-
-	glGenTextures(1, &id);
-
-	glBindTexture(GL_TEXTURE_2D, id);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexImage2D(GL_TEXTURE_2D, 0, format, surface->w, surface->h, 0, format, GL_UNSIGNED_BYTE, surface->pixels);
-
-	initialized = true;
-}
-
 void Texture::cleanup()
 {
-	if(initialized)
+	glDeleteTextures(1, &id);
+	id = 0;
+	if(surface)
 	{
-		glDeleteTextures(1, &id);
-		id = 0;
 		SDL_FreeSurface(surface);
 		surface = 0;
-		initialized = false;
 	}
 }
 
