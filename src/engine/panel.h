@@ -29,6 +29,7 @@
 class Panel
 {
 	public:
+		Panel(int x, int y, int w, int h);
 		void draw();
 };
 
