@@ -60,7 +60,8 @@ class Incarnadine
 		void renderScene();
 		void renderScene(float);
 		Renderable* loadModel(std::string uri);
-		TrueTypeFont* loadFont(std::string uri);
+		TrueTypeFont* loadFont(std::string uri, int size);
+		void drawText(std::string text, TrueTypeFont* font, int x, int y);
 		unsigned int getTicks();
 		Clock* getClock();
 };

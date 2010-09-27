@@ -33,6 +33,7 @@ Incarnadine* engine;
 Camera* camera;
 Scene* scene;
 Display* display;
+TrueTypeFont* font;
 
 Slot<Exiting>* ExitingSlot;
 Slot<KeyEvent>* KeyEventSlot;
@@ -49,6 +50,7 @@ int main(int argc, char* argv[])
 	scene = new Scene();	
 	display = new Display("Incarnadine test");
 	engine = new Incarnadine(camera, scene, display);
+	font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
 	
 	vector3 mPosition(0.0, 0.0, -8000.0);
 	vector3 mOrientation(0.0, 0.0, 0.0);
@@ -87,6 +89,7 @@ void runTest()
 			nextCycle += targetUpdateTimeDelta;
 			++skippedFrames;
 		}
+		engine->drawText("Hello, world", font, 0, 0);
 		while(nextCycle > engine->getTicks()) engine->renderScene((nextCycle - engine->getTicks()) / targetUpdateTimeDelta);
 		if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks());
 	}

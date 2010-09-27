@@ -34,6 +34,6 @@ TrueTypeFont::TrueTypeFont(std::string filename, int size)
 SDL_Surface* TrueTypeFont::renderText(std::string text, char r, char g, char b)
 { 
 	SDL_Color colour = {r,g,b,0};
-	return TTF_RenderText_Blended(font, text.c_str(), tmpfontcolor);
+	return TTF_RenderText_Blended(font, text.c_str(), colour);
 }
 

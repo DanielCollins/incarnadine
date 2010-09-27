@@ -91,14 +91,28 @@ Renderable* Incarnadine::loadModel(std::string uri)
 	return r;
 }
 
-TrueTypeFont* loadFont(std::string uri);
+TrueTypeFont* Incarnadine::loadFont(std::string uri, int size)
 {
 	TrueTypeFont* f;
 	std::map<std::string, TrueTypeFont*>::iterator i = fonts.find(uri);
 	if(i != fonts.end()) return i->second;
-	f = new TrueTypeFont(uri);
+	f = new TrueTypeFont(uri, size);
 	fonts.insert(std::pair<std::string, TrueTypeFont*>(uri, f));
 	return f;
+}
+
+void Incarnadine::drawText(std::string text, TrueTypeFont* font, int x, int y)
+{
+	/*SDL_Surface *s;
+	if(!font) throw 0;
+	s = font->renderText(text, (char) 255, (char) 0, (char) 0);*/
+	glBegin(GL_QUADS);
+	glColor3d(1.0, 0, 0);
+	glVertex3d(-100, 100, -10);
+	glVertex3d(100, 100, -10);
+	glVertex3d(100, -100, -10);
+	glVertex3d(-100, -100, -10);
+	glEnd();
 }
 
 unsigned int Incarnadine::getTicks()

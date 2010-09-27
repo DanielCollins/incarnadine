@@ -25,8 +25,22 @@
 
 #include "panel.h"
 
+Pannel::Panel(int nx, int ny, int nw, int nh)
+{
+	x = nx;
+	y = ny;
+	w = nw;
+	h = nh;
+}
+
 void Panel::draw()
 {
-
+	glBegin(GL_QUADS);
+	glColor3d(1.0, 0, 0);
+	glVertex3d(x, y, -20);
+	glVertex3d(x + w, y, -20);
+	glVertex3d(x + w, y - h, -20);
+	glVertex3d(x, y - h, -20);
+	glEnd();
 }
 

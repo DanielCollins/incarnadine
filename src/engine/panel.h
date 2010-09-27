@@ -26,10 +26,15 @@
 #ifndef ENGINE_PANEL_H
 #define ENGINE_PANEL_H
 
+#include "GL/glew.h"
+
 class Panel
 {
+	private:
+		int x, y, w, h;
+		
 	public:
-		Panel(int x, int y, int w, int h);
+		Panel(int nx, int ny, int nw, int nh);
 		void draw();
 };
 
