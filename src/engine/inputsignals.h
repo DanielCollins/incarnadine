@@ -42,12 +42,15 @@ namespace incarnadine
 
 	class MouseClick : public Event {};
 
-	enum KeyEventType {KEY_DOWN, KEY_UP};	
-
-	class KeyEvent : public Event
+	class KeyUp : public Event
 	{
 		public:
-			KeyEventType type;
+			int key;
+	};
+	
+	class KeyDown : public Event
+	{
+		public:
 			int key;
 	};
 

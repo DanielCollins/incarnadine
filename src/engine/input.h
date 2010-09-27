@@ -36,7 +36,8 @@ namespace incarnadine
 	class InputManager
 	{
 		public:
-			Signal<KeyEvent> sKeyEvent;
+			Signal<KeyUp> sKeyUp;
+			Signal<KeyDown> sKeyDown;
 			Signal<MouseMove> sMouseMove;
 			Signal<Exiting> sExiting;
 			Display *display;

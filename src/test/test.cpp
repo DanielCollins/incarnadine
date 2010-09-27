@@ -38,7 +38,7 @@ Display* display;
 TrueTypeFont* font;
 
 Slot<Exiting>* ExitingSlot;
-Slot<KeyEvent>* KeyEventSlot;
+Slot<KeyUp>* KeyUpSlot;
 Slot<MouseMove>* MouseMoveSlot;
 
 int main(int argc, char* argv[])
@@ -69,8 +69,8 @@ int main(int argc, char* argv[])
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
 	ExitingSlot->connect(&(engine->input->sExiting));
-	KeyEventSlot = new Slot<KeyEvent>(handleKeyEvent);
-	KeyEventSlot->connect(&(engine->input->sKeyEvent));
+	KeyUpSlot = new Slot<KeyUp>(handleKeyUpEvent);
+	KeyUpSlot->connect(&(engine->input->sKeyUp));
 	MouseMoveSlot = new Slot<MouseMove>(handleMouseMove);
 	MouseMoveSlot->connect(&(engine->input->sMouseMove));
 		
@@ -105,7 +105,7 @@ void handleExit(Exiting e)
 	exitTestApp();
 }
 
-void handleKeyEvent(KeyEvent e)
+void handleKeyUpEvent(KeyUp e)
 {
 	switch (e.key)
 	{

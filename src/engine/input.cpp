@@ -52,18 +52,16 @@ void InputManager::update()
 		{
 			case SDL_KEYDOWN:
 			{
-				KeyEvent e;
-				e.type = KEY_DOWN;
+				KeyDown e;
 				e.key = Event.key.keysym.sym;
-				sKeyEvent.fire(&e);
+				sKeyDown.fire(&e);
 				break;
 			}
 			case SDL_KEYUP:
 			{
-				KeyEvent e;
-				e.type = KEY_UP;
+				KeyUp e;
 				e.key = Event.key.keysym.sym;
-				sKeyEvent.fire(&e);
+				sKeyUp.fire(&e);
 				break;
 			}
 			case SDL_MOUSEMOTION:
