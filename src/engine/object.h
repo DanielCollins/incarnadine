@@ -43,6 +43,8 @@ namespace incarnadine
 		public:
 			Object(vector3 position, vector3 orientation, vector3 velocity, vector3 angularVelocity);
 			vector3 getPosition();
+			void setVelocity(vector3 v);
+			void setAngularVelocity(vector3 v);
 			void localRotate(vector3 eulerRotation);
 			void localRotateX(float angle);
 			void localRotateY(float angle);

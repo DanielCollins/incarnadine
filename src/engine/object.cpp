@@ -93,3 +93,12 @@ void Object::updatePosition(unsigned int deltaTicks)
 	localRotate(angularVelocity * deltaTicks);
 }
 
+void Object::setVelocity(vector3 v)
+{
+	velocity = v;
+}
+
+void Object::setAngularVelocity(vector3 v)
+{
+	angularVelocity = v;
+}
