@@ -25,6 +25,8 @@
 
 #include "render.h"
 
+using namespace incarnadine;
+
 RenderManager::RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay)
 {
 	camera = newCamera;
@@ -67,15 +69,15 @@ void RenderManager::setCamera(Camera* newCamera)
 	camera = newCamera;
 }
 
-void RenderManager:addPanel(Panel* panel)
+void RenderManager::addPanel(Panel* panel)
 {
   std::vector<Panel*>::const_iterator i = panels.begin();
-  std::vector<Panel*>::const_iterator end = panel.end();
+  std::vector<Panel*>::const_iterator end = panels.end();
   for(;i != end; i++) if(panel == *i) return;
-  objects.push_back(panel);
+  panels.push_back(panel);
 }
 
-void RenderManager::removeObject(Panel* panel)
+void RenderManager::removePanel(Panel* panel)
 {
   std::vector<Panel*>::iterator i = panels.begin();
   std::vector<Panel*>::iterator end = panels.end();
@@ -83,7 +85,7 @@ void RenderManager::removeObject(Panel* panel)
   {
     if(panel == *i)
     {
-      objects.erase(i);
+      panels.erase(i);
       return;
     }
   }

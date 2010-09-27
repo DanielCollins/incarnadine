@@ -25,6 +25,8 @@
 
 #include "texture.h"
 
+using namespace incarnadine;
+
 Texture::Texture(std::string filename)
 {
 	SDL_Surface* surface;

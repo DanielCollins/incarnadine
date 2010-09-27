@@ -25,6 +25,8 @@
 
 #include "test.h"
 
+using namespace incarnadine;
+
 const int targetUpdateTimeDelta = 1000 / 50;
 const int maximumFrameSkip = 10;
 const float mouseSensitivity = 0.001;

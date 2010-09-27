@@ -25,6 +25,8 @@
 
 #include "incarnadine.h"
 
+using namespace incarnadine;
+
 Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene, Display* newDisplay)
 {
 	SDL_Init(SDL_INIT_VIDEO);

@@ -26,6 +26,8 @@
 #include "sbv.h"
 #include <cmath>
 
+using namespace incarnadine;
+
 float SphericalBoundingVolume::getVolume()
 {
 	//(4.pi.r^3)/3

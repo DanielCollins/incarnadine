@@ -25,6 +25,8 @@
 
 #include "input.h"
 
+using namespace incarnadine;
+
 InputManager::InputManager(Display *d)
 {
 	display = d;

@@ -26,10 +26,13 @@
 #ifndef ENGINE_RENDERABLE_H
 #define ENGINE_RENDERABLE_H
 
-class Renderable
+namespace incarnadine
 {
-	public:
-		virtual void draw() = 0;
-};
+	class Renderable
+	{
+		public:
+			virtual void draw() = 0;
+	};
+}
 
 #endif //ENGINE_RENDERABLE_H

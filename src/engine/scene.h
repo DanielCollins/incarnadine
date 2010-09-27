@@ -29,19 +29,22 @@
 #include <vector>
 #include "visible.h"
 
-class Scene
+namespace incarnadine
 {
-	private:
-		std::vector<Visible*> objects;
+	class Scene
+	{
+		private:
+			std::vector<Visible*> objects;
 
-	public:
-		Scene();
-		~Scene();
-		void rasterize();
-		void rasterize(float);
-		void addObject(Visible *newObject);
-		void removeObject(Visible *oldObject);
-		void updateObjects(unsigned int deltaTicks);
-};
+		public:
+			Scene();
+			~Scene();
+			void rasterize();
+			void rasterize(float);
+			void addObject(Visible *newObject);
+			void removeObject(Visible *oldObject);
+			void updateObjects(unsigned int deltaTicks);
+	};
+}
 
 #endif //ENGINE_SCENE_H

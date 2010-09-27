@@ -25,6 +25,8 @@
 
 #include "font.h"
 
+using namespace incarnadine;
+
 TrueTypeFont::TrueTypeFont(std::string filename, int size)
 {
 	font = TTF_OpenFont(filename.c_str(), size);

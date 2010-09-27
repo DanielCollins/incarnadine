@@ -33,16 +33,18 @@
 #include <vector>
 #include "SDL_opengl.h"
 
-class AnimatedMesh : public Visible
+namespace incarnadine
 {
-
-	private:
-		unsigned int frameRate;
+	class AnimatedMesh : public Visible
+	{
+		private:
+			unsigned int frameRate;
 		
-	public:
-		AnimatedMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor);
-		~AnimatedMesh();
-		void draw();
-};
+		public:
+			AnimatedMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor);
+			~AnimatedMesh();
+			void draw();
+	};
+}
 
 #endif //ENGINE_ANIMM_H

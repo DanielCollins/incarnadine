@@ -25,6 +25,8 @@
 
 #include "vbo.h"
 
+using namespace incarnadine;
+
 VertexBufferObject::VertexBufferObject(std::vector<Vertex> newVertices)
 {
 	bufferIdentifier = 0;

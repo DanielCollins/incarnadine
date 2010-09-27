@@ -28,27 +28,29 @@
 
 #include "tools.h"
 
-using namespace cml;
-
-class Object
+namespace incarnadine
 {
-	protected:
-		vector3 position;
-		vector3 orientation;
-		vector3 velocity;
-		vector3 angularVelocity;
+	using namespace cml;
 
-	public:
-		Object(vector3 position, vector3 orientation, vector3 velocity, vector3 angularVelocity);
-		vector3 getPosition();
-		void localRotate(vector3 eulerRotation);
-		void localRotateX(float angle);
-		void localRotateY(float angle);
-		void localRotateZ(float angle);
-		void goTo(vector3 location);
-		void localTranslate(vector3 displacement);
-		void globalTranslate(vector3 displacement);
-		void updatePosition(unsigned int deltaTicks);
-};
+	class Object
+	{
+		protected:
+			vector3 position;
+			vector3 orientation;
+			vector3 velocity;
+			vector3 angularVelocity;
 
+		public:
+			Object(vector3 position, vector3 orientation, vector3 velocity, vector3 angularVelocity);
+			vector3 getPosition();
+			void localRotate(vector3 eulerRotation);
+			void localRotateX(float angle);
+			void localRotateY(float angle);
+			void localRotateZ(float angle);
+			void goTo(vector3 location);
+			void localTranslate(vector3 displacement);
+			void globalTranslate(vector3 displacement);
+			void updatePosition(unsigned int deltaTicks);
+	};
+}
 #endif //ENGINE_OBJECT_H

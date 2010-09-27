@@ -26,16 +26,20 @@
 #ifndef ENGINE_AABB_H
 #define ENGINE_AABB_H
 
-struct AxisAlignedBoundingBox 
+namespace incarnadine
 {
-	float minX;
-	float maxX;
-	float minY;
-	float maxY;
-	float minZ;
-	float maxZ;
 
-	float getVolume();
-};
+	struct AxisAlignedBoundingBox 
+	{
+		float minX;
+		float maxX;
+		float minY;
+		float maxY;
+		float minZ;
+		float maxZ;
+
+		float getVolume();
+	};
+}
 
 #endif //ENGINE_AABB_H

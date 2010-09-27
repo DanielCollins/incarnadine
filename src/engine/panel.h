@@ -28,14 +28,17 @@
 
 #include "GL/glew.h"
 
-class Panel
+namespace incarnadine
 {
-	private:
-		int x, y, w, h;
+	class Panel
+	{
+		private:
+			int x, y, w, h;
 		
-	public:
-		Panel(int nx, int ny, int nw, int nh);
-		void draw();
-};
+		public:
+			Panel(int nx, int ny, int nw, int nh);
+			void draw();
+	};
+}
 
 #endif //ENGINE_PANEL_H

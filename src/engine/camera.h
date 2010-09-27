@@ -32,15 +32,18 @@
 
 extern vector3 zeroVector;
 
-class Camera : public Object
+namespace incarnadine
 {
-	private:
-		float fov;
-	public:
-		Camera(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, float newFov);
-		void updateGL();
-		void setFov(float newFov);
-		float getFov();
-};
+	class Camera : public Object
+	{
+		private:
+			float fov;
+		public:
+			Camera(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, float newFov);
+			void updateGL();
+			void setFov(float newFov);
+			float getFov();
+	};
+}
 
 #endif //ENGINE_CAMERA_H

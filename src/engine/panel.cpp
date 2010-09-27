@@ -25,7 +25,9 @@
 
 #include "panel.h"
 
-Pannel::Panel(int nx, int ny, int nw, int nh)
+using namespace incarnadine;
+
+Panel::Panel(int nx, int ny, int nw, int nh)
 {
 	x = nx;
 	y = ny;

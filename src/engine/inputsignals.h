@@ -29,26 +29,29 @@
 #include "events.h"
 #include "keydef.h"
 
-class MouseMove : public Event
+namespace incarnadine
 {
-	public:
-		int x;
-		int y;
-		int xrel;
-		int yrel;
-};
+	class MouseMove : public Event
+	{
+		public:
+			int x;
+			int y;
+			int xrel;
+			int yrel;
+	};
 
-class MouseClick : public Event {};
+	class MouseClick : public Event {};
 
-enum KeyEventType {KEY_DOWN, KEY_UP};
+	enum KeyEventType {KEY_DOWN, KEY_UP};	
 
-class KeyEvent : public Event
-{
-	public:
-		KeyEventType type;
-		int key;
-};
+	class KeyEvent : public Event
+	{
+		public:
+			KeyEventType type;
+			int key;
+	};
 
-class Exiting : public Event {};
+	class Exiting : public Event {};
+}
 
 #endif //ENGINE_INPUTSIGNALS_H

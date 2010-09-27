@@ -30,17 +30,20 @@
 #include "SDL.h"
 #include "GL/glew.h"
 
-class Display
+namespace incarnadine
 {
-	private:
-		SDL_Surface* surface;
+	class Display
+	{
+		private:
+			SDL_Surface* surface;
 		
-	public:
-		Display(std::string);
-		~Display();
-		void update();
-		int width();
-		int height();
-};
+		public:
+			Display(std::string);
+			~Display();
+			void update();
+			int width();
+			int height();
+	};
+}
 
 #endif //ENGINE_DISPLAY_H

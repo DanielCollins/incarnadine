@@ -35,21 +35,24 @@
 #include "scene.h"
 #include "panel.h"
 
-class RenderManager
+namespace incarnadine
 {
-	private:
-		Camera* camera;
-		Display* display;
-		Scene* scene;
-		std::vector<Panel*> panels;
+	class RenderManager
+	{
+		private:
+			Camera* camera;
+			Display* display;
+			Scene* scene;
+			std::vector<Panel*> panels;
 		
-	public:
-		RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay);
-		void draw();
-		void draw(float);
-		void setCamera(Camera* newCamera);
-		void addPanel(Panel*);
-		void removePanel(Panel*);		
-};
+		public:
+			RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay);
+			void draw();
+			void draw(float);
+			void setCamera(Camera* newCamera);
+			void addPanel(Panel*);
+			void removePanel(Panel*);		
+	};
+}
 
 #endif //ENGINE_RENDER_H

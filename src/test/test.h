@@ -13,6 +13,8 @@
 #include "staticm.h"
 #include "panel.h"
 
+using namespace incarnadine;
+
 void runTest();
 void exitTestApp();
 void cleanup();

@@ -26,11 +26,12 @@
 #ifndef ENGINE_SBV_H
 #define ENGINE_SBV_H
 
-struct SphericalBoundingVolume
+namespace incarnadine
 {
-	float radius;
-
-	float getVolume();
-};
-
+	struct SphericalBoundingVolume
+	{
+		float radius;
+		float getVolume();
+	};
+}
 #endif //ENGINE_SBV_H

@@ -34,16 +34,19 @@
 #include <vector>
 #include "GL/glew.h"
 
-class StaticMesh : public Visible
+namespace incarnadine
 {
-	protected:
-		Renderable* base;
+	class StaticMesh : public Visible
+	{
+		protected:
+			Renderable* base;
 
-	public:
-		StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, Renderable* newBase);
-		~StaticMesh();
-		void draw();
-		void draw(float);
-};
-
+		public:
+			StaticMesh(vector3 position, vector3 orientation,
+			           vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor, Renderable* newBase);
+			~StaticMesh();
+			void draw();
+			void draw(float);
+	};
+}
 #endif //ENGINE_STATICM_H

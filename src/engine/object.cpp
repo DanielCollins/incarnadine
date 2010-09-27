@@ -25,6 +25,8 @@
 
 #include "object.h"
 
+using namespace incarnadine;
+
 Object::Object(vector3 newPosition, vector3 newOrientation, vector3 newVelocity, vector3 newAngularVelocity)
 {
 	position = newPosition;

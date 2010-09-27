@@ -25,6 +25,8 @@
 
 #include "camera.h"
 
+using namespace incarnadine;
+
 Camera::Camera(vector3 newPosition, vector3 newOrientation, vector3 newVelocity, vector3 newAngularVelocity, float newFov) : Object (newPosition, newOrientation, newVelocity, newAngularVelocity)
 {
 	setFov(newFov);

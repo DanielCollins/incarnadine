@@ -32,18 +32,20 @@
 #include "SDL.h"
 #include "SDL_image.h"
 
-class Texture
+namespace incarnadine
 {
-	public:
-		Texture(std::string filename);
-		Texture(SDL_Surface* textureSurface, GLint format);
-		~Texture();
-		void bind();
+	class Texture
+	{
+		public:
+			Texture(std::string filename);
+			Texture(SDL_Surface* textureSurface, GLint format);
+			~Texture();
+			void bind();
 
-	private:
-		void cleanup();
-		GLuint id;
-		SDL_Surface* surface;
-};
-
+		private:
+			void cleanup();
+			GLuint id;
+			SDL_Surface* surface;
+	};
+}
 #endif

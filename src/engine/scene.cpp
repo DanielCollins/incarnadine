@@ -25,6 +25,8 @@
 
 #include "scene.h"
 
+using namespace incarnadine;
+
 Scene::Scene()
 {
 }

@@ -25,6 +25,8 @@
 
 #include "md2.h"
 
+using namespace incarnadine;
+
 Md2Model::Md2Model(std::string fileName)
 {
 	std::ifstream file(fileName.c_str(), std::ios::binary);

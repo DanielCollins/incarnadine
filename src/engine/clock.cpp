@@ -25,6 +25,8 @@
 
 #include "clock.h"
 
+using namespace incarnadine;
+
 unsigned int Clock::getTicks()
 {
 	return SDL_GetTicks();

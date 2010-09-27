@@ -30,13 +30,16 @@
 #include "SDL.h"
 #include "SDL_ttf.h" 
 
-class TrueTypeFont
+namespace incarnadine
 {
-	private:
-		TTF_Font* font;
-	public:
-		TrueTypeFont(std::string, int);
-		SDL_Surface* renderText(std::string, char, char, char);
-};
+	class TrueTypeFont
+	{
+		private:
+			TTF_Font* font;
+		public:
+			TrueTypeFont(std::string, int);
+			SDL_Surface* renderText(std::string, char, char, char);
+	};
+}
 
 #endif //ENGINE_FONT_H

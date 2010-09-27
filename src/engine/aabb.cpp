@@ -25,6 +25,8 @@
 
 #include "aabb.h"
 
+using namespace incarnadine;
+
 float AxisAlignedBoundingBox::getVolume()
 {
 	return maxX - minX * maxY - minY * maxZ - minZ;
