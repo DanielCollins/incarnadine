@@ -27,14 +27,6 @@
 
 using namespace incarnadine;
 
-Scene::Scene()
-{
-}
-
-Scene::~Scene()
-{
-}
-
 void Scene::rasterize()
 {
   std::vector<Visible*>::const_iterator i = objects.begin();

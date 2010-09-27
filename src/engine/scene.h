@@ -37,8 +37,6 @@ namespace incarnadine
 			std::vector<Visible*> objects;
 
 		public:
-			Scene();
-			~Scene();
 			void rasterize();
 			void rasterize(float);
 			void addObject(Visible *newObject);
