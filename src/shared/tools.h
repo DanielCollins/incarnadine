@@ -36,4 +36,7 @@ typedef cml::matrix44f_c matrix44;
 
 #define BUFFER_OFFSET(i) ((char*)0 + (i))
 
+#define DEGREES_FROM_RADIANS(x) ((x) * 180.0 / 3.14159265)
+#define RADIANS_FROM_DEGREES(x) ((x) * 3.14159265 / 180.0)
+
 #endif //SHARED_TOOLS_H
