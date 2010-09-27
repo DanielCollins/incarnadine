@@ -103,13 +103,6 @@ TrueTypeFont* Incarnadine::loadFont(std::string uri, int size)
 	return f;
 }
 
-void Incarnadine::drawText(std::string text, TrueTypeFont* font, int x, int y)
-{
-	/*SDL_Surface *s;
-	if(!font) throw 0;
-	s = font->renderText(text, (char) 255, (char) 0, (char) 0);*/
-}
-
 unsigned int Incarnadine::getTicks()
 {
 	return clock.getTicks();

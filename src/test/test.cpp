@@ -91,7 +91,6 @@ void runTest()
 			nextCycle += targetUpdateTimeDelta;
 			++skippedFrames;
 		}
-		engine->drawText("Hello, world", font, 0, 0);
 		while(nextCycle > engine->getTicks()) engine->renderScene((nextCycle - engine->getTicks()) / targetUpdateTimeDelta);
 		if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks());
 	}
