@@ -45,13 +45,13 @@ namespace incarnadine
 	class KeyUp : public Event
 	{
 		public:
-			int key;
+			Key key;
 	};
 	
 	class KeyDown : public Event
 	{
 		public:
-			int key;
+			Key key;
 	};
 
 	class Exiting : public Event {};

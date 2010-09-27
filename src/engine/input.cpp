@@ -53,14 +53,14 @@ void InputManager::update()
 			case SDL_KEYDOWN:
 			{
 				KeyDown e;
-				e.key = Event.key.keysym.sym;
+				e.key = (Key) Event.key.keysym.sym;
 				sKeyDown.fire(&e);
 				break;
 			}
 			case SDL_KEYUP:
 			{
 				KeyUp e;
-				e.key = Event.key.keysym.sym;
+				e.key = (Key) Event.key.keysym.sym;
 				sKeyUp.fire(&e);
 				break;
 			}
