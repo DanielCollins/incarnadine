@@ -45,6 +45,9 @@ void RenderManager::draw()
 	camera->updateGL();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	scene->rasterize();
+	std::vector<Panel*>::const_iterator i = panels.begin();
+	std::vector<Panel*>::const_iterator end = panels.end();
+	for(;i != end; i++) (*i)->draw();
 	display->update();
 }
 
@@ -53,11 +56,35 @@ void RenderManager::draw(float deltaTime)
 	camera->updateGL();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	scene->rasterize(deltaTime);
+	std::vector<Panel*>::const_iterator i = panels.begin();
+	std::vector<Panel*>::const_iterator end = panels.end();
+	for(;i != end; i++) (*i)->draw();
 	display->update();
 }
-
 
 void RenderManager::setCamera(Camera* newCamera)
 {
 	camera = newCamera;
+}
+
+void RenderManager:addPanel(Panel* panel)
+{
+  std::vector<Panel*>::const_iterator i = panels.begin();
+  std::vector<Panel*>::const_iterator end = panel.end();
+  for(;i != end; i++) if(panel == *i) return;
+  objects.push_back(panel);
+}
+
+void RenderManager::removeObject(Panel* panel)
+{
+  std::vector<Panel*>::iterator i = panels.begin();
+  std::vector<Panel*>::iterator end = panels.end();
+  for(;i != end; i++)
+  {
+    if(panel == *i)
+    {
+      objects.erase(i);
+      return;
+    }
+  }
 }

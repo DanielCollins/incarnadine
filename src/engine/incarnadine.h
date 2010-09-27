@@ -42,6 +42,7 @@
 #include "visible.h"
 #include "md2.h"
 #include "font.h"
+#include "panel.h"
 
 class Incarnadine
 {
@@ -64,6 +65,8 @@ class Incarnadine
 		void drawText(std::string text, TrueTypeFont* font, int x, int y);
 		unsigned int getTicks();
 		Clock* getClock();
+		void addPanel(Panel*);
+		void removePanel(Panel*);
 };
 
 #endif //ENGINE_INCARNADINE_H

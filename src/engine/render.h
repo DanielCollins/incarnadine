@@ -26,13 +26,14 @@
 #ifndef ENGINE_RENDER_H
 #define ENGINE_RENDER_H
 
+#include <vector>
 #include "SDL.h"
 #include "GL/glew.h"
 #include "tools.h"
 #include "camera.h"
 #include "display.h"
 #include "scene.h"
-
+#include "panel.h"
 
 class RenderManager
 {
@@ -40,12 +41,15 @@ class RenderManager
 		Camera* camera;
 		Display* display;
 		Scene* scene;
+		std::vector<Panel*> panels;
 		
 	public:
 		RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay);
 		void draw();
 		void draw(float);
-		void setCamera(Camera* newCamera);		
+		void setCamera(Camera* newCamera);
+		void addPanel(Panel*);
+		void removePanel(Panel*);		
 };
 
 #endif //ENGINE_RENDER_H

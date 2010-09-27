@@ -106,13 +106,6 @@ void Incarnadine::drawText(std::string text, TrueTypeFont* font, int x, int y)
 	/*SDL_Surface *s;
 	if(!font) throw 0;
 	s = font->renderText(text, (char) 255, (char) 0, (char) 0);*/
-	glBegin(GL_QUADS);
-	glColor3d(1.0, 0, 0);
-	glVertex3d(-100, 100, -10);
-	glVertex3d(100, 100, -10);
-	glVertex3d(100, -100, -10);
-	glVertex3d(-100, -100, -10);
-	glEnd();
 }
 
 unsigned int Incarnadine::getTicks()
@@ -123,4 +116,14 @@ unsigned int Incarnadine::getTicks()
 Clock* Incarnadine::getClock()
 {
 	return (Clock*)&clock;
+}
+
+void Incarnadine::addPanel(Panel* p)
+{
+	renderer->addPanel(p);
+}
+
+void Incarnadine::removePanel(Panel* p)
+{
+	renderer->removePanel(p);
 }

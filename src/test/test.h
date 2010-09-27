@@ -11,6 +11,7 @@
 #include "object.h"
 #include "md2.h"
 #include "staticm.h"
+#include "panel.h"
 
 void runTest();
 void exitTestApp();
