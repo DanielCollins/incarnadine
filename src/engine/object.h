@@ -39,9 +39,12 @@ namespace incarnadine
 			vector3 orientation;
 			vector3 velocity;
 			vector3 angularVelocity;
+			vector3 acceleration;
+			vector3 angularAcceleration;
 
 		public:
-			Object(vector3 position, vector3 orientation, vector3 velocity, vector3 angularVelocity);
+			Object(vector3 position, vector3 orientation, vector3 velocity,
+			         vector3 angularVelocity, vector3 acceleration, vector3 angularAcceleration);
 			vector3 getPosition();
 			void setVelocity(vector3 v);
 			void setAngularVelocity(vector3 v);

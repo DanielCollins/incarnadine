@@ -47,8 +47,10 @@ int main(int argc, char* argv[])
 	vector3 cameraOrientation(0.0, 0.0, -180);
 	vector3 cameraVelocity(0.0, 0.0, 0.0);
 	vector3 cameraAngularVelocity(0.0, 0.0, 0.0);
+	vector3 cameraAcceleration(0.0, 0.0, 0.0);
+	vector3 cameraAngularAcceleration(0.0, 0.0, 0.0);
 		
-	camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, 90.0f);
+	camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, cameraAcceleration, cameraAngularAcceleration, 90.0f);
 	scene = new Scene();	
 	display = new Display("Incarnadine test");
 	engine = new Incarnadine(camera, scene, display);
@@ -58,9 +60,11 @@ int main(int argc, char* argv[])
 	vector3 mOrientation(0.0, 0.0, 0.0);
 	vector3 mVelocity(0.0, 0.0, 0.0);
 	vector3 mAngularVelocity(0.0, 0.0, 0.001);
+	vector3 mAcceleration(0.0, 0.0, 0.0);
+	vector3 mAngularAcceleration(0.0, 0.0, 0.0);
 	vector3 mScale(1.0, 1.0, 1.0);
 	
-	StaticMesh m(mPosition, mOrientation, mVelocity, mAngularVelocity, mScale, engine->loadModel("data/models/worker/worker_body.md2"));
+	StaticMesh m(mPosition, mOrientation, mVelocity, mAngularVelocity, mAcceleration, mAngularAcceleration, mScale, engine->loadModel("data/models/worker/worker_body.md2"));
 	scene->addObject(&m);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);

@@ -27,12 +27,14 @@
 
 using namespace incarnadine;
 
-Object::Object(vector3 newPosition, vector3 newOrientation, vector3 newVelocity, vector3 newAngularVelocity)
+Object::Object(vector3 newPosition, vector3 newOrientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration)
 {
 	position = newPosition;
 	orientation = newOrientation;
 	velocity = newVelocity;
 	angularVelocity = newAngularVelocity;
+	acceleration = newAcceleration;
+	angularAcceleration = newAngularAcceleration;
 	localRotate(zero<3>());
 }
 

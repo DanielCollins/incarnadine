@@ -27,7 +27,7 @@
 
 using namespace incarnadine;
 
-Visible::Visible(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 scaleFactor) : Object (position, orientation, newVelocity, newAngularVelocity)
+Visible::Visible(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration, vector3 scaleFactor) : Object (position, orientation, newVelocity, newAngularVelocity, newAcceleration, newAngularAcceleration)
 {
 	rescale(scaleFactor);
 }
