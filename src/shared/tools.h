@@ -32,7 +32,7 @@
 
 typedef cml::vector3f vector3;
 typedef cml::matrix44f_c matrix44;
-typedef cml::quaternionf_p quaternion;
+typedef cml::quaternionf_p iquaternion;
 
 #define BUFFER_OFFSET(i) ((char*)0 + (i))
 

@@ -30,11 +30,11 @@ using namespace incarnadine;
 Object::Object(vector3 newPosition, vector3 newOrientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration)
 {
 	position = newPosition;
-	orientation = newOrientation;
 	velocity = newVelocity;
-	angularVelocity = newAngularVelocity;
 	acceleration = newAcceleration;
-	angularAcceleration = newAngularAcceleration;
+	quaternion_rotation_euler(orientation, newOrientation[0], newOrientation[1], newOrientation[2], euler_order_xyz);
+	quaternion_rotation_euler(angularVelocity, newAngularVelocity[0], newAngularVelocity[1], newAngularVelocity[2], euler_order_xyz);
+	quaternion_rotation_euler(angularAcceleration , newAngularAcceleration[0], newAngularAcceleration[1], newAngularAcceleration[2], euler_order_xyz);
 	localRotate(zero<3>());
 }
 
@@ -50,26 +50,28 @@ void Object::localRotate(vector3 eulerRotation)
 	localRotateZ(eulerRotation[2]);
 }
 
+void Object::localRotate(iquaternion q)
+{
+	orientation = orientation * q;
+	orientation.normalize();
+}
+
 void Object::localRotateX(float angle)
 {
-	orientation[0] += angle;
-	while(orientation[0] >= 360.0) orientation[0] -= 360.0;
-	while(orientation[0] < 0.0) orientation[0] += 360.0;
+	quaternion_rotate_about_local_x(orientation, angle);
+	orientation.normalize();
 }
 
 void Object::localRotateY(float angle)
 {
-	orientation[1] += angle;
-	while(orientation[1] >= 360.0) orientation[1] -= 360.0;
-	while(orientation[1] < 0.0) orientation[1] += 360.0;
+	quaternion_rotate_about_local_y(orientation, angle);
+	orientation.normalize();
 }
-
 
 void Object::localRotateZ(float angle)
 {
-	orientation[2] += angle;
-	while(orientation[2] >= 360.0) orientation[2] -= 360.0;
-	while(orientation[2] < 0.0) orientation[2] += 360.0;
+	quaternion_rotate_about_local_z(orientation, angle);
+	orientation.normalize();
 }
 
 void Object::goTo(vector3 location)
@@ -80,7 +82,7 @@ void Object::goTo(vector3 location)
 void Object::localTranslate(vector3 displacement)
 {
 	matrix44 transform;
-	matrix_rotation_euler(transform, orientation[0], orientation[1], orientation[2], euler_order_xyz);
+	matrix_rotation_quaternion(transform, orientation);
 	position += transform_vector(transform, displacement);
 }
 
@@ -94,7 +96,7 @@ void Object::updatePosition(unsigned int deltaTicks)
 	localTranslate(velocity * deltaTicks);
 	localRotate(angularVelocity * deltaTicks);
 }
-
+/*
 void Object::setVelocity(vector3 v)
 {
 	velocity = v;
@@ -104,3 +106,4 @@ void Object::setAngularVelocity(vector3 v)
 {
 	angularVelocity = v;
 }
+*/

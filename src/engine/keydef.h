@@ -24,7 +24,7 @@
 //========================================================================
 
 #ifndef ENGINE_KEYDEF_H
- ENGINE_KEYDEF_H
+#define ENGINE_KEYDEF_H
 
 #include "SDL_keysym.h"
 
@@ -84,7 +84,7 @@ enum Key {INC_KEY_UNKNOWN = SDLK_UNKNOWN,
           INC_KEY_e           = SDLK_e,
           INC_KEY_f           = SDLK_f,
           INC_KEY_g           = SDLK_g,
-          INC_KEY_h           = SDLK_h
+          INC_KEY_h           = SDLK_h,
           INC_KEY_i           = SDLK_i,
           INC_KEY_j           = SDLK_j,
           INC_KEY_k           = SDLK_k,
@@ -229,7 +229,7 @@ enum Key {INC_KEY_UNKNOWN = SDLK_UNKNOWN,
           INC_KEY_F1          = SDLK_F1,
           INC_KEY_F2          = SDLK_F2,
           INC_KEY_F3          = SDLK_F3,
-          INC_KEY_F4          = SDLK_F4
+          INC_KEY_F4          = SDLK_F4,
           INC_KEY_F5          = SDLK_F5,
           INC_KEY_F6          = SDLK_F6,
           INC_KEY_F7          = SDLK_F7,

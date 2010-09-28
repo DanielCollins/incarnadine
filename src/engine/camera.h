@@ -29,6 +29,7 @@
 #include "object.h"
 #include "SDL.h"
 #include "GL/glew.h"
+#include "tools.h"
 
 extern vector3 zeroVector;
 

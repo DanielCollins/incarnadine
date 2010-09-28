@@ -53,9 +53,9 @@ void StaticMesh::draw()
 void StaticMesh::draw(float deltaTime)
 {
 	glPushMatrix();
-	glRotatef(orientation[0] + angularVelocity[0] * deltaTime, 1, 0, 0);
-	glRotatef(orientation[1] + angularVelocity[1] * deltaTime, 0, 1, 0);
-	glRotatef(orientation[2] + angularVelocity[2] * deltaTime, 0, 0, 1);
+	matrix44 t;
+	matrix_rotation_quaternion(t, orientation);
+	glMultMatrixf(t.data());
 	glScalef(scale[0], scale[1], scale[2]);
 	glTranslatef(position[0] + velocity[0] * deltaTime, position[1] + velocity[1] * deltaTime, position[2] + velocity[2] * deltaTime);
 	base->draw();

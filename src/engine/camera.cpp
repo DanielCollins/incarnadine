@@ -51,9 +51,9 @@ void Camera::updateGL()
 	glFrustum(-aspectRatio, aspectRatio, -1.0, 1.0, fov, 100000);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glRotatef(orientation[0], -1, 0, 0);
-	glRotatef(orientation[1], 0, -1, 0);
-	glRotatef(orientation[2], 0, 0, -1);
+	matrix44 t;
+	matrix_rotation_quaternion(t, orientation * -1);
+	glLoadMatrixf(t.data());
 	glTranslatef(-position[0], -position[1], -position[2]);
 }
 

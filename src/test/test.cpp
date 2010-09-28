@@ -29,7 +29,7 @@ using namespace incarnadine;
 
 const int targetUpdateTimeDelta = 1000 / 50;
 const int maximumFrameSkip = 10;
-const float mouseSensitivity = 0.001;
+const float mouseSensitivity = 0.0001;
 
 Incarnadine* engine;
 Camera* camera;
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
 	vector3 mPosition(0.0, 0.0, -8000.0);
 	vector3 mOrientation(0.0, 0.0, 0.0);
 	vector3 mVelocity(0.0, 0.0, 0.0);
-	vector3 mAngularVelocity(0.0, 0.0, 0.001);
+	vector3 mAngularVelocity(0.0, 0.0, 0.01);
 	vector3 mAcceleration(0.0, 0.0, 0.0);
 	vector3 mAngularAcceleration(0.0, 0.0, 0.0);
 	vector3 mScale(1.0, 1.0, 1.0);
