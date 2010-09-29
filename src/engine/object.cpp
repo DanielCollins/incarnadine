@@ -96,7 +96,7 @@ void Object::updatePosition(unsigned int deltaTicks)
 	localTranslate(velocity * deltaTicks);
 	localRotate(angularVelocity * deltaTicks);
 }
-/*
+
 void Object::setVelocity(vector3 v)
 {
 	velocity = v;
@@ -104,6 +104,6 @@ void Object::setVelocity(vector3 v)
 
 void Object::setAngularVelocity(vector3 v)
 {
-	angularVelocity = v;
+	quaternion_rotation_euler(angularVelocity, v[0], v[1], v[2], euler_order_xyz);
 }
-*/
+
