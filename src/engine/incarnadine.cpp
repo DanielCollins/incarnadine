@@ -58,12 +58,6 @@ Incarnadine::~Incarnadine()
 		input = 0;
 	}
 
-	if (display)
-	{
-		delete display;
-		display = 0;
-	}
-
 	IMG_Quit();
 	
 	SDL_Quit();
