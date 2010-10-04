@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Collins, Daniel Flahive
+// Copyright (c) 2010 Daniel Flahive
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -23,52 +23,62 @@
 //
 //========================================================================
 
-#ifndef ENGINE_INCARNADINE_H
-#define ENGINE_INCARNADINE_H
+#ifndef ENGINE_OBJMODEL_H
+#define ENGINE_OBJMODEL_H
 
-#include <string>
+
+#include <exception>
+#include <cctype>
+#include <cstring>
 #include <map>
-#include "SDL.h"
-#include "SDL_image.h"
-#include "SDL_ttf.h"
+#include <vector>
+#include <string>
+#include <fstream>
 #include "GL/glew.h"
-#include "display.h"
-#include "input.h"
-#include "render.h"
-#include "camera.h"
-#include "scene.h"
-#include "clock.h"
 #include "renderable.h"
-#include "visible.h"
-#include "md2.h"
-#include "objmodel.h"
-#include "font.h"
-#include "panel.h"
+#include "tools.h"
 
 namespace incarnadine
 {
-	class Incarnadine
+	struct objFaceTriangle
 	{
-		private:
-			RenderManager* renderer;
-			Clock clock;
-			std::map<std::string, Renderable*> renderables;
-			std::map<std::string, TrueTypeFont*> fonts;
-
-		public:
-			Display* display;
-			InputManager* input;
-
-			Incarnadine(Camera* newCamera, Scene* newScene, Display* newDisplay);
-			~Incarnadine();
-			void renderScene();
-			void renderScene(float);
-			Renderable* loadModel(std::string uri);
-			TrueTypeFont* loadFont(std::string uri, int size);
-			unsigned int getTicks();
-			Clock* getClock();
-			void addPanel(Panel*);
-			void removePanel(Panel*);
+		vector3 vertex[3];
+		vector3 normal[3];
+		vector3 texcoord[3];
+		bool hasNormals;
+		bool hasTexCoords;
 	};
+
+	struct objGroup
+	{
+		std::vector<objFaceTriangle>* faces;
+		bool smooth;
+	};
+
+	typedef std::map<std::string, objGroup>::iterator objGroupIter;
+
+	class ObjModel : public Renderable
+	{
+	public:
+		ObjModel(std::string filename);
+		~ObjModel();
+
+		void onContextReset();
+		void draw();
+
+	private:
+
+		void parseLine(char* line, objGroupIter& activeGroup);
+		inline void addFaceTriangle(const objFaceTriangle& face, objGroupIter activeGroup);
+	
+		std::map<std::string, objGroup> m_groups;
+		std::vector<vector3> m_vertices, m_normals, m_texCoords;
+
+		unsigned int m_displayListIndex;
+		bool m_useDisplayList;
+
+	};
+
 }
-#endif //ENGINE_INCARNADINE_H
+
+#endif

@@ -17,6 +17,7 @@ add_library(engine
             texture.cpp
             panel.cpp
             font.cpp
+            objmodel.cpp
             ${INCARNADINE_SOURCE_DIR}/src/shared/glew.c)
 
 target_link_libraries(engine ${OPENGL_LIBRARY} ${SDL_LIBRARY} ${SDLMAIN_LIBRARY} ${SDLTTF_LIBRARY} ${SDLIMAGE_LIBRARY})

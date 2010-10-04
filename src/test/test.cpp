@@ -63,9 +63,12 @@ int main(int argc, char* argv[])
 	vector3 mAcceleration(0.0, 0.0, 0.0);
 	vector3 mAngularAcceleration(0.0, 0.0, 0.0);
 	vector3 mScale(1.0, 1.0, 1.0);
-	
+
 	StaticMesh m(mPosition, mOrientation, mVelocity, mAngularVelocity, mAcceleration, mAngularAcceleration, mScale, engine->loadModel("data/models/worker/worker_body.md2"));
 	scene->addObject(&m);
+
+	StaticMesh m2(mPosition, mOrientation, mVelocity, mAngularVelocity, mAcceleration, mAngularAcceleration, mScale, engine->loadModel("data/models/axis.obj"));
+	scene->addObject(&m2);
 		
 	ExitingSlot = new Slot<Exiting>(handleExit);
 	ExitingSlot->connect(&(engine->input->sExiting));
