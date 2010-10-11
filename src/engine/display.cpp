@@ -48,10 +48,7 @@ Display::Display(std::string title)
 Display::~Display()
 {
 	if (surface)
-	{
-		SDL_FreeSurface(surface);
 		surface = 0;
-	}
 }
 
 //Show next frame
