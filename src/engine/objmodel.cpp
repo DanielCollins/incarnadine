@@ -1,6 +1,6 @@
 //========================================================================
 //
-// Copyright (c) 2010 Daniel Flahive
+// Copyright (c) 2010 Daniel Flahive, Daniel Collins
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -32,7 +32,7 @@ ObjModel::ObjModel(std::string filename)
 	m_displayListIndex = 0;
 	m_useDisplayList = false;
 
-	std::ifstream file(filename, std::ios::in);
+	std::ifstream file(filename.c_str(), std::ios::in);
 
 	if (file.fail())
 		throw 1;

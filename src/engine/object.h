@@ -49,6 +49,8 @@ namespace incarnadine
 			void localRotateX(float angle);
 			void localRotateY(float angle);
 			void localRotateZ(float angle);
+			void setVelocity(vector3 v);
+			void setAngularVelocity(vector3 v);
 			void goTo(vector3 location);
 			void localTranslate(vector3 displacement);
 			void globalTranslate(vector3 displacement);
