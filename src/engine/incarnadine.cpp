@@ -83,8 +83,6 @@ Renderable* Incarnadine::loadModel(std::string uri)
 	std::map<std::string, Renderable*>::iterator i = renderables.find(uri);
 	if(i != renderables.end()) return i->second;
 
-	// TODO: Move this to a shared location and make it more generalized.
-	// Use the file extension to determine which type of model it is.
 	std::string::size_type pos = uri.find_last_of('.');
 	if (pos != std::string::npos && (uri.length() - pos - 1) > 0)
 	{
