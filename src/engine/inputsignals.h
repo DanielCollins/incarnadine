@@ -22,7 +22,7 @@
 
 namespace incarnadine
 {
-   class MouseMove : public Event
+   class MouseMove
    {
       public:
          int x;
@@ -31,21 +31,21 @@ namespace incarnadine
          int yrel;
    };
 
-   class MouseClick : public Event {};
+   class MouseClick{};
 
-   class KeyUp : public Event
+   class KeyUp
    {
       public:
          Key key;
    };
    
-   class KeyDown : public Event
+   class KeyDown
    {
       public:
          Key key;
    };
 
-   class Exiting : public Event {};
+   class Exiting{};
 }
 
 #endif //ENGINE_INPUTSIGNALS_H

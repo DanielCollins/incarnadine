@@ -17,7 +17,6 @@
 #ifndef SHARED_SLOT_H
 #define SHARED_SLOT_H
 
-#include "event.h"
 #include "signal.h"
 
 // Forward declaration of Signal class.

@@ -16,7 +16,6 @@
 
 #ifndef SHARED_EVENTS_H
 #define SHARED_EVENTS_H
-#include "event.h"
 #include "signal.h"
 #include "slot.h"
 #endif //SHARED_EVENTS_H

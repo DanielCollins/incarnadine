@@ -17,7 +17,6 @@
 #ifndef SHARED_SIGNAL_H
 #define SHARED_SIGNAL_H
 
-#include "event.h"
 #include "slot.h"
 
 #include <vector>
