@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef SHARED_EVENTS_H
-#define SHARED_EVENTS_H
+#ifndef ENGINE_EVENTS_H
+#define ENGINE_EVENTS_H
 
 #include <vector>
 
@@ -145,4 +145,4 @@ class Signal
       }
 };
 
-#endif //SHARED_EVENTS_H
+#endif //ENGINE_EVENTS_H
