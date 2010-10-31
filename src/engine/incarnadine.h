@@ -32,7 +32,7 @@
 #include "renderable.h"
 #include "visible.h"
 #include "md2.h"
-#include "objmodel.h"
+#include "obj.h"
 #include "font.h"
 #include "panel.h"
 
