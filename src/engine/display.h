@@ -32,18 +32,18 @@
 
 namespace incarnadine
 {
-	class Display
-	{
-		private:
-			SDL_Surface* surface;
-		
-		public:
-			Display(std::string);
-			~Display();
-			void update();
-			int width();
-			int height();
-	};
+   class Display
+   {
+      private:
+         SDL_Surface* surface;
+      
+      public:
+         Display(std::string);
+         ~Display();
+         void update();
+         int width();
+         int height();
+   };
 }
 
 #endif //ENGINE_DISPLAY_H

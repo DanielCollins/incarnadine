@@ -34,48 +34,48 @@ enum CONFIG_TYPE { CONFIG_INVALID, CONFIG_TYPE_INTEGER, CONFIG_TYPE_DOUBLE, CONF
 
 typedef union
 {
-	int intValue;
-	double doubleValue;
-	bool booleanValue;
-	std::string* stringValue;
+   int intValue;
+   double doubleValue;
+   bool booleanValue;
+   std::string* stringValue;
 } ConfigValue;
 
 typedef struct
 {
-	CONFIG_TYPE type;
-	ConfigValue value;
+   CONFIG_TYPE type;
+   ConfigValue value;
 } ConfigItem;
 
 
 class ConfigManager
 {
 public:
-	ConfigManager();
-	~ConfigManager();
+   ConfigManager();
+   ~ConfigManager();
 
-	int getInteger(const std::string& name, int defaultValue);
-	double getDouble(const std::string& name, double defaultValue);
-	bool getBoolean(const std::string& name, bool defaultValue);
-	std::string getString(const std::string& name, const std::string& defaultValue);
+   int getInteger(const std::string& name, int defaultValue);
+   double getDouble(const std::string& name, double defaultValue);
+   bool getBoolean(const std::string& name, bool defaultValue);
+   std::string getString(const std::string& name, const std::string& defaultValue);
 
-	void setInteger(const std::string& name, int value);
-	void setDouble(const std::string& name, double value);
-	void setBoolean(const std::string& name, bool value);
-	void setString(const std::string& name, const std::string& value);
+   void setInteger(const std::string& name, int value);
+   void setDouble(const std::string& name, double value);
+   void setBoolean(const std::string& name, bool value);
+   void setString(const std::string& name, const std::string& value);
 
-	typedef std::map<std::string, ConfigItem>::const_iterator const_iterator;
-	const_iterator getIteratorBegin() const;
-	const_iterator getIteratorEnd() const;
+   typedef std::map<std::string, ConfigItem>::const_iterator const_iterator;
+   const_iterator getIteratorBegin() const;
+   const_iterator getIteratorEnd() const;
 
-	void remove(const std::string& name);
-	CONFIG_TYPE getItemType(const std::string& name);
-	bool isValidKey(const std::string& name, std::string::size_type offset = 0);
-	void debugDump();
-	
+   void remove(const std::string& name);
+   CONFIG_TYPE getItemType(const std::string& name);
+   bool isValidKey(const std::string& name, std::string::size_type offset = 0);
+   void debugDump();
+   
 
 private:
-	inline void freeItem(std::map<std::string, ConfigItem>::iterator iter);
-	std::map<std::string, ConfigItem> configItems;
+   inline void freeItem(std::map<std::string, ConfigItem>::iterator iter);
+   std::map<std::string, ConfigItem> configItems;
 };
 
 

@@ -42,133 +42,133 @@ Slot<KeyUp>* KeyUpSlot;
 Slot<MouseMove>* MouseMoveSlot;
 
 int main(int argc, char* argv[])
-{	
-	vector3 cameraPosition(0.0, 0.0, 0.0);
-	vector3 cameraOrientation(0.0, 0.0, -180);
-	vector3 cameraVelocity(0.0, 0.0, 0.0);
-	vector3 cameraAngularVelocity(0.0, 0.0, 0.0);
-	vector3 cameraAcceleration(0.0, 0.0, 0.0);
-	vector3 cameraAngularAcceleration(0.0, 0.0, 0.0);
-		
-	camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, cameraAcceleration, cameraAngularAcceleration, 90.0f);
-	scene = new Scene();	
-	display = new Display("Incarnadine test");
-	engine = new Incarnadine(camera, scene, display);
-	font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
-	
-	vector3 mPosition(0.0, 0.0, -8000.0);
-	vector3 mOrientation(0.0, 0.0, 0.0);
-	vector3 mVelocity(0.0, 0.0, 0.0);
-	vector3 mAngularVelocity(0.0, 0.0, 0.01);
-	vector3 mAcceleration(0.0, 0.0, 0.0);
-	vector3 mAngularAcceleration(0.0, 0.0, 0.0);
-	vector3 mScale(1.0, 1.0, 1.0);
+{   
+   vector3 cameraPosition(0.0, 0.0, 0.0);
+   vector3 cameraOrientation(0.0, 0.0, -180);
+   vector3 cameraVelocity(0.0, 0.0, 0.0);
+   vector3 cameraAngularVelocity(0.0, 0.0, 0.0);
+   vector3 cameraAcceleration(0.0, 0.0, 0.0);
+   vector3 cameraAngularAcceleration(0.0, 0.0, 0.0);
+      
+   camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, cameraAcceleration, cameraAngularAcceleration, 90.0f);
+   scene = new Scene();   
+   display = new Display("Incarnadine test");
+   engine = new Incarnadine(camera, scene, display);
+   font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
+   
+   vector3 mPosition(0.0, 0.0, -8000.0);
+   vector3 mOrientation(0.0, 0.0, 0.0);
+   vector3 mVelocity(0.0, 0.0, 0.0);
+   vector3 mAngularVelocity(0.0, 0.0, 0.01);
+   vector3 mAcceleration(0.0, 0.0, 0.0);
+   vector3 mAngularAcceleration(0.0, 0.0, 0.0);
+   vector3 mScale(1.0, 1.0, 1.0);
 
-	StaticMesh m(mPosition, mOrientation, mVelocity, mAngularVelocity, mAcceleration, mAngularAcceleration, mScale, engine->loadModel("data/models/worker/worker_body.md2"));
-	scene->addObject(&m);
+   StaticMesh m(mPosition, mOrientation, mVelocity, mAngularVelocity, mAcceleration, mAngularAcceleration, mScale, engine->loadModel("data/models/worker/worker_body.md2"));
+   scene->addObject(&m);
 
-	StaticMesh m2(mPosition, mOrientation, mVelocity, mAngularVelocity, mAcceleration, mAngularAcceleration, mScale, engine->loadModel("data/models/axis.obj"));
-	scene->addObject(&m2);
-		
-	ExitingSlot = new Slot<Exiting>(handleExit);
-	ExitingSlot->connect(&(engine->input->sExiting));
-	KeyUpSlot = new Slot<KeyUp>(handleKeyUpEvent);
-	KeyUpSlot->connect(&(engine->input->sKeyUp));
-	MouseMoveSlot = new Slot<MouseMove>(handleMouseMove);
-	MouseMoveSlot->connect(&(engine->input->sMouseMove));
-		
-	runTest();	
-	
-	return EXIT_FAILURE;
+   StaticMesh m2(mPosition, mOrientation, mVelocity, mAngularVelocity, mAcceleration, mAngularAcceleration, mScale, engine->loadModel("data/models/axis.obj"));
+   scene->addObject(&m2);
+      
+   ExitingSlot = new Slot<Exiting>(handleExit);
+   ExitingSlot->connect(&(engine->input->sExiting));
+   KeyUpSlot = new Slot<KeyUp>(handleKeyUpEvent);
+   KeyUpSlot->connect(&(engine->input->sKeyUp));
+   MouseMoveSlot = new Slot<MouseMove>(handleMouseMove);
+   MouseMoveSlot->connect(&(engine->input->sMouseMove));
+      
+   runTest();   
+   
+   return EXIT_FAILURE;
 }
 
 void runTest() 
 {
-	int skippedFrames = 0;
-	unsigned int nextCycle = 0;
-	static unsigned int lastCycle = engine->getTicks(); 
-	while(true)
-	{
-		skippedFrames = 0;
-		while(engine->getTicks() >= nextCycle && skippedFrames <= maximumFrameSkip)
-		{
-			engine->input->update();
-			scene->updateObjects(engine->getTicks() - lastCycle);
-			lastCycle = nextCycle;
-			nextCycle += targetUpdateTimeDelta;
-			++skippedFrames;
-		}
-		while(nextCycle > engine->getTicks()) engine->renderScene((nextCycle - engine->getTicks()) / targetUpdateTimeDelta);
-		if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks());
-	}
+   int skippedFrames = 0;
+   unsigned int nextCycle = 0;
+   static unsigned int lastCycle = engine->getTicks(); 
+   while(true)
+   {
+      skippedFrames = 0;
+      while(engine->getTicks() >= nextCycle && skippedFrames <= maximumFrameSkip)
+      {
+         engine->input->update();
+         scene->updateObjects(engine->getTicks() - lastCycle);
+         lastCycle = nextCycle;
+         nextCycle += targetUpdateTimeDelta;
+         ++skippedFrames;
+      }
+      while(nextCycle > engine->getTicks()) engine->renderScene((nextCycle - engine->getTicks()) / targetUpdateTimeDelta);
+      if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks());
+   }
 }
 
 void handleExit(Exiting e)
 {
-	exitTestApp();
+   exitTestApp();
 }
 
 void handleKeyUpEvent(KeyUp e)
 {
-	switch (e.key)
-	{
-		case INC_KEY_ESCAPE:
-			exitTestApp();
-		case INC_KEY_UP:
-		case INC_KEY_w:
-		{
-			camera->localTranslate(vector3(0.0, 0.0, -500.0));
-			break;
-		}
-		case INC_KEY_s:
-		case INC_KEY_DOWN:
-		{
-			camera->localTranslate(vector3(0.0, 0.0, 500.0));
-			break;
-		}
-		case INC_KEY_a:
-		case INC_KEY_LEFT:
-		{
-			camera->localTranslate(vector3(0.0, -50.0, 0.0));
-			break;
-		}
-		case INC_KEY_d:
-		case INC_KEY_RIGHT:
-		{
-			camera->localTranslate(vector3(0.0, 50.0, 0.0));
-			break;
-		}
-	}
+   switch (e.key)
+   {
+      case INC_KEY_ESCAPE:
+         exitTestApp();
+      case INC_KEY_UP:
+      case INC_KEY_w:
+      {
+         camera->localTranslate(vector3(0.0, 0.0, -500.0));
+         break;
+      }
+      case INC_KEY_s:
+      case INC_KEY_DOWN:
+      {
+         camera->localTranslate(vector3(0.0, 0.0, 500.0));
+         break;
+      }
+      case INC_KEY_a:
+      case INC_KEY_LEFT:
+      {
+         camera->localTranslate(vector3(0.0, -50.0, 0.0));
+         break;
+      }
+      case INC_KEY_d:
+      case INC_KEY_RIGHT:
+      {
+         camera->localTranslate(vector3(0.0, 50.0, 0.0));
+         break;
+      }
+   }
 }
 
 void handleMouseMove(MouseMove e)
 {
-	float yAngle = -e.xrel * mouseSensitivity;
-	float xAngle = -e.yrel * mouseSensitivity;
-	if(yAngle != 0)
-		camera->localRotateY(yAngle);
-	if(xAngle != 0)
-		camera->localRotateX(xAngle);
+   float yAngle = -e.xrel * mouseSensitivity;
+   float xAngle = -e.yrel * mouseSensitivity;
+   if(yAngle != 0)
+      camera->localRotateY(yAngle);
+   if(xAngle != 0)
+      camera->localRotateX(xAngle);
 }
 
 void cleanup()
 {
-	delete ExitingSlot;
-	ExitingSlot = 0;
-	delete MouseMoveSlot;
-	MouseMoveSlot = 0;
-	delete engine;
-	engine = 0;
-	delete camera;
-	camera = 0;
-	delete scene;
-	scene = 0;
-	delete display;
-	display = 0;
+   delete ExitingSlot;
+   ExitingSlot = 0;
+   delete MouseMoveSlot;
+   MouseMoveSlot = 0;
+   delete engine;
+   engine = 0;
+   delete camera;
+   camera = 0;
+   delete scene;
+   scene = 0;
+   delete display;
+   display = 0;
 }
 
 void exitTestApp()
 {
-	cleanup();
-	exit(EXIT_SUCCESS);
+   cleanup();
+   exit(EXIT_SUCCESS);
 }

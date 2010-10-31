@@ -29,28 +29,28 @@
 template <class Packet>
 class TokenBucket
 {
-	private:
-		int tokens;
-		int fillRate;
-		int capacity;
-		int lastTime;
+   private:
+      int tokens;
+      int fillRate;
+      int capacity;
+      int lastTime;
 
-	public:
-	
-		TokenBucket(int t=0, int f=1, int c=1, int ti=0) : tokens(t), fillrate(f), capacity(c), time(ti) {}
+   public:
+   
+      TokenBucket(int t=0, int f=1, int c=1, int ti=0) : tokens(t), fillrate(f), capacity(c), time(ti) {}
      
-		bool consume(Packet packet, int time)
-		{
-			tokens += (time - lastTime) * fillrate;
-			if(tokens > capacity) tokens = capacity;
-			if(tokens > 0)
-			{
-				//Some code to let the packet through goes here!
-				tokens--;
-				return true;
-			}
-			return false
-		}
+      bool consume(Packet packet, int time)
+      {
+         tokens += (time - lastTime) * fillrate;
+         if(tokens > capacity) tokens = capacity;
+         if(tokens > 0)
+         {
+            //Some code to let the packet through goes here!
+            tokens--;
+            return true;
+         }
+         return false
+      }
 };
 
 #endif //SHARED_TOKENBUCKET_H

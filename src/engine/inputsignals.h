@@ -31,30 +31,30 @@
 
 namespace incarnadine
 {
-	class MouseMove : public Event
-	{
-		public:
-			int x;
-			int y;
-			int xrel;
-			int yrel;
-	};
+   class MouseMove : public Event
+   {
+      public:
+         int x;
+         int y;
+         int xrel;
+         int yrel;
+   };
 
-	class MouseClick : public Event {};
+   class MouseClick : public Event {};
 
-	class KeyUp : public Event
-	{
-		public:
-			Key key;
-	};
-	
-	class KeyDown : public Event
-	{
-		public:
-			Key key;
-	};
+   class KeyUp : public Event
+   {
+      public:
+         Key key;
+   };
+   
+   class KeyDown : public Event
+   {
+      public:
+         Key key;
+   };
 
-	class Exiting : public Event {};
+   class Exiting : public Event {};
 }
 
 #endif //ENGINE_INPUTSIGNALS_H

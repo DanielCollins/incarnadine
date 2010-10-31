@@ -30,15 +30,15 @@
 
 namespace incarnadine
 {
-	class Panel
-	{
-		private:
-			int x, y, w, h;
-		
-		public:
-			Panel(int nx, int ny, int nw, int nh);
-			void draw();
-	};
+   class Panel
+   {
+      private:
+         int x, y, w, h;
+      
+      public:
+         Panel(int nx, int ny, int nw, int nh);
+         void draw();
+   };
 }
 
 #endif //ENGINE_PANEL_H

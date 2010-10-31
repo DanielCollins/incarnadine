@@ -29,31 +29,31 @@ using namespace incarnadine;
 
 Camera::Camera(vector3 newPosition, vector3 newOrientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration, float newFov) : Object (newPosition, newOrientation, newVelocity, newAngularVelocity, newAcceleration, newAngularAcceleration)
 {
-	setFov(newFov);
+   setFov(newFov);
 }
 
 void Camera::setFov(float newFov)
 {
-	fov = newFov;
+   fov = newFov;
 }
 
 float Camera::getFov()
 {
-	return fov;
+   return fov;
 }
 
 void Camera::updateGL()
 {
-	const SDL_VideoInfo* videoInfo = SDL_GetVideoInfo();
-	float aspectRatio = (float) videoInfo->current_w / (float) videoInfo->current_h;
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glFrustum(-aspectRatio, aspectRatio, -1.0, 1.0, fov, 100000);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	matrix44 t;
-	matrix_rotation_quaternion(t, orientation * -1);
-	glLoadMatrixf(t.data());
-	glTranslatef(-position[0], -position[1], -position[2]);
+   const SDL_VideoInfo* videoInfo = SDL_GetVideoInfo();
+   float aspectRatio = (float) videoInfo->current_w / (float) videoInfo->current_h;
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity();
+   glFrustum(-aspectRatio, aspectRatio, -1.0, 1.0, fov, 100000);
+   glMatrixMode(GL_MODELVIEW);
+   glLoadIdentity();
+   matrix44 t;
+   matrix_rotation_quaternion(t, orientation * -1);
+   glLoadMatrixf(t.data());
+   glTranslatef(-position[0], -position[1], -position[2]);
 }
 

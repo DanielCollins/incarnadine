@@ -29,44 +29,44 @@ using namespace incarnadine;
 
 RenderManager::RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay)
 {
-	camera = newCamera;
-	scene = newScene;
-	display = newDisplay;
+   camera = newCamera;
+   scene = newScene;
+   display = newDisplay;
 
-	glShadeModel(GL_SMOOTH);
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_DEPTH_TEST);
-	glDepthMask(GL_TRUE);
-	glEnable(GL_CULL_FACE);
-		
-	glClearColor (1.0, 1.0, 1.0, 0.0);
+   glShadeModel(GL_SMOOTH);
+   glEnable(GL_TEXTURE_2D);
+   glEnable(GL_DEPTH_TEST);
+   glDepthMask(GL_TRUE);
+   glEnable(GL_CULL_FACE);
+      
+   glClearColor (1.0, 1.0, 1.0, 0.0);
 }
 
 void RenderManager::draw()
 {
-	camera->updateGL();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	scene->rasterize();
-	std::vector<Panel*>::const_iterator i = panels.begin();
-	std::vector<Panel*>::const_iterator end = panels.end();
-	for(;i != end; i++) (*i)->draw();
-	display->update();
+   camera->updateGL();
+   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   scene->rasterize();
+   std::vector<Panel*>::const_iterator i = panels.begin();
+   std::vector<Panel*>::const_iterator end = panels.end();
+   for(;i != end; i++) (*i)->draw();
+   display->update();
 }
 
 void RenderManager::draw(float deltaTime)
 {
-	camera->updateGL();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	scene->rasterize(deltaTime);
-	std::vector<Panel*>::const_iterator i = panels.begin();
-	std::vector<Panel*>::const_iterator end = panels.end();
-	for(;i != end; i++) (*i)->draw();
-	display->update();
+   camera->updateGL();
+   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   scene->rasterize(deltaTime);
+   std::vector<Panel*>::const_iterator i = panels.begin();
+   std::vector<Panel*>::const_iterator end = panels.end();
+   for(;i != end; i++) (*i)->draw();
+   display->update();
 }
 
 void RenderManager::setCamera(Camera* newCamera)
 {
-	camera = newCamera;
+   camera = newCamera;
 }
 
 void RenderManager::addPanel(Panel* panel)

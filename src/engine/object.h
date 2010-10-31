@@ -30,31 +30,31 @@
 
 namespace incarnadine
 {
-	using namespace cml;
+   using namespace cml;
 
-	class Object
-	{
-		protected:
-			vector3 position, velocity, acceleration;
-			iquaternion orientation, angularVelocity, angularAcceleration;
+   class Object
+   {
+      protected:
+         vector3 position, velocity, acceleration;
+         iquaternion orientation, angularVelocity, angularAcceleration;
 
-		public:
-			Object(vector3 position, vector3 orientation, vector3 velocity,
-			         vector3 angularVelocity, vector3 acceleration, vector3 angularAcceleration);
-			vector3 getPosition();
-			/*void setVelocity(vector3 v);
-			void setAngularVelocity(vector3 v);*/
-			void localRotate(vector3 eulerRotation);
-			void localRotate(iquaternion q);
-			void localRotateX(float angle);
-			void localRotateY(float angle);
-			void localRotateZ(float angle);
-			void setVelocity(vector3 v);
-			void setAngularVelocity(vector3 v);
-			void goTo(vector3 location);
-			void localTranslate(vector3 displacement);
-			void globalTranslate(vector3 displacement);
-			void updatePosition(unsigned int deltaTicks);
-	};
+      public:
+         Object(vector3 position, vector3 orientation, vector3 velocity,
+                  vector3 angularVelocity, vector3 acceleration, vector3 angularAcceleration);
+         vector3 getPosition();
+         /*void setVelocity(vector3 v);
+         void setAngularVelocity(vector3 v);*/
+         void localRotate(vector3 eulerRotation);
+         void localRotate(iquaternion q);
+         void localRotateX(float angle);
+         void localRotateY(float angle);
+         void localRotateZ(float angle);
+         void setVelocity(vector3 v);
+         void setAngularVelocity(vector3 v);
+         void goTo(vector3 location);
+         void localTranslate(vector3 displacement);
+         void globalTranslate(vector3 displacement);
+         void updatePosition(unsigned int deltaTicks);
+   };
 }
 #endif //ENGINE_OBJECT_H

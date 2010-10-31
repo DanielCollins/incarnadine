@@ -33,23 +33,23 @@
 
 namespace incarnadine
 {
-	class InputManager
-	{
-		public:
-			Signal<KeyUp> sKeyUp;
-			Signal<KeyDown> sKeyDown;
-			Signal<MouseMove> sMouseMove;
-			Signal<Exiting> sExiting;
-			Display *display;
+   class InputManager
+   {
+      public:
+         Signal<KeyUp> sKeyUp;
+         Signal<KeyDown> sKeyDown;
+         Signal<MouseMove> sMouseMove;
+         Signal<Exiting> sExiting;
+         Display *display;
 
-			InputManager(Display *d);
-			~InputManager();
-			void update();
-			void resetMousePosition();
+         InputManager(Display *d);
+         ~InputManager();
+         void update();
+         void resetMousePosition();
 
-	private:
-			bool ignoreNextMouseMove;
-	};
+   private:
+         bool ignoreNextMouseMove;
+   };
 }
 
 #endif //ENGINE_INPUT_H

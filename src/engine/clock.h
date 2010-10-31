@@ -31,14 +31,14 @@
 
 namespace incarnadine
 {
-	class Clock
-	{
-		public:
-			unsigned int getTicks();
-			void sleep(unsigned int);
-			tm* getUTCTime();
-			tm* getLocalTime();
-	};
+   class Clock
+   {
+      public:
+         unsigned int getTicks();
+         void sleep(unsigned int);
+         tm* getUTCTime();
+         tm* getLocalTime();
+   };
 }
 
 #endif //ENGINE_CLOCK_H

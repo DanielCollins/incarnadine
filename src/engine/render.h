@@ -37,22 +37,22 @@
 
 namespace incarnadine
 {
-	class RenderManager
-	{
-		private:
-			Camera* camera;
-			Display* display;
-			Scene* scene;
-			std::vector<Panel*> panels;
-		
-		public:
-			RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay);
-			void draw();
-			void draw(float);
-			void setCamera(Camera* newCamera);
-			void addPanel(Panel*);
-			void removePanel(Panel*);		
-	};
+   class RenderManager
+   {
+      private:
+         Camera* camera;
+         Display* display;
+         Scene* scene;
+         std::vector<Panel*> panels;
+      
+      public:
+         RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay);
+         void draw();
+         void draw(float);
+         void setCamera(Camera* newCamera);
+         void addPanel(Panel*);
+         void removePanel(Panel*);      
+   };
 }
 
 #endif //ENGINE_RENDER_H

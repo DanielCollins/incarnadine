@@ -29,27 +29,27 @@ using namespace incarnadine;
 
 VertexBufferObject::VertexBufferObject(std::vector<Vertex> newVertices)
 {
-	bufferIdentifier = 0;
-	vertexCount = newVertices.size();
-	glGenBuffersARB(1, (GLuint*) &bufferIdentifier);
-	glBindBufferARB(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
-	glBufferDataARB(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount , &newVertices[0], GL_STATIC_DRAW);
+   bufferIdentifier = 0;
+   vertexCount = newVertices.size();
+   glGenBuffersARB(1, (GLuint*) &bufferIdentifier);
+   glBindBufferARB(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);
+   glBufferDataARB(GL_ARRAY_BUFFER, sizeof(Vertex) * vertexCount , &newVertices[0], GL_STATIC_DRAW);
 }
 
 VertexBufferObject::~VertexBufferObject()
 {
-	glDeleteBuffersARB(1, (GLuint*) &bufferIdentifier);
+   glDeleteBuffersARB(1, (GLuint*) &bufferIdentifier);
 }
 
 void VertexBufferObject::draw()
 {
-	if(bufferIdentifier == 0 || vertexCount == 0) return;	
-	glBindBufferARB(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);	
-	glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate)));
-	glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0));
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glDrawArrays(GL_TRIANGLES, 0, vertexCount);
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);	
+   if(bufferIdentifier == 0 || vertexCount == 0) return;   
+   glBindBufferARB(GL_ARRAY_BUFFER, (GLuint) bufferIdentifier);   
+   glColorPointer(4, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(sizeof(Coordinate)));
+   glVertexPointer(3, GL_FLOAT, sizeof(Vertex), BUFFER_OFFSET(0));
+   glEnableClientState(GL_VERTEX_ARRAY);
+   glEnableClientState(GL_COLOR_ARRAY);
+   glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+   glDisableClientState(GL_COLOR_ARRAY);
+   glDisableClientState(GL_VERTEX_ARRAY);   
 }

@@ -29,71 +29,71 @@ using namespace incarnadine;
 
 InputManager::InputManager(Display *d)
 {
-	display = d;
-	ignoreNextMouseMove = false;
-	SDL_ShowCursor(SDL_DISABLE);
-	SDL_WM_GrabInput(SDL_GRAB_ON);
-	resetMousePosition();
+   display = d;
+   ignoreNextMouseMove = false;
+   SDL_ShowCursor(SDL_DISABLE);
+   SDL_WM_GrabInput(SDL_GRAB_ON);
+   resetMousePosition();
 }
 
 InputManager::~InputManager()
 {
-	SDL_WM_GrabInput(SDL_GRAB_OFF);
-	SDL_ShowCursor(SDL_ENABLE);
+   SDL_WM_GrabInput(SDL_GRAB_OFF);
+   SDL_ShowCursor(SDL_ENABLE);
 }
 
 void InputManager::update()
 {
-	SDL_Event Event;
-	
-	while(SDL_PollEvent(&Event))
-	{
-		switch(Event.type)
-		{
-			case SDL_KEYDOWN:
-			{
-				KeyDown e;
-				e.key = (Key) Event.key.keysym.sym;
-				sKeyDown.fire(&e);
-				break;
-			}
-			case SDL_KEYUP:
-			{
-				KeyUp e;
-				e.key = (Key) Event.key.keysym.sym;
-				sKeyUp.fire(&e);
-				break;
-			}
-			case SDL_MOUSEMOTION:
-			{
-				if (ignoreNextMouseMove)
-				{
-					ignoreNextMouseMove = false;
-				}
-				else
-				{
-					MouseMove e;
-					e.x = Event.motion.x;
-					e.y = Event.motion.y;
-					e.xrel = Event.motion.xrel;
-					e.yrel = Event.motion.yrel;
+   SDL_Event Event;
+   
+   while(SDL_PollEvent(&Event))
+   {
+      switch(Event.type)
+      {
+         case SDL_KEYDOWN:
+         {
+            KeyDown e;
+            e.key = (Key) Event.key.keysym.sym;
+            sKeyDown.fire(&e);
+            break;
+         }
+         case SDL_KEYUP:
+         {
+            KeyUp e;
+            e.key = (Key) Event.key.keysym.sym;
+            sKeyUp.fire(&e);
+            break;
+         }
+         case SDL_MOUSEMOTION:
+         {
+            if (ignoreNextMouseMove)
+            {
+               ignoreNextMouseMove = false;
+            }
+            else
+            {
+               MouseMove e;
+               e.x = Event.motion.x;
+               e.y = Event.motion.y;
+               e.xrel = Event.motion.xrel;
+               e.yrel = Event.motion.yrel;
 
-					sMouseMove.fire(&e);
-				}
-				break;
-			}	
-			case SDL_QUIT:
-			{
-				Exiting e;
-				sExiting.fire(&e);
-			}
-		}
-	}
+               sMouseMove.fire(&e);
+            }
+            break;
+         }   
+         case SDL_QUIT:
+         {
+            Exiting e;
+            sExiting.fire(&e);
+         }
+      }
+   }
 }
 
 void InputManager::resetMousePosition()
 {
-	ignoreNextMouseMove = true;
-	SDL_WarpMouse(display->width() / 2, display->height() / 2);
+   ignoreNextMouseMove = true;
+   SDL_WarpMouse(display->width() / 2, display->height() / 2);
 }
 

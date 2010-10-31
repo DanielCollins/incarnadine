@@ -33,7 +33,7 @@
 
 using namespace std;
 
-enum LogLevel {	LOG_ALL   = 0,
+enum LogLevel {   LOG_ALL   = 0,
                 LOG_DEBUG = 1,
                 LOG_INFO  = 2,
                 LOG_WARNING = 3,
@@ -42,19 +42,19 @@ enum LogLevel {	LOG_ALL   = 0,
 
 class Logger
 {
-	protected:
-		fstream logStream;
-		LogLevel loggingLevel;
-		LogLevel stdoutLevel;
-	
-	public:
-		Logger(string filename, LogLevel levelLog, LogLevel levelOut);
-		~Logger();
-		void log(LogLevel level, string message);		
-		LogLevel getLoggingLevel();
-		void setLoggingLevel(LogLevel level);
-		LogLevel getStdoutLevel();
-		void setStdoutLevel(LogLevel level);
+   protected:
+      fstream logStream;
+      LogLevel loggingLevel;
+      LogLevel stdoutLevel;
+   
+   public:
+      Logger(string filename, LogLevel levelLog, LogLevel levelOut);
+      ~Logger();
+      void log(LogLevel level, string message);      
+      LogLevel getLoggingLevel();
+      void setLoggingLevel(LogLevel level);
+      LogLevel getStdoutLevel();
+      void setStdoutLevel(LogLevel level);
 };
 
 #endif //ENGINE_LOG_H

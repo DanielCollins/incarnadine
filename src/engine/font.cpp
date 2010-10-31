@@ -29,13 +29,13 @@ using namespace incarnadine;
 
 TrueTypeFont::TrueTypeFont(std::string filename, int size)
 {
-	font = TTF_OpenFont(filename.c_str(), size);
-	if(!font) throw 0;
+   font = TTF_OpenFont(filename.c_str(), size);
+   if(!font) throw 0;
 }
 
 SDL_Surface* TrueTypeFont::renderText(std::string text, char r, char g, char b)
 { 
-	SDL_Color colour = {r,g,b,0};
-	return TTF_RenderText_Blended(font, text.c_str(), colour);
+   SDL_Color colour = {r,g,b,0};
+   return TTF_RenderText_Blended(font, text.c_str(), colour);
 }
 

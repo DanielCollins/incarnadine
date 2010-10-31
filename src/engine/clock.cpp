@@ -29,24 +29,24 @@ using namespace incarnadine;
 
 unsigned int Clock::getTicks()
 {
-	return SDL_GetTicks();
+   return SDL_GetTicks();
 }
 
 void Clock::sleep(unsigned int delay)
 {
-	SDL_Delay(delay);
+   SDL_Delay(delay);
 }
 ;
 tm* Clock::getUTCTime()
 {
-	time_t ttime;
-	time(&ttime);
-	return gmtime(&ttime);
+   time_t ttime;
+   time(&ttime);
+   return gmtime(&ttime);
 }
 
 tm* Clock::getLocalTime()
 {
-	time_t ttime;
-	time(&ttime);
-	return localtime(&ttime);
+   time_t ttime;
+   time(&ttime);
+   return localtime(&ttime);
 }

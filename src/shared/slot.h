@@ -38,63 +38,63 @@ class Signal;
 template <class EventType>
 class Slot
 {
-	private:
+   private:
 
-		std::vector<Signal<EventType>*> signals;
-		void (*handler)(EventType);
-		bool enabled;
+      std::vector<Signal<EventType>*> signals;
+      void (*handler)(EventType);
+      bool enabled;
 
 
-	public:
+   public:
 
-		Slot(void (*newhandler)(EventType))
-		{
-			handler = newhandler;
-			enabled = true;
-		}
+      Slot(void (*newhandler)(EventType))
+      {
+         handler = newhandler;
+         enabled = true;
+      }
 
-		~Slot()
-		{
-		}
+      ~Slot()
+      {
+      }
 
-		void connect(Signal<EventType>* signal)
-		{
-			typename std::vector<Signal<EventType>*>::const_iterator i;
-			for(i = signals.begin(); i != signals.end(); i++)
-				if(signal == *i)
-					return;
-			signals.push_back(signal);
-			signal->_acceptConnection(this);
-		}
+      void connect(Signal<EventType>* signal)
+      {
+         typename std::vector<Signal<EventType>*>::const_iterator i;
+         for(i = signals.begin(); i != signals.end(); i++)
+            if(signal == *i)
+               return;
+         signals.push_back(signal);
+         signal->_acceptConnection(this);
+      }
 
-		void disconnect(Signal<EventType>* signal)
-		{
-			typename std::vector<Signal<EventType>*>::const_iterator i;
-			for(i = signals.begin(); i != signals.end(); i++)
-			{
-				if(signal == *i)
-				{
-					signal->_disconnect(this);
-					signals.erase(i);
-					return;
-				}
-			}
-		}
+      void disconnect(Signal<EventType>* signal)
+      {
+         typename std::vector<Signal<EventType>*>::const_iterator i;
+         for(i = signals.begin(); i != signals.end(); i++)
+         {
+            if(signal == *i)
+            {
+               signal->_disconnect(this);
+               signals.erase(i);
+               return;
+            }
+         }
+      }
 
-		void _fire(EventType* e)
-		{
-			if(enabled) handler(*e);
-		}
+      void _fire(EventType* e)
+      {
+         if(enabled) handler(*e);
+      }
 
-		bool isEnabled()
-		{
-			return enabled;
-		}
+      bool isEnabled()
+      {
+         return enabled;
+      }
 
-		void setEnabled(bool newState)
-		{
-			enabled = newState;
-		}
+      void setEnabled(bool newState)
+      {
+         enabled = newState;
+      }
 };
 
 #endif //SHARED_SLOT_H

@@ -33,18 +33,18 @@
 
 namespace incarnadine
 {
-	class Visible : public Object
-	{
-		public:
-			AxisAlignedBoundingBox bound;
-			vector3 scale;
-			std::vector<Visible*> children;
+   class Visible : public Object
+   {
+      public:
+         AxisAlignedBoundingBox bound;
+         vector3 scale;
+         std::vector<Visible*> children;
 
-			Visible(vector3 position, vector3 orientation, vector3 velocity, vector3 angularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration, vector3 scaleFactor);
-			void rescale(vector3 scaleFactor);
-			vector3 getScale();
-			virtual void draw() = 0;
-			virtual void draw(float) = 0;
-	};
+         Visible(vector3 position, vector3 orientation, vector3 velocity, vector3 angularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration, vector3 scaleFactor);
+         void rescale(vector3 scaleFactor);
+         vector3 getScale();
+         virtual void draw() = 0;
+         virtual void draw(float) = 0;
+   };
 }
 #endif //ENGINE_VISIBLE_H

@@ -29,17 +29,17 @@
 namespace incarnadine
 {
 
-	struct AxisAlignedBoundingBox 
-	{
-		float minX;
-		float maxX;
-		float minY;
-		float maxY;
-		float minZ;
-		float maxZ;
+   struct AxisAlignedBoundingBox 
+   {
+      float minX;
+      float maxX;
+      float minY;
+      float maxY;
+      float minZ;
+      float maxZ;
 
-		float getVolume();
-	};
+      float getVolume();
+   };
 }
 
 #endif //ENGINE_AABB_H

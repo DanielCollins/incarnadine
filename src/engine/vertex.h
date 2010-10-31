@@ -29,34 +29,34 @@
 namespace incarnadine
 {
 /* not using vectors 3 and 4 here becuase uploading to graphics memory requires 
-	vertices live in contiguious main memory to acheive a reasonable level of
-	efficiency and cml::vector std::vector combo cannnot garentee this */	
+   vertices live in contiguious main memory to acheive a reasonable level of
+   efficiency and cml::vector std::vector combo cannnot garentee this */   
 
-	struct Colour
-	{
-		float r;
-		float g;
-		float b;
-		float a;
-	};
+   struct Colour
+   {
+      float r;
+      float g;
+      float b;
+      float a;
+   };
 
-	struct TextureCoordinate
-	{
-		short s;
-		short t;
-	};
+   struct TextureCoordinate
+   {
+      short s;
+      short t;
+   };
 
-	struct Coordinate
-	{
-		float x;
-		float y;
-		float z;
-	};
+   struct Coordinate
+   {
+      float x;
+      float y;
+      float z;
+   };
 
-	struct Vertex
-	{
-		Coordinate position;
-		Colour colour;	
-	};
+   struct Vertex
+   {
+      Coordinate position;
+      Colour colour;   
+   };
 }
 #endif //ENGINE_VERTEX_H

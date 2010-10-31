@@ -35,17 +35,17 @@
 
 namespace incarnadine
 {
-	class VertexBufferObject
-	{
-		private:
-			unsigned int bufferIdentifier;
-			unsigned int vertexCount;
+   class VertexBufferObject
+   {
+      private:
+         unsigned int bufferIdentifier;
+         unsigned int vertexCount;
 
-		public:
-			VertexBufferObject(std::vector<Vertex> newVertices);
-			~VertexBufferObject();
-			void draw();
-	};
+      public:
+         VertexBufferObject(std::vector<Vertex> newVertices);
+         ~VertexBufferObject();
+         void draw();
+   };
 }
 
 #endif //ENGINE_VBO_H

@@ -40,44 +40,44 @@
 
 namespace incarnadine
 {
-	struct objFaceTriangle
-	{
-		vector3 vertex[3];
-		vector3 normal[3];
-		vector3 texcoord[3];
-		bool hasNormals;
-		bool hasTexCoords;
-	};
+   struct objFaceTriangle
+   {
+      vector3 vertex[3];
+      vector3 normal[3];
+      vector3 texcoord[3];
+      bool hasNormals;
+      bool hasTexCoords;
+   };
 
-	struct objGroup
-	{
-		std::vector<objFaceTriangle>* faces;
-		bool smooth;
-	};
+   struct objGroup
+   {
+      std::vector<objFaceTriangle>* faces;
+      bool smooth;
+   };
 
-	typedef std::map<std::string, objGroup>::iterator objGroupIter;
+   typedef std::map<std::string, objGroup>::iterator objGroupIter;
 
-	class ObjModel : public Renderable
-	{
-	public:
-		ObjModel(std::string filename);
-		~ObjModel();
+   class ObjModel : public Renderable
+   {
+   public:
+      ObjModel(std::string filename);
+      ~ObjModel();
 
-		void onContextReset();
-		void draw();
+      void onContextReset();
+      void draw();
 
-	private:
+   private:
 
-		void parseLine(char* line, objGroupIter& activeGroup);
-		inline void addFaceTriangle(const objFaceTriangle& face, objGroupIter activeGroup);
-	
-		std::map<std::string, objGroup> m_groups;
-		std::vector<vector3> m_vertices, m_normals, m_texCoords;
+      void parseLine(char* line, objGroupIter& activeGroup);
+      inline void addFaceTriangle(const objFaceTriangle& face, objGroupIter activeGroup);
+   
+      std::map<std::string, objGroup> m_groups;
+      std::vector<vector3> m_vertices, m_normals, m_texCoords;
 
-		unsigned int m_displayListIndex;
-		bool m_useDisplayList;
+      unsigned int m_displayListIndex;
+      bool m_useDisplayList;
 
-	};
+   };
 
 }
 

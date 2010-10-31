@@ -28,10 +28,10 @@
 
 namespace incarnadine
 {
-	struct SphericalBoundingVolume
-	{
-		float radius;
-		float getVolume();
-	};
+   struct SphericalBoundingVolume
+   {
+      float radius;
+      float getVolume();
+   };
 }
 #endif //ENGINE_SBV_H

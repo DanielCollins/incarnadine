@@ -29,7 +29,7 @@ using namespace incarnadine;
 
 StaticMesh::StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration, vector3 scaleFactor, Renderable* newBase) : Visible (position, orientation, newVelocity, newAngularVelocity, newAcceleration, newAngularAcceleration, scaleFactor)
 {
-	base = newBase;
+   base = newBase;
 }
 
 StaticMesh::~StaticMesh()
@@ -38,29 +38,29 @@ StaticMesh::~StaticMesh()
 
 void StaticMesh::draw()
 {
-	glPushMatrix();
-	glRotatef(orientation[0], 1, 0, 0);
-	glRotatef(orientation[1], 0, 1, 0);
-	glRotatef(orientation[2], 0, 0, 1);
-	glScalef(scale[0], scale[1], scale[2]);
-	glTranslatef(position[0], position[1], position[2]);
-	base->draw();
-	std::vector<Visible*>::iterator i;
-	for(i = children.begin(); i != children.end(); i++) (*i)->draw(); 
-	glPopMatrix();
+   glPushMatrix();
+   glRotatef(orientation[0], 1, 0, 0);
+   glRotatef(orientation[1], 0, 1, 0);
+   glRotatef(orientation[2], 0, 0, 1);
+   glScalef(scale[0], scale[1], scale[2]);
+   glTranslatef(position[0], position[1], position[2]);
+   base->draw();
+   std::vector<Visible*>::iterator i;
+   for(i = children.begin(); i != children.end(); i++) (*i)->draw(); 
+   glPopMatrix();
 }
 
 void StaticMesh::draw(float deltaTime)
 {
-	glPushMatrix();
-	matrix44 t;
-	matrix_rotation_quaternion(t, orientation);
-	glMultMatrixf(t.data());
-	glScalef(scale[0], scale[1], scale[2]);
-	glTranslatef(position[0] + velocity[0] * deltaTime, position[1] + velocity[1] * deltaTime, position[2] + velocity[2] * deltaTime);
-	base->draw();
-	std::vector<Visible*>::iterator i;
-	for(i = children.begin(); i != children.end(); i++) (*i)->draw(); 
-	glPopMatrix();
+   glPushMatrix();
+   matrix44 t;
+   matrix_rotation_quaternion(t, orientation);
+   glMultMatrixf(t.data());
+   glScalef(scale[0], scale[1], scale[2]);
+   glTranslatef(position[0] + velocity[0] * deltaTime, position[1] + velocity[1] * deltaTime, position[2] + velocity[2] * deltaTime);
+   base->draw();
+   std::vector<Visible*>::iterator i;
+   for(i = children.begin(); i != children.end(); i++) (*i)->draw(); 
+   glPopMatrix();
 }
 

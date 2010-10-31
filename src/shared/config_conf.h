@@ -37,13 +37,13 @@
 class ConfigConfParser
 {
 public:
-	static bool loadConf(const std::string& filename, ConfigManager& config);
-	static bool saveConf(const std::string& filename, ConfigManager& config);
+   static bool loadConf(const std::string& filename, ConfigManager& config);
+   static bool saveConf(const std::string& filename, ConfigManager& config);
 
 private:
-	static void stripWhitespace(std::string& str);
-	static void stripComments(std::string& str);
-	static CONFIG_TYPE getType(const std::string& value, ConfigValue& outValue);
+   static void stripWhitespace(std::string& str);
+   static void stripComments(std::string& str);
+   static CONFIG_TYPE getType(const std::string& value, ConfigValue& outValue);
 
 };
 
