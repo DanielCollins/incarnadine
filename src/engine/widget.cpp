@@ -49,13 +49,6 @@ void Widget::reposition(float nx, float ny)
 void Widget::draw()
 {
    updateTexture();
-   glMatrixMode(GL_PROJECTION);
-   glPushMatrix();
-   glLoadIdentity();
-   glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
-   glMatrixMode(GL_MODELVIEW);
-   glPushMatrix();
-   glLoadIdentity();
    texture->bind();
    glBegin(GL_QUADS);
    glTexCoord2d(0, 0);
@@ -66,10 +59,6 @@ void Widget::draw()
    glVertex2f(c, d);
    glTexCoord2d(1, 0);
    glVertex2f(c, b);
-   glEnd();   
-   glMatrixMode(GL_PROJECTION);
-   glPopMatrix();
-   glMatrixMode(GL_MODELVIEW);
-   glPopMatrix();
+   glEnd();
 }
 
