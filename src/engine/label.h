@@ -19,14 +19,14 @@
 
 #include <string>
 #include "GL/glew.h"
-#include "panel.h"
+#include "widget.h"
 #include "font.h"
 #include "vertex.h"
 #include "display.h"
 
 namespace incarnadine
 {
-   class Label : public Panel
+   class Label : public Widget
    {
       protected:
          std::string text;

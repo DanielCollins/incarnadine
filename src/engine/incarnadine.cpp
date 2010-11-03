@@ -112,12 +112,12 @@ Clock* Incarnadine::getClock()
    return (Clock*)&clock;
 }
 
-void Incarnadine::addPanel(Panel* p)
+void Incarnadine::addWidget(Widget* p)
 {
-   renderer->addPanel(p);
+   renderer->addWidget(p);
 }
 
-void Incarnadine::removePanel(Panel* p)
+void Incarnadine::removeWidget(Widget* p)
 {
-   renderer->removePanel(p);
+   renderer->removeWidget(p);
 }

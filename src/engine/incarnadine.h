@@ -34,7 +34,7 @@
 #include "md2.h"
 #include "obj.h"
 #include "font.h"
-#include "panel.h"
+#include "widget.h"
 
 namespace incarnadine
 {
@@ -58,8 +58,8 @@ namespace incarnadine
          TrueTypeFont* loadFont(std::string uri, int size);
          unsigned int getTicks();
          Clock* getClock();
-         void addPanel(Panel*);
-         void removePanel(Panel*);
+         void addWidget(Widget*);
+         void removeWidget(Widget*);
    };
 }
 #endif //ENGINE_INCARNADINE_H

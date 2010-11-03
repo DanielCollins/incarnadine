@@ -24,7 +24,7 @@
 #include "camera.h"
 #include "display.h"
 #include "scene.h"
-#include "panel.h"
+#include "widget.h"
 
 namespace incarnadine
 {
@@ -34,15 +34,15 @@ namespace incarnadine
          Camera* camera;
          Display* display;
          Scene* scene;
-         std::vector<Panel*> panels;
+         std::vector<Widget*> widgets;
       
       public:
          RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay);
          void draw();
          void draw(float);
          void setCamera(Camera* newCamera);
-         void addPanel(Panel*);
-         void removePanel(Panel*);      
+         void addWidget(Widget*);
+         void removeWidget(Widget*);      
    };
 }
 

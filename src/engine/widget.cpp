@@ -14,18 +14,18 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#include "panel.h"
+#include "widget.h"
 
 using namespace incarnadine;
 
-Panel::Panel(float nx, float ny, float nw, float nh)
+Widget::Widget(float nx, float ny, float nw, float nh)
 {
    reposition(nx, ny);
    resize(nw, nh);
    texture = 0;
 }
 
-void Panel::resize(float nw, float nh)
+void Widget::resize(float nw, float nh)
 {  
    if(nw > 1.0 || nw < 0.0) throw 1;
    if(nh > 1.0 || nh < 0.0) throw 1;  
@@ -35,7 +35,7 @@ void Panel::resize(float nw, float nh)
    d = 1 - (y + h);
 }
 
-void Panel::reposition(float nx, float ny)
+void Widget::reposition(float nx, float ny)
 {
    if(nx > 1.0 || nx < 0.0) throw 1;
    if(ny > 1.0 || ny < 0.0) throw 1;
@@ -46,7 +46,7 @@ void Panel::reposition(float nx, float ny)
    d = 1 - (y + h);
 }
 
-void Panel::draw()
+void Widget::draw()
 {
    updateTexture();
    glMatrixMode(GL_PROJECTION);

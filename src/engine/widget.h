@@ -22,7 +22,7 @@
 
 namespace incarnadine
 {
-   class Panel
+   class Widget
    {
       protected:
          float x, y, w, h, b, c, d;
@@ -30,7 +30,7 @@ namespace incarnadine
          virtual void updateTexture() = 0;      
 
       public:
-         Panel(float nx, float ny, float nw, float nh);
+         Widget(float nx, float ny, float nw, float nh);
          void resize(float nw, float nh);
          void reposition(float nx, float ny);
          void draw();

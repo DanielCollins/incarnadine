@@ -38,8 +38,8 @@ void RenderManager::draw()
    camera->updateGL();
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    scene->rasterize();
-   std::vector<Panel*>::const_iterator i = panels.begin();
-   std::vector<Panel*>::const_iterator end = panels.end();
+   std::vector<Widget*>::const_iterator i = widgets.begin();
+   std::vector<Widget*>::const_iterator end = widgets.end();
    for(;i != end; i++) (*i)->draw();
    display->update();
 }
@@ -49,8 +49,8 @@ void RenderManager::draw(float deltaTime)
    camera->updateGL();
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    scene->rasterize(deltaTime);
-   std::vector<Panel*>::const_iterator i = panels.begin();
-   std::vector<Panel*>::const_iterator end = panels.end();
+   std::vector<Widget*>::const_iterator i = widgets.begin();
+   std::vector<Widget*>::const_iterator end = widgets.end();
    for(;i != end; i++) (*i)->draw();
    display->update();
 }
@@ -60,23 +60,23 @@ void RenderManager::setCamera(Camera* newCamera)
    camera = newCamera;
 }
 
-void RenderManager::addPanel(Panel* panel)
+void RenderManager::addWidget(Widget* widget)
 {
-  std::vector<Panel*>::const_iterator i = panels.begin();
-  std::vector<Panel*>::const_iterator end = panels.end();
-  for(;i != end; i++) if(panel == *i) return;
-  panels.push_back(panel);
+  std::vector<Widget*>::const_iterator i = widgets.begin();
+  std::vector<Widget*>::const_iterator end = widgets.end();
+  for(;i != end; i++) if(widget == *i) return;
+  widgets.push_back(widget);
 }
 
-void RenderManager::removePanel(Panel* panel)
+void RenderManager::removeWidget(Widget* widget)
 {
-  std::vector<Panel*>::iterator i = panels.begin();
-  std::vector<Panel*>::iterator end = panels.end();
+  std::vector<Widget*>::iterator i = widgets.begin();
+  std::vector<Widget*>::iterator end = widgets.end();
   for(;i != end; i++)
   {
-    if(panel == *i)
+    if(widget == *i)
     {
-      panels.erase(i);
+      widgets.erase(i);
       return;
     }
   }

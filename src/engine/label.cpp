@@ -18,7 +18,7 @@
 
 using namespace incarnadine;
 
-Label::Label(TrueTypeFont* t, std::string s, Colour tc, Display *d) : Panel(0.0, 0.0, 0.0, 0.0)
+Label::Label(TrueTypeFont* t, std::string s, Colour tc, Display *d) : Widget(0.0, 0.0, 0.0, 0.0)
 {
    setText(s);
    setFont(t);
