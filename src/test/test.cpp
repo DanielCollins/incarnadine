@@ -47,7 +47,10 @@ int main(int argc, char* argv[])
    display = new Display("Incarnadine test");
    engine = new Incarnadine(camera, scene, display);
    font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
-  
+   Colour c = {0.0, 0.0, 0.0};
+   tp = new Label(font, "fps: 0", c, display);
+   engine->addPanel(tp);
+
    vector3 mPosition(0.0, 0.0, -8000.0);
    vector3 mOrientation(0.0, 0.0, 0.0);
    vector3 mVelocity(0.0, 0.0, 0.0);
@@ -85,6 +88,7 @@ int main(int argc, char* argv[])
 void runTest() 
 {
    int skippedFrames = 0;
+   int frames = 0;
    unsigned int nextCycle = 0;
    static unsigned int lastCycle = engine->getTicks(); 
    while(true)
@@ -98,7 +102,18 @@ void runTest()
          nextCycle += targetUpdateTimeDelta;
          ++skippedFrames;
       }
-      while(nextCycle > engine->getTicks()) engine->renderScene((nextCycle - engine->getTicks()) / targetUpdateTimeDelta);
+      while(nextCycle > engine->getTicks())
+      {
+         engine->renderScene((nextCycle - engine->getTicks()) / targetUpdateTimeDelta);
+         ++frames;
+      }
+      std::stringstream out;
+      int fps = (float) (frames * 1000) / (engine->getTicks() - lastCycle);
+      if(fps < 1000)
+         out<<"fps: "<<fps;
+      else
+         out<<"fps: out of range (high)";
+      ((Label*)tp)->setText(out.str());
       if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks());
    }
 }
