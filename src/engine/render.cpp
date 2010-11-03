@@ -38,9 +38,20 @@ void RenderManager::draw()
    camera->updateGL();
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    scene->rasterize();
+   glMatrixMode(GL_PROJECTION);
+   glPushMatrix();
+   glLoadIdentity();
+   glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
+   glMatrixMode(GL_MODELVIEW);
+   glPushMatrix();
+   glLoadIdentity();
    std::vector<Widget*>::const_iterator i = widgets.begin();
    std::vector<Widget*>::const_iterator end = widgets.end();
    for(;i != end; i++) (*i)->draw();
+   glMatrixMode(GL_PROJECTION);
+   glPopMatrix();
+   glMatrixMode(GL_MODELVIEW);
+   glPopMatrix();
    display->update();
 }
 
