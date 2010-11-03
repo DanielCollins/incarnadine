@@ -20,7 +20,6 @@ using namespace incarnadine;
 
 Texture::Texture(std::string filename)
 {
-   SDL_Surface* surface;
    surface = IMG_Load(filename.c_str());
    if(surface == 0) throw 0;
    glGenTextures(1, &id);
@@ -64,3 +63,14 @@ void Texture::bind()
 {
    glBindTexture(GL_TEXTURE_2D, id);
 }
+
+int Texture::getWidth()
+{
+   return surface->w;
+}
+
+int Texture::getHeight()
+{
+   return surface->h;
+}
+

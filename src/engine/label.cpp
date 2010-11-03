@@ -14,30 +14,52 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef TEST_H
-#define TEST_H
-
-#include <stdlib.h>
-
-#include "incarnadine.h"
-#include "scene.h"
-#include "tools.h"
-#include "input.h"
-#include "camera.h"
-#include "object.h"
-#include "md2.h"
-#include "staticm.h"
 #include "label.h"
-#include "vertex.h"
 
 using namespace incarnadine;
 
-void runTest();
-void exitTestApp();
-void cleanup();
+Label::Label(TrueTypeFont* t, std::string s, Colour tc, Display *d) : Panel(0.0, 0.0, 0.0, 0.0)
+{
+   setText(s);
+   setFont(t);
+   setTextColour(tc);
+   display = d;
+}
 
-void handleExit(Exiting);
-void handleKeyUpEvent(KeyUp);
-void handleMouseMove(MouseMove);
+std::string Label::getText()
+{
+   return text;
+}
 
-#endif //TEST_H
+void Label::setText(std::string s)
+{
+   text = s;
+}
+
+TrueTypeFont* Label::getFont()
+{
+   return font;
+}
+
+void Label::setFont(TrueTypeFont* t)
+{
+   font = t;
+}
+
+Colour Label::getTextColour()
+{
+   return textColour;
+}
+
+void Label::setTextColour(Colour tc)
+{
+   textColour = tc;
+}
+
+void Label::updateTexture()
+{
+   if(texture) delete texture;
+   texture = new Texture(font->renderText(text, textColour.r, textColour.g, textColour.b), GL_RGBA);
+   resize((float) texture->getWidth() / display->width(), (float) texture->getHeight() / display->height());
+}
+

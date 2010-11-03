@@ -23,13 +23,13 @@ RenderManager::RenderManager(Camera* newCamera, Scene* newScene, Display* newDis
    camera = newCamera;
    scene = newScene;
    display = newDisplay;
-
    glShadeModel(GL_SMOOTH);
    glEnable(GL_TEXTURE_2D);
    glEnable(GL_DEPTH_TEST);
    glDepthMask(GL_TRUE);
-   glEnable(GL_CULL_FACE);
-      
+   glEnable(GL_CULL_FACE);      
+   glEnable(GL_BLEND); 
+   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
    glClearColor (1.0, 1.0, 1.0, 0.0);
 }
 

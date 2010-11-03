@@ -27,6 +27,7 @@ namespace incarnadine
    {
       private:
          TTF_Font* font;
+
       public:
          TrueTypeFont(std::string, int);
          SDL_Surface* renderText(std::string, char, char, char);

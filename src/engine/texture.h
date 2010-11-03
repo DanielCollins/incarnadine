@@ -32,6 +32,8 @@ namespace incarnadine
          Texture(SDL_Surface* textureSurface, GLint format);
          ~Texture();
          void bind();
+         int getWidth();
+         int getHeight();
 
       private:
          void cleanup();

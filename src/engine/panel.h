@@ -18,16 +18,21 @@
 #define ENGINE_PANEL_H
 
 #include "GL/glew.h"
+#include "texture.h"
 
 namespace incarnadine
 {
    class Panel
    {
-      private:
-         int x, y, w, h;
-      
+      protected:
+         float x, y, w, h, b, c, d;
+         Texture *texture;
+         virtual void updateTexture() = 0;      
+
       public:
-         Panel(int nx, int ny, int nw, int nh);
+         Panel(float nx, float ny, float nw, float nh);
+         void resize(float nw, float nh);
+         void reposition(float nx, float ny);
          void draw();
    };
 }

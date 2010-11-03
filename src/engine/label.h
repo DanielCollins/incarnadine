@@ -14,30 +14,37 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef TEST_H
-#define TEST_H
+#ifndef ENGINE_LABEL_H
+#define ENGINE_LABEL_H
 
-#include <stdlib.h>
-
-#include "incarnadine.h"
-#include "scene.h"
-#include "tools.h"
-#include "input.h"
-#include "camera.h"
-#include "object.h"
-#include "md2.h"
-#include "staticm.h"
-#include "label.h"
+#include <string>
+#include "GL/glew.h"
+#include "panel.h"
+#include "font.h"
 #include "vertex.h"
+#include "display.h"
 
-using namespace incarnadine;
+namespace incarnadine
+{
+   class Label : public Panel
+   {
+      protected:
+         std::string text;
+         TrueTypeFont* font;
+         void updateTexture();
+         Colour textColour;
+         Display *display;
 
-void runTest();
-void exitTestApp();
-void cleanup();
+      public:
+         Label(TrueTypeFont*, std::string, Colour, Display*);
+         std::string getText();
+         void setText(std::string);
+         TrueTypeFont* getFont();
+         void setFont(TrueTypeFont*);
+         Colour getTextColour();
+         void setTextColour(Colour tc);
 
-void handleExit(Exiting);
-void handleKeyUpEvent(KeyUp);
-void handleMouseMove(MouseMove);
+   };
+}
 
-#endif //TEST_H
+#endif //ENGINE_LABEL_H
