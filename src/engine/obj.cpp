@@ -20,8 +20,8 @@ using namespace incarnadine;
 
 ObjModel::ObjModel(std::string filename)
 {
-   m_displayListIndex = 0;
-   m_useDisplayList = false;
+   m_windowListIndex = 0;
+   m_useWindowList = false;
 
    std::ifstream file(filename.c_str(), std::ios::in);
 
@@ -85,7 +85,7 @@ ObjModel::ObjModel(std::string filename)
    m_normals.clear();
    m_texCoords.clear();
 
-   // Generate display list.
+   // Generate window list.
    onContextReset();
 }
 
@@ -349,20 +349,20 @@ void ObjModel::addFaceTriangle(const objFaceTriangle& face, objGroupIter activeG
 
 void ObjModel::onContextReset()
 {
-   // Re-create the display list, if it hasn't already been created.
+   // Re-create the window list, if it hasn't already been created.
    
-   if (m_useDisplayList)
-      glDeleteLists(m_displayListIndex, 1);
+   if (m_useWindowList)
+      glDeleteLists(m_windowListIndex, 1);
 
-   m_displayListIndex = glGenLists(1);
-   glNewList(m_displayListIndex, GL_COMPILE);
+   m_windowListIndex = glGenLists(1);
+   glNewList(m_windowListIndex, GL_COMPILE);
 
-   m_useDisplayList = false;
+   m_useWindowList = false;
    
    draw();
    glEndList();
 
-   m_useDisplayList = true;
+   m_useWindowList = true;
 }
 
 void ObjModel::draw()
@@ -372,9 +372,9 @@ void ObjModel::draw()
    glEnable(GL_COLOR_MATERIAL);
    glColor3f(1.0f, 0.0f, 1.0f);
 
-   if (m_useDisplayList)
+   if (m_useWindowList)
    {
-      glCallList(m_displayListIndex);
+      glCallList(m_windowListIndex);
    }
    else
    {

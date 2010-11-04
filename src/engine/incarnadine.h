@@ -23,7 +23,7 @@
 #include "SDL_image.h"
 #include "SDL_ttf.h"
 #include "GL/glew.h"
-#include "display.h"
+#include "window.h"
 #include "input.h"
 #include "render.h"
 #include "camera.h"
@@ -47,10 +47,10 @@ namespace incarnadine
          std::map<std::string, TrueTypeFont*> fonts;
 
       public:
-         Display* display;
+         Window* window;
          InputManager* input;
 
-         Incarnadine(Camera* newCamera, Scene* newScene, Display* newDisplay);
+         Incarnadine(Camera* newCamera, Scene* newScene, Window* newWindow);
          ~Incarnadine();
          void renderScene();
          void renderScene(float);

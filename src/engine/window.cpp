@@ -14,11 +14,11 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#include "display.h"
+#include "window.h"
 
 using namespace incarnadine;
 
-Display::Display(std::string title)
+Window::Window(std::string title)
 {
    surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
    SDL_WM_SetCaption(title.c_str(), title.c_str());
@@ -36,25 +36,25 @@ Display::Display(std::string title)
    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 }
 
-Display::~Display()
+Window::~Window()
 {
    if (surface)
       surface = 0;
 }
 
 //Show next frame
-void Display::update()
+void Window::update()
 {
    glFlush();
    SDL_GL_SwapBuffers();
 }
 
-int Display::width()
+int Window::width()
 {
    return surface->w;
 }
 
-int Display::height()
+int Window::height()
 {
    return surface->h;
 }

@@ -22,7 +22,7 @@
 #include "GL/glew.h"
 #include "tools.h"
 #include "camera.h"
-#include "display.h"
+#include "window.h"
 #include "scene.h"
 #include "widget.h"
 
@@ -32,12 +32,12 @@ namespace incarnadine
    {
       private:
          Camera* camera;
-         Display* display;
+         Window* window;
          Scene* scene;
          std::vector<Widget*> widgets;
       
       public:
-         RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay);
+         RenderManager(Camera* newCamera, Scene* newScene, Window* newWindow);
          void draw();
          void draw(float);
          void setCamera(Camera* newCamera);

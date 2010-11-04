@@ -25,7 +25,7 @@ const float mouseSensitivity = 0.0001;
 Incarnadine* engine;
 Camera* camera;
 Scene* scene;
-Display* display;
+Window* window;
 TrueTypeFont* font;
 Widget* tp;
 
@@ -44,11 +44,11 @@ int main(int argc, char* argv[])
       
    camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, cameraAcceleration, cameraAngularAcceleration, 90.0f);
    scene = new Scene();   
-   display = new Display("Incarnadine test");
-   engine = new Incarnadine(camera, scene, display);
+   window = new Window("Incarnadine test");
+   engine = new Incarnadine(camera, scene, window);
    font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
    Colour c = {0.0, 0.0, 0.0};
-   tp = new Label(font, "fps: 0", c, display);
+   tp = new Label(font, "fps: 0", c, window);
    engine->addWidget(tp);
 
    vector3 mPosition(0.0, 0.0, -8000.0);
@@ -178,8 +178,8 @@ void cleanup()
    camera = 0;
    delete scene;
    scene = 0;
-   delete display;
-   display = 0;
+   delete window;
+   window = 0;
    delete tp;
    tp = 0;
 }

@@ -20,7 +20,7 @@
 #include "SDL.h"
 #include "events.h"
 #include "inputsignals.h"
-#include "display.h"
+#include "window.h"
 
 namespace incarnadine
 {
@@ -31,9 +31,9 @@ namespace incarnadine
          Signal<KeyDown> sKeyDown;
          Signal<MouseMove> sMouseMove;
          Signal<Exiting> sExiting;
-         Display *display;
+         Window *window;
 
-         InputManager(Display *d);
+         InputManager(Window *d);
          ~InputManager();
          void update();
          void resetMousePosition();

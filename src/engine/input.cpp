@@ -18,9 +18,9 @@
 
 using namespace incarnadine;
 
-InputManager::InputManager(Display *d)
+InputManager::InputManager(Window *d)
 {
-   display = d;
+   window = d;
    ignoreNextMouseMove = false;
    SDL_ShowCursor(SDL_DISABLE);
    SDL_WM_GrabInput(SDL_GRAB_ON);
@@ -85,6 +85,6 @@ void InputManager::update()
 void InputManager::resetMousePosition()
 {
    ignoreNextMouseMove = true;
-   SDL_WarpMouse(display->width() / 2, display->height() / 2);
+   SDL_WarpMouse(window->width() / 2, window->height() / 2);
 }
 

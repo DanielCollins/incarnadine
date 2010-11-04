@@ -23,14 +23,14 @@
 
 namespace incarnadine
 {
-   class Display
+   class Window
    {
       private:
          SDL_Surface* surface;
       
       public:
-         Display(std::string);
-         ~Display();
+         Window(std::string);
+         ~Window();
          void update();
          int width();
          int height();

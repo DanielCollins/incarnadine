@@ -2,7 +2,7 @@ include_directories(${INCARNADINE_SOURCE_DIR}/src/include)
 
 add_library(engine
             incarnadine.cpp
-            display.cpp
+            window.cpp
             object.cpp
             camera.cpp
             scene.cpp

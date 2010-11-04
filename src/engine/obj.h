@@ -65,8 +65,8 @@ namespace incarnadine
       std::map<std::string, objGroup> m_groups;
       std::vector<vector3> m_vertices, m_normals, m_texCoords;
 
-      unsigned int m_displayListIndex;
-      bool m_useDisplayList;
+      unsigned int m_windowListIndex;
+      bool m_useWindowList;
 
    };
 

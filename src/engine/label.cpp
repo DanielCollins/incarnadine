@@ -18,12 +18,12 @@
 
 using namespace incarnadine;
 
-Label::Label(TrueTypeFont* t, std::string s, Colour tc, Display *d) : Widget(0.0, 0.0, 0.0, 0.0)
+Label::Label(TrueTypeFont* t, std::string s, Colour tc, Window *d) : Widget(0.0, 0.0, 0.0, 0.0)
 {
    setText(s);
    setFont(t);
    setTextColour(tc);
-   display = d;
+   window = d;
 }
 
 std::string Label::getText()
@@ -60,6 +60,6 @@ void Label::updateTexture()
 {
    if(texture) delete texture;
    texture = new Texture(font->renderText(text, textColour.r, textColour.g, textColour.b), GL_RGBA);
-   resize((float) texture->getWidth() / display->width(), (float) texture->getHeight() / display->height());
+   resize((float) texture->getWidth() / window->width(), (float) texture->getHeight() / window->height());
 }
 

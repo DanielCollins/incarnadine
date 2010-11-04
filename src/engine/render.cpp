@@ -18,11 +18,11 @@
 
 using namespace incarnadine;
 
-RenderManager::RenderManager(Camera* newCamera, Scene* newScene, Display* newDisplay)
+RenderManager::RenderManager(Camera* newCamera, Scene* newScene, Window* newWindow)
 {
    camera = newCamera;
    scene = newScene;
-   display = newDisplay;
+   window = newWindow;
    glShadeModel(GL_SMOOTH);
    glEnable(GL_TEXTURE_2D);
    glEnable(GL_DEPTH_TEST);
@@ -52,7 +52,7 @@ void RenderManager::draw()
    glPopMatrix();
    glMatrixMode(GL_MODELVIEW);
    glPopMatrix();
-   display->update();
+   window->update();
 }
 
 void RenderManager::draw(float deltaTime)
@@ -74,7 +74,7 @@ void RenderManager::draw(float deltaTime)
    glPopMatrix();
    glMatrixMode(GL_MODELVIEW);
    glPopMatrix();
-   display->update();
+   window->update();
 }
 
 void RenderManager::setCamera(Camera* newCamera)

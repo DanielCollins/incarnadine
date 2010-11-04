@@ -18,7 +18,7 @@
 
 using namespace incarnadine;
 
-Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene, Display* newDisplay)
+Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene, Window* newWindow)
 {
    SDL_Init(SDL_INIT_VIDEO);
 
@@ -26,13 +26,13 @@ Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene, Display* newDisplay
    int imgStatus = IMG_Init(imgFlags);
    if ((imgStatus & imgFlags) != imgFlags) throw 0;
    
-   display = newDisplay;
+   window = newWindow;
 
    if(TTF_Init() == -1) throw 0;
    
-   input = new InputManager(display);
+   input = new InputManager(window);
    
-   renderer = new RenderManager(newCamera, newScene, display);
+   renderer = new RenderManager(newCamera, newScene, window);
 
    GLenum errorNum = glewInit();
    if (errorNum != GLEW_OK) throw 0;

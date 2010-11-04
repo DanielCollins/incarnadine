@@ -22,7 +22,7 @@
 #include "widget.h"
 #include "font.h"
 #include "vertex.h"
-#include "display.h"
+#include "window.h"
 
 namespace incarnadine
 {
@@ -33,10 +33,10 @@ namespace incarnadine
          TrueTypeFont* font;
          void updateTexture();
          Colour textColour;
-         Display *display;
+         Window *window;
 
       public:
-         Label(TrueTypeFont*, std::string, Colour, Display*);
+         Label(TrueTypeFont*, std::string, Colour, Window*);
          std::string getText();
          void setText(std::string);
          TrueTypeFont* getFont();
