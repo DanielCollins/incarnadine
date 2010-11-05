@@ -18,8 +18,10 @@
 #define ENGINE_DISPLAY_H
 
 #include <string>
+#include <vector>
 #include "SDL.h"
 #include "GL/glew.h"
+#include "widget.h"
 
 namespace incarnadine
 {
@@ -27,6 +29,8 @@ namespace incarnadine
    {
       private:
          SDL_Surface* surface;
+         std::vector<Widget*> widgets;
+         void drawWidgets();
       
       public:
          Window(std::string);
@@ -34,6 +38,8 @@ namespace incarnadine
          void update();
          int width();
          int height();
+         void addWidget(Widget*);
+         void removeWidget(Widget*);   
    };
 }
 

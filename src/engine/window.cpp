@@ -45,6 +45,7 @@ Window::~Window()
 //Show next frame
 void Window::update()
 {
+   drawWidgets();
    glFlush();
    SDL_GL_SwapBuffers();
 }
@@ -57,4 +58,44 @@ int Window::width()
 int Window::height()
 {
    return surface->h;
+}
+
+void Window::drawWidgets()
+{
+   glMatrixMode(GL_PROJECTION);
+   glPushMatrix();
+   glLoadIdentity();
+   glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
+   glMatrixMode(GL_MODELVIEW);
+   glPushMatrix();
+   glLoadIdentity();
+   std::vector<Widget*>::const_iterator i = widgets.begin();
+   std::vector<Widget*>::const_iterator end = widgets.end();
+   for(;i != end; i++) (*i)->draw();
+   glMatrixMode(GL_PROJECTION);
+   glPopMatrix();
+   glMatrixMode(GL_MODELVIEW);
+   glPopMatrix();
+}
+
+void Window::addWidget(Widget* widget)
+{
+  std::vector<Widget*>::const_iterator i = widgets.begin();
+  std::vector<Widget*>::const_iterator end = widgets.end();
+  for(;i != end; i++) if(widget == *i) return;
+  widgets.push_back(widget);
+}
+
+void Window::removeWidget(Widget* widget)
+{
+  std::vector<Widget*>::iterator i = widgets.begin();
+  std::vector<Widget*>::iterator end = widgets.end();
+  for(;i != end; i++)
+  {
+    if(widget == *i)
+    {
+      widgets.erase(i);
+      return;
+    }
+  }
 }

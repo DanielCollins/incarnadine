@@ -58,8 +58,6 @@ namespace incarnadine
          TrueTypeFont* loadFont(std::string uri, int size);
          unsigned int getTicks();
          Clock* getClock();
-         void addWidget(Widget*);
-         void removeWidget(Widget*);
    };
 }
 #endif //ENGINE_INCARNADINE_H

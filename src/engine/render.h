@@ -17,14 +17,12 @@
 #ifndef ENGINE_RENDER_H
 #define ENGINE_RENDER_H
 
-#include <vector>
 #include "SDL.h"
 #include "GL/glew.h"
 #include "tools.h"
 #include "camera.h"
 #include "window.h"
 #include "scene.h"
-#include "widget.h"
 
 namespace incarnadine
 {
@@ -40,9 +38,7 @@ namespace incarnadine
          RenderManager(Camera* newCamera, Scene* newScene, Window* newWindow);
          void draw();
          void draw(float);
-         void setCamera(Camera* newCamera);
-         void addWidget(Widget*);
-         void removeWidget(Widget*);      
+         void setCamera(Camera* newCamera);    
    };
 }
 

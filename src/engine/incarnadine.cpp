@@ -112,12 +112,3 @@ Clock* Incarnadine::getClock()
    return (Clock*)&clock;
 }
 
-void Incarnadine::addWidget(Widget* p)
-{
-   renderer->addWidget(p);
-}
-
-void Incarnadine::removeWidget(Widget* p)
-{
-   renderer->removeWidget(p);
-}

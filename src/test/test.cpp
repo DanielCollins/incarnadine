@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
    font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
    Colour c = {0.0, 0.0, 0.0};
    tp = new Label(font, "fps: 0", c, window);
-   engine->addWidget(tp);
+   window->addWidget(tp);
 
    vector3 mPosition(0.0, 0.0, -8000.0);
    vector3 mOrientation(0.0, 0.0, 0.0);
