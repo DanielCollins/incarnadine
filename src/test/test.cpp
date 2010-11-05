@@ -108,9 +108,9 @@ void runTest()
          ++frames;
       }
       std::stringstream out;
-      int fps = (float) (frames * 1000) / (engine->getTicks() - lastCycle);
-      if(fps < 1000)
-         out<<"fps: "<<fps;
+      unsigned int x = (engine->getTicks() - lastCycle) / 1000;
+      if(x > 1)
+         out<<"fps: "<<(float) frames / x;
       else
          out<<"fps: out of range (high)";
       ((Label*)tp)->setText(out.str());
