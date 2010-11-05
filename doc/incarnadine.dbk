@@ -14,29 +14,7 @@
      </section>
      <section>
 	<title>Copying</title>
-	<para>Incarnadine is distributed in source and binary form under the terms of the zlib/libpng license, reproduced below</para>
-	<para>
-		Copyright (c) 2010 Daniel Collins, Daniel Flahive, David Forest
-
- This software is provided 'as-is', without any express or implied
- warranty. In no event will the authors be held liable for any damages
- arising from the use of this software.
-
- Permission is granted to anyone to use this software for any purpose,
- including commercial applications, and to alter it and redistribute it
- freely, subject to the following restrictions:
-
-    1. The origin of this software must not be misrepresented; you must not
-    claim that you wrote the original software. If you use this software
-    in a product, an acknowledgment in the product documentation would be
-    appreciated but is not required.
-
-    2. Altered source versions must be plainly marked as such, and must not be
-    misrepresented as being the original software.
-
-    3. This notice may not be removed or altered from any source
-    distribution.
-</para>
+	<para>The majority of incarnadine sources are distributed under the terms of OpenBSD's variation of the ISC license http://www.openbsd.org/cgi-bin/cvsweb/~checkout~/src/share/misc/license.template. Some source files howver still fall under the terms of the zlib/libpng license, please see the top of each source file for details. Please also be aware that the content found under the data/ directory may be licensed under different terms.</para>
      </section>
      <section>
 	<title>Contributors</title>
