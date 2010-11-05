@@ -62,6 +62,7 @@ int Window::height()
 
 void Window::drawWidgets()
 {
+   glDisable(GL_DEPTH_TEST);
    glMatrixMode(GL_PROJECTION);
    glPushMatrix();
    glLoadIdentity();
@@ -76,6 +77,7 @@ void Window::drawWidgets()
    glPopMatrix();
    glMatrixMode(GL_MODELVIEW);
    glPopMatrix();
+   glEnable(GL_DEPTH_TEST);
 }
 
 void Window::addWidget(Widget* widget)
