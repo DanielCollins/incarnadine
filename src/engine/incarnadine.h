@@ -41,16 +41,12 @@ namespace incarnadine
    class Incarnadine
    {
       public:
-         Window *window;
-         InputManager *input;
-
-         Incarnadine(Camera *newCamera, Scene *newScene, Window *newWindow);
+         Incarnadine();
          ~Incarnadine();
          Renderable *loadModel(std::string uri);
          TrueTypeFont *loadFont(std::string uri, int size);
 
       private:
-         RenderManager *renderer;
          std::map<std::string, Renderable*> renderables;
          std::map<std::string, TrueTypeFont*> fonts;
    };

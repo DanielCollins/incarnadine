@@ -30,6 +30,7 @@ Window *window;
 TrueTypeFont *font;
 Label *tp;
 Clock *timer;
+InputManager *input;
 
 Slot<Exiting> *ExitingSlot;
 Slot<KeyUp> *KeyUpSlot;
@@ -47,10 +48,11 @@ int main(int argc, char *argv[])
    camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, cameraAcceleration, cameraAngularAcceleration, 90.0f);
    scene = new Scene();   
    window = new Window("Incarnadine test");
-   engine = new Incarnadine(camera, scene, window);
+   engine = new Incarnadine();
    renderer = new RenderManager(camera, scene, window);
    timer = new Clock();
    font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
+   input = new InputManager(window);
    Colour c = {0.0, 0.0, 0.0};
    tp = new Label(font, "fps: 0", c, window);
    window->addWidget(tp);
@@ -78,11 +80,11 @@ int main(int argc, char *argv[])
    scene->addObject(&m2);
       
    ExitingSlot = new Slot<Exiting>(handleExit);
-   ExitingSlot->connect(&(engine->input->sExiting));
+   ExitingSlot->connect(&(input->sExiting));
    KeyUpSlot = new Slot<KeyUp>(handleKeyUpEvent);
-   KeyUpSlot->connect(&(engine->input->sKeyUp));
+   KeyUpSlot->connect(&(input->sKeyUp));
    MouseMoveSlot = new Slot<MouseMove>(handleMouseMove);
-   MouseMoveSlot->connect(&(engine->input->sMouseMove));
+   MouseMoveSlot->connect(&(input->sMouseMove));
       
    runTest();   
    
@@ -100,7 +102,7 @@ void runTest()
       skippedFrames = 0;
       while(timer->getTicks() >= nextCycle && skippedFrames <= maximumFrameSkip)
       {
-         engine->input->update();
+         input->update();
          scene->updateObjects(timer->getTicks() - lastCycle);
          lastCycle = nextCycle;
          nextCycle += targetUpdateTimeDelta;
@@ -190,6 +192,8 @@ void cleanup()
    tp = 0;
    delete renderer;
    renderer = 0;
+   delete input;
+   input = 0;
 }
 
 void exitTestApp()

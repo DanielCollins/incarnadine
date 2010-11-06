@@ -18,19 +18,17 @@
 
 using namespace incarnadine;
 
-Incarnadine::Incarnadine(Camera *newCamera, Scene *newScene, Window *newWindow)
+Incarnadine::Incarnadine()
 {
    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 
    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
    int imgStatus = IMG_Init(imgFlags);
    if ((imgStatus & imgFlags) != imgFlags) throw 0;
-   
-   window = newWindow;
+
 
    if(TTF_Init() == -1) throw 0;
    
-   input = new InputManager(window);
    
    GLenum errorNum = glewInit();
    if (errorNum != GLEW_OK) throw 0;
@@ -40,12 +38,6 @@ Incarnadine::Incarnadine(Camera *newCamera, Scene *newScene, Window *newWindow)
 Incarnadine::~Incarnadine()
 {
    renderables.clear();
-
-   if (input)
-   {
-      delete input;
-      input = 0;
-   }
    TTF_Quit();
    IMG_Quit();   
    SDL_Quit();
