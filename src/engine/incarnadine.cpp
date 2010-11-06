@@ -32,8 +32,6 @@ Incarnadine::Incarnadine(Camera *newCamera, Scene *newScene, Window *newWindow)
    
    input = new InputManager(window);
    
-   renderer = new RenderManager(newCamera, newScene, window);
-
    GLenum errorNum = glewInit();
    if (errorNum != GLEW_OK) throw 0;
 
@@ -51,20 +49,6 @@ Incarnadine::~Incarnadine()
    TTF_Quit();
    IMG_Quit();   
    SDL_Quit();
-}
-
-void Incarnadine::renderScene()
-{
-   renderer->draw();
-   GLenum errorCode = glGetError();
-   if(errorCode != GL_NO_ERROR) throw 0;
-}
-
-void Incarnadine::renderScene(float timeDelta)
-{
-   renderer->draw(timeDelta);
-   GLenum errorCode = glGetError();
-   if(errorCode != GL_NO_ERROR) throw 0;
 }
 
 Renderable *Incarnadine::loadModel(std::string uri)

@@ -46,8 +46,6 @@ namespace incarnadine
 
          Incarnadine(Camera *newCamera, Scene *newScene, Window *newWindow);
          ~Incarnadine();
-         void renderScene();
-         void renderScene(float);
          Renderable *loadModel(std::string uri);
          TrueTypeFont *loadFont(std::string uri, int size);
 

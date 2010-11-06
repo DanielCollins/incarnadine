@@ -30,6 +30,7 @@
 #include "label.h"
 #include "vertex.h"
 #include "clock.h"
+#include "render.h"
 
 using namespace incarnadine;
 

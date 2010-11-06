@@ -23,6 +23,7 @@ const int maximumFrameSkip = 10;
 const float mouseSensitivity = 0.0001;
 
 Incarnadine *engine;
+RenderManager *renderer;
 Camera *camera;
 Scene *scene;
 Window *window;
@@ -47,6 +48,7 @@ int main(int argc, char *argv[])
    scene = new Scene();   
    window = new Window("Incarnadine test");
    engine = new Incarnadine(camera, scene, window);
+   renderer = new RenderManager(camera, scene, window);
    timer = new Clock();
    font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
    Colour c = {0.0, 0.0, 0.0};
@@ -106,7 +108,7 @@ void runTest()
       }
       while(nextCycle > timer->getTicks())
       {
-         engine->renderScene((nextCycle - timer->getTicks()) / targetUpdateTimeDelta);
+         renderer->draw((nextCycle - timer->getTicks()) / targetUpdateTimeDelta);
          ++frames;
       }
       std::stringstream out;
@@ -186,6 +188,8 @@ void cleanup()
    window = 0;
    delete tp;
    tp = 0;
+   delete renderer;
+   renderer = 0;
 }
 
 void exitTestApp()

@@ -39,6 +39,8 @@ void RenderManager::draw()
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    scene->rasterize();
    window->update();
+   GLenum errorCode = glGetError();
+   if(errorCode != GL_NO_ERROR) throw 0;
 }
 
 void RenderManager::draw(float deltaTime)
@@ -47,6 +49,8 @@ void RenderManager::draw(float deltaTime)
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    scene->rasterize(deltaTime);
    window->update();
+   GLenum errorCode = glGetError();
+   if(errorCode != GL_NO_ERROR) throw 0;
 }
 
 void RenderManager::setCamera(Camera *newCamera)
