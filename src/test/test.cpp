@@ -31,6 +31,7 @@ TrueTypeFont *font;
 Label *tp;
 Clock *timer;
 InputManager *input;
+FontManager *fonts;
 
 Slot<Exiting> *ExitingSlot;
 Slot<KeyUp> *KeyUpSlot;
@@ -51,7 +52,8 @@ int main(int argc, char *argv[])
    engine = new Incarnadine();
    renderer = new RenderManager(camera, scene, window);
    timer = new Clock();
-   font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
+   fonts = new FontManager();
+   font = fonts->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
    input = new InputManager(window);
    Colour c = {0.0, 0.0, 0.0};
    tp = new Label(font, "fps: 0", c, window);
@@ -184,6 +186,7 @@ void exitTestApp()
    delete tp;
    delete renderer;
    delete input;
+   delete fonts;
    exit(EXIT_SUCCESS);
 }
 

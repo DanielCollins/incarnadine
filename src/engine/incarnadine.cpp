@@ -25,10 +25,6 @@ Incarnadine::Incarnadine()
    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
    int imgStatus = IMG_Init(imgFlags);
    if ((imgStatus & imgFlags) != imgFlags) throw 0;
-
-
-   if(TTF_Init() == -1) throw 0;
-   
    
    GLenum errorNum = glewInit();
    if (errorNum != GLEW_OK) throw 0;
@@ -38,7 +34,6 @@ Incarnadine::Incarnadine()
 Incarnadine::~Incarnadine()
 {
    renderables.clear();
-   TTF_Quit();
    IMG_Quit();   
    SDL_Quit();
 }
@@ -65,15 +60,5 @@ Renderable *Incarnadine::loadModel(std::string uri)
 
    renderables.insert(std::pair<std::string, Renderable*>(uri, r));
    return r;
-}
-
-TrueTypeFont *Incarnadine::loadFont(std::string uri, int size)
-{
-   TrueTypeFont *f;
-   std::map<std::string, TrueTypeFont*>::iterator i = fonts.find(uri);
-   if(i != fonts.end()) return i->second;
-   f = new TrueTypeFont(uri, size);
-   fonts.insert(std::pair<std::string, TrueTypeFont*>(uri, f));
-   return f;
 }
 

@@ -44,11 +44,9 @@ namespace incarnadine
          Incarnadine();
          ~Incarnadine();
          Renderable *loadModel(std::string uri);
-         TrueTypeFont *loadFont(std::string uri, int size);
 
       private:
          std::map<std::string, Renderable*> renderables;
-         std::map<std::string, TrueTypeFont*> fonts;
    };
 }
 #endif //ENGINE_INCARNADINE_H

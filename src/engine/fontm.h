@@ -14,33 +14,27 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef TEST_H
-#define TEST_H
+#ifndef ENGINE_FONTM_H
+#define ENGINE_FONTM_H
 
-#include <stdlib.h>
+#include <string>
+#include <map>
+#include "SDL.h"
+#include "SDL_ttf.h"
+#include "font.h"
 
-#include "incarnadine.h"
-#include "scene.h"
-#include "tools.h"
-#include "input.h"
-#include "camera.h"
-#include "object.h"
-#include "md2.h"
-#include "staticm.h"
-#include "label.h"
-#include "vertex.h"
-#include "clock.h"
-#include "render.h"
-#include "fontm.h"
+namespace incarnadine
+{
+   class FontManager
+   {
+      public:
+         FontManager();
+         ~FontManager();
+         TrueTypeFont *loadFont(std::string uri, int size);
 
-using namespace incarnadine;
-
-void runTest();
-void exitTestApp();
-
-void handleExit(Exiting);
-void handleKeyUpEvent(KeyUp);
-void handleMouseMove(MouseMove);
-
-#endif //TEST_H
+      private:
+         std::map<std::string, TrueTypeFont*> fonts;
+   };
+}
+#endif //ENGINE_FONTM_H
 

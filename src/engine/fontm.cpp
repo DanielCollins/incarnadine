@@ -14,33 +14,28 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef TEST_H
-#define TEST_H
-
-#include <stdlib.h>
-
-#include "incarnadine.h"
-#include "scene.h"
-#include "tools.h"
-#include "input.h"
-#include "camera.h"
-#include "object.h"
-#include "md2.h"
-#include "staticm.h"
-#include "label.h"
-#include "vertex.h"
-#include "clock.h"
-#include "render.h"
 #include "fontm.h"
 
 using namespace incarnadine;
 
-void runTest();
-void exitTestApp();
+FontManager::FontManager()
+{
+   if(TTF_Init() == -1) throw 0;
+}
 
-void handleExit(Exiting);
-void handleKeyUpEvent(KeyUp);
-void handleMouseMove(MouseMove);
+FontManager::~FontManager()
+{
+   fonts.clear();
+   TTF_Quit();
+}
 
-#endif //TEST_H
+TrueTypeFont *FontManager::loadFont(std::string uri, int size)
+{
+   TrueTypeFont *f;
+   std::map<std::string, TrueTypeFont*>::iterator i = fonts.find(uri);
+   if(i != fonts.end()) return i->second;
+   f = new TrueTypeFont(uri, size);
+   fonts.insert(std::pair<std::string, TrueTypeFont*>(uri, f));
+   return f;
+}
 
