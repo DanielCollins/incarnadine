@@ -28,6 +28,7 @@ Scene *scene;
 Window *window;
 TrueTypeFont *font;
 Label *tp;
+Clock *timer;
 
 Slot<Exiting> *ExitingSlot;
 Slot<KeyUp> *KeyUpSlot;
@@ -46,6 +47,7 @@ int main(int argc, char *argv[])
    scene = new Scene();   
    window = new Window("Incarnadine test");
    engine = new Incarnadine(camera, scene, window);
+   timer = new Clock();
    font = engine->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
    Colour c = {0.0, 0.0, 0.0};
    tp = new Label(font, "fps: 0", c, window);
@@ -90,31 +92,31 @@ void runTest()
    int skippedFrames = 0;
    int frames = 0;
    unsigned int nextCycle = 0;
-   static unsigned int lastCycle = engine->getTicks(); 
+   static unsigned int lastCycle = timer->getTicks(); 
    while(true)
    {
       skippedFrames = 0;
-      while(engine->getTicks() >= nextCycle && skippedFrames <= maximumFrameSkip)
+      while(timer->getTicks() >= nextCycle && skippedFrames <= maximumFrameSkip)
       {
          engine->input->update();
-         scene->updateObjects(engine->getTicks() - lastCycle);
+         scene->updateObjects(timer->getTicks() - lastCycle);
          lastCycle = nextCycle;
          nextCycle += targetUpdateTimeDelta;
          ++skippedFrames;
       }
-      while(nextCycle > engine->getTicks())
+      while(nextCycle > timer->getTicks())
       {
-         engine->renderScene((nextCycle - engine->getTicks()) / targetUpdateTimeDelta);
+         engine->renderScene((nextCycle - timer->getTicks()) / targetUpdateTimeDelta);
          ++frames;
       }
       std::stringstream out;
-      unsigned int x = (engine->getTicks() - lastCycle) / 1000;
+      unsigned int x = (timer->getTicks() - lastCycle) / 1000;
       if(x > 1)
          out<<"fps: "<<(float) frames / x;
       else
          out<<"fps: out of range (high)";
       ((Label*)tp)->setText(out.str());
-      if(engine->getTicks() < nextCycle) engine->getClock()->sleep(nextCycle - engine->getTicks());
+      if(timer->getTicks() < nextCycle) timer->sleep(nextCycle - timer->getTicks());
    }
 }
 
@@ -168,6 +170,8 @@ void handleMouseMove(MouseMove e)
 
 void cleanup()
 {
+   delete timer;
+   timer = 0;
    delete ExitingSlot;
    ExitingSlot = 0;
    delete MouseMoveSlot;

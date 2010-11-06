@@ -29,6 +29,7 @@
 #include "staticm.h"
 #include "label.h"
 #include "vertex.h"
+#include "clock.h"
 
 using namespace incarnadine;
 

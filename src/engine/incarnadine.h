@@ -50,12 +50,9 @@ namespace incarnadine
          void renderScene(float);
          Renderable *loadModel(std::string uri);
          TrueTypeFont *loadFont(std::string uri, int size);
-         unsigned int getTicks();
-         Clock *getClock();
 
       private:
          RenderManager *renderer;
-         Clock clock;
          std::map<std::string, Renderable*> renderables;
          std::map<std::string, TrueTypeFont*> fonts;
    };

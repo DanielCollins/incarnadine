@@ -101,13 +101,3 @@ TrueTypeFont *Incarnadine::loadFont(std::string uri, int size)
    return f;
 }
 
-unsigned int Incarnadine::getTicks()
-{
-   return clock.getTicks();
-}
-
-Clock *Incarnadine::getClock()
-{
-   return (Clock*)&clock;
-}
-
