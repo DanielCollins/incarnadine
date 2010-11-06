@@ -24,20 +24,20 @@ namespace incarnadine
    class BoundingVolumeHierarchy
    {
       private:
-         Visible* object;
-         BoundingVolumeHierarchy* left;
-         BoundingVolumeHierarchy* right;
-         BoundingVolumeHierarchy* parent;      
+         Visible *object;
+         BoundingVolumeHierarchy *left;
+         BoundingVolumeHierarchy *right;
+         BoundingVolumeHierarchy *parent;      
          
       public:
          BoundingVolumeHierarchy();
          ~BoundingVolumeHierarchy();
-         void setObject(Visible* newObject);
-         Visible* getObject();
-         void addNode(BoundingVolumeHierarchy* newChild);
-         BoundingVolumeHierarchy* getLeftChild();
-         BoundingVolumeHierarchy* getRightChild();
-         BoundingVolumeHierarchy* getParent();
+         void setObject(Visible *newObject);
+         Visible *getObject();
+         void addNode(BoundingVolumeHierarchy *newChild);
+         BoundingVolumeHierarchy *getLeftChild();
+         BoundingVolumeHierarchy *getRightChild();
+         BoundingVolumeHierarchy *getParent();
    };
 }
 

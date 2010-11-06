@@ -31,7 +31,7 @@ namespace incarnadine
    {
       protected:
          std::string text;
-         TrueTypeFont* font;
+         TrueTypeFont *font;
          void updateTexture();
          Colour textColour;
          Window *window;

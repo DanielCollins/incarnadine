@@ -18,7 +18,7 @@
 
 using namespace incarnadine;
 
-RenderManager::RenderManager(Camera* newCamera, Scene* newScene, Window* newWindow)
+RenderManager::RenderManager(Camera *newCamera, Scene *newScene, Window *newWindow)
 {
    camera = newCamera;
    scene = newScene;
@@ -49,7 +49,7 @@ void RenderManager::draw(float deltaTime)
    window->update();
 }
 
-void RenderManager::setCamera(Camera* newCamera)
+void RenderManager::setCamera(Camera *newCamera)
 {
    camera = newCamera;
 }

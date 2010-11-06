@@ -40,15 +40,15 @@ ObjModel::ObjModel(std::string filename)
    file.seekg(0, std::ios::end);
    unsigned int filesize = (unsigned int)file.tellg();
    file.seekg(0, std::ios::beg);
-   char* buffer = new char[filesize + 1];
+   char *buffer = new char[filesize + 1];
 
    // Read file contents into buffer.
    file.read(buffer, filesize);
    buffer[filesize] = '\0';
 
    // Parse each line.
-   char* leftBound = buffer;
-   char* i;
+   char *leftBound = buffer;
+   char *i;
    for (i = buffer; i < (buffer + filesize); i++)
    {
       if ((*i == '\r' || *i == '\n'))
@@ -103,7 +103,7 @@ ObjModel::~ObjModel()
    m_groups.clear();
 }
 
-void ObjModel::parseLine(char* line, objGroupIter& activeGroup)
+void ObjModel::parseLine(char *line, objGroupIter& activeGroup)
 {
    // Consume whitespace at the start of the line, if any.
    while (*line == ' ' || *line == '\t')
@@ -125,7 +125,7 @@ void ObjModel::parseLine(char* line, objGroupIter& activeGroup)
    else if (lineLength > 2 && line[0] == 'v' && line[1] == ' ')
    {
       line += 2;
-      char* strvertex[3] = { NULL, NULL, NULL };
+      char *strvertex[3] = { NULL, NULL, NULL };
 
       for (int i = 0; i < 3; i++)
       {
@@ -167,7 +167,7 @@ void ObjModel::parseLine(char* line, objGroupIter& activeGroup)
    else if (lineLength > 3 && line[0] == 'v' && line[1] == 'n' && line[2] == ' ')
    {
       line += 3;
-      char* strnormal[3] = { NULL, NULL, NULL };
+      char *strnormal[3] = { NULL, NULL, NULL };
 
       for (int i = 0; i < 3; i++)
       {
@@ -205,7 +205,7 @@ void ObjModel::parseLine(char* line, objGroupIter& activeGroup)
    else if (lineLength > 3 && line[0] == 'v' && line[1] == 't' && line[2] == ' ')
    {
       line += 3;
-      char* strtexcoord[3] = { NULL, NULL, NULL };
+      char *strtexcoord[3] = { NULL, NULL, NULL };
 
       for (int i = 0; i < 3; i++)
       {
@@ -241,7 +241,7 @@ void ObjModel::parseLine(char* line, objGroupIter& activeGroup)
    else if (lineLength > 2 && line[0] == 'f' && line[1] == ' ')
    {
       line += 2;
-      char* strface[3] = { NULL, NULL, NULL };
+      char *strface[3] = { NULL, NULL, NULL };
 
       for (int i = 0; i < 3; i++)
       {
@@ -276,8 +276,8 @@ void ObjModel::parseLine(char* line, objGroupIter& activeGroup)
          {
             // Find the number of '/' to determine whether there are normals, textures, both, or neither defined.
 
-            char* slashPositions[2] = { NULL, NULL };
-            char* iter = strface[i];
+            char *slashPositions[2] = { NULL, NULL };
+            char *iter = strface[i];
             int numSlashes = 0;
             while (*iter != '\0')
             {

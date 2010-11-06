@@ -32,7 +32,7 @@ namespace incarnadine
       public:
          TrueTypeFont(std::string, int);
          ~TrueTypeFont();
-         Texture* renderText(std::string, char, char, char);
+         Texture *renderText(std::string, char, char, char);
    };
 }
 

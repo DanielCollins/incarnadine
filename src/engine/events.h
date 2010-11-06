@@ -44,7 +44,7 @@ class Slot
       {
       }
 
-      void connect(Signal<EventType>* signal)
+      void connect(Signal<EventType> *signal)
       {
          typename std::vector<Signal<EventType>*>::const_iterator i;
          for(i = signals.begin(); i != signals.end(); i++)
@@ -54,7 +54,7 @@ class Slot
          signal->_acceptConnection(this);
       }
 
-      void disconnect(Signal<EventType>* signal)
+      void disconnect(Signal<EventType> *signal)
       {
          typename std::vector<Signal<EventType>*>::const_iterator i;
          for(i = signals.begin(); i != signals.end(); i++)
@@ -68,7 +68,7 @@ class Slot
          }
       }
 
-      void _fire(EventType* e)
+      void _fire(EventType *e)
       {
          if(enabled) handler(*e);
       }
@@ -102,7 +102,7 @@ class Signal
       {
       }
 
-      void fire(EventType* e)
+      void fire(EventType *e)
       {
          if(enabled)
          {
@@ -112,7 +112,7 @@ class Signal
          }
       }
 
-      void _acceptConnection(Slot<EventType>* newSlot)
+      void _acceptConnection(Slot<EventType> *newSlot)
       {
          typename std::vector<Slot<EventType>*>::const_iterator i;
          for(i = slots.begin(); i != slots.end(); i++)
@@ -121,7 +121,7 @@ class Signal
          slots.push_back(newSlot);
       }
 
-      void _disconnect(Slot<EventType>* oldSlot)
+      void _disconnect(Slot<EventType> *oldSlot)
       {
          typename std::vector<Slot<EventType>*>::const_iterator i;
          for (i = slots.begin(); i != slots.end(); i++)

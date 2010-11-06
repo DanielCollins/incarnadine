@@ -59,7 +59,7 @@ namespace incarnadine
 
    private:
 
-      void parseLine(char* line, objGroupIter& activeGroup);
+      void parseLine(char *line, objGroupIter& activeGroup);
       inline void addFaceTriangle(const objFaceTriangle& face, objGroupIter activeGroup);
    
       std::map<std::string, objGroup> m_groups;

@@ -26,8 +26,8 @@ namespace incarnadine
       public:
          unsigned int getTicks();
          void sleep(unsigned int);
-         tm* getUTCTime();
-         tm* getLocalTime();
+         tm *getUTCTime();
+         tm *getLocalTime();
    };
 }
 

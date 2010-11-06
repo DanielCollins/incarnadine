@@ -23,12 +23,12 @@ Texture::Texture(std::string filename)
    load(IMG_Load(filename.c_str()));
 }
 
-Texture::Texture(SDL_Surface* textureSurface)
+Texture::Texture(SDL_Surface *textureSurface)
 {
    load(textureSurface);
 }
 
-void Texture::load(SDL_Surface* textureSurface)
+void Texture::load(SDL_Surface *textureSurface)
 {
    surface = textureSurface;
    glGenTextures(1, &id);

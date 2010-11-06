@@ -29,16 +29,16 @@ namespace incarnadine
    class RenderManager
    {
       private:
-         Camera* camera;
-         Window* window;
-         Scene* scene;
+         Camera *camera;
+         Window *window;
+         Scene *scene;
          std::vector<Widget*> widgets;
       
       public:
-         RenderManager(Camera* newCamera, Scene* newScene, Window* newWindow);
+         RenderManager(Camera *newCamera, Scene *newScene, Window *newWindow);
          void draw();
          void draw(float);
-         void setCamera(Camera* newCamera);    
+         void setCamera(Camera *newCamera);    
    };
 }
 

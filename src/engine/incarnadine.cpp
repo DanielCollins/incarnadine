@@ -18,7 +18,7 @@
 
 using namespace incarnadine;
 
-Incarnadine::Incarnadine(Camera* newCamera, Scene* newScene, Window* newWindow)
+Incarnadine::Incarnadine(Camera *newCamera, Scene *newScene, Window *newWindow)
 {
    SDL_Init(SDL_INIT_VIDEO);
 
@@ -67,9 +67,9 @@ void Incarnadine::renderScene(float timeDelta)
    if(errorCode != GL_NO_ERROR) throw 0;
 }
 
-Renderable* Incarnadine::loadModel(std::string uri)
+Renderable *Incarnadine::loadModel(std::string uri)
 {
-   Renderable* r;
+   Renderable *r;
    std::map<std::string, Renderable*>::iterator i = renderables.find(uri);
    if(i != renderables.end()) return i->second;
 
@@ -91,9 +91,9 @@ Renderable* Incarnadine::loadModel(std::string uri)
    return r;
 }
 
-TrueTypeFont* Incarnadine::loadFont(std::string uri, int size)
+TrueTypeFont *Incarnadine::loadFont(std::string uri, int size)
 {
-   TrueTypeFont* f;
+   TrueTypeFont *f;
    std::map<std::string, TrueTypeFont*>::iterator i = fonts.find(uri);
    if(i != fonts.end()) return i->second;
    f = new TrueTypeFont(uri, size);
@@ -106,7 +106,7 @@ unsigned int Incarnadine::getTicks()
    return clock.getTicks();
 }
 
-Clock* Incarnadine::getClock()
+Clock *Incarnadine::getClock()
 {
    return (Clock*)&clock;
 }

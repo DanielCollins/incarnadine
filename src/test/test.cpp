@@ -22,18 +22,18 @@ const int targetUpdateTimeDelta = 1000 / 50;
 const int maximumFrameSkip = 10;
 const float mouseSensitivity = 0.0001;
 
-Incarnadine* engine;
-Camera* camera;
-Scene* scene;
-Window* window;
-TrueTypeFont* font;
-Widget* tp;
+Incarnadine *engine;
+Camera *camera;
+Scene *scene;
+Window *window;
+TrueTypeFont *font;
+Widget *tp;
 
-Slot<Exiting>* ExitingSlot;
-Slot<KeyUp>* KeyUpSlot;
-Slot<MouseMove>* MouseMoveSlot;
+Slot<Exiting> *ExitingSlot;
+Slot<KeyUp> *KeyUpSlot;
+Slot<MouseMove> *MouseMoveSlot;
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {   
    vector3 cameraPosition(0.0, 0.0, 0.0);
    vector3 cameraOrientation(0.0, 0.0, -180);

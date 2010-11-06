@@ -35,7 +35,7 @@ float Camera::getFov()
 
 void Camera::updateGL()
 {
-   const SDL_VideoInfo* videoInfo = SDL_GetVideoInfo();
+   const SDL_VideoInfo *videoInfo = SDL_GetVideoInfo();
    float aspectRatio = (float) videoInfo->current_w / (float) videoInfo->current_h;
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();

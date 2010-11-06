@@ -83,7 +83,7 @@ namespace incarnadine
          float scale[3];
          float translation[3];
          char name[16];
-         Md2Vertex* vertices;
+         Md2Vertex *vertices;
          ~Md2Frame();
    };
 
@@ -106,12 +106,12 @@ namespace incarnadine
    {
       private:
          Md2Header header;
-         Md2SkinName* skins;
-         TextureCoordinate* textureCoordinates;
-         Md2Triangle* triangles;
-         Md2Frame* frames;
-         int* openGlCommands;
-         Texture** textures;
+         Md2SkinName *skins;
+         TextureCoordinate *textureCoordinates;
+         Md2Triangle *triangles;
+         Md2Frame *frames;
+         int *openGlCommands;
+         Texture **textures;
    
       public:
          Md2Model(std::string fileName);

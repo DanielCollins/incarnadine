@@ -80,7 +80,7 @@ void Window::drawWidgets()
    glEnable(GL_DEPTH_TEST);
 }
 
-void Window::addWidget(Widget* widget)
+void Window::addWidget(Widget *widget)
 {
   std::vector<Widget*>::const_iterator i = widgets.begin();
   std::vector<Widget*>::const_iterator end = widgets.end();
@@ -88,7 +88,7 @@ void Window::addWidget(Widget* widget)
   widgets.push_back(widget);
 }
 
-void Window::removeWidget(Widget* widget)
+void Window::removeWidget(Widget *widget)
 {
   std::vector<Widget*>::iterator i = widgets.begin();
   std::vector<Widget*>::iterator end = widgets.end();

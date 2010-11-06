@@ -41,23 +41,23 @@ namespace incarnadine
    class Incarnadine
    {
       private:
-         RenderManager* renderer;
+         RenderManager *renderer;
          Clock clock;
          std::map<std::string, Renderable*> renderables;
          std::map<std::string, TrueTypeFont*> fonts;
 
       public:
-         Window* window;
-         InputManager* input;
+         Window *window;
+         InputManager *input;
 
-         Incarnadine(Camera* newCamera, Scene* newScene, Window* newWindow);
+         Incarnadine(Camera *newCamera, Scene *newScene, Window *newWindow);
          ~Incarnadine();
          void renderScene();
          void renderScene(float);
-         Renderable* loadModel(std::string uri);
-         TrueTypeFont* loadFont(std::string uri, int size);
+         Renderable *loadModel(std::string uri);
+         TrueTypeFont *loadFont(std::string uri, int size);
          unsigned int getTicks();
-         Clock* getClock();
+         Clock *getClock();
    };
 }
 #endif //ENGINE_INCARNADINE_H
