@@ -20,7 +20,7 @@ using namespace incarnadine;
 
 Incarnadine::Incarnadine(Camera *newCamera, Scene *newScene, Window *newWindow)
 {
-   SDL_Init(SDL_INIT_VIDEO);
+   SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 
    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
    int imgStatus = IMG_Init(imgFlags);

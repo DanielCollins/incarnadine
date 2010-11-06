@@ -22,6 +22,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_ttf.h"
+#include "SDL_mixer.h"
 #include "GL/glew.h"
 #include "window.h"
 #include "input.h"
@@ -34,7 +35,6 @@
 #include "md2.h"
 #include "obj.h"
 #include "font.h"
-#include "widget.h"
 
 namespace incarnadine
 {

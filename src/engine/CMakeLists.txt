@@ -20,4 +20,4 @@ add_library(engine
             label.cpp
             ${INCARNADINE_SOURCE_DIR}/src/external/glew.c)
 
-target_link_libraries(engine ${OPENGL_LIBRARY} ${SDL_LIBRARY} ${SDLMAIN_LIBRARY} ${SDLTTF_LIBRARY} ${SDLIMAGE_LIBRARY})
+target_link_libraries(engine ${OPENGL_LIBRARY} ${SDL_LIBRARY} ${SDLMAIN_LIBRARY} ${SDLTTF_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY})
