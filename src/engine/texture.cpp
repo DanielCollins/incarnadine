@@ -20,18 +20,15 @@ using namespace incarnadine;
 
 Texture::Texture(std::string filename)
 {
-   surface = IMG_Load(filename.c_str());
-   if(surface == 0) throw 0;
-   glGenTextures(1, &id);
-   glBindTexture(GL_TEXTURE_2D, id);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, surface->w, surface->h, 0, GL_RGB, GL_UNSIGNED_BYTE, surface->pixels);
+   load(IMG_Load(filename.c_str()));
 }
 
-Texture::Texture(SDL_Surface* textureSurface, GLint format)
+Texture::Texture(SDL_Surface* textureSurface)
+{
+   load(textureSurface);
+}
+
+void Texture::load(SDL_Surface* textureSurface)
 {
    surface = textureSurface;
    glGenTextures(1, &id);
@@ -40,7 +37,7 @@ Texture::Texture(SDL_Surface* textureSurface, GLint format)
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-   glTexImage2D(GL_TEXTURE_2D, 0, format, surface->w, surface->h, 0, format, GL_UNSIGNED_BYTE, surface->pixels);
+   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
 }
 
 Texture::~Texture()
