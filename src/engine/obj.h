@@ -50,23 +50,23 @@ namespace incarnadine
 
    class ObjModel : public Renderable
    {
-   public:
-      ObjModel(std::string filename);
-      ~ObjModel();
+      public:
+         ObjModel(std::string filename);
+         ~ObjModel();
 
-      void onContextReset();
-      void draw();
+         void onContextReset();
+         void draw();
 
-   private:
+      private:
 
-      void parseLine(char *line, objGroupIter& activeGroup);
-      inline void addFaceTriangle(const objFaceTriangle& face, objGroupIter activeGroup);
+         void parseLine(char *line, objGroupIter& activeGroup);
+         inline void addFaceTriangle(const objFaceTriangle& face, objGroupIter activeGroup);
    
-      std::map<std::string, objGroup> m_groups;
-      std::vector<vector3> m_vertices, m_normals, m_texCoords;
+         std::map<std::string, objGroup> m_groups;
+         std::vector<vector3> m_vertices, m_normals, m_texCoords;
 
-      unsigned int m_windowListIndex;
-      bool m_useWindowList;
+         unsigned int m_windowListIndex;
+         bool m_useWindowList;
 
    };
 
