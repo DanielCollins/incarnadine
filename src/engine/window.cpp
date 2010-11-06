@@ -101,3 +101,4 @@ void Window::removeWidget(Widget *widget)
     }
   }
 }
+

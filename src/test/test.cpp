@@ -189,3 +189,4 @@ void exitTestApp()
    cleanup();
    exit(EXIT_SUCCESS);
 }
+

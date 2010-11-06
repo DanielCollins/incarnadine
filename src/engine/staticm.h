@@ -42,3 +42,4 @@ namespace incarnadine
    };
 }
 #endif //ENGINE_STATICM_H
+

@@ -22,3 +22,4 @@ float AxisAlignedBoundingBox::getVolume()
 {
    return maxX - minX * maxY - minY * maxZ - minZ;
 }
+

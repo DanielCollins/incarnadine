@@ -53,3 +53,4 @@ void VertexBufferObject::draw()
    glDisableClientState(GL_COLOR_ARRAY);
    glDisableClientState(GL_VERTEX_ARRAY);   
 }
+

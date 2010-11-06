@@ -31,3 +31,4 @@ typedef cml::quaternionf_p iquaternion;
 #define RADIANS_FROM_DEGREES(x) ((x) * 3.14159265 / 180.0)
 
 #endif //ENGINE_TOOLS_H
+

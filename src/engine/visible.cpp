@@ -41,3 +41,4 @@ vector3 Visible::getScale()
 {
    return scale;
 }
+

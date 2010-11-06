@@ -121,3 +121,4 @@ Md2Frame::~Md2Frame()
 {
    delete [] vertices;
 }
+

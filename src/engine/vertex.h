@@ -51,3 +51,4 @@ namespace incarnadine
    };
 }
 #endif //ENGINE_VERTEX_H
+

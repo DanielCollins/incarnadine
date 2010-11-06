@@ -41,3 +41,4 @@ tm *Clock::getLocalTime()
    time(&ttime);
    return localtime(&ttime);
 }
+

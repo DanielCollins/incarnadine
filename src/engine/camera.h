@@ -40,3 +40,4 @@ namespace incarnadine
 }
 
 #endif //ENGINE_CAMERA_H
+
