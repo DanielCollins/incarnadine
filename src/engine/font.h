@@ -19,7 +19,8 @@
 
 #include <string>
 #include "SDL.h"
-#include "SDL_ttf.h" 
+#include "SDL_ttf.h"
+#include "texture.h" 
 
 namespace incarnadine
 {
@@ -31,7 +32,7 @@ namespace incarnadine
       public:
          TrueTypeFont(std::string, int);
          ~TrueTypeFont();
-         SDL_Surface* renderText(std::string, char, char, char);
+         Texture* renderText(std::string, char, char, char);
    };
 }
 

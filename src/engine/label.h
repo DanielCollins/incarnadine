@@ -19,6 +19,7 @@
 
 #include <string>
 #include "GL/glew.h"
+#include "SDL.h"
 #include "widget.h"
 #include "font.h"
 #include "vertex.h"

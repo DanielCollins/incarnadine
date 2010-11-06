@@ -59,7 +59,7 @@ void Label::setTextColour(Colour tc)
 void Label::updateTexture()
 {
    if(texture) delete texture;
-   texture = new Texture(font->renderText(text, textColour.r, textColour.g, textColour.b), GL_RGBA);
+   texture = font->renderText(text, textColour.r, textColour.g, textColour.b);
    resize((float) texture->getWidth() / window->width(), (float) texture->getHeight() / window->height());
 }
 
