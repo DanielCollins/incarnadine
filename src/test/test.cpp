@@ -27,7 +27,7 @@ Camera *camera;
 Scene *scene;
 Window *window;
 TrueTypeFont *font;
-Widget *tp;
+Label *tp;
 
 Slot<Exiting> *ExitingSlot;
 Slot<KeyUp> *KeyUpSlot;
