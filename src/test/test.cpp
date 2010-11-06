@@ -172,33 +172,18 @@ void handleMouseMove(MouseMove e)
       camera->localRotateX(xAngle);
 }
 
-void cleanup()
-{
-   delete timer;
-   timer = 0;
-   delete ExitingSlot;
-   ExitingSlot = 0;
-   delete MouseMoveSlot;
-   MouseMoveSlot = 0;
-   delete engine;
-   engine = 0;
-   delete camera;
-   camera = 0;
-   delete scene;
-   scene = 0;
-   delete window;
-   window = 0;
-   delete tp;
-   tp = 0;
-   delete renderer;
-   renderer = 0;
-   delete input;
-   input = 0;
-}
-
 void exitTestApp()
 {
-   cleanup();
+   delete timer;
+   delete ExitingSlot;
+   delete MouseMoveSlot;
+   delete engine;
+   delete camera;
+   delete scene;
+   delete window;
+   delete tp;
+   delete renderer;
+   delete input;
    exit(EXIT_SUCCESS);
 }
 

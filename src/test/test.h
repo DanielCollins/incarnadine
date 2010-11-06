@@ -36,7 +36,6 @@ using namespace incarnadine;
 
 void runTest();
 void exitTestApp();
-void cleanup();
 
 void handleExit(Exiting);
 void handleKeyUpEvent(KeyUp);
