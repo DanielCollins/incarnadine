@@ -24,6 +24,11 @@ TrueTypeFont::TrueTypeFont(std::string filename, int size)
    if(!font) throw 0;
 }
 
+TrueTypeFont::~TrueTypeFont()
+{
+   TTF_CloseFont(font);
+}
+
 SDL_Surface* TrueTypeFont::renderText(std::string text, char r, char g, char b)
 { 
    SDL_Color colour = {r,g,b,0};

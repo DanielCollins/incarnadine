@@ -30,6 +30,7 @@ namespace incarnadine
 
       public:
          TrueTypeFont(std::string, int);
+         ~TrueTypeFont();
          SDL_Surface* renderText(std::string, char, char, char);
    };
 }
