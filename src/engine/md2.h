@@ -104,6 +104,11 @@ namespace incarnadine
 
    class Md2Model : public Renderable
    {
+      public:
+         Md2Model(std::string fileName);
+         ~Md2Model();
+         void draw();
+
       private:
          Md2Header header;
          Md2SkinName *skins;
@@ -112,11 +117,6 @@ namespace incarnadine
          Md2Frame *frames;
          int *openGlCommands;
          Texture **textures;
-   
-      public:
-         Md2Model(std::string fileName);
-         ~Md2Model();
-         void draw();
    };
 
 }

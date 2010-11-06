@@ -24,16 +24,16 @@ namespace incarnadine
 {
    class Widget
    {
-      protected:
-         float x, y, w, h, b, c, d;
-         Texture *texture;
-         virtual void updateTexture() = 0;      
-
       public:
          Widget(float nx, float ny, float nw, float nh);
          void resize(float nw, float nh);
          void reposition(float nx, float ny);
          void draw();
+
+      protected:
+         float x, y, w, h, b, c, d;
+         Texture *texture;
+         virtual void updateTexture() = 0;
    };
 }
 

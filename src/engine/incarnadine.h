@@ -40,12 +40,6 @@ namespace incarnadine
 {
    class Incarnadine
    {
-      private:
-         RenderManager *renderer;
-         Clock clock;
-         std::map<std::string, Renderable*> renderables;
-         std::map<std::string, TrueTypeFont*> fonts;
-
       public:
          Window *window;
          InputManager *input;
@@ -58,6 +52,12 @@ namespace incarnadine
          TrueTypeFont *loadFont(std::string uri, int size);
          unsigned int getTicks();
          Clock *getClock();
+
+      private:
+         RenderManager *renderer;
+         Clock clock;
+         std::map<std::string, Renderable*> renderables;
+         std::map<std::string, TrueTypeFont*> fonts;
    };
 }
 #endif //ENGINE_INCARNADINE_H

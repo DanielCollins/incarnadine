@@ -29,8 +29,6 @@ namespace incarnadine
 {
    class StaticMesh : public Visible
    {
-      protected:
-         Renderable *base;
 
       public:
          StaticMesh(vector3 position, vector3 orientation,
@@ -38,6 +36,9 @@ namespace incarnadine
          ~StaticMesh();
          void draw();
          void draw(float);
+
+      protected:
+         Renderable *base;
    };
 }
 #endif //ENGINE_STATICM_H

@@ -24,8 +24,6 @@ namespace incarnadine
 {
    class Scene
    {
-      private:
-         std::vector<Visible*> objects;
 
       public:
          void rasterize();
@@ -33,6 +31,9 @@ namespace incarnadine
          void addObject(Visible *newObject);
          void removeObject(Visible *oldObject);
          void updateObjects(unsigned int deltaTicks);
+
+      private:
+         std::vector<Visible*> objects;
    };
 }
 

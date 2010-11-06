@@ -38,7 +38,7 @@ namespace incarnadine
          void update();
          void resetMousePosition();
 
-   private:
+      private:
          bool ignoreNextMouseMove;
    };
 }

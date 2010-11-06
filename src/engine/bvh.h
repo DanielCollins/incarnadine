@@ -23,12 +23,6 @@ namespace incarnadine
 {
    class BoundingVolumeHierarchy
    {
-      private:
-         Visible *object;
-         BoundingVolumeHierarchy *left;
-         BoundingVolumeHierarchy *right;
-         BoundingVolumeHierarchy *parent;      
-         
       public:
          BoundingVolumeHierarchy();
          ~BoundingVolumeHierarchy();
@@ -38,6 +32,12 @@ namespace incarnadine
          BoundingVolumeHierarchy *getLeftChild();
          BoundingVolumeHierarchy *getRightChild();
          BoundingVolumeHierarchy *getParent();
+
+      private:
+         Visible *object;
+         BoundingVolumeHierarchy *left;
+         BoundingVolumeHierarchy *right;
+         BoundingVolumeHierarchy *parent;      
    };
 }
 

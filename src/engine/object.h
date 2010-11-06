@@ -25,10 +25,6 @@ namespace incarnadine
 
    class Object
    {
-      protected:
-         vector3 position, velocity, acceleration;
-         iquaternion orientation, angularVelocity, angularAcceleration;
-
       public:
          Object(vector3 position, vector3 orientation, vector3 velocity,
                   vector3 angularVelocity, vector3 acceleration, vector3 angularAcceleration);
@@ -46,6 +42,10 @@ namespace incarnadine
          void localTranslate(vector3 displacement);
          void globalTranslate(vector3 displacement);
          void updatePosition(unsigned int deltaTicks);
+
+      protected:
+         vector3 position, velocity, acceleration;
+         iquaternion orientation, angularVelocity, angularAcceleration;
    };
 }
 #endif //ENGINE_OBJECT_H

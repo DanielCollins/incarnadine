@@ -37,14 +37,14 @@ namespace incarnadine
 {
    class VertexBufferObject
    {
-      private:
-         unsigned int bufferIdentifier;
-         unsigned int vertexCount;
-
       public:
          VertexBufferObject(std::vector<Vertex> newVertices);
          ~VertexBufferObject();
          void draw();
+
+      private:
+         unsigned int bufferIdentifier;
+         unsigned int vertexCount;
    };
 }
 

@@ -27,19 +27,19 @@ namespace incarnadine
 {
    class Window
    {
-      private:
-         SDL_Surface *surface;
-         std::vector<Widget*> widgets;
-         void drawWidgets();
-      
-      public:
+     public:
          Window(std::string);
          ~Window();
          void update();
          int width();
          int height();
          void addWidget(Widget*);
-         void removeWidget(Widget*);   
+         void removeWidget(Widget*);
+
+      private:
+         SDL_Surface *surface;
+         std::vector<Widget*> widgets;
+         void drawWidgets();  
    };
 }
 

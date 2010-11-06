@@ -29,13 +29,6 @@ namespace incarnadine
 {
    class Label : public Widget
    {
-      protected:
-         std::string text;
-         TrueTypeFont *font;
-         void updateTexture();
-         Colour textColour;
-         Window *window;
-
       public:
          Label(TrueTypeFont*, std::string, Colour, Window*);
          std::string getText();
@@ -45,6 +38,12 @@ namespace incarnadine
          Colour getTextColour();
          void setTextColour(Colour tc);
 
+      protected:
+         std::string text;
+         TrueTypeFont *font;
+         void updateTexture();
+         Colour textColour;
+         Window *window;
    };
 }
 

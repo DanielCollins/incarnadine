@@ -26,13 +26,13 @@ namespace incarnadine
 {
    class TrueTypeFont
    {
-      private:
-         TTF_Font* font;
-
       public:
          TrueTypeFont(std::string, int);
          ~TrueTypeFont();
          Texture *renderText(std::string, char, char, char);
+
+      private:
+         TTF_Font* font;
    };
 }
 
