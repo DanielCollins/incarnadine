@@ -48,9 +48,8 @@ Incarnadine::~Incarnadine()
       delete input;
       input = 0;
    }
-
-   IMG_Quit();
-   
+   TTF_Quit();
+   IMG_Quit();   
    SDL_Quit();
 }
 
