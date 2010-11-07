@@ -18,10 +18,11 @@
 
 using namespace incarnadine;
 
-TrueTypeFont::TrueTypeFont(std::string filename, int size)
+TrueTypeFont::TrueTypeFont(std::string uri, int size)
 {
-   font = TTF_OpenFont(filename.c_str(), size);
+   font = TTF_OpenFont(uri.c_str(), size);
    if(!font) throw 0;
+   name = uri;
 }
 
 TrueTypeFont::~TrueTypeFont()
@@ -33,5 +34,11 @@ Texture *TrueTypeFont::renderText(std::string text, char r, char g, char b)
 { 
    SDL_Color colour = {r,g,b,0};
    return new Texture(TTF_RenderText_Blended(font, text.c_str(), colour));;
+}
+
+void setSize(int s)
+{
+   TTF_CloseFont(font);
+   font = TTF_OpenFont(name.c_str(), s);
 }
 

@@ -30,8 +30,10 @@ namespace incarnadine
          TrueTypeFont(std::string, int);
          ~TrueTypeFont();
          Texture *renderText(std::string, char, char, char);
+         void setSize(int);
 
       private:
+         std::string name;
          TTF_Font* font;
    };
 }
