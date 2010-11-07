@@ -25,6 +25,7 @@
 
 namespace incarnadine
 {
+   class Widget;
    class Window
    {
      public:

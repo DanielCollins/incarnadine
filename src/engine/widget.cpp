@@ -62,3 +62,9 @@ void Widget::draw()
    glEnd();
 }
 
+void Widget::setWindow(Window *w)
+{
+   window = w;
+}
+
+

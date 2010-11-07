@@ -18,12 +18,11 @@
 
 using namespace incarnadine;
 
-Label::Label(TrueTypeFont *t, std::string s, Colour tc, Window *d) : Widget(0.0, 0.0, 0.0, 0.0)
+Label::Label(TrueTypeFont *t, std::string s, Colour tc) : Widget(0.0, 0.0, 0.0, 0.0)
 {
    setText(s);
    setFont(t);
    setTextColour(tc);
-   window = d;
 }
 
 std::string Label::getText()

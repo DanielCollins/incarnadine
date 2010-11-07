@@ -78,11 +78,12 @@ void Window::drawWidgets()
    glPopMatrix();
    glMatrixMode(GL_MODELVIEW);
    glPopMatrix();
-   glPopAttrib(GL_DEPTH_BUFFER_BIT);
+   glPopAttrib();
 }
 
 void Window::addWidget(Widget *widget)
 {
+  widget->setWindow(this);
   std::vector<Widget*>::const_iterator i = widgets.begin();
   std::vector<Widget*>::const_iterator end = widgets.end();
   for(;i != end; i++) if(widget == *i) return;

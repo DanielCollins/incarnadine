@@ -19,9 +19,11 @@
 
 #include "GL/glew.h"
 #include "texture.h"
+#include "window.h"
 
 namespace incarnadine
 {
+   class Window;
    class Widget
    {
       public:
@@ -29,11 +31,13 @@ namespace incarnadine
          void resize(float nw, float nh);
          void reposition(float nx, float ny);
          void draw();
+         void setWindow(Window*);
 
       protected:
          float x, y, w, h, b, c, d;
          Texture *texture;
          virtual void updateTexture() = 0;
+         Window *window;
    };
 }
 

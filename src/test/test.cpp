@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
    font = fonts->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
    input = new InputManager(window);
    Colour c = {0.0, 0.0, 0.0};
-   tp = new Label(font, "fps: 0", c, window);
+   tp = new Label(font, "fps: 0", c);
    window->addWidget(tp);
 
    vector3 mPosition(0.0, 0.0, -8000.0);
