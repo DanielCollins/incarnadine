@@ -20,7 +20,8 @@ using namespace incarnadine;
 
 FontManager::FontManager()
 {
-   if(TTF_Init() == -1) throw 0;
+   if(!TTF_WasInit())
+      if(TTF_Init() == -1) throw 0;
 }
 
 FontManager::~FontManager()
