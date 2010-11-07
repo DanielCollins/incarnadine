@@ -62,6 +62,7 @@ int Window::height()
 
 void Window::drawWidgets()
 {
+   glPushAttrib(GL_DEPTH_BUFFER_BIT);
    glDisable(GL_DEPTH_TEST);
    glMatrixMode(GL_PROJECTION);
    glPushMatrix();
@@ -77,7 +78,7 @@ void Window::drawWidgets()
    glPopMatrix();
    glMatrixMode(GL_MODELVIEW);
    glPopMatrix();
-   glEnable(GL_DEPTH_TEST);
+   glPopAttrib(GL_DEPTH_BUFFER_BIT);
 }
 
 void Window::addWidget(Widget *widget)
