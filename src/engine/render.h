@@ -17,12 +17,16 @@
 #ifndef ENGINE_RENDER_H
 #define ENGINE_RENDER_H
 
+#include <map>
 #include "SDL.h"
 #include "GL/glew.h"
 #include "tools.h"
 #include "camera.h"
 #include "window.h"
 #include "scene.h"
+#include "renderable.h"
+#include "md2.h"
+#include "obj.h"
 
 namespace incarnadine
 {
@@ -30,15 +34,18 @@ namespace incarnadine
    {
       public:
          RenderManager(Camera *newCamera, Scene *newScene, Window *newWindow);
+         ~RenderManager();
          void draw();
          void draw(float);
-         void setCamera(Camera *newCamera);   
+         void setCamera(Camera *newCamera);
+         Renderable *loadModel(std::string uri);
 
       private:
          Camera *camera;
          Window *window;
          Scene *scene;
          std::vector<Widget*> widgets;
+         std::map<std::string, Renderable*> renderables;
    };
 }
 

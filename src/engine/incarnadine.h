@@ -43,10 +43,6 @@ namespace incarnadine
       public:
          Incarnadine();
          ~Incarnadine();
-         Renderable *loadModel(std::string uri);
-
-      private:
-         std::map<std::string, Renderable*> renderables;
    };
 }
 #endif //ENGINE_INCARNADINE_H
