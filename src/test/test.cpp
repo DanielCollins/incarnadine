@@ -54,14 +54,14 @@ int main(int argc, char *argv[])
    tp = new Label(font, "fps: 0", c);
    window->addWidget(tp);
 
-   StaticMesh m(vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/worker/worker_body.md2"));
-   m.setPosition(vector3(0.0, 0.0, -8000.0));
-   m.setAngularVelocity(vector3(0.0, 0.0, 0.01));
-   scene->addObject(&m);
+   StaticMesh worker(vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/worker/worker_body.md2"));
+   worker.setPosition(vector3(0.0, 0.0, -8000.0));
+   worker.setAngularVelocity(vector3(0.0, 0.0, 0.01));
+   scene->addObject(&worker);
 
-   StaticMesh m2(vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/axis.obj"));
-   m2.setPosition(vector3(0.0, 0.0, -8000.0));
-   scene->addObject(&m2);
+   StaticMesh axis(vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/axis.obj"));
+   axis.setPosition(vector3(0.0, 0.0, -8000.0));
+   scene->addObject(&axis);
       
    ExitingSlot = new Slot<Exiting>(handleExit);
    ExitingSlot->connect(&(input->sExiting));
