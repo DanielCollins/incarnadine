@@ -42,5 +42,5 @@ namespace incarnadine
          SDL_Surface *surface;
    };
 }
-#endif
+#endif //ENGINE_TEXTURE_H
 
