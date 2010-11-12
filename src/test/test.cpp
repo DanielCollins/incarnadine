@@ -138,24 +138,24 @@ void handleKeyUpEvent(KeyUp e)
       case INC_KEY_ESCAPE:
          exitTestApp();
       case INC_KEY_UP:
-      case INC_KEY_w:
+      case INC_KEY_W:
       {
          camera->localTranslate(vector3(0.0, 0.0, -500.0));
          break;
       }
-      case INC_KEY_s:
+      case INC_KEY_S:
       case INC_KEY_DOWN:
       {
          camera->localTranslate(vector3(0.0, 0.0, 500.0));
          break;
       }
-      case INC_KEY_a:
+      case INC_KEY_A:
       case INC_KEY_LEFT:
       {
          camera->localTranslate(vector3(0.0, -50.0, 0.0));
          break;
       }
-      case INC_KEY_d:
+      case INC_KEY_D:
       case INC_KEY_RIGHT:
       {
          camera->localTranslate(vector3(0.0, 50.0, 0.0));
