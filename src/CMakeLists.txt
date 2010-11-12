@@ -49,6 +49,6 @@ include_directories(${SDLTTF_INCLUDE_DIR})
 include_directories(${SDLIMAGE_INCLUDE_DIR})
 include_directories(${SDLMIXER_INCLUDE_DIR})
 
-add_subdirectory(engine)
+add_subdirectory(incarnadine)
 add_subdirectory(test)
 

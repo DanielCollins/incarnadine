@@ -1,6 +1,6 @@
 include_directories(${INCARNADINE_SOURCE_DIR}/src/include)
 
-add_library(engine
+add_library(incarnadine
             incarnadine.cpp
             window.cpp
             object.cpp
@@ -21,4 +21,4 @@ add_library(engine
             fontm.cpp
             ${INCARNADINE_SOURCE_DIR}/src/external/glew.c)
 
-target_link_libraries(engine ${OPENGL_LIBRARY} ${SDL_LIBRARY} ${SDLMAIN_LIBRARY} ${SDLTTF_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY})
+target_link_libraries(incarnadine ${OPENGL_LIBRARY} ${SDL_LIBRARY} ${SDLMAIN_LIBRARY} ${SDLTTF_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY})

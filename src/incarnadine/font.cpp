@@ -36,7 +36,7 @@ Texture *TrueTypeFont::renderText(std::string text, char r, char g, char b)
    return new Texture(TTF_RenderText_Blended(font, text.c_str(), colour));;
 }
 
-void setSize(int s)
+void TrueTypeFont::setSize(int s)
 {
    TTF_CloseFont(font);
    font = TTF_OpenFont(name.c_str(), s);
