@@ -19,6 +19,7 @@ Find_Package(SDL REQUIRED)
 Find_Package(SDL_ttf REQUIRED)
 Find_Package(SDL_image REQUIRED)
 Find_Package(SDL_mixer REQUIRED)
+Find_Package(Boost COMPONENTS system REQUIRED)
 
 if (NOT OPENGL_FOUND)
 	message(FATAL_ERROR "OpenGL not found!")
