@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
    worker.setAngularVelocity(vector3(0.0, 0.0, 0.01));
    scene->addObject(&worker);
 
-   StaticMesh axis(vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/axis.obj"));
+   StaticMesh axis(vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/axis/axis.obj"));
    axis.setPosition(vector3(0.0, 0.0, -8000.0));
    scene->addObject(&axis);
       
