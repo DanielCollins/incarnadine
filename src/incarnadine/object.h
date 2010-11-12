@@ -1,5 +1,5 @@
 /* 
-   Copyright (c) 2010 Daniel Collins, Daniel Flahive
+   Copyright (c) 2010 Daniel Collins
 
    Permission to use, copy, modify, and distribute this software for any
    purpose with or without fee is hereby granted, provided that the above
@@ -26,22 +26,29 @@ namespace incarnadine
    class Object
    {
       public:
-         Object(vector3 position, vector3 orientation, vector3 velocity,
-                  vector3 angularVelocity, vector3 acceleration, vector3 angularAcceleration);
+         Object();
          vector3 getPosition();
-         /*void setVelocity(vector3 v);
-         void setAngularVelocity(vector3 v);*/
-         void localRotate(vector3 eulerRotation);
-         void localRotate(iquaternion q);
-         void localRotateX(float angle);
-         void localRotateY(float angle);
-         void localRotateZ(float angle);
-         void setVelocity(vector3 v);
-         void setAngularVelocity(vector3 v);
-         void goTo(vector3 location);
-         void localTranslate(vector3 displacement);
-         void globalTranslate(vector3 displacement);
-         void updatePosition(unsigned int deltaTicks);
+         void setPosition(vector3);
+         vector3 getVelocity();
+         void setVelocity(vector3);
+         vector3 getAcceleration();
+         void setAcceleration(vector3);
+         iquaternion getOrientation();
+         void setOrientation(iquaternion);
+         void setOrientation(vector3);
+         iquaternion getAngularVelocity();
+         void setAngularVelocity(iquaternion);
+         void setAngularVelocity(vector3);
+         iquaternion getAngularAcceleration();
+         void setAngularAcceleration(iquaternion);
+         void setAngularAcceleration(vector3);
+         void rotateX(float);
+         void rotateY(float);
+         void rotateZ(float);
+         void rotate(vector3);
+         void rotate(iquaternion);
+         void translate(vector3);
+         void update(unsigned int);
 
       protected:
          vector3 position, velocity, acceleration;

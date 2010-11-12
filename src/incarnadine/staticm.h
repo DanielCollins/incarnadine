@@ -31,8 +31,7 @@ namespace incarnadine
    {
 
       public:
-         StaticMesh(vector3 position, vector3 orientation,
-                    vector3 newVelocity, vector3 newAngularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration, vector3 scaleFactor, Renderable *newBase);
+         StaticMesh(vector3 scaleFactor, Renderable *newBase);
          ~StaticMesh();
          void draw();
          void draw(float);

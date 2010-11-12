@@ -27,7 +27,7 @@
 
 using namespace incarnadine;
 
-StaticMesh::StaticMesh(vector3 position, vector3 orientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration, vector3 scaleFactor, Renderable *newBase) : Visible (position, orientation, newVelocity, newAngularVelocity, newAcceleration, newAngularAcceleration, scaleFactor)
+StaticMesh::StaticMesh(vector3 scaleFactor, Renderable *newBase) : Visible (scaleFactor)
 {
    base = newBase;
 }

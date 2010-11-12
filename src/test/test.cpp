@@ -39,14 +39,9 @@ Slot<MouseMove> *MouseMoveSlot;
 
 int main(int argc, char *argv[])
 {   
-   vector3 cameraPosition(0.0, 0.0, 0.0);
-   vector3 cameraOrientation(0.0, 0.0, -180);
-   vector3 cameraVelocity(0.0, 0.0, 0.0);
-   vector3 cameraAngularVelocity(0.0, 0.0, 0.0);
-   vector3 cameraAcceleration(0.0, 0.0, 0.0);
-   vector3 cameraAngularAcceleration(0.0, 0.0, 0.0);
-      
-   camera = new Camera(cameraPosition, cameraOrientation, cameraVelocity, cameraAngularVelocity, cameraAcceleration, cameraAngularAcceleration, 90.0f);
+   camera = new Camera(90.0f);
+   camera->setOrientation(vector3(0.0, 0.0, -180));
+
    scene = new Scene();   
    window = new Window("Incarnadine test");
    engine = new Incarnadine();
@@ -59,26 +54,13 @@ int main(int argc, char *argv[])
    tp = new Label(font, "fps: 0", c);
    window->addWidget(tp);
 
-   vector3 mPosition(0.0, 0.0, -8000.0);
-   vector3 mOrientation(0.0, 0.0, 0.0);
-   vector3 mVelocity(0.0, 0.0, 0.0);
-   vector3 mAngularVelocity(0.0, 0.0, 0.01);
-   vector3 mAcceleration(0.0, 0.0, 0.0);
-   vector3 mAngularAcceleration(0.0, 0.0, 0.0);
-   vector3 mScale(1.0, 1.0, 1.0);
-
-   StaticMesh m(mPosition, mOrientation, mVelocity, mAngularVelocity, mAcceleration, mAngularAcceleration, mScale, renderer->loadModel("data/models/worker/worker_body.md2"));
+   StaticMesh m(vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/worker/worker_body.md2"));
+   m.setPosition(vector3(0.0, 0.0, -8000.0));
+   m.setAngularVelocity(vector3(0.0, 0.0, 0.01));
    scene->addObject(&m);
 
-   vector3 m2Position(0.0, 0.0, -8000.0);
-   vector3 m2Orientation(0.0, 0.0, 0.0);
-   vector3 m2Velocity(0.0, 0.0, 0.0);
-   vector3 m2AngularVelocity(0.0, 0.0, 0.0);
-   vector3 m2Acceleration(0.0, 0.0, 0.0);
-   vector3 m2AngularAcceleration(0.0, 0.0, 0.0);
-   vector3 m2Scale(1.0, 1.0, 1.0);
-
-   StaticMesh m2(m2Position, m2Orientation, m2Velocity, m2AngularVelocity, m2Acceleration, m2AngularAcceleration, m2Scale, renderer->loadModel("data/models/axis.obj"));
+   StaticMesh m2(vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/axis.obj"));
+   m2.setPosition(vector3(0.0, 0.0, -8000.0));
    scene->addObject(&m2);
       
    ExitingSlot = new Slot<Exiting>(handleExit);
@@ -140,25 +122,25 @@ void handleKeyUpEvent(KeyUp e)
       case INC_KEY_UP:
       case INC_KEY_W:
       {
-         camera->localTranslate(vector3(0.0, 0.0, -500.0));
+         camera->translate(vector3(0.0, 0.0, -500.0));
          break;
       }
       case INC_KEY_S:
       case INC_KEY_DOWN:
       {
-         camera->localTranslate(vector3(0.0, 0.0, 500.0));
+         camera->translate(vector3(0.0, 0.0, 500.0));
          break;
       }
       case INC_KEY_A:
       case INC_KEY_LEFT:
       {
-         camera->localTranslate(vector3(0.0, -50.0, 0.0));
+         camera->translate(vector3(0.0, -50.0, 0.0));
          break;
       }
       case INC_KEY_D:
       case INC_KEY_RIGHT:
       {
-         camera->localTranslate(vector3(0.0, 50.0, 0.0));
+         camera->translate(vector3(0.0, 50.0, 0.0));
          break;
       }
    }
@@ -169,9 +151,9 @@ void handleMouseMove(MouseMove e)
    float yAngle = -e.xrel * mouseSensitivity;
    float xAngle = -e.yrel * mouseSensitivity;
    if(yAngle != 0)
-      camera->localRotateY(yAngle);
+      camera->rotateY(yAngle);
    if(xAngle != 0)
-      camera->localRotateX(xAngle);
+      camera->rotateX(xAngle);
 }
 
 void exitTestApp()

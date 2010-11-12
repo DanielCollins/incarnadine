@@ -18,7 +18,7 @@
 
 using namespace incarnadine;
 
-Camera::Camera(vector3 newPosition, vector3 newOrientation, vector3 newVelocity, vector3 newAngularVelocity, vector3 newAcceleration, vector3 newAngularAcceleration, float newFov) : Object (newPosition, newOrientation, newVelocity, newAngularVelocity, newAcceleration, newAngularAcceleration)
+Camera::Camera(float newFov)
 {
    setFov(newFov);
 }
