@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_BVH_H
-#define ENGINE_BVH_H
+#ifndef INCARNADINE_BVH_H_
+#define INCARNADINE_BVH_H_
 
 #include "visible.h"
 
@@ -43,5 +43,5 @@ namespace incarnadine
 
 
 
-#endif //ENGINE_BVH_H
+#endif //INCARNADINE_BVH_H_
 

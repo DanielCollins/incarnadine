@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_TOOLS_H
-#define ENGINE_TOOLS_H
+#ifndef INCARNADINE_TOOLS_H_
+#define INCARNADINE_TOOLS_H_
 
 #include <cmath>
 #include "cml_config.h"   
@@ -30,5 +30,5 @@ typedef cml::quaternionf_p iquaternion;
 #define DEGREES_FROM_RADIANS(x) ((x) * 180.0 / 3.14159265)
 #define RADIANS_FROM_DEGREES(x) ((x) * 3.14159265 / 180.0)
 
-#endif //ENGINE_TOOLS_H
+#endif //INCARNADINE_TOOLS_H_
 

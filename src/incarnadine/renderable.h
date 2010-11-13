@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_RENDERABLE_H
-#define ENGINE_RENDERABLE_H
+#ifndef INCARNADINE_RENDERABLE_H_
+#define INCARNADINE_RENDERABLE_H_
 
 namespace incarnadine
 {
@@ -26,5 +26,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_RENDERABLE_H
+#endif //INCARNADINE_RENDERABLE_H_
 

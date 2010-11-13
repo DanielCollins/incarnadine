@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_CAMERA_H
-#define ENGINE_CAMERA_H
+#ifndef INCARNADINE_CAMERA_H_
+#define INCARNADINE_CAMERA_H_
 
 #include "object.h"
 #include "SDL.h"
@@ -39,5 +39,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_CAMERA_H
+#endif //INCARNADINE_CAMERA_H_
 

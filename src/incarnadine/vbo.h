@@ -23,8 +23,8 @@
 //
 //========================================================================
 
-#ifndef ENGINE_VBO_H
-#define ENGINE_VBO_H
+#ifndef INCARNADINE_VBO_H_
+#define INCARNADINE_VBO_H_
 
 #include "SDL.h"
 #include "GL/glew.h"
@@ -48,5 +48,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_VBO_H
+#endif //INCARNADINE_VBO_H_
 

@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_OBJECT_H
-#define ENGINE_OBJECT_H
+#ifndef INCARNADINE_OBJECT_H_
+#define INCARNADINE_OBJECT_H_
 
 #include "tools.h"
 
@@ -53,5 +53,5 @@ namespace incarnadine
          iquaternion orientation;
    };
 }
-#endif //ENGINE_OBJECT_H
+#endif //INCARNADINE_OBJECT_H_
 

@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_EVENTS_H
-#define ENGINE_EVENTS_H
+#ifndef INCARNADINE_EVENTS_H_
+#define INCARNADINE_EVENTS_H_
 
 #include <vector>
 
@@ -145,5 +145,5 @@ class Signal
       }
 };
 
-#endif //ENGINE_EVENTS_H
+#endif //INCARNADINE_EVENTS_H_
 

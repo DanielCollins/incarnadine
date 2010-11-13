@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_FONTM_H
-#define ENGINE_FONTM_H
+#ifndef INCARNADINE_FONTM_H_
+#define INCARNADINE_FONTM_H_
 
 #include <string>
 #include <map>
@@ -36,5 +36,5 @@ namespace incarnadine
          std::map<std::string, TrueTypeFont*> fonts;
    };
 }
-#endif //ENGINE_FONTM_H
+#endif //INCARNADINE_FONTM_H_
 

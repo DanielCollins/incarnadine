@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_DISPLAY_H
-#define ENGINE_DISPLAY_H
+#ifndef INCARNADINE_DISPLAY_H_
+#define INCARNADINE_DISPLAY_H_
 
 #include <string>
 #include <vector>
@@ -44,5 +44,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_DISPLAY_H
+#endif //INCARNADINE_DISPLAY_H_
 

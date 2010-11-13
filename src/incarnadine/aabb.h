@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_AABB_H
-#define ENGINE_AABB_H
+#ifndef INCARNADINE_AABB_H_
+#define INCARNADINE_AABB_H_
 
 namespace incarnadine
 {
@@ -33,5 +33,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_AABB_H
+#endif //INCARNADINE_AABB_H_
 

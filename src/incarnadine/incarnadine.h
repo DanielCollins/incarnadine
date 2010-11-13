@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_INCARNADINE_H
-#define ENGINE_INCARNADINE_H
+#ifndef INCARNADINE_INCARNADINE_H_
+#define INCARNADINE_INCARNADINE_H_
 
 #include <string>
 #include <map>
@@ -45,5 +45,5 @@ namespace incarnadine
          ~Incarnadine();
    };
 }
-#endif //ENGINE_INCARNADINE_H
+#endif //INCARNADINE_INCARNADINE_H_
 

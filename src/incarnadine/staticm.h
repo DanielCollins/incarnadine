@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_STATICM_H
-#define ENGINE_STATICM_H
+#ifndef INCARNADINE_STATICM_H_
+#define INCARNADINE_STATICM_H_
 
 #include "renderable.h"
 #include "visible.h"
@@ -40,5 +40,5 @@ namespace incarnadine
          Renderable *base;
    };
 }
-#endif //ENGINE_STATICM_H
+#endif //INCARNADINE_STATICM_H_
 

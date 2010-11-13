@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_VERTEX_H
-#define ENGINE_VERTEX_H
+#ifndef INCARNADINE_VERTEX_H_
+#define INCARNADINE_VERTEX_H_
 
 namespace incarnadine
 {
@@ -50,5 +50,5 @@ namespace incarnadine
       Colour colour;   
    };
 }
-#endif //ENGINE_VERTEX_H
+#endif //INCARNADINE_VERTEX_H_
 

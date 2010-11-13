@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_VISIBLE_H
-#define ENGINE_VISIBLE_H
+#ifndef INCARNADINE_VISIBLE_H_
+#define INCARNADINE_VISIBLE_H_
 
 #include <vector>
 #include "object.h"
@@ -38,5 +38,5 @@ namespace incarnadine
          virtual void draw(float) = 0;
    };
 }
-#endif //ENGINE_VISIBLE_H
+#endif //INCARNADINE_VISIBLE_H_
 

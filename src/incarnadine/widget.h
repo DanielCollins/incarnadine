@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_PANEL_H
-#define ENGINE_PANEL_H
+#ifndef INCARNADINE_PANEL_H_
+#define INCARNADINE_PANEL_H_
 
 #include "GL/glew.h"
 #include "texture.h"
@@ -41,5 +41,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_PANEL_H
+#endif //INCARNADINE_PANEL_H_
 

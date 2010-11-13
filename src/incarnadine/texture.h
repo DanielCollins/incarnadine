@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_TEXTURE_H
-#define ENGINE_TEXTURE_H
+#ifndef INCARNADINE_TEXTURE_H_
+#define INCARNADINE_TEXTURE_H_
 
 #include <string>
 #include "vertex.h"
@@ -42,5 +42,5 @@ namespace incarnadine
          SDL_Surface *surface;
    };
 }
-#endif //ENGINE_TEXTURE_H
+#endif //INCARNADINE_TEXTURE_H_
 

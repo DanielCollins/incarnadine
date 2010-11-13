@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_SBV_H
-#define ENGINE_SBV_H
+#ifndef INCARNADINE_SBV_H_
+#define INCARNADINE_SBV_H_
 
 namespace incarnadine
 {
@@ -25,5 +25,5 @@ namespace incarnadine
       float getVolume();
    };
 }
-#endif //ENGINE_SBV_H
+#endif //INCARNADINE_SBV_H_
 

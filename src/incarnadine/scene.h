@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_SCENE_H
-#define ENGINE_SCENE_H
+#ifndef INCARNADINE_SCENE_H_
+#define INCARNADINE_SCENE_H_
 
 #include <vector>
 #include "visible.h"
@@ -37,5 +37,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_SCENE_H
+#endif //INCARNADINE_SCENE_H_
 

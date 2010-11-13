@@ -13,8 +13,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_CLOCK_H
-#define ENGINE_CLOCK_H
+#ifndef INCARNADINE_CLOCK_H_
+#define INCARNADINE_CLOCK_H_
 
 #include "time.h"
 #include "SDL.h"
@@ -31,5 +31,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_CLOCK_H
+#endif //INCARNADINE_CLOCK_H_
 

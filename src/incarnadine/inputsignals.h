@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_INPUTSIGNALS_H
-#define ENGINE_INPUTSIGNALS_H
+#ifndef INCARNADINE_INPUTSIGNALS_H_
+#define INCARNADINE_INPUTSIGNALS_H_
 
 #include "dispatch.h"
 #include "keydef.h"
@@ -72,5 +72,5 @@ namespace incarnadine
    class Exiting{};
 }
 
-#endif //ENGINE_INPUTSIGNALS_H
+#endif //INCARNADINE_INPUTSIGNALS_H_
 

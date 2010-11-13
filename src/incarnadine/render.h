@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_RENDER_H
-#define ENGINE_RENDER_H
+#ifndef INCARNADINE_RENDER_H_
+#define INCARNADINE_RENDER_H_
 
 #include <map>
 #include "SDL.h"
@@ -49,5 +49,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_RENDER_H
+#endif //INCARNADINE_RENDER_H_
 

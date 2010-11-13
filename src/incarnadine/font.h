@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_FONT_H
-#define ENGINE_FONT_H
+#ifndef INCARNADINE_FONT_H_
+#define INCARNADINE_FONT_H_
 
 #include <string>
 #include "SDL.h"
@@ -38,5 +38,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_FONT_H
+#endif //INCARNADINE_FONT_H_
 

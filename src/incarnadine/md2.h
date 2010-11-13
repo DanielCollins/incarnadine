@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_MD2_H
-#define ENGINE_MD2_H
+#ifndef INCARNADINE_MD2_H_
+#define INCARNADINE_MD2_H_
 
 #include <fstream>
 #include <string>
@@ -120,5 +120,5 @@ namespace incarnadine
    };
 
 }
-#endif //ENGINE_MD2_H
+#endif //INCARNADINE_MD2_H_
 

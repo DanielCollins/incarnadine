@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_LABEL_H
-#define ENGINE_LABEL_H
+#ifndef INCARNADINE_LABEL_H_
+#define INCARNADINE_LABEL_H_
 
 #include <string>
 #include "GL/glew.h"
@@ -45,5 +45,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_LABEL_H
+#endif //INCARNADINE_LABEL_H_
 

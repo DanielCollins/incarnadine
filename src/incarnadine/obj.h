@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_OBJ_H
-#define ENGINE_OBJ_H
+#ifndef INCARNADINE_OBJ_H_
+#define INCARNADINE_OBJ_H_
 
 
 #include <exception>
@@ -72,5 +72,5 @@ namespace incarnadine
 
 }
 
-#endif //ENGINE_OBJ_H
+#endif //INCARNADINE_OBJ_H_
 

@@ -14,8 +14,8 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef ENGINE_INPUT_H
-#define ENGINE_INPUT_H
+#ifndef INCARNADINE_INPUT_H_
+#define INCARNADINE_INPUT_H_
 
 #include "SDL.h"
 #include "dispatch.h"
@@ -47,5 +47,5 @@ namespace incarnadine
    };
 }
 
-#endif //ENGINE_INPUT_H
+#endif //INCARNADINE_INPUT_H_
 
