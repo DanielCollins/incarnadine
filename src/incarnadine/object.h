@@ -36,11 +36,9 @@ namespace incarnadine
          iquaternion getOrientation();
          void setOrientation(iquaternion);
          void setOrientation(vector3);
-         iquaternion getAngularVelocity();
-         void setAngularVelocity(iquaternion);
+         vector3 getAngularVelocity();
          void setAngularVelocity(vector3);
-         iquaternion getAngularAcceleration();
-         void setAngularAcceleration(iquaternion);
+         vector3 getAngularAcceleration();
          void setAngularAcceleration(vector3);
          void rotateX(float);
          void rotateY(float);
@@ -51,8 +49,8 @@ namespace incarnadine
          void update(unsigned int);
 
       protected:
-         vector3 position, velocity, acceleration;
-         iquaternion orientation, angularVelocity, angularAcceleration;
+         vector3 position, velocity, acceleration, angularVelocity, angularAcceleration;
+         iquaternion orientation;
    };
 }
 #endif //ENGINE_OBJECT_H

@@ -20,12 +20,8 @@ using namespace incarnadine;
 
 Object::Object()
 {
-   position = vector3(0.0, 0.0, 0.0);
-   velocity = vector3(0.0, 0.0, 0.0);
-   acceleration = vector3(0.0, 0.0, 0.0);
+   position = velocity =  acceleration = angularVelocity = angularAcceleration = vector3(0.0, 0.0, 0.0);
    quaternion_rotation_euler(orientation, 0.0f, 0.0f, 0.0f, euler_order_xyz);
-   quaternion_rotation_euler(angularVelocity, 0.0f, 0.0f, 0.0f, euler_order_xyz);
-   quaternion_rotation_euler(angularAcceleration , 0.0f, 0.0f, 0.0f, euler_order_xyz);
 }
 
 vector3 Object::getPosition()
@@ -73,34 +69,24 @@ void Object::setOrientation(vector3 v)
    quaternion_rotation_euler(orientation, v[0], v[1], v[2], euler_order_xyz);
 }
 
-iquaternion Object::getAngularVelocity()
+vector3 Object::getAngularVelocity()
 {
    return angularVelocity;
 }
 
-void Object::setAngularVelocity(iquaternion q)
-{
-   angularVelocity = q;
-}
-
 void Object::setAngularVelocity(vector3 v)
 {
-   quaternion_rotation_euler(angularVelocity, v[0], v[1], v[2], euler_order_xyz);
+   angularVelocity = v;
 }
 
-iquaternion Object::getAngularAcceleration()
+vector3 Object::getAngularAcceleration()
 {
    return angularAcceleration;
 }
 
-void Object::setAngularAcceleration(iquaternion q)
-{
-   angularAcceleration = q;
-}
-
 void Object::setAngularAcceleration(vector3 v)
 {
-   quaternion_rotation_euler(angularAcceleration, v[0], v[1], v[2], euler_order_xyz);
+   angularAcceleration = v;
 }
 
 void Object::rotateX(float angle)
@@ -143,7 +129,10 @@ void Object::translate(vector3 displacement)
 
 void Object::update(unsigned int deltaTicks)
 {
-   translate(velocity * deltaTicks);
-   rotate(angularVelocity * deltaTicks);
+   translate(deltaTicks * (velocity + acceleration * deltaTicks) / 2);
+   velocity += acceleration * deltaTicks;
+   vector3 ra = deltaTicks * (angularVelocity + angularAcceleration * deltaTicks) / 2.0;
+   rotate(ra);
+   angularVelocity += angularAcceleration * deltaTicks;
 }
 
