@@ -18,7 +18,7 @@
 #define ENGINE_INPUT_H
 
 #include "SDL.h"
-#include "events.h"
+#include "dispatch.h"
 #include "inputsignals.h"
 #include "window.h"
 

@@ -17,7 +17,7 @@
 #ifndef ENGINE_INPUTSIGNALS_H
 #define ENGINE_INPUTSIGNALS_H
 
-#include "events.h"
+#include "dispatch.h"
 #include "keydef.h"
 
 namespace incarnadine
