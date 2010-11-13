@@ -33,7 +33,7 @@ TrueTypeFont::~TrueTypeFont()
 Texture *TrueTypeFont::renderText(std::string text, char r, char g, char b)
 { 
    SDL_Color colour = {r,g,b,0};
-   return new Texture(TTF_RenderText_Blended(font, text.c_str(), colour));;
+   return new Texture(TTF_RenderText_Blended(font, text.c_str(), colour), GL_RGBA);;
 }
 
 void TrueTypeFont::setSize(int s)

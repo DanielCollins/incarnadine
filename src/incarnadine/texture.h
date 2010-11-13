@@ -29,14 +29,13 @@ namespace incarnadine
    {
       public:
          Texture(std::string filename);
-         Texture(SDL_Surface *textureSurface);
+         Texture(SDL_Surface* textureSurface, GLint format);
          ~Texture();
          void bind();
          int getWidth();
          int getHeight();
 
       private:
-         void load(SDL_Surface *textureSurface);
          void cleanup();
          GLuint id;
          SDL_Surface *surface;
