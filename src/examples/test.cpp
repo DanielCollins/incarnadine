@@ -35,6 +35,7 @@ FontManager *fonts;
 
 Slot<Exiting> *ExitingSlot;
 Slot<KeyUp> *KeyUpSlot;
+Slot<KeyDown> *KeyDownSlot;
 Slot<MouseMove> *MouseMoveSlot;
 
 int main(int argc, char *argv[])
@@ -67,6 +68,8 @@ int main(int argc, char *argv[])
    ExitingSlot->connect(&(input->sExiting));
    KeyUpSlot = new Slot<KeyUp>(handleKeyUpEvent);
    KeyUpSlot->connect(&(input->sKeyUp));
+   KeyDownSlot = new Slot<KeyDown>(handleKeyDownEvent);
+   KeyDownSlot->connect(&(input->sKeyDown));
    MouseMoveSlot = new Slot<MouseMove>(handleMouseMove);
    MouseMoveSlot->connect(&(input->sMouseMove));
       
@@ -123,25 +126,58 @@ void handleKeyUpEvent(KeyUp e)
       case INC_KEY_UP:
       case INC_KEY_W:
       {
-         camera->translate(Vector3(0.0, 0.0, -500.0));
+         camera->setVelocity(Vector3(0.0, 0.0, 10.0) + camera->getVelocity());
          break;
       }
       case INC_KEY_S:
       case INC_KEY_DOWN:
       {
-         camera->translate(Vector3(0.0, 0.0, 500.0));
+         camera->setVelocity(Vector3(0.0, 0.0, -10.0) + camera->getVelocity());
          break;
       }
       case INC_KEY_A:
       case INC_KEY_LEFT:
       {
-         camera->translate(Vector3(0.0, -50.0, 0.0));
+         camera->setVelocity(Vector3(0.0, 1.0, 0.0) + camera->getVelocity());
          break;
       }
       case INC_KEY_D:
       case INC_KEY_RIGHT:
       {
-         camera->translate(Vector3(0.0, 50.0, 0.0));
+         camera->setVelocity(Vector3(0.0, -1.0, 0.0) + camera->getVelocity());
+         break;
+      }
+   }
+}
+
+void handleKeyDownEvent(KeyDown e)
+{
+   switch (e.key)
+   {
+      case INC_KEY_ESCAPE:
+         exitTestApp();
+      case INC_KEY_UP:
+      case INC_KEY_W:
+      {
+         camera->setVelocity(Vector3(0.0, 0.0, -10.0));
+         break;
+      }
+      case INC_KEY_S:
+      case INC_KEY_DOWN:
+      {
+         camera->setVelocity(Vector3(0.0, 0.0, 10.0));
+         break;
+      }
+      case INC_KEY_A:
+      case INC_KEY_LEFT:
+      {
+         camera->setVelocity(Vector3(0.0, -1.0, 0.0));
+         break;
+      }
+      case INC_KEY_D:
+      case INC_KEY_RIGHT:
+      {
+         camera->setVelocity(Vector3(0.0, 1.0, 0.0));
          break;
       }
    }
@@ -162,6 +198,8 @@ void exitTestApp()
    delete timer;
    delete ExitingSlot;
    delete MouseMoveSlot;
+   delete KeyUpSlot;
+   delete KeyDownSlot;
    delete engine;
    delete camera;
    delete scene;

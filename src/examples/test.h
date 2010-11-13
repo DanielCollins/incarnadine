@@ -40,6 +40,7 @@ void exitTestApp();
 
 void handleExit(Exiting);
 void handleKeyUpEvent(KeyUp);
+void handleKeyDownEvent(KeyDown);
 void handleMouseMove(MouseMove);
 
 #endif //TEST_H
