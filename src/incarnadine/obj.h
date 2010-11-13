@@ -33,9 +33,9 @@ namespace incarnadine
 {
    struct objFaceTriangle
    {
-      vector3 vertex[3];
-      vector3 normal[3];
-      vector3 texcoord[3];
+      Vector3 vertex[3];
+      Vector3 normal[3];
+      Vector3 texcoord[3];
       bool hasNormals;
       bool hasTexCoords;
    };
@@ -63,7 +63,7 @@ namespace incarnadine
          inline void addFaceTriangle(const objFaceTriangle& face, objGroupIter activeGroup);
    
          std::map<std::string, objGroup> m_groups;
-         std::vector<vector3> m_vertices, m_normals, m_texCoords;
+         std::vector<Vector3> m_vertices, m_normals, m_texCoords;
 
          unsigned int m_windowListIndex;
          bool m_useWindowList;

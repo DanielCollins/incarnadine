@@ -22,7 +22,7 @@
 #include "GL/glew.h"
 #include "tools.h"
 
-extern vector3 zeroVector;
+extern Vector3 zeroVector;
 
 namespace incarnadine
 {

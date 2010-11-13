@@ -160,7 +160,7 @@ void ObjModel::parseLine(char *line, objGroupIter& activeGroup)
          vertex[1] = (float)atof(strvertex[1]);
          vertex[2] = (float)atof(strvertex[2]);
 
-         m_vertices.push_back(vector3(vertex[0], vertex[1], vertex[2]));
+         m_vertices.push_back(Vector3(vertex[0], vertex[1], vertex[2]));
       }
 
    }
@@ -197,7 +197,7 @@ void ObjModel::parseLine(char *line, objGroupIter& activeGroup)
 
       if (strnormal[0] != NULL && strnormal[1] != NULL && strnormal[2] != NULL)
       {
-         vector3 normal = vector3((float)atof(strnormal[0]), (float)atof(strnormal[1]), (float)atof(strnormal[2]));
+         Vector3 normal = Vector3((float)atof(strnormal[0]), (float)atof(strnormal[1]), (float)atof(strnormal[2]));
          m_normals.push_back(normal);
       }
 
@@ -235,7 +235,7 @@ void ObjModel::parseLine(char *line, objGroupIter& activeGroup)
 
       if (strtexcoord[0] != NULL && strtexcoord[1] != NULL && strtexcoord[2] != NULL)
       {
-         m_texCoords.push_back(vector3((float)atof(strtexcoord[0]), (float)atof(strtexcoord[1]), (float)atof(strtexcoord[2])));
+         m_texCoords.push_back(Vector3((float)atof(strtexcoord[0]), (float)atof(strtexcoord[1]), (float)atof(strtexcoord[2])));
       }
    }
    else if (lineLength > 2 && line[0] == 'f' && line[1] == ' ')

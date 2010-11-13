@@ -27,29 +27,29 @@ namespace incarnadine
    {
       public:
          Object();
-         vector3 getPosition();
-         void setPosition(vector3);
-         vector3 getVelocity();
-         void setVelocity(vector3);
-         vector3 getAcceleration();
-         void setAcceleration(vector3);
+         Vector3 getPosition();
+         void setPosition(Vector3);
+         Vector3 getVelocity();
+         void setVelocity(Vector3);
+         Vector3 getAcceleration();
+         void setAcceleration(Vector3);
          iquaternion getOrientation();
          void setOrientation(iquaternion);
-         void setOrientation(vector3);
-         vector3 getAngularVelocity();
-         void setAngularVelocity(vector3);
-         vector3 getAngularAcceleration();
-         void setAngularAcceleration(vector3);
+         void setOrientation(Vector3);
+         Vector3 getAngularVelocity();
+         void setAngularVelocity(Vector3);
+         Vector3 getAngularAcceleration();
+         void setAngularAcceleration(Vector3);
          void rotateX(float);
          void rotateY(float);
          void rotateZ(float);
-         void rotate(vector3);
+         void rotate(Vector3);
          void rotate(iquaternion);
-         void translate(vector3);
+         void translate(Vector3);
          void update(unsigned int);
 
       protected:
-         vector3 position, velocity, acceleration, angularVelocity, angularAcceleration;
+         Vector3 position, velocity, acceleration, angularVelocity, angularAcceleration;
          iquaternion orientation;
    };
 }

@@ -27,7 +27,7 @@
 
 using namespace incarnadine;
 
-StaticMesh::StaticMesh(vector3 scaleFactor, Renderable *newBase) : Visible (scaleFactor)
+StaticMesh::StaticMesh(Vector3 scaleFactor, Renderable *newBase) : Visible (scaleFactor)
 {
    base = newBase;
 }
@@ -39,7 +39,7 @@ StaticMesh::~StaticMesh()
 void StaticMesh::draw()
 {
    glPushMatrix();
-   matrix44 t;
+   Matrix44 t;
    matrix_rotation_quaternion(t, orientation);
    glMultMatrixf(t.data());
    glScalef(scale[0], scale[1], scale[2]);
@@ -53,7 +53,7 @@ void StaticMesh::draw()
 void StaticMesh::draw(float deltaTime)
 {
    glPushMatrix();
-   matrix44 t;
+   Matrix44 t;
    matrix_rotation_quaternion(t, orientation);
    glMultMatrixf(t.data());
    glScalef(scale[0], scale[1], scale[2]);

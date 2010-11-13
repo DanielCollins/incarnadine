@@ -27,17 +27,17 @@
 
 using namespace incarnadine;
 
-Visible::Visible(vector3 scaleFactor)
+Visible::Visible(Vector3 scaleFactor)
 {
    rescale(scaleFactor);
 }
 
-void Visible::rescale(vector3 scaleFactor)
+void Visible::rescale(Vector3 scaleFactor)
 {
    scale = scaleFactor;
 }
 
-vector3 Visible::getScale()
+Vector3 Visible::getScale()
 {
    return scale;
 }

@@ -28,12 +28,12 @@ namespace incarnadine
    {
       public:
          AxisAlignedBoundingBox bound;
-         vector3 scale;
+         Vector3 scale;
          std::vector<Visible*> children;
 
-         Visible(vector3 scaleFactor);
-         void rescale(vector3 scaleFactor);
-         vector3 getScale();
+         Visible(Vector3 scaleFactor);
+         void rescale(Vector3 scaleFactor);
+         Vector3 getScale();
          virtual void draw() = 0;
          virtual void draw(float) = 0;
    };

@@ -20,36 +20,36 @@ using namespace incarnadine;
 
 Object::Object()
 {
-   position = velocity =  acceleration = angularVelocity = angularAcceleration = vector3(0.0, 0.0, 0.0);
+   position = velocity =  acceleration = angularVelocity = angularAcceleration = Vector3(0.0, 0.0, 0.0);
    quaternion_rotation_euler(orientation, 0.0f, 0.0f, 0.0f, euler_order_xyz);
 }
 
-vector3 Object::getPosition()
+Vector3 Object::getPosition()
 {
    return position;
 }
 
-void Object::setPosition(vector3 v)
+void Object::setPosition(Vector3 v)
 {
    position = v;
 }
 
-vector3 Object::getVelocity()
+Vector3 Object::getVelocity()
 {
    return velocity;
 }
 
-void Object::setVelocity(vector3 v)
+void Object::setVelocity(Vector3 v)
 {
    velocity = v;
 }
 
-vector3 Object::getAcceleration()
+Vector3 Object::getAcceleration()
 {
    return acceleration;
 }
 
-void Object::setAcceleration(vector3 v)
+void Object::setAcceleration(Vector3 v)
 {
    acceleration = v;
 }
@@ -64,27 +64,27 @@ void Object::setOrientation(iquaternion q)
    orientation = q;
 }
 
-void Object::setOrientation(vector3 v)
+void Object::setOrientation(Vector3 v)
 {
    quaternion_rotation_euler(orientation, v[0], v[1], v[2], euler_order_xyz);
 }
 
-vector3 Object::getAngularVelocity()
+Vector3 Object::getAngularVelocity()
 {
    return angularVelocity;
 }
 
-void Object::setAngularVelocity(vector3 v)
+void Object::setAngularVelocity(Vector3 v)
 {
    angularVelocity = v;
 }
 
-vector3 Object::getAngularAcceleration()
+Vector3 Object::getAngularAcceleration()
 {
    return angularAcceleration;
 }
 
-void Object::setAngularAcceleration(vector3 v)
+void Object::setAngularAcceleration(Vector3 v)
 {
    angularAcceleration = v;
 }
@@ -107,7 +107,7 @@ void Object::rotateZ(float angle)
    orientation.normalize();
 }
 
-void Object::rotate(vector3 eulerRotation)
+void Object::rotate(Vector3 eulerRotation)
 {
    rotateX(eulerRotation[0]);
    rotateY(eulerRotation[1]);
@@ -120,9 +120,9 @@ void Object::rotate(iquaternion q)
    orientation.normalize();
 }
 
-void Object::translate(vector3 displacement)
+void Object::translate(Vector3 displacement)
 {
-   matrix44 transform;
+   Matrix44 transform;
    matrix_rotation_quaternion(transform, orientation);
    position += transform_vector(transform, displacement);
 }
@@ -131,7 +131,7 @@ void Object::update(unsigned int deltaTicks)
 {
    translate(deltaTicks * (velocity + acceleration * deltaTicks) / 2);
    velocity += acceleration * deltaTicks;
-   vector3 ra = deltaTicks * (angularVelocity + angularAcceleration * deltaTicks) / 2.0;
+   Vector3 ra = deltaTicks * (angularVelocity + angularAcceleration * deltaTicks) / 2.0;
    rotate(ra);
    angularVelocity += angularAcceleration * deltaTicks;
 }
