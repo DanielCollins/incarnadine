@@ -88,6 +88,7 @@ void runTest()
       {
          input->update();
          scene->updateObjects(timer->getTicks() - lastCycle);
+         camera->update(timer->getTicks() - lastCycle);
          lastCycle = nextCycle;
          nextCycle += targetUpdateTimeDelta;
          ++skippedFrames;
