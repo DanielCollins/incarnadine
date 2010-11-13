@@ -20,7 +20,11 @@ using namespace incarnadine;
 
 Incarnadine::Incarnadine()
 {
-   SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+   SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK);
+
+   SDL_JoystickEventState(SDL_ENABLE);
+
+   if(SDL_NumJoysticks() > 0) SDL_JoystickOpen(0);
 
    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
    int imgStatus = IMG_Init(imgFlags);

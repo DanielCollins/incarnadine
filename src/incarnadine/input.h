@@ -31,6 +31,10 @@ namespace incarnadine
          Signal<KeyDown> sKeyDown;
          Signal<MouseMove> sMouseMove;
          Signal<Exiting> sExiting;
+         Signal<HorizontalJoystickMotion> sHorizontalJoystickMotion;
+         Signal<VerticalJoystickMotion> sVerticalJoystickMotion;
+         Signal<JoystickButtonUp> sJoystickButtonUp;
+         Signal<JoystickButtonDown> sJoystickButtonDown;
          Window *window;
 
          InputManager(Window *d);

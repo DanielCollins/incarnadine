@@ -45,6 +45,30 @@ namespace incarnadine
          Key key;
    };
 
+   class HorizontalJoystickMotion
+   {
+      public:
+         int position;
+   };
+
+   class VerticalJoystickMotion
+   {
+      public:
+         int position;
+   };
+
+   class JoystickButtonUp
+   {
+      public:
+         unsigned char button;
+   };
+
+   class JoystickButtonDown
+   {
+      public:
+         unsigned char button;
+   };
+
    class Exiting{};
 }
 

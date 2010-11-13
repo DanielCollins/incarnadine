@@ -72,7 +72,37 @@ void InputManager::update()
                sMouseMove.fire(&e);
             }
             break;
-         }   
+         }
+         case SDL_JOYAXISMOTION:
+         {
+            if(Event.jaxis.axis == 0)
+            {
+               HorizontalJoystickMotion e;
+               e.position = Event.jaxis.value;
+               sHorizontalJoystickMotion.fire(&e);
+            }
+            else if(Event.jaxis.axis == 1)
+            {
+               VerticalJoystickMotion e;
+               e.position = Event.jaxis.value;
+               sVerticalJoystickMotion.fire(&e);
+            }
+            break;
+         }
+         case SDL_JOYBUTTONDOWN:
+         {
+            JoystickButtonDown e;
+            e.button = Event.jbutton.button;
+            sJoystickButtonDown.fire(&e);
+            break;
+         }
+         case SDL_JOYBUTTONUP:
+         {
+            JoystickButtonUp e;
+            e.button = Event.jbutton.button;
+            sJoystickButtonUp.fire(&e);
+            break;
+         }
          case SDL_QUIT:
          {
             Exiting e;
