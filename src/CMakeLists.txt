@@ -50,5 +50,5 @@ include_directories(${SDLIMAGE_INCLUDE_DIR})
 include_directories(${SDLMIXER_INCLUDE_DIR})
 
 add_subdirectory(incarnadine)
-add_subdirectory(test)
+add_subdirectory(examples)
 
