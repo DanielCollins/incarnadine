@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
    tp = new Label(font, "fps: 0", c);
    window->addWidget(tp);
    audio = new AudioManager();
-   music = audio->loadSound("data/sounds/music/fireblack/Nightfire (2010).mp3");
+   music = audio->loadSound("data/sounds/music/fireblack/Nightfire (2010).ogg");
 
    StaticMesh worker(Vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/worker/worker_body.md2"));
    worker.setPosition(Vector3(0.0, 0.0, -8000.0));
