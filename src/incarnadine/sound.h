@@ -14,36 +14,26 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef TEST_H
-#define TEST_H
+#ifndef INCARNADINE_SOUND_H_
+#define INCARNADINE_SOUND_H_
 
-#include <stdlib.h>
+#include <string>
+#include "SDL.h"
+#include "SDL_mixer.h"
 
-#include "incarnadine.h"
-#include "scene.h"
-#include "tools.h"
-#include "input.h"
-#include "camera.h"
-#include "object.h"
-#include "md2.h"
-#include "staticm.h"
-#include "label.h"
-#include "vertex.h"
-#include "clock.h"
-#include "render.h"
-#include "fontm.h"
-#include "audio.h"
-#include "sound.h"
+namespace incarnadine
+{
+   class Sound
+   {
+      public:
+         Sound(std::string uri);
+         ~Sound();
+         void play();
 
-using namespace incarnadine;
+      private:
+         Mix_Music *m;
+   };
+}
 
-void runTest();
-void exitTestApp();
-
-void handleExit(Exiting);
-void handleKeyUpEvent(KeyUp);
-void handleKeyDownEvent(KeyDown);
-void handleMouseMove(MouseMove);
-
-#endif //TEST_H
+#endif //INCARNADINE_SOUND_H_
 

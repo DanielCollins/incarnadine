@@ -32,6 +32,8 @@ Label *tp;
 Clock *timer;
 InputManager *input;
 FontManager *fonts;
+AudioManager *audio;
+Sound *music;
 
 Slot<Exiting> *ExitingSlot;
 Slot<KeyUp> *KeyUpSlot;
@@ -54,6 +56,8 @@ int main(int argc, char *argv[])
    Colour c = {0.0, 0.0, 0.0};
    tp = new Label(font, "fps: 0", c);
    window->addWidget(tp);
+   audio = new AudioManager();
+   music = audio->loadSound("data/sounds/music/fireblack/Nightfire (2010).mp3");
 
    StaticMesh worker(Vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/worker/worker_body.md2"));
    worker.setPosition(Vector3(0.0, 0.0, -8000.0));
@@ -72,7 +76,9 @@ int main(int argc, char *argv[])
    KeyDownSlot->connect(&(input->sKeyDown));
    MouseMoveSlot = new Slot<MouseMove>(handleMouseMove);
    MouseMoveSlot->connect(&(input->sMouseMove));
-      
+
+   music->play();
+
    runTest();   
    
    return EXIT_FAILURE;
@@ -208,6 +214,8 @@ void exitTestApp()
    delete renderer;
    delete input;
    delete fonts;
+   delete music;
+   delete audio;
    exit(EXIT_SUCCESS);
 }
 

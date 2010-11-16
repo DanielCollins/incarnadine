@@ -14,36 +14,24 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef TEST_H
-#define TEST_H
-
-#include <stdlib.h>
-
-#include "incarnadine.h"
-#include "scene.h"
-#include "tools.h"
-#include "input.h"
-#include "camera.h"
-#include "object.h"
-#include "md2.h"
-#include "staticm.h"
-#include "label.h"
-#include "vertex.h"
-#include "clock.h"
-#include "render.h"
-#include "fontm.h"
-#include "audio.h"
 #include "sound.h"
 
 using namespace incarnadine;
 
-void runTest();
-void exitTestApp();
+Sound::Sound(std::string uri)
+{
+   m = 0;
+   m = Mix_LoadMUS(uri.c_str());
+   if(!m) throw 1;
+}
 
-void handleExit(Exiting);
-void handleKeyUpEvent(KeyUp);
-void handleKeyDownEvent(KeyDown);
-void handleMouseMove(MouseMove);
+Sound::~Sound()
+{
+   Mix_FreeMusic(m);
+}
 
-#endif //TEST_H
+void Sound::play()
+{
+   Mix_PlayMusic(m, 0);
+}
 

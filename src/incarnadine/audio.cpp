@@ -14,36 +14,33 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef TEST_H
-#define TEST_H
-
-#include <stdlib.h>
-
-#include "incarnadine.h"
-#include "scene.h"
-#include "tools.h"
-#include "input.h"
-#include "camera.h"
-#include "object.h"
-#include "md2.h"
-#include "staticm.h"
-#include "label.h"
-#include "vertex.h"
-#include "clock.h"
-#include "render.h"
-#include "fontm.h"
 #include "audio.h"
-#include "sound.h"
 
 using namespace incarnadine;
 
-void runTest();
-void exitTestApp();
+AudioManager::AudioManager()
+{
+   int rate = 22050;
+   Uint16 audio_format = AUDIO_S16SYS;
+   int channels = 2;
+   int buffers = 4096;
+   if(Mix_OpenAudio(rate, audio_format, channels, buffers) < 0) throw 1;
+   Mix_AllocateChannels(1);
+}
 
-void handleExit(Exiting);
-void handleKeyUpEvent(KeyUp);
-void handleKeyDownEvent(KeyDown);
-void handleMouseMove(MouseMove);
+AudioManager::~AudioManager()
+{
+   sounds.clear();
+   Mix_CloseAudio();
+}
 
-#endif //TEST_H
+Sound *AudioManager::loadSound(std::string uri)
+{
+   Sound *s;
+   std::map<std::string, Sound*>::iterator i = sounds.find(uri);
+   if(i != sounds.end()) return i->second;
+   s = new Sound(uri);
+   sounds.insert(std::pair<std::string, Sound*>(uri, s));
+   return s;
+}
 
