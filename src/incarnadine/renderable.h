@@ -17,11 +17,14 @@
 #ifndef INCARNADINE_RENDERABLE_H_
 #define INCARNADINE_RENDERABLE_H_
 
+#include "aabb.h"
+
 namespace incarnadine
 {
    class Renderable
    {
       public:
+         AxisAlignedBoundingBox bound;
          virtual void draw() = 0;
    };
 }
