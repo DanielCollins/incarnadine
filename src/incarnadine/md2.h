@@ -55,6 +55,12 @@ namespace incarnadine
 
    typedef char Md2SkinName[64];
 
+   struct Md2TextureCoordinate
+   {
+      short s;
+      short t;
+   };
+
    class Md2VertexCompressed
    {
       public:
@@ -68,7 +74,6 @@ namespace incarnadine
          float v[3];
          unsigned char normalIndex;
    };
-
 
    class Md2Triangle
    {
@@ -112,7 +117,7 @@ namespace incarnadine
       private:
          Md2Header header;
          Md2SkinName *skins;
-         TextureCoordinate *textureCoordinates;
+         Md2TextureCoordinate *textureCoordinates;
          Md2Triangle *triangles;
          Md2Frame *frames;
          int *openGlCommands;

@@ -25,14 +25,14 @@ Md2Model::Md2Model(std::string fileName)
    file.read(reinterpret_cast<char*>(&header), sizeof (Md2Header));
    if(header.ident != md2Magic || header.version != md2Version) throw 1;
    skins = new Md2SkinName[header.numberOfSkins];
-   textureCoordinates = new TextureCoordinate[header.numberOfTextureCoordinates];
+   textureCoordinates = new Md2TextureCoordinate[header.numberOfTextureCoordinates];
    triangles = new Md2Triangle[header.numberOfTriangles];
    frames = new Md2Frame[header.numberOfFrames];
    openGlCommands = new int[header.numberOfOpenGlCommands];
    file.seekg(header.offsetToSkins, std::ios::beg);
    file.read(reinterpret_cast<char*>(skins), sizeof(Md2SkinName) * header.numberOfSkins);
    file.seekg(header.offsetToTextureCoordinates, std::ios::beg);
-   file.read(reinterpret_cast<char*>(textureCoordinates), sizeof(TextureCoordinate) * header.numberOfTextureCoordinates);
+   file.read(reinterpret_cast<char*>(textureCoordinates), sizeof(Md2TextureCoordinate) * header.numberOfTextureCoordinates);
    file.seekg(header.offsetToTriangles, std::ios::beg);
    file.read(reinterpret_cast<char*>(triangles), sizeof(Md2Triangle) * header.numberOfTriangles);
    file.seekg(header.offsetToFrames, std::ios::beg);

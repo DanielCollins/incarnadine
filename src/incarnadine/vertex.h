@@ -31,12 +31,6 @@ namespace incarnadine
       float a;
    };
 
-   struct TextureCoordinate
-   {
-      short s;
-      short t;
-   };
-
    struct Coordinate
    {
       float x;
