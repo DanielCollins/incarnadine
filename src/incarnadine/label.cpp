@@ -32,6 +32,7 @@ std::string Label::getText()
 
 void Label::setText(std::string s)
 {
+   dirty = true;
    text = s;
 }
 
@@ -42,6 +43,7 @@ TrueTypeFont* Label::getFont()
 
 void Label::setFont(TrueTypeFont *t)
 {
+   dirty = true;
    font = t;
 }
 
@@ -52,13 +54,18 @@ Colour Label::getTextColour()
 
 void Label::setTextColour(Colour tc)
 {
+   dirty = true;
    textColour = tc;
 }
 
 void Label::updateTexture()
 {
-   if(texture) delete texture;
-   texture = font->renderText(text, textColour.r, textColour.g, textColour.b);
-   resize((float) texture->getWidth() / window->width(), (float) texture->getHeight() / window->height());
+   if(dirty)
+   {
+      if(texture) delete texture;
+      texture = font->renderText(text, textColour.r, textColour.g, textColour.b);
+      resize((float) texture->getWidth() / window->width(), (float) texture->getHeight() / window->height());
+      dirty = false;
+   }
 }
 

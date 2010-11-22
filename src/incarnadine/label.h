@@ -38,6 +38,7 @@ namespace incarnadine
          void setTextColour(Colour tc);
 
       protected:
+         bool dirty;
          std::string text;
          TrueTypeFont *font;
          void updateTexture();
