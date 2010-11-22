@@ -35,6 +35,7 @@ Texture::Texture(SDL_Surface* textureSurface, GLint format)
 void Texture::load(SDL_Surface* textureSurface, GLint format)
 {
    surface = textureSurface;
+   if(surface->format->BytesPerPixel < 2) throw 1;
    glGenTextures(1, &id);
    glBindTexture(GL_TEXTURE_2D, id);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
