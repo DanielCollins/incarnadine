@@ -25,6 +25,11 @@ typedef cml::vector3f Vector3;
 typedef cml::matrix44f_c Matrix44;
 typedef cml::quaternionf_p iquaternion;
 
+#define loopv(iter, type, var) for(std::vector<type>::iterator iter = var.begin(); iter != var.end(); iter++)
+#define loopvi(type, var) loopv(i, type, var)
+#define loopvj(type, var) loopv(j, type, var)
+#define loopvk(type, var) loopv(k, type, var)
+
 #define BUFFER_OFFSET(i) ((char*)0 + (i))
 
 #define DEGREES_FROM_RADIANS(x) ((x) * 180.0 / 3.14159265)

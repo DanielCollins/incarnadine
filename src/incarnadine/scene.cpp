@@ -29,31 +29,23 @@ using namespace incarnadine;
 
 void Scene::rasterize()
 {
-  std::vector<Visible*>::const_iterator i = objects.begin();
-  std::vector<Visible*>::const_iterator end = objects.end();
-  for(;i != end; i++) (*i)->draw();
+  loopvi(Visible*, objects) (*i)->draw();
 }
 
 void Scene::rasterize(float deltaTime)
 {
-  std::vector<Visible*>::const_iterator i = objects.begin();
-  std::vector<Visible*>::const_iterator end = objects.end();
-  for(;i != end; i++) (*i)->draw(deltaTime);
+  loopvi(Visible*, objects) (*i)->draw(deltaTime);
 }
 
 void Scene::addObject(Visible *newObject)
 {
-  std::vector<Visible*>::const_iterator i = objects.begin();
-  std::vector<Visible*>::const_iterator end = objects.end();
-  for(;i != end; i++) if(newObject == *i) return;
+  loopvi(Visible*, objects) if(newObject == *i) return;
   objects.push_back(newObject);
 }
 
 void Scene::removeObject(Visible *oldObject)
 {
-  std::vector<Visible*>::iterator i = objects.begin();
-  std::vector<Visible*>::iterator end = objects.end();
-  for(;i != end; i++)
+  loopvi(Visible*, objects)
   {
     if(oldObject == *i)
     {
@@ -65,8 +57,6 @@ void Scene::removeObject(Visible *oldObject)
 
 void Scene::updateObjects(unsigned int deltaTicks)
 {
-  std::vector<Visible*>::const_iterator i = objects.begin();
-  std::vector<Visible*>::const_iterator end = objects.end();
-  for(;i != end; i++) (*i)->update(deltaTicks);
+  loopvi(Visible*, objects) (*i)->update(deltaTicks);
 }
 

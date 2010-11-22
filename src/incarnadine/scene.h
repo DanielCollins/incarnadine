@@ -19,6 +19,7 @@
 
 #include <vector>
 #include "visible.h"
+#include "tools.h"
 
 namespace incarnadine
 {
