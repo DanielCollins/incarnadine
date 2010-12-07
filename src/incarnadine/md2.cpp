@@ -89,7 +89,7 @@ void Md2Model::draw()
    int maxFrame = header.numberOfFrames - 1;
    if((frame < 0) || (frame > maxFrame)) return;
    int *pGlcmds = openGlCommands;
-   glColor3f(0.0, 1.0, 1.0);
+   glColor3f(1.0, 1.0, 1.0);
    int i;
    while((i = *(pGlcmds++)) != 0)
    {
