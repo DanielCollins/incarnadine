@@ -50,6 +50,7 @@ void Widget::draw()
 {
    updateTexture();
    texture->bind();
+   glColor3f(1.0, 1.0, 1.0);
    glBegin(GL_QUADS);
    glTexCoord2d(0, 0);
    glVertex2f(x, b);
