@@ -23,26 +23,30 @@ Texture::Texture(std::string filename)
    surface = 0;
    SDL_Surface *s = IMG_Load(filename.c_str());
    if(s == 0) throw 0;
-   load(s, GL_RGB);
+   load(s);
 }
 
 Texture::Texture(SDL_Surface* textureSurface, GLint format)
 {
    surface = 0;
-   load(textureSurface, format);
+   load(textureSurface);
 }
 
-void Texture::load(SDL_Surface* textureSurface, GLint format)
+void Texture::load(SDL_Surface* textureSurface)
 {
-   surface = textureSurface;
-   if(surface->format->BytesPerPixel < 2) throw 1;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+   SDL_PixelFormat format = {0, 32, 4, 0, 0, 0, 0, 0, 8, 16, 24, 0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF, 0, 255};
+#else
+   SDL_PixelFormat format = {0, 32, 4, 0, 0, 0, 0, 0, 8, 16, 24, 0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000, 0, 255};
+#endif // SDL_BYTEORDER == SDL_BIG_ENDIAN
+   surface = SDL_ConvertSurface(textureSurface, &format, SDL_SWSURFACE);   
    glGenTextures(1, &id);
    glBindTexture(GL_TEXTURE_2D, id);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-   glTexImage2D(GL_TEXTURE_2D, 0, format, surface->w, surface->h, 0, format, GL_UNSIGNED_BYTE, surface->pixels);
+   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
 }
 
 Texture::~Texture()

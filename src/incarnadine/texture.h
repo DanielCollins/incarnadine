@@ -36,7 +36,7 @@ namespace incarnadine
          int getHeight();
 
       private:
-         void load(SDL_Surface*, GLint);
+         void load(SDL_Surface*);
          void cleanup();
          GLuint id;
          SDL_Surface *surface;
