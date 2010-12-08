@@ -34,10 +34,9 @@ namespace incarnadine
          Visible(Vector3 scaleFactor);
          void rescale(Vector3 scaleFactor);
          Vector3 getScale();
-         virtual void draw() = 0;
          void addChild(Visible *newChild);
          void removeChild(Visible *oldChild);
-         virtual void draw(float) = 0;
+         virtual void draw(float deltaTime = 0.0) = 0;
    };
 }
 #endif //INCARNADINE_VISIBLE_H_

@@ -35,8 +35,7 @@ namespace incarnadine
       public:
          RenderManager(Camera *newCamera, Scene *newScene, Window *newWindow);
          ~RenderManager();
-         void draw();
-         void draw(float);
+         void draw(float deltaTime = 0.0);
          void setCamera(Camera *newCamera);
          Renderable *loadModel(std::string uri);
 

@@ -33,8 +33,7 @@ namespace incarnadine
       public:
          StaticMesh(Vector3 scaleFactor, Renderable *newBase);
          ~StaticMesh();
-         void draw();
-         void draw(float);
+         void draw(float deltaTime = 0.0);
 
       protected:
          Renderable *base;

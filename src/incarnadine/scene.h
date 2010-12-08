@@ -27,8 +27,7 @@ namespace incarnadine
    {
 
       public:
-         void rasterize();
-         void rasterize(float);
+         void rasterize(float deltaTime = 0.0);
          void addObject(Visible *newObject);
          void removeObject(Visible *oldObject);
          void updateObjects(unsigned int deltaTicks);

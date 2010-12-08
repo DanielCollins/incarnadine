@@ -27,11 +27,6 @@
 
 using namespace incarnadine;
 
-void Scene::rasterize()
-{
-  loopvi(Visible*, objects) (*i)->draw();
-}
-
 void Scene::rasterize(float deltaTime)
 {
   loopvi(Visible*, objects) (*i)->draw(deltaTime);

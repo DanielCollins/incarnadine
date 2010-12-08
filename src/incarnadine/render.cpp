@@ -38,16 +38,6 @@ RenderManager::~RenderManager()
    renderables.clear();
 }
 
-void RenderManager::draw()
-{
-   camera->updateGL();
-   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-   scene->rasterize();
-   window->update();
-   GLenum errorCode = glGetError();
-   if(errorCode != GL_NO_ERROR) throw 0;
-}
-
 void RenderManager::draw(float deltaTime)
 {
    camera->updateGL();
