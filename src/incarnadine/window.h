@@ -25,11 +25,14 @@
 
 namespace incarnadine
 {
+   const int SCREEN_WIDTH = 640;
+   const int SCREEN_HEIGHT = 480;
+
    class Widget;
    class Window
    {
      public:
-         Window(std::string);
+         Window(std::string, int=SCREEN_WIDTH, int=SCREEN_HEIGHT, bool=false);
          ~Window();
          void update();
          int width();
@@ -40,7 +43,8 @@ namespace incarnadine
       private:
          SDL_Surface *surface;
          std::vector<Widget*> widgets;
-         void drawWidgets();  
+         void drawWidgets();
+         bool fullscreen;
    };
 }
 
