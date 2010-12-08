@@ -42,3 +42,21 @@ Vector3 Visible::getScale()
    return scale;
 }
 
+void Visible::addChild(Visible *newChild)
+{
+   loopvi(Visible*, children) if(newChild == *i) return;
+   children.push_back(newChild);
+}
+
+void Visible::removeChild(Visible *oldChild)
+{
+   loopvi(Visible*, children)
+   {
+     if(oldChild == *i)
+     {
+       children.erase(i);
+       return;
+     }
+   }
+}
+

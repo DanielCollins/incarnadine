@@ -35,6 +35,8 @@ namespace incarnadine
          void rescale(Vector3 scaleFactor);
          Vector3 getScale();
          virtual void draw() = 0;
+         void addChild(Visible *newChild);
+         void removeChild(Visible *oldChild);
          virtual void draw(float) = 0;
    };
 }
