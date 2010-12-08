@@ -19,6 +19,7 @@
 
 #include "dispatch.h"
 #include "keydef.h"
+#include "hatdef.h"
 
 namespace incarnadine
 {
@@ -68,7 +69,14 @@ namespace incarnadine
       public:
          unsigned char button;
    };
-
+   
+   class JoystickHatMotion
+   {
+      public:
+         unsigned char hat;
+         HatPosition position;
+   };
+   
    class Exiting{};
 }
 
