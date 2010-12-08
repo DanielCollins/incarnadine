@@ -40,9 +40,12 @@ RenderManager::~RenderManager()
 
 void RenderManager::draw(float deltaTime)
 {
+   glPushMatrix();
+   glLoadIdentity();
    camera->updateGL();
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    scene->rasterize(deltaTime);
+   glPopMatrix();
    window->update();
    GLenum errorCode = glGetError();
    if(errorCode != GL_NO_ERROR) throw 0;
