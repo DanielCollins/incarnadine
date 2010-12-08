@@ -35,23 +35,23 @@ InputManager::~InputManager()
 
 void InputManager::update()
 {
-   SDL_Event Event;
+   SDL_Event event;
    
-   while(SDL_PollEvent(&Event))
+   while(SDL_PollEvent(&event))
    {
-      switch(Event.type)
+      switch(event.type)
       {
          case SDL_KEYDOWN:
          {
             KeyDown e;
-            e.key = (Key) Event.key.keysym.sym;
+            e.key = (Key) event.key.keysym.sym;
             sKeyDown.fire(&e);
             break;
          }
          case SDL_KEYUP:
          {
             KeyUp e;
-            e.key = (Key) Event.key.keysym.sym;
+            e.key = (Key) event.key.keysym.sym;
             sKeyUp.fire(&e);
             break;
          }
@@ -64,10 +64,10 @@ void InputManager::update()
             else
             {
                MouseMove e;
-               e.x = Event.motion.x;
-               e.y = Event.motion.y;
-               e.xrel = Event.motion.xrel;
-               e.yrel = Event.motion.yrel;
+               e.x = event.motion.x;
+               e.y = event.motion.y;
+               e.xrel = event.motion.xrel;
+               e.yrel = event.motion.yrel;
 
                sMouseMove.fire(&e);
             }
@@ -75,16 +75,16 @@ void InputManager::update()
          }
          case SDL_JOYAXISMOTION:
          {
-            if(Event.jaxis.axis == 0)
+            if(event.jaxis.axis == 0)
             {
                HorizontalJoystickMotion e;
-               e.position = Event.jaxis.value;
+               e.position = event.jaxis.value;
                sHorizontalJoystickMotion.fire(&e);
             }
-            else if(Event.jaxis.axis == 1)
+            else if(event.jaxis.axis == 1)
             {
                VerticalJoystickMotion e;
-               e.position = Event.jaxis.value;
+               e.position = event.jaxis.value;
                sVerticalJoystickMotion.fire(&e);
             }
             break;
@@ -92,22 +92,22 @@ void InputManager::update()
          case SDL_JOYBUTTONDOWN:
          {
             JoystickButtonDown e;
-            e.button = Event.jbutton.button;
+            e.button = event.jbutton.button;
             sJoystickButtonDown.fire(&e);
             break;
          }
          case SDL_JOYBUTTONUP:
          {
             JoystickButtonUp e;
-            e.button = Event.jbutton.button;
+            e.button = event.jbutton.button;
             sJoystickButtonUp.fire(&e);
             break;
          }
          case SDL_JOYHATMOTION:
          {
             JoystickHatMotion e;
-            e.hat = Event.jhat.hat;
-            e.position = (HatPosition) Event.jhat.value;
+            e.hat = event.jhat.hat;
+            e.position = (HatPosition) event.jhat.value;
             sJoystickHatMotion.fire(&e);
          }
          case SDL_QUIT:
