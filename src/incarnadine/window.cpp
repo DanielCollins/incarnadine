@@ -18,11 +18,13 @@
 
 using namespace incarnadine;
 
-Window::Window(std::string title)
+Window::Window(std::string title, int width, int height, bool fullscreen)
 {
-   surface = SDL_SetVideoMode(640, 480, 16, SDL_OPENGL | SDL_HWSURFACE);
+   surface = SDL_SetVideoMode(width, height, 16, fullscreen ? SDL_OPENGL | SDL_HWSURFACE | SDL_FULLSCREEN : SDL_OPENGL | SDL_HWSURFACE);
    SDL_WM_SetCaption(title.c_str(), title.c_str());
    if (!surface) throw 0;
+
+   this->fullscreen = fullscreen;
 
    //require at least 5 bits per colour
    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
