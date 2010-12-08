@@ -63,6 +63,9 @@ int main(int argc, char *argv[])
    worker.setPosition(Vector3(0.0, 0.0, -8000.0));
    worker.setAngularVelocity(Vector3(0.0, 0.0, 0.001));
    scene->addObject(&worker);
+   
+   StaticMesh workersHead(Vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/worker/head_worker.md2"));
+   worker.addChild(&workersHead);
 
    StaticMesh axis(Vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/axis/axis.obj"));
    axis.setPosition(Vector3(0.0, 0.0, -8000.0));
