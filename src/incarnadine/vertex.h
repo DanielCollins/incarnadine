@@ -25,10 +25,10 @@ namespace incarnadine
 
    struct Colour
    {
-      float r;
-      float g;
-      float b;
-      float a;
+      unsigned char r;
+      unsigned char g;
+      unsigned char b;
+      unsigned char a;
    };
 
    struct Coordinate

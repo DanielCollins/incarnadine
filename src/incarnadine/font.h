@@ -20,7 +20,8 @@
 #include <string>
 #include "SDL.h"
 #include "SDL_ttf.h"
-#include "texture.h" 
+#include "texture.h"
+#include "vertex.h"
 
 namespace incarnadine
 {
@@ -29,7 +30,7 @@ namespace incarnadine
       public:
          TrueTypeFont(std::string, int);
          ~TrueTypeFont();
-         Texture *renderText(std::string, char, char, char);
+         Texture *renderText(std::string, Colour c);
          void setSize(int);
 
       private:

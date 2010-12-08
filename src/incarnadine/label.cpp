@@ -63,7 +63,7 @@ void Label::updateTexture()
    if(dirty)
    {
       if(texture) delete texture;
-      texture = font->renderText(text, textColour.r, textColour.g, textColour.b);
+      texture = font->renderText(text, textColour);
       resize((float) texture->getWidth() / window->width(), (float) texture->getHeight() / window->height());
       dirty = false;
    }

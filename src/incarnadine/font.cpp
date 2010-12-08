@@ -30,9 +30,9 @@ TrueTypeFont::~TrueTypeFont()
    TTF_CloseFont(font);
 }
 
-Texture *TrueTypeFont::renderText(std::string text, char r, char g, char b)
+Texture *TrueTypeFont::renderText(std::string text, Colour c)
 { 
-   SDL_Color colour = {r,g,b,0};
+   SDL_Color colour = {c.r,c.g,c.b,c.a};
    return new Texture(TTF_RenderText_Blended(font, text.c_str(), colour), GL_RGBA);;
 }
 
