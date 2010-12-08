@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
    fonts = new FontManager();
    font = fonts->loadFont("data/fonts/bitstream/VeraMoBd.ttf", 12);
    input = new InputManager(window);
-   Colour c = {0.0, 0.0, 0.0};
+   Colour c = {0x8B, 0, 0, 0};
    tp = new Label(font, "fps: 0", c);
    window->addWidget(tp);
    audio = new AudioManager();
