@@ -43,8 +43,6 @@ Slot<MouseMove> *MouseMoveSlot;
 int main(int argc, char *argv[])
 {   
    camera = new Camera(90.0f);
-   camera->setOrientation(Vector3(0.0, 0.0, -180));
-
    scene = new Scene();   
    window = new Window("Incarnadine test");
    engine = new Incarnadine();
@@ -194,12 +192,8 @@ void handleKeyDownEvent(KeyDown e)
 
 void handleMouseMove(MouseMove e)
 {
-   float yAngle = -e.xrel * mouseSensitivity;
-   float xAngle = -e.yrel * mouseSensitivity;
-   if(yAngle != 0)
-      camera->rotateY(yAngle);
-   if(xAngle != 0)
-      camera->rotateX(xAngle);
+   camera->rotateY(e.xrel * mouseSensitivity);
+   camera->rotateX(e.yrel * mouseSensitivity);
 }
 
 void exitTestApp()
