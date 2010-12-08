@@ -110,6 +110,13 @@ void InputManager::update()
             e.position = (HatPosition) event.jhat.value;
             sJoystickHatMotion.fire(&e);
          }
+         case SDL_JOYBALLMOTION:
+         {
+            JoystickBallMotion e;
+            e.xrel = event.jball.xrel;
+            e.yrel = event.jball.yrel;
+            sJoystickBallMotion.fire(&e);
+         }
          case SDL_QUIT:
          {
             Exiting e;

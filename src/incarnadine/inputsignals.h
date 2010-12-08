@@ -77,6 +77,12 @@ namespace incarnadine
          HatPosition position;
    };
    
+   class JoystickBallMotion
+   {
+      public:
+         int yrel, xrel;
+   };
+   
    class Exiting{};
 }
 
