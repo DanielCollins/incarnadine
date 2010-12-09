@@ -38,15 +38,14 @@ StaticMesh::~StaticMesh()
 
 void StaticMesh::draw(float deltaTime)
 {
-   glPushMatrix();
    Matrix44 t;
+   glPushMatrix();
+   glTranslatef(position[0] + velocity[0] * deltaTime, position[1] + velocity[1] * deltaTime, position[2] + velocity[2] * deltaTime);
    matrix_rotation_quaternion(t, orientation);
    glMultMatrixf(t.data());
    glScalef(scale[0], scale[1], scale[2]);
-   glTranslatef(position[0] + velocity[0] * deltaTime, position[1] + velocity[1] * deltaTime, position[2] + velocity[2] * deltaTime);
    base->draw();
-   std::vector<Visible*>::iterator i;
-   for(i = children.begin(); i != children.end(); i++) (*i)->draw(); 
+   loopvi(Visible*, children) (*i)->draw(); 
    glPopMatrix();
 }
 
