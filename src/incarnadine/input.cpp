@@ -36,6 +36,7 @@ InputManager::~InputManager()
 void InputManager::update()
 {
    SDL_Event event;
+   static unsigned char ignored = 0;
    
    while(SDL_PollEvent(&event))
    {
@@ -63,12 +64,16 @@ void InputManager::update()
             }
             else
             {
+               if(ignored < 5)
+               {
+                 ++ignored;
+                 break;
+               }    
                MouseMove e;
                e.x = event.motion.x;
                e.y = event.motion.y;
                e.xrel = event.motion.xrel;
                e.yrel = event.motion.yrel;
-
                sMouseMove.fire(&e);
             }
             break;
@@ -82,7 +87,7 @@ void InputManager::update()
                sHorizontalJoystickMotion.fire(&e);
             }
             else if(event.jaxis.axis == 1)
-            {
+            {          
                VerticalJoystickMotion e;
                e.position = event.jaxis.value;
                sVerticalJoystickMotion.fire(&e);
