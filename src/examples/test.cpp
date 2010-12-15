@@ -146,13 +146,13 @@ void handleKeyUpEvent(KeyUp e)
       case INC_KEY_A:
       case INC_KEY_LEFT:
       {
-         camera->setVelocity(Vector3(0.0, 1.0, 0.0) + camera->getVelocity());
+         camera->setVelocity(Vector3(1.0, 0.0, 0.0) + camera->getVelocity());
          break;
       }
       case INC_KEY_D:
       case INC_KEY_RIGHT:
       {
-         camera->setVelocity(Vector3(0.0, -1.0, 0.0) + camera->getVelocity());
+         camera->setVelocity(Vector3(-1.0, 0.0, 0.0) + camera->getVelocity());
          break;
       }
    }
@@ -179,13 +179,13 @@ void handleKeyDownEvent(KeyDown e)
       case INC_KEY_A:
       case INC_KEY_LEFT:
       {
-         camera->setVelocity(Vector3(0.0, -1.0, 0.0));
+         camera->setVelocity(Vector3(-1.0, .0, 0.0));
          break;
       }
       case INC_KEY_D:
       case INC_KEY_RIGHT:
       {
-         camera->setVelocity(Vector3(0.0, 1.0, 0.0));
+         camera->setVelocity(Vector3(1.0, 0.0, 0.0));
          break;
       }
    }
