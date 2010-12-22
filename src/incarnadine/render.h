@@ -39,7 +39,6 @@ namespace incarnadine
          void draw(float deltaTime = 0.0);
          void setCamera(Camera *newCamera);
          Renderable *loadModel(std::string uri);
-         Renderable *loadHeightmap(std::string uri, Vector3 scale);
 
       private:
          Camera *camera;

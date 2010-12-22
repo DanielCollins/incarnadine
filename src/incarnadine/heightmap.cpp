@@ -18,11 +18,10 @@
 
 using namespace incarnadine;
 
-Heightmap::Heightmap(std::string filename, Vector3 scaleFactor)
+Heightmap::Heightmap(std::string filename)
 {
    surface = IMG_Load(filename.c_str());
    if(!surface) throw 1;
-   scale = scaleFactor;
 }
 
 Heightmap::~Heightmap()
@@ -48,9 +47,9 @@ void Heightmap::draw()
       for(int x = 0; x < surface->w; ++x)
       {
          SDL_GetRGB(getpixel(surface, x, y), surface->format, &r, &g, &b);
-         glVertex3i((int) x * scale[0], (int) r * scale[1], (int) y * scale[2]);
+         glVertex3i((int) x, (int) r, (int) y);
          SDL_GetRGB(getpixel(surface, x, t), surface->format, &r, &g, &b);
-         glVertex3i((int) x * scale[0], (int) r * scale[1], (int) t * scale[2]);
+         glVertex3i((int) x, (int) r, (int) t);
       }
       glEnd();
    }

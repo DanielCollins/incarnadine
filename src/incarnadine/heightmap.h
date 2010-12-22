@@ -33,13 +33,12 @@ namespace incarnadine
    class Heightmap : public Renderable
    {
       public:
-         Heightmap(std::string fileName, Vector3 scaleFactor);
+         Heightmap(std::string fileName);
          ~Heightmap();
          void draw();
       
       private:
          SDL_Surface *surface;
-         Vector3 scale;
 
          inline void vertex(int x, int y);
    };
