@@ -61,13 +61,11 @@ Renderable *RenderManager::loadModel(std::string uri)
    Renderable *r;
    std::map<std::string, Renderable*>::iterator i = renderables.find(uri);
    if(i != renderables.end()) return i->second;
-
    std::string::size_type pos = uri.find_last_of('.');
    if(pos != std::string::npos && (uri.length() - pos - 1) > 0)
    {
       std::string extension;
       extension = uri.substr(pos + 1, uri.length() - pos - 1);
-
       if(extension.compare("md2") == 0)
          r = new Md2Model(uri);
       else if(extension.compare("obj") == 0)
@@ -77,7 +75,6 @@ Renderable *RenderManager::loadModel(std::string uri)
       else
          throw 0;
    }
-
    renderables.insert(std::pair<std::string, Renderable*>(uri, r));
    return r;
 }
