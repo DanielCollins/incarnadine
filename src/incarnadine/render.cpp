@@ -79,3 +79,20 @@ Renderable *RenderManager::loadModel(std::string uri)
    renderables.insert(std::pair<std::string, Renderable*>(uri, r));
    return r;
 }
+
+Renderable *RenderManager::loadHeightmap(std::string uri, Vector3 scale)
+{
+   Renderable *r;
+   std::map<std::string, Renderable*>::iterator i = renderables.find(uri);
+   if(i != renderables.end()) return i->second;
+   std::string::size_type pos = uri.find_last_of('.');
+   if (pos != std::string::npos && (uri.length() - pos - 1) > 0)
+   {
+      std::string extension;
+      extension = uri.substr(pos + 1, uri.length() - pos - 1);
+      r = new Heightmap(uri, scale);
+   }
+   renderables.insert(std::pair<std::string, Renderable*>(uri, r));
+   return r;
+}
+

@@ -1,5 +1,5 @@
 /* 
-   Copyright (c) 2010 Daniel Collins, Daniel Flahive
+   Copyright (c) 2010 Daniel Collins
 
    Permission to use, copy, modify, and distribute this software for any
    purpose with or without fee is hereby granted, provided that the above
@@ -14,41 +14,36 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef INCARNADINE_RENDER_H_
-#define INCARNADINE_RENDER_H_
+#ifndef INCARNADINE_HEIGHTMAP_H_
+#define INCARNADINE_HEIGHTMAP_H_
 
-#include <map>
-#include "SDL.h"
-#include "GL/glew.h"
+#include <string>
+#include <vector>
 #include "tools.h"
-#include "camera.h"
-#include "window.h"
-#include "scene.h"
 #include "renderable.h"
-#include "md2.h"
-#include "obj.h"
-#include "heightmap.h"
+#include "vbo.h"
+#include "vertex.h"
+#include "GL/glew.h"
+#include "texture.h"
+#include "SDL.h"
+#include "SDL_image.h"
 
 namespace incarnadine
 {
-   class RenderManager
+   class Heightmap : public Renderable
    {
       public:
-         RenderManager(Camera *newCamera, Scene *newScene, Window *newWindow);
-         ~RenderManager();
-         void draw(float deltaTime = 0.0);
-         void setCamera(Camera *newCamera);
-         Renderable *loadModel(std::string uri);
-         Renderable *loadHeightmap(std::string uri, Vector3 scale);
-
+         Heightmap(std::string fileName, Vector3 scaleFactor);
+         ~Heightmap();
+         void draw();
+      
       private:
-         Camera *camera;
-         Window *window;
-         Scene *scene;
-         std::vector<Widget*> widgets;
-         std::map<std::string, Renderable*> renderables;
-   };
-}
+         SDL_Surface *surface;
+         Vector3 scale;
 
-#endif //INCARNADINE_RENDER_H_
+         inline void vertex(int x, int y);
+   };
+
+}
+#endif //INCARNADINE_HEIGHTMAP_H_
 

@@ -69,6 +69,10 @@ int main(int argc, char *argv[])
    StaticMesh axis(Vector3(1.0, 1.0, 1.0), renderer->loadModel("data/models/axis/axis.obj"));
    axis.setPosition(Vector3(0.0, 0.0, -8000.0));
    scene->addObject(&axis);
+
+   StaticMesh terrain(Vector3(1.0, 1.0, 1.0), renderer->loadHeightmap("data/models/terrain/heightmap.jpg", Vector3(10.0, 0.2, 10.0)));
+   terrain.setPosition(Vector3(0.0, -300, -8000.0));
+   scene->addObject(&terrain);
       
    ExitingSlot = new Slot<Exiting>(handleExit);
    ExitingSlot->connect(&(input->sExiting));

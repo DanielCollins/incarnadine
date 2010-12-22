@@ -21,6 +21,7 @@ add_library(incarnadine
             fontm.cpp
             audio.cpp
             sound.cpp
+            heightmap.cpp
             ${INCARNADINE_SOURCE_DIR}/src/external/glew.c)
 
 target_link_libraries(incarnadine ${OPENGL_LIBRARY} ${SDL_LIBRARY} ${SDLMAIN_LIBRARY} ${SDLTTF_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY})
