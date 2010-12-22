@@ -63,16 +63,16 @@ Renderable *RenderManager::loadModel(std::string uri)
    if(i != renderables.end()) return i->second;
 
    std::string::size_type pos = uri.find_last_of('.');
-   if (pos != std::string::npos && (uri.length() - pos - 1) > 0)
+   if(pos != std::string::npos && (uri.length() - pos - 1) > 0)
    {
       std::string extension;
       extension = uri.substr(pos + 1, uri.length() - pos - 1);
 
-      if (extension.compare("md2") == 0)
+      if(extension.compare("md2") == 0)
          r = new Md2Model(uri);
-      else if (extension.compare("obj") == 0)
+      else if(extension.compare("obj") == 0)
          r = new ObjModel(uri);
-      else if (extension.compare("jpg") == 0 || extension.compare("png") == 0)
+      else if(extension.compare("jpg") == 0 || extension.compare("png") == 0)
          r = new Heightmap(uri);
       else
          throw 0;
