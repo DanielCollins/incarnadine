@@ -22,7 +22,6 @@ Incarnadine::Incarnadine()
 {
    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK);
 
-
    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
    int imgStatus = IMG_Init(imgFlags);
    if ((imgStatus & imgFlags) != imgFlags) throw 0;
@@ -34,8 +33,6 @@ Incarnadine::Incarnadine()
 
 Incarnadine::~Incarnadine()
 {
-   IMG_Quit();   
-   SDL_Quit();
 }
 
 

@@ -128,6 +128,8 @@ void InputManager::update()
          {
             Exiting e;
             sExiting.fire(&e);
+            IMG_Quit();   
+            SDL_Quit();
          }
       }
    }
