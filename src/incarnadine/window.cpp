@@ -25,16 +25,11 @@ Window::Window(std::string title, int width, int height, bool fullscreen)
    if (!surface) throw 0;
 
    this->fullscreen = fullscreen;
-
-   //require at least 5 bits per colour
+   
    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 5);
    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
-
-   //require at least 2 byte depth buffer
    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
-
-   //require double buffering
    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 }
 
@@ -44,7 +39,6 @@ Window::~Window()
       surface = 0;
 }
 
-//Show next frame
 void Window::update()
 {
    drawWidgets();
