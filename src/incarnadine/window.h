@@ -22,6 +22,7 @@
 #include "SDL.h"
 #include "GL/glew.h"
 #include "widget.h"
+#include "tools.h"
 
 namespace incarnadine
 {

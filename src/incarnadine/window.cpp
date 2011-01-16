@@ -85,24 +85,20 @@ void Window::drawWidgets()
 
 void Window::addWidget(Widget *widget)
 {
-  widget->setWindow(this);
-  std::vector<Widget*>::const_iterator i = widgets.begin();
-  std::vector<Widget*>::const_iterator end = widgets.end();
-  for(;i != end; i++) if(widget == *i) return;
-  widgets.push_back(widget);
+   widget->setWindow(this);
+   loopvi(Widget*, widgets) if(*i == widget) return;
+   widgets.push_back(widget);
 }
 
 void Window::removeWidget(Widget *widget)
 {
-  std::vector<Widget*>::iterator i = widgets.begin();
-  std::vector<Widget*>::iterator end = widgets.end();
-  for(;i != end; i++)
-  {
-    if(widget == *i)
-    {
-      widgets.erase(i);
-      return;
-    }
-  }
+   loopvi(Widget*, widgets)
+   {
+      if(*i == widget)
+      {
+         widgets.erase(i);
+         return;
+      }
+   }
 }
 
