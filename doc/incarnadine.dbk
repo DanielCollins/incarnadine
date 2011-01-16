@@ -14,7 +14,7 @@
      </section>
      <section>
 	<title>Copying</title>
-	<para>The majority of incarnadine sources are distributed under the terms of OpenBSD's variation of the ISC license http://www.openbsd.org/cgi-bin/cvsweb/~checkout~/src/share/misc/license.template. Some source files howver still fall under the terms of the zlib/libpng license, please see the top of each source file for details. Please also be aware that the content found under the data/ directory may be licensed under different terms.</para>
+	<para>The incarnadine sources are distributed under the terms of OpenBSD's variation of the ISC license http://www.openbsd.org/cgi-bin/cvsweb/~checkout~/src/share/misc/license.template or see the header of any source file. Content found under the data/ directory is seperatly licensed and terms of use may be found in that directory.</para>
      </section>
      <section>
 	<title>Contributors</title>

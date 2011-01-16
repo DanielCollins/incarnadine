@@ -9,7 +9,6 @@ add_library(incarnadine
             render.cpp
             input.cpp
             staticm.cpp
-            vbo.cpp
             visible.cpp
             clock.cpp
             md2.cpp

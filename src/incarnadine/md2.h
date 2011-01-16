@@ -21,7 +21,6 @@
 #include <string>
 #include <vector>
 #include "renderable.h"
-#include "vbo.h"
 #include "vertex.h"
 #include "GL/glew.h"
 #include "texture.h"

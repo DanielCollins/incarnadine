@@ -19,7 +19,6 @@
 
 #include "renderable.h"
 #include "visible.h"
-#include "vbo.h"
 #include "tools.h"
 #include "vertex.h"
 #include <vector>
@@ -32,7 +31,6 @@ namespace incarnadine
 
       public:
          StaticMesh(Vector3 scaleFactor, Renderable *newBase);
-         ~StaticMesh();
          void draw(float deltaTime = 0.0);
 
       protected:
