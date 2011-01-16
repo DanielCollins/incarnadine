@@ -73,9 +73,7 @@ void Window::drawWidgets()
    glMatrixMode(GL_MODELVIEW);
    glPushMatrix();
    glLoadIdentity();
-   std::vector<Widget*>::const_iterator i = widgets.begin();
-   std::vector<Widget*>::const_iterator end = widgets.end();
-   for(;i != end; i++) (*i)->draw();
+   loopvi(Widget*, widgets) (*i)->draw();
    glMatrixMode(GL_PROJECTION);
    glPopMatrix();
    glMatrixMode(GL_MODELVIEW);
