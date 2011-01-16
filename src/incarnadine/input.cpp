@@ -24,7 +24,9 @@ InputManager::InputManager(Window *d)
    ignoreNextMouseMove = false;
    SDL_ShowCursor(SDL_DISABLE);
    SDL_WM_GrabInput(SDL_GRAB_ON);
-   resetMousePosition();
+   resetMousePosition();   
+   SDL_JoystickEventState(SDL_ENABLE);
+   if(SDL_NumJoysticks() > 0) SDL_JoystickOpen(0);
 }
 
 InputManager::~InputManager()
