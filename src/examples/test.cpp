@@ -42,7 +42,8 @@ Slot<MouseMove> *MouseMoveSlot;
 
 int main(int argc, char *argv[])
 {   
-   camera = new Camera(90.0f);
+   Skybox s;
+   camera = new Camera(90.0f, s);
    scene = new Scene();   
    window = new Window("Incarnadine test");
    engine = new Incarnadine();

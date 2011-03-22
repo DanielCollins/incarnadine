@@ -18,9 +18,10 @@
 
 using namespace incarnadine;
 
-Camera::Camera(float newFov)
+Camera::Camera(float newFov, Skybox s)
 {
    setFov(newFov);
+   skybox = s;
 }
 
 void Camera::setFov(float newFov)
@@ -45,6 +46,7 @@ void Camera::updateGL()
    Matrix44 t;
    matrix_rotation_quaternion(t, orientation * -1);
    glLoadMatrixf(t.data());
+   skybox.draw();
    glTranslatef(-position[0], -position[1], -position[2]);
 }
 

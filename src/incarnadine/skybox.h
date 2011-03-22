@@ -1,6 +1,5 @@
 /* 
    Copyright (c) 2010 Daniel Collins
-
    Permission to use, copy, modify, and distribute this software for any
    purpose with or without fee is hereby granted, provided that the above
    copyright notice and this permission notice appear in all copies.
@@ -14,37 +13,19 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef TEST_H
-#define TEST_H
+#ifndef INCARNADINE_SKYBOX_H_
+#define INCARNADINE_SKYBOX_H_
 
-#include <stdlib.h>
+#include "GL/glew.h"
 
-#include "incarnadine.h"
-#include "scene.h"
-#include "tools.h"
-#include "input.h"
-#include "camera.h"
-#include "object.h"
-#include "md2.h"
-#include "staticm.h"
-#include "label.h"
-#include "vertex.h"
-#include "clock.h"
-#include "render.h"
-#include "fontm.h"
-#include "audio.h"
-#include "sound.h"
-#include "skybox.h"
+namespace incarnadine
+{
+   class Skybox
+   {
+      public:
+         void draw();
+   };  
+}
 
-using namespace incarnadine;
-
-void runTest();
-void exitTestApp();
-
-void handleExit(Exiting);
-void handleKeyUpEvent(KeyUp);
-void handleKeyDownEvent(KeyDown);
-void handleMouseMove(MouseMove);
-
-#endif //TEST_H
+#endif //INCARNADINE_SKYBOX_H_
 

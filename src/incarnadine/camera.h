@@ -21,6 +21,7 @@
 #include "SDL.h"
 #include "GL/glew.h"
 #include "tools.h"
+#include "skybox.h"
 
 extern Vector3 zeroVector;
 
@@ -29,13 +30,14 @@ namespace incarnadine
    class Camera : public Object
    {
       public:
-         Camera(float newFov);
+         Camera(float newFov, Skybox s);
          void updateGL();
          void setFov(float newFov);
          float getFov();
 
       private:
          float fov;
+         Skybox skybox;
    };
 }
 

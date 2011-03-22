@@ -14,37 +14,21 @@
    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef TEST_H
-#define TEST_H
-
-#include <stdlib.h>
-
-#include "incarnadine.h"
-#include "scene.h"
-#include "tools.h"
-#include "input.h"
-#include "camera.h"
-#include "object.h"
-#include "md2.h"
-#include "staticm.h"
-#include "label.h"
-#include "vertex.h"
-#include "clock.h"
-#include "render.h"
-#include "fontm.h"
-#include "audio.h"
-#include "sound.h"
 #include "skybox.h"
 
 using namespace incarnadine;
 
-void runTest();
-void exitTestApp();
-
-void handleExit(Exiting);
-void handleKeyUpEvent(KeyUp);
-void handleKeyDownEvent(KeyDown);
-void handleMouseMove(MouseMove);
-
-#endif //TEST_H
+void Skybox::draw()
+{
+   glDisable(GL_BLEND);
+   glDisable(GL_DEPTH_TEST);
+   glBegin(GL_TRIANGLES);
+   glColor3f(0.0f, 0.5f, 0.5f);
+   glVertex3f(0.0f, 100.0f, -100.0f);
+   glVertex3f(-100.0f, -100.0f, -100.0f);
+   glVertex3f(100.0f, -100.0f, -100.0f);
+   glEnd();
+   glEnable(GL_BLEND);
+   glEnable(GL_DEPTH_TEST);
+}
 
