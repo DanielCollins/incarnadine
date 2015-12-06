@@ -1,0 +1,9 @@
+[package]
+name = "incarnadine"
+version = "0.1.0"
+authors = ["Daniel Collins <mail@dcollins.info>"]
+[dependencies]
+glium = "*"
+time = "*"
+image = "*"
+fmod = "*"
