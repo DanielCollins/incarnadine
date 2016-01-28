@@ -2,7 +2,8 @@
 extern crate glium;
 extern crate time;
 extern crate image;
-extern crate rfmod;
+extern crate sdl2;
+extern crate sdl2_mixer;
 mod shaders;
 mod camera;
 mod types;

@@ -84,11 +84,11 @@ impl Camera {
         if self.position[1] <= self.height {
             self.position[1] = self.height;
             if self.y_v < 0.0 {
-                self.sounds.land.play().unwrap();
+                self.sounds.land.play(1).unwrap();
             }
             if self.want_jump {
                 self.y_v = 1.0;
-                self.sounds.jump.play().unwrap();
+                self.sounds.jump.play(1).unwrap();
                 self.want_jump = false;
             } else {
                 self.y_v = 0.0;
